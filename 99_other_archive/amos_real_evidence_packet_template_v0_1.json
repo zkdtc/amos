@@ -1,0 +1,16 @@
+{
+  "version": "AMOS Real Evidence Packet Template v0.1",
+  "source_workbook": "amos_priority_ticker_checklist_v0_1.xlsx",
+  "output_workbook": "amos_real_evidence_packet_template_v0_1.xlsx",
+  "new_sheets": [
+    "Evidence Packet v0.1",
+    "Evidence Packet Guide"
+  ],
+  "score_formula": "0.30*EvidenceQuality + 0.15*(100-BiasRisk) + 0.15*Freshness + 0.15*Specificity + 0.15*Actionability + counter_bonus",
+  "action_gates": {
+    ">=75": "Can Influence Action",
+    "60-74": "Can Influence Watch",
+    "45-59": "Research Only",
+    "<45": "Do Not Use"
+  }
+}

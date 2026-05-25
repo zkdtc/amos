@@ -1,0 +1,63 @@
+{
+  "version": "AMOS Scoring-connected Dashboard v0.2",
+  "source_fixture": "amos_sample_data_fixture_v0_1.json",
+  "source_scoring_logic": "amos_scoring_logic_v0_1.json",
+  "data_quality": "sample_only_not_realtime",
+  "macro_regime_score": 65,
+  "computed": {
+    "NVDA": {
+      "macro_regime_score": 65,
+      "narrative_strength_score": 82,
+      "narrative_maturity_score": 63,
+      "risk_stack_score": 60,
+      "panic_maturity_score": 37,
+      "valuation_battle_score": 55,
+      "decision_confidence_score": 54,
+      "auto_action": "wait"
+    },
+    "CRDO": {
+      "macro_regime_score": 65,
+      "narrative_strength_score": 79,
+      "narrative_maturity_score": 67,
+      "risk_stack_score": 73,
+      "panic_maturity_score": 36,
+      "valuation_battle_score": 54,
+      "decision_confidence_score": 54,
+      "auto_action": "trim_watch"
+    },
+    "LITE": {
+      "macro_regime_score": 65,
+      "narrative_strength_score": 79,
+      "narrative_maturity_score": 67,
+      "risk_stack_score": 56,
+      "panic_maturity_score": 37,
+      "valuation_battle_score": 59,
+      "decision_confidence_score": 54,
+      "auto_action": "wait"
+    },
+    "IREN": {
+      "macro_regime_score": 65,
+      "narrative_strength_score": 65,
+      "narrative_maturity_score": 52,
+      "risk_stack_score": 42,
+      "panic_maturity_score": 41,
+      "valuation_battle_score": 50,
+      "decision_confidence_score": 50,
+      "auto_action": "wait"
+    },
+    "HOOD": {
+      "macro_regime_score": 65,
+      "narrative_strength_score": 48,
+      "narrative_maturity_score": 42,
+      "risk_stack_score": 44,
+      "panic_maturity_score": 39,
+      "valuation_battle_score": 48,
+      "decision_confidence_score": 50,
+      "auto_action": "wait"
+    }
+  },
+  "hard_caps_applied": [
+    "decision_confidence_score capped at 60 because fixture is sample-only and not real-time",
+    "Gann/Gamma/AVWAP fields are not connected yet, so execution confidence remains limited"
+  ]
+}

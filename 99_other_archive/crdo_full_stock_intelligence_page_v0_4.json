@@ -1,0 +1,18 @@
+{
+  "version": "CRDO Full Stock Intelligence Page v0.4",
+  "html": "crdo_full_stock_intelligence_page_v0_4.html",
+  "source_files": [
+    "amos_sample_data_fixture_v0_1.json",
+    "crdo_scoring_connected_stock_page_v0_3.json",
+    "amos_unified_gann_resonance_engine_v0_4.json"
+  ],
+  "ticker": "CRDO",
+  "auto_action": "trim_watch",
+  "gann_gate": "WATCH",
+  "gann_score": 32,
+  "next": [
+    "build generic stock page generator",
+    "generate LITE/NVDA/HOOD/IREN full pages",
+    "connect real data adapter fields"
+  ]
+}

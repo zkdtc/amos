@@ -1,0 +1,6 @@
+as_of_date,ticker,last_price,rsi_14d,ema_8_state,ema_12_state,trend_structure,rs_vs_qqq,rs_vs_peers,avwap_status,event_pressure_0_100,risk_stack_0_100,narrative_strength_0_100,panic_maturity_0_100,valuation_comfort_0_100,data_freshness,source,notes
+2026-05-24,NVDA,,,Unknown,Unknown,Unclear,,,Unknown,,,,,,Missing,manual,
+2026-05-24,CRDO,,,Unknown,Unknown,Unclear,,,Unknown,,,,,,Missing,manual,
+2026-05-24,LITE,,,Unknown,Unknown,Unclear,,,Unknown,,,,,,Missing,manual,
+2026-05-24,IREN,,,Unknown,Unknown,Unclear,,,Unknown,,,,,,Missing,manual,
+2026-05-24,HOOD,,,Unknown,Unknown,Unclear,,,Unknown,,,,,,Missing,manual,

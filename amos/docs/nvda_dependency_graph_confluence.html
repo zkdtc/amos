@@ -1,0 +1,611 @@
+<h1>AMOS · NVDA Metric Dependency Graph</h1>
+<div data-type="panel-info">
+  <p><strong>AMOS v0.3C Live-Read Alpha</strong> · Ticker: <strong>NVDA</strong> · Generated <time datetime="2026-05-24">May 24, 2026</time></p>
+  <p>This page shows how every NVDA metric flows from <strong>raw Yahoo Finance data</strong> → <strong>derived AMOS metrics</strong> → <strong>composite context layers</strong> → <strong>guardrails</strong> → <strong>effective action cap</strong>. Use it as the single source of truth when reasoning about why a panel shows what it shows.</p>
+</div>
+<h2>Layered overview</h2>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <p>Layer</p>
+      </th>
+      <th>
+        <p>Answers</p>
+      </th>
+      <th>
+        <p>Key NVDA outputs</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p><strong>Layer 1 · Technicals</strong></p>
+      </td>
+      <td>
+        <p>How is price moving?</p>
+      </td>
+      <td>
+        <p>EMA8/12, RSI14, Trend Structure</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>Layer 2 · Structure</strong></p>
+      </td>
+      <td>
+        <p>Where are the lines?</p>
+      </td>
+      <td>
+        <p>AVWAP, Gann SoN clusters, Options γ flip</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>Layer 3 · Context</strong></p>
+      </td>
+      <td>
+        <p>What is the market trading?</p>
+      </td>
+      <td>
+        <p>Narrative phase, Valuation zone, Macro regime, Personality, Peers</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>Layer 4 · Decision</strong></p>
+      </td>
+      <td>
+        <p>What am I allowed to do?</p>
+      </td>
+      <td>
+        <p>Strictest Action Cap (Freshness ∧ Gann ∧ Events ∧ Anchors ∧ Regime)</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Full dependency diagram</h2>
+<pre><code class="language-mermaid">flowchart TD
+  %% ─── Yahoo Sources ───
+  subgraph YF[&quot;Yahoo Finance · read-only&quot;]
+    direction TB
+    YF_CHART[&quot;chart/NVDA?range=6mo&amp;interval=1d&quot;]:::yahoo
+    YF_BENCH[&quot;chart/ ^VIX, ^TNX, BTC-USD,&lt;br/&gt;SPY, QQQ, SMH, DX-Y.NYB, NVDA&quot;]:::yahoo
+    YF_OPT[&quot;options/NVDA&quot;]:::yahoo
+    YF_CAL[&quot;quoteSummary/NVDA&lt;br/&gt;module=calendarEvents&quot;]:::yahoo
+  end
+
+  %% ─── Raw fields ───
+  META[&quot;NVDA META&lt;br/&gt;regularMarketPrice · previousClose&lt;br/&gt;50d/200d MA · 52w H/L · volume&lt;br/&gt;regularMarketTime&quot;]:::raw
+  BARS[&quot;NVDA daily BARS&lt;br/&gt;~125x O,H,L,C,V&quot;]:::raw
+  BENCH[&quot;Benchmark Snapshots&lt;br/&gt;VIX · 10Y · BTC · SPY/QQQ/SMH&lt;br/&gt;NVDA · DXY (price, bars, sma20, chg20d)&quot;]:::raw
+  CHAIN[&quot;Options Chain&lt;br/&gt;calls/puts: strike, OI, IV, vol&lt;br/&gt;expirationDates&quot;]:::raw
+  EARN[&quot;Earnings unix ts&quot;]:::raw
+
+  YF_CHART --&gt; META
+  YF_CHART --&gt; BARS
+  YF_BENCH --&gt; BENCH
+  YF_OPT   --&gt; CHAIN
+  YF_CAL   --&gt; EARN
+
+  %% ─── Layer 1: per-ticker technicals ───
+  EMA[&quot;EMA8 / EMA12&quot;]:::l1
+  RSI[&quot;RSI14 (Wilder)&quot;]:::l1
+  TREND[&quot;trendStructure&lt;br/&gt;HH/HL · LH/LL · Inside · Equilibrium&quot;]:::l1
+  CLOCK[&quot;MarketClock&lt;br/&gt;regular · pre · post · weekend&quot;]:::l1
+  FRESH[&quot;freshness&lt;br/&gt;(market-aware)&quot;]:::l1
+  RS[&quot;relativeStrengthLabel(NVDA, QQQ)&lt;br/&gt;Leader / Strong / Mixed / Follower / Laggard&quot;]:::l1
+
+  BARS --&gt; EMA
+  BARS --&gt; RSI
+  BARS --&gt; TREND
+  META --&gt; FRESH
+  CLOCK --&gt; FRESH
+  BARS --&gt; RS
+  BENCH --&gt; RS
+
+  %% ─── Layer 2: structure ───
+  ANCHORS[&quot;Anchor Verification list&quot;]:::l2
+  AVWAP[&quot;AVWAP series per anchor&lt;br/&gt;Σ((H+L+C)/3·V) / ΣV&lt;br/&gt;Reclaimed / Lost / At / Extended&quot;]:::l2
+  GANN[&quot;Gann SoN levels&lt;br/&gt;P = (√P_base ± θ/180)²&lt;br/&gt;angles 45 / 90 / 180 / 270 / 360&quot;]:::l2
+  CLUSTER[&quot;Multi-anchor clusters&lt;br/&gt;≥2 anchors within 1%&lt;br/&gt;nearestSupport · nearestResistance&quot;]:::l2
+  RESON[&quot;unified_gann_resonance_score&lt;br/&gt;price · time · anchor quality · cluster · PA&quot;]:::l2
+  OPT[&quot;Options Structure&lt;br/&gt;callWall · putWall · gammaFlip&lt;br/&gt;atmIV · putCallRatio · regime ±γ&quot;]:::l2
+
+  ANCHORS --&gt; AVWAP
+  BARS --&gt; AVWAP
+  ANCHORS --&gt; GANN
+  META --&gt; GANN
+  GANN --&gt; CLUSTER
+  CLUSTER --&gt; RESON
+  TREND --&gt; RESON
+  CHAIN --&gt; OPT
+  META --&gt; OPT
+
+  %% ─── Layer 3: context ───
+  REGIME[&quot;Market Regime&lt;br/&gt;riskAppetite (VIX)&lt;br/&gt;liquidity (10Y)&lt;br/&gt;leadership (NVDA vs SMA20)&lt;br/&gt;Attack/Normal/Reduced/Defensive/Off&quot;]:::l3
+  NAR[&quot;Narrative Lifecycle&lt;br/&gt;Origin · Discovery · Acceleration&lt;br/&gt;· Saturation · Decline&quot;]:::l3
+  VAL[&quot;Valuation Stack&lt;br/&gt;Conservative · Base · Bull · Euphoria&quot;]:::l3
+  PERS[&quot;Personality Radar (6 axes 0-100)&lt;br/&gt;Vol · Hype · Recovery&lt;br/&gt;Gamma · Leadership · Floor&quot;]:::l3
+  PEER[&quot;Peer Map&lt;br/&gt;NVDA → AMD / AVGO / TSM / MRVL&quot;]:::l3
+
+  BENCH --&gt; REGIME
+  BARS --&gt; NAR
+  RSI --&gt; NAR
+  RS --&gt; NAR
+  META --&gt; VAL
+  BARS --&gt; PERS
+  BENCH --&gt; PERS
+  VAL --&gt; PERS
+
+  %% ─── Layer 4: guardrails ───
+  EVENTS[&quot;Macro Events&lt;br/&gt;(incl NVDA Earnings)&quot;]:::guard
+  G_FRESH[&quot;freshnessCap&quot;]:::guard
+  G_GANN[&quot;gannMissingDataCap&quot;]:::guard
+  G_EVT[&quot;aggregateEventCap&quot;]:::guard
+  G_ANCH[&quot;anchorVerification gate&quot;]:::guard
+  G_REG[&quot;regimeCap&quot;]:::guard
+  CAP[&quot;EFFECTIVE ACTION CAP&lt;br/&gt;(strictest wins)&quot;]:::guard
+
+  EARN --&gt; EVENTS
+  EVENTS --&gt; G_EVT
+  FRESH --&gt; G_FRESH
+  RESON --&gt; G_GANN
+  ANCHORS --&gt; G_ANCH
+  REGIME --&gt; G_REG
+  G_FRESH --&gt; CAP
+  G_GANN --&gt; CAP
+  G_EVT --&gt; CAP
+  G_ANCH --&gt; CAP
+  G_REG --&gt; CAP
+
+  %% ─── Output: NVDA Page ───
+  PAGE[&quot;NVDA Stock Intelligence Page&lt;br/&gt;Decision · Price Action · RSI · AVWAP&lt;br/&gt;Gann · Gamma · Personality · Narrative&lt;br/&gt;Valuation · Peers · Evidence · Risk&quot;]:::out
+
+  CAP --&gt; PAGE
+  EMA --&gt; PAGE
+  RSI --&gt; PAGE
+  TREND --&gt; PAGE
+  AVWAP --&gt; PAGE
+  GANN --&gt; PAGE
+  CLUSTER --&gt; PAGE
+  OPT --&gt; PAGE
+  NAR --&gt; PAGE
+  VAL --&gt; PAGE
+  PERS --&gt; PAGE
+  PEER --&gt; PAGE
+  REGIME --&gt; PAGE
+
+  %% ─── Cross-page propagation ───
+  BRIEF[&quot;Daily Brief row · NVDA&quot;]:::out
+  PORT[&quot;Portfolio Battle Map · NVDA Core&quot;]:::out
+  MASTER[&quot;Master Index counts&quot;]:::out
+  LEADER[&quot;Leadership Board sort key&quot;]:::out
+  WAR[&quot;Macro War Map leadership axis&quot;]:::out
+
+  FRESH --&gt; BRIEF
+  TREND --&gt; BRIEF
+  RESON --&gt; BRIEF
+  META --&gt; PORT
+  CAP --&gt; PORT
+  PAGE --&gt; MASTER
+  RS --&gt; LEADER
+  META --&gt; WAR
+  BENCH -.NVDA is the leadership axis.-&gt; WAR
+
+  classDef yahoo fill:#1b3a1b,stroke:#4caf50,color:#dfffd6;
+  classDef raw   fill:#1b2a3a,stroke:#5cb8ff,color:#d6efff;
+  classDef l1    fill:#0b3a3a,stroke:#26c6da,color:#d6f7ff;
+  classDef l2    fill:#3a2a0b,stroke:#ffb74d,color:#fff3d6;
+  classDef l3    fill:#3a0b3a,stroke:#ba68c8,color:#ffd6f7;
+  classDef guard fill:#3a0b0b,stroke:#ef5350,color:#ffd6d6;
+  classDef out   fill:#3a3a0b,stroke:#fff176,color:#fffbd6;
+</code></pre>
+<h2>Closed feedback loops unique to NVDA</h2>
+<p>The diagram exposes three NVDA-specific closed loops that don&#x27;t exist for any other ticker in AMOS:</p>
+<ol>
+  <li>
+    <p><strong>NVDA → Macro Regime → NVDA-the-stock.</strong> NVDA&#x27;s own price feeds the <em>leadership</em> axis of the macro regime. The regime then back-caps every per-ticker action — including NVDA itself. This is the &quot;leader is the regime barometer&quot; pattern from single-jianwei (<em>龙头是流动性聚焦点</em>).</p>
+  </li>
+  <li>
+    <p><strong>NVDA → other tickers&#x27; Personality.LeadershipDependency.</strong> Every non-NVDA ticker uses NVDA&#x27;s bars as the leader benchmark for the 5th radar axis. So NVDA&#x27;s behavior literally shapes how every other stock is described.</p>
+  </li>
+  <li>
+    <p><strong>NVDA earnings → MacroEvent.Critical → action cap on NVDA.</strong> The earnings date pulled from <code>quoteSummary</code> becomes a Critical event, which sets <code>aggregateEventCap = No Attack</code> on NVDA&#x27;s own page through the strictest-wins rule.</p>
+  </li>
+</ol>
+<h2>Per-refresh data inventory</h2>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <p>Group</p>
+      </th>
+      <th>
+        <p>Per refresh</p>
+      </th>
+      <th>
+        <p>Used for</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p>Quote meta fields</p>
+      </td>
+      <td>
+        <p>≈ 195 (13 tickers × 15 fields)</p>
+      </td>
+      <td>
+        <p>Price · 52w · 50dMA · prevClose · freshness</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>OHLCV bars</p>
+      </td>
+      <td>
+        <p>≈ 1,625 rows (13 × 125)</p>
+      </td>
+      <td>
+        <p>EMA · RSI · Trend · AVWAP · Gann · RS · Narrative · Personality</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Option contracts</p>
+      </td>
+      <td>
+        <p>≈ 500+ (5 tickers × ~100 strikes)</p>
+      </td>
+      <td>
+        <p>Call/put walls · γ-flip · IV · P/C ratio</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Earnings dates</p>
+      </td>
+      <td>
+        <p>5 (one per tracked ticker)</p>
+      </td>
+      <td>
+        <p>Critical macro events</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>These produce <strong>≈ 50 derived numeric/categorical fields</strong> spread across 12 panels.</p>
+<h2>Source-code map</h2>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <p>Module / responsibility</p>
+      </th>
+      <th>
+        <p>File</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p>Yahoo chart fetch + EMA / RSI / Trend + market clock + freshness</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/liveAdapter.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Macro benchmarks + Relative Strength</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/liveBenchmarks.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Options chain · walls · γ-flip · IV</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/liveOptions.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>True anchored VWAP</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/liveAVWAP.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Gann SoN + multi-anchor clusters</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/gannLive.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Macro regime state machine</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/marketRegime.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Narrative phase classifier</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/narrativeLifecycle.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Multi-layer valuation engine</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/valuationStack.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Personality Radar (6 axes)</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/stockPersonality.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Peer maps</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/peerMaps.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Portfolio battle map + migration heuristics</p>
+      </td>
+      <td>
+        <p><code>amos/src/data/portfolio.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Action cap composition (strictest wins)</p>
+      </td>
+      <td>
+        <p><code>amos/src/rules/actionCaps.ts</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Event &amp; evidence guards</p>
+      </td>
+      <td>
+        <p><code>amos/src/rules/eventGuards.ts</code>, <code>amos/src/rules/evidenceGuards.ts</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Reading the diagram</h2>
+<ul>
+  <li>
+    <p><span style="color: #006644">Green</span> nodes are raw Yahoo Finance sources.</p>
+  </li>
+  <li>
+    <p><span style="color: #0747a6">Blue</span> nodes are unprocessed payload buckets (meta, bars, chain, …).</p>
+  </li>
+  <li>
+    <p><span style="color: #008da6">Teal</span> = Layer 1 technicals derived inside <code>liveAdapter.ts</code>.</p>
+  </li>
+  <li>
+    <p><span style="color: #ff991f">Orange</span> = Layer 2 structure (AVWAP / Gann / Options).</p>
+  </li>
+  <li>
+    <p><span style="color: #6554c0">Purple</span> = Layer 3 context (regime, narrative, valuation, personality, peers).</p>
+  </li>
+  <li>
+    <p><span style="color: #bf2600">Red</span> = Layer 4 guardrails — strictest cap wins.</p>
+  </li>
+  <li>
+    <p><span style="color: #ffc400">Yellow</span> = final rendered outputs (stock page, daily brief, etc.).</p>
+  </li>
+</ul>
+<div data-type="panel-warning">
+  <p><strong>AMOS is research-only.</strong> No brokerage connection. Gann never triggers trades alone. Counter-evidence required for any claim to influence action. Anchor Verification gate required before formal Gann use. Critical events default to No Attack.</p>
+</div>
+<details>
+  <summary>Why this is named &quot;NVDA Metric Dependency Graph&quot;</summary>
+  <p>NVDA is unique in AMOS because it appears in <strong>three different roles simultaneously</strong>:</p>
+  <ol>
+    <li>
+      <p>As a <em>tracked ticker</em> — its own page.</p>
+    </li>
+    <li>
+      <p>As a <em>benchmark</em> — fed into the macro regime alongside SPY/QQQ/VIX/etc.</p>
+    </li>
+    <li>
+      <p>As the <em>leader reference</em> for every other ticker&#x27;s Personality Radar (axis 5).</p>
+    </li>
+  </ol>
+  <p>The diagram therefore has more incoming + outgoing edges for NVDA than for any other ticker. Rendering it explicitly makes the closed loops visible — which is what single-jianwei calls 龙头反身性 (leader reflexivity).</p>
+</details>
+<h2>Decision-making rules (purely rule-based · no ML · fully deterministic)</h2>
+
+<div data-type="panel-info">
+  <p>AMOS makes <strong>no ML predictions</strong>, runs <strong>no LLM</strong> in the decision path, and never emits "buy / sell" signals. It computes an <strong>Effective Action Cap</strong> — the strictest ceiling on what is operationally allowed today — by running six independent classifiers and taking the most restrictive output. The whole pipeline is deterministic TypeScript that fits in a single screen.</p>
+</div>
+
+<h3>1 · What gets decided per ticker</h3>
+
+<table>
+  <thead><tr><th>Output</th><th>Meaning</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Action Bias</strong></td><td>What the manual heuristic <em>suggests</em> (Attack / Hold / Wait / Trim …)</td><td><code>liveAdapter.ts::deriveManualInput</code> (from EMA / RSI / Trend)</td></tr>
+    <tr><td><strong>Effective Action Cap</strong></td><td>The <em>ceiling</em> that overrides the bias — the actual operational verdict</td><td>Composed inside <code>StockIntelligencePage.tsx</code></td></tr>
+    <tr><td><strong>Migration Suggestion</strong> (portfolio only)</td><td>Heuristic "Trim / Rotate / Time-stop / Hold" string</td><td><code>portfolio.ts::suggestMigration</code></td></tr>
+  </tbody>
+</table>
+
+<h3>2 · Action Cap priority ladder</h3>
+
+<p>The composer picks the <strong>strictest</strong> (most restrictive) cap across all classifiers — there is no weighted scoring, no fuzzy combination.</p>
+
+<table>
+  <thead><tr><th>#</th><th>Cap</th><th>Means</th></tr></thead>
+  <tbody>
+    <tr><td>1 (least)</td><td><span data-type="status" data-color="green">Attack</span></td><td>All gates open. Aggressive position changes permitted.</td></tr>
+    <tr><td>2</td><td><span data-type="status" data-color="blue">Normal</span></td><td>Standard playbook.</td></tr>
+    <tr><td>3</td><td><span data-type="status" data-color="yellow">Reduced Size</span></td><td>Tactical only; no aggression.</td></tr>
+    <tr><td>4</td><td><span data-type="status" data-color="yellow">Watch</span></td><td>Observe; no execution this session.</td></tr>
+    <tr><td>5</td><td><span data-type="status" data-color="purple">Research Only</span></td><td>Information OK; no operational decisions.</td></tr>
+    <tr><td>6 (most)</td><td><span data-type="status" data-color="red">No Attack</span></td><td>Default-deny. Critical event window or Risk-Off regime.</td></tr>
+  </tbody>
+</table>
+
+<h3>3 · The six classifiers</h3>
+
+<table>
+  <thead><tr><th>#</th><th>Classifier</th><th>Rule</th><th>Module</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Freshness</strong></td><td><code>Fresh → Normal</code> · <code>Stale → Reduced Size</code> · <code>Missing → Research Only</code>. Freshness is <em>market-aware</em>: outside session hours the last close stays Fresh until the next open.</td><td><code>rules/actionCaps.ts</code></td></tr>
+    <tr><td>2</td><td><strong>Gann data completeness</strong></td><td><code>engine.hard_missing_data.length &gt; 0 → Research Only</code>, else <code>Normal</code>. Gann <em>quality</em> never relaxes; it can only restrict.</td><td><code>rules/actionCaps.ts</code></td></tr>
+    <tr><td>3</td><td><strong>Event proximity (7-day window)</strong></td><td>For every event ahead: <code>Critical → No Attack</code>, <code>High → Reduced Size</code>, <code>Medium → Watch</code>, <code>Low → Normal</code>. Strictest across all events wins.</td><td><code>rules/eventGuards.ts</code></td></tr>
+    <tr><td>4</td><td><strong>Anchor Verification gate</strong></td><td>If <em>any</em> Gann anchor for the ticker is <code>usePermission !== 'Verified'</code> → <code>Research Only</code>. Hard gate. A human must stamp Verified.</td><td><code>StockIntelligencePage.tsx</code> + <code>AnchorVerificationGate.tsx</code></td></tr>
+    <tr><td>5</td><td><strong>Macro Regime</strong></td><td><code>Risk-Off → No Attack</code> · <code>Defensive → Reduced Size</code> · otherwise no contribution. Regime is itself computed by a 3-axis state machine (see below).</td><td><code>data/marketRegime.ts</code></td></tr>
+    <tr><td>6</td><td><strong>Evidence / Counter-Evidence</strong></td><td>A claim missing <code>counterEvidence</code> is <code>Blocked</code> and cannot influence the Decision Summary. Doesn't change the cap directly but suppresses bullish/bearish inputs.</td><td><code>rules/evidenceGuards.ts</code></td></tr>
+  </tbody>
+</table>
+
+<h3>4 · Macro Regime state machine (Classifier 5 internals)</h3>
+
+<table>
+  <thead><tr><th>Axis</th><th>Input</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Risk Appetite</td><td>VIX</td><td><code>&lt;15 Risk-On · &lt;20 Selective · &lt;28 Cautious · ≥28 Risk-Off</code></td></tr>
+    <tr><td>Liquidity</td><td>^TNX (10-yr)</td><td><code>≥4.5 Tightening · ≤3.8 Loosening · else Neutral</code></td></tr>
+    <tr><td>Leadership</td><td>NVDA vs SMA20 + 20d return</td><td><code>above &amp; chg20d&gt;0 → Strong · above only → Wobbling · below → Broken</code></td></tr>
+  </tbody>
+</table>
+
+<p>Composite label table:</p>
+<ul>
+  <li><code>Risk-Off || NVDA Broken</code> → <strong>Risk-Off</strong></li>
+  <li><code>Cautious &amp;&amp; Tightening</code> → <strong>Defensive</strong></li>
+  <li><code>Selective || NVDA Wobbling</code> → <strong>Reduced Size</strong></li>
+  <li><code>Risk-On &amp;&amp; NVDA Strong &amp;&amp; QQQ chg20d &gt; 3%</code> → <strong>Attack</strong></li>
+  <li>otherwise → <strong>Normal</strong></li>
+</ul>
+
+<h3>5 · Strictest-wins composition (the actual code)</h3>
+
+<pre><code class="language-typescript">// amos/src/pages/StockIntelligencePage.tsx (excerpt)
+const caps: ActionCap[] = [];
+caps.push(freshnessCap(input.freshness));                                 // 1
+caps.push(gannMissingDataCap(engine));                                    // 2
+caps.push(aggregateEventCap(events));                                     // 3
+if (!anchors.every(a =&gt; a.usePermission === 'Verified'))
+  caps.push('Research Only');                                             // 4
+if (regime.label === 'Risk-Off')   caps.push('No Attack');                // 5
+if (regime.label === 'Defensive')  caps.push('Reduced Size');             // 5
+// evidence guard runs on a per-claim basis in EvidencePanel              // 6
+const cap = strictestCap(caps);   // pure min() over priority table
+</code></pre>
+
+<h3>6 · Decision flow (visual)</h3>
+
+<pre data-breakout="wide"><code class="language-mermaid">flowchart LR
+  subgraph CLASSIFIERS["Six independent classifiers"]
+    direction TB
+    C1["1. Freshness<br/>Fresh/Stale/Missing"]:::cls
+    C2["2. Gann completeness<br/>hard_missing_data count"]:::cls
+    C3["3. Event proximity<br/>Critical/High/Medium/Low"]:::cls
+    C4["4. Anchor Verification<br/>all Verified?"]:::cls
+    C5["5. Macro Regime<br/>Attack/Normal/Reduced/<br/>Defensive/Risk-Off"]:::cls
+    C6["6. Evidence Gate<br/>has counter-evidence?"]:::cls
+  end
+
+  C1 --> CAP1["cap = Normal | Reduced | Research"]:::cap
+  C2 --> CAP2["cap = Normal | Research"]:::cap
+  C3 --> CAP3["cap = Normal | Watch | Reduced | NoAttack"]:::cap
+  C4 --> CAP4["cap = (clear) | Research"]:::cap
+  C5 --> CAP5["cap = (clear) | Reduced | NoAttack"]:::cap
+  C6 -.suppresses claims.-> SUMMARY
+
+  CAP1 --> STRICT["strictestCap(...)<br/>pure min over priority table"]:::strict
+  CAP2 --> STRICT
+  CAP3 --> STRICT
+  CAP4 --> STRICT
+  CAP5 --> STRICT
+
+  STRICT --> CAP["EFFECTIVE ACTION CAP<br/>Attack &gt; Normal &gt; Reduced &gt; Watch &gt; Research &gt; NoAttack"]:::final
+  CAP --> SUMMARY["Decision Summary card<br/>(bias + cap + reasons list)"]:::out
+
+  classDef cls    fill:#0b3a3a,stroke:#26c6da,color:#d6f7ff;
+  classDef cap    fill:#3a2a0b,stroke:#ffb74d,color:#fff3d6;
+  classDef strict fill:#3a0b0b,stroke:#ef5350,color:#ffd6d6;
+  classDef final  fill:#3a3a0b,stroke:#fff176,color:#fffbd6;
+  classDef out    fill:#1b3a1b,stroke:#4caf50,color:#dfffd6;
+</code></pre>
+
+<h3>7 · Worked example — NVDA today (2026-05-22 weekend snapshot)</h3>
+
+<table>
+  <thead><tr><th>Classifier</th><th>Input observed</th><th>Cap produced</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Freshness</td><td>Quote at Fri 16:00 ET, market is <em>weekend</em> → market-aware Fresh</td><td><span data-type="status" data-color="blue">Normal</span></td></tr>
+    <tr><td>2 · Gann completeness</td><td>Engine has price + 1 anchor + score → <code>hard_missing_data = []</code></td><td><span data-type="status" data-color="blue">Normal</span></td></tr>
+    <tr><td>3 · Event proximity</td><td>No Critical/High macro event in next 7 days</td><td><span data-type="status" data-color="blue">Normal</span></td></tr>
+    <tr><td>4 · Anchor Verification</td><td>Sample anchor <code>usePermission = 'Research Only'</code> — not yet Verified</td><td><span data-type="status" data-color="purple">Research Only</span></td></tr>
+    <tr><td>5 · Macro Regime</td><td>VIX 15-20 (Selective) · 10Y ≥ 4.5 (Tightening) · NVDA Strong → composite <strong>Reduced Size</strong></td><td><span data-type="status" data-color="yellow">Reduced Size</span></td></tr>
+    <tr><td>6 · Evidence</td><td>Sample packets do include counter-evidence → no suppression</td><td>(no cap contribution)</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Strictest cap → <span data-type="status" data-color="purple">Research Only</span></strong> (Classifier 4 wins; would have been <em>Reduced Size</em> if anchors were Verified).</p>
+
+<h3>8 · What is NOT used to decide</h3>
+
+<ul>
+  <li><strong>No ML.</strong> Nothing fits, predicts, or learns.</li>
+  <li><strong>No LLM.</strong> Decision path is plain deterministic TypeScript.</li>
+  <li><strong>No price targets.</strong> The cap is a <em>ceiling on aggression</em>, never a directional call.</li>
+  <li><strong>Gann scores, RSI, Personality axes, Valuation zones, Narrative phase, Options gamma, Peers</strong> — all displayed for human reasoning but <em>do not</em> change the cap. Single-jianwei doctrine: "Gann cannot trigger trades alone."</li>
+</ul>
+
+<h3>9 · Where a human is required (three hard gates)</h3>
+
+<ol>
+  <li><strong>Anchor Verification</strong> — a real human must stamp anchors before Gann context unlocks.</li>
+  <li><strong>Counter-Evidence</strong> — a claim is <em>Blocked</em> until "what would prove it wrong" is filled in.</li>
+  <li><strong>Post-event Review</strong> — events flagged <code>postEventReviewRequired: true</code> force a manual checkpoint before caps relax.</li>
+</ol>
+
+<h3>10 · File map</h3>
+
+<table>
+  <thead><tr><th>Concept</th><th>File</th></tr></thead>
+  <tbody>
+    <tr><td>Strictest-wins composition</td><td><code>amos/src/rules/actionCaps.ts</code></td></tr>
+    <tr><td>Event → cap</td><td><code>amos/src/rules/eventGuards.ts</code></td></tr>
+    <tr><td>Evidence → blocked/allowed</td><td><code>amos/src/rules/evidenceGuards.ts</code></td></tr>
+    <tr><td>Gann hard-missing → cap</td><td><code>amos/src/rules/gannGuards.ts</code></td></tr>
+    <tr><td>Macro regime state machine</td><td><code>amos/src/data/marketRegime.ts</code></td></tr>
+    <tr><td>Final composition</td><td><code>amos/src/pages/StockIntelligencePage.tsx</code></td></tr>
+    <tr><td>Audit-trail rendering</td><td><code>amos/src/components/stock/DecisionSummary.tsx</code></td></tr>
+  </tbody>
+</table>
+
+<div data-type="panel-warning">
+  <p><strong>Auditability is the design goal.</strong> Every cap displayed in the UI has an attached <em>reasons</em> list that names the exact classifier that fired and the input value that triggered it. If you can read this page, you can trace any AMOS decision back to a line of TypeScript and a Yahoo data point.</p>
+</div>

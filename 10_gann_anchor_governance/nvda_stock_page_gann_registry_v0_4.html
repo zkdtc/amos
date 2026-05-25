@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · NVDA Stock Page · Gann Registry v0.4</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 85% 5%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1720px;margin:0 auto;padding:20px}
+.card,.score,.narrative-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{display:grid;grid-template-columns:1.35fr .8fr .8fr .8fr;gap:12px;margin-bottom:14px}
+.hero .card{padding:20px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px} h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em} h3{font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+.sub{color:var(--soft);margin:0}
+.big{font-size:34px;font-weight:900;color:var(--gold)}.redbig{font-size:34px;font-weight:900;color:var(--red)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.score-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:14px}
+.score{padding:13px}.score-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.score-v{font-size:28px;font-weight:900;margin:8px 0}
+.bar{height:8px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.layout{display:grid;grid-template-columns:1.05fr 1.15fr .95fr;gap:12px;margin-bottom:14px}
+.box{padding:16px;margin-bottom:14px}.box li,.box p{color:var(--soft)}.box ul{margin:0;padding-left:18px}.box li{margin:7px 0}
+.narrative-card{padding:13px;margin-bottom:10px}.n-head{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.n-head span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);font-size:10px;text-align:right}.narrative-card label{display:flex;justify-content:space-between;color:var(--soft);font-size:11px;margin:7px 0 4px}
+.warning,.gann-missing{border-color:rgba(255,77,109,.55)}.warning h2,.gann-missing h2{color:var(--red)}.green{border-color:rgba(50,230,138,.35)}.gold{border-color:rgba(255,209,102,.45)}.gann-live{border-color:rgba(50,230,138,.55)}
+.kv{display:grid;gap:7px}.row{display:grid;grid-template-columns:145px 1fr;gap:8px;border-bottom:1px solid rgba(30,42,70,.65);padding:7px 0}.k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase}.v{color:var(--soft)}
+.gann-score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}.gann-score-row div{border:1px solid var(--line);border-radius:10px;padding:10px;background:rgba(255,255,255,.02)}.gann-score-row span{display:block;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}.gann-score-row b{display:block;font-size:24px;color:var(--gold);margin-top:4px}.gann-score-row .small{font-size:12px;color:var(--cyan);word-break:break-word}
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.level{border:1px solid var(--line);border-radius:10px;padding:10px}.level b{display:block;font-size:22px;color:var(--cyan)}.level span{color:var(--soft);font-size:11px}
+@media(max-width:1380px){.hero,.layout{grid-template-columns:1fr}.score-grid,.mini-grid,.gann-score-row{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.score-grid,.mini-grid,.gann-score-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">AMOS · Generic Stock Page with Gann Registry · v0.4</div>
+      <h1>NVDA</h1>
+      <p class="sub">NVIDIA · AI Core / Compute / Platform</p>
+      <div class="tags"><span>AI_core</span><span>institutional_core</span><span>capex_anchor</span><span>event_driver</span></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Auto Action</div>
+      <div class="redbig">wait</div>
+      <p class="sub">scoring logic</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Fixture Bias</div>
+      <div class="big">hold</div>
+      <p class="sub">hold_core_trim_if_euphoria</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Gann Registry v0.2</div>
+      <div class="big">LIVE</div>
+      <p class="sub">CRDO/NVDA/LITE live set</p>
+    </div>
+  </div>
+
+  <div class="score-grid">
+        <div class="score">
+          <div class="score-k">Macro</div>
+          <div class="score-v" style="color:var(--cyan)">65</div>
+          <div class="bar"><i style="width:65%;background:var(--cyan)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Narrative</div>
+          <div class="score-v" style="color:var(--green)">82</div>
+          <div class="bar"><i style="width:82%;background:var(--green)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Maturity</div>
+          <div class="score-v" style="color:var(--orange)">63</div>
+          <div class="bar"><i style="width:63%;background:var(--orange)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Risk Stack</div>
+          <div class="score-v" style="color:var(--orange)">60</div>
+          <div class="bar"><i style="width:60%;background:var(--orange)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Panic</div>
+          <div class="score-v" style="color:var(--orange)">37</div>
+          <div class="bar"><i style="width:37%;background:var(--orange)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Valuation</div>
+          <div class="score-v" style="color:var(--gold)">55</div>
+          <div class="bar"><i style="width:55%;background:var(--gold)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Confidence</div>
+          <div class="score-v" style="color:var(--gold)">54</div>
+          <div class="bar"><i style="width:54%;background:var(--gold)"></i></div>
+        </div>
+        </div>
+
+  <div class="card box gold">
+    <h2>Decision Summary</h2>
+    <p><b>NVDA</b> 当前自动动作为 <b style="color:var(--red)">wait</b>。Gann 状态来自 <b>Gann Live Ticker Registry v0.2</b>：CRDO / NVDA / LITE 为 Live，IREN / HOOD 为 Pending。</p>
+  </div>
+
+  
+    <div class="card box gann-live">
+      <h2>Gann Research Zone · Registry Live</h2>
+      <p><b>NVDA</b> 已在 Gann Live Registry v0.2 登记。当前仍是 sample/manual-ready，不是实时行情。</p>
+      <div class="gann-score-row">
+        <div><span>Unified</span><b>53</b></div>
+        <div><span>Price</span><b>65</b></div>
+        <div><span>Time</span><b>64</b></div>
+        <div><span>State</span><b class="small">incomplete_resonance</b></div>
+      </div>
+      <div class="mini-grid">
+        <div class="level"><b>137.07</b><span>Nearest Support · -2.79%</span></div>
+        <div class="level"><b>141.01</b><span>Nearest Resistance · 0.01%</span></div>
+        <div class="level"><b>N/A</b><span>Price Cluster</span></div>
+        <div class="level"><b>2026-04-02</b><span>Time Cluster</span></div>
+      </div>
+      <h3>Missing Confirmation Gates</h3>
+      <ul><li>Live price not connected</li><li>Verified anchors not confirmed</li><li>AVWAP not connected</li><li>RSI not connected</li><li>Gamma/options not connected</li></ul>
+    </div>
+    
+
+  <div class="layout">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Profile / State</h2>
+      <div class="kv">
+        <div class="row"><div class="k">Archetype</div><div class="v">core_sovereign_leader</div></div>
+        <div class="row"><div class="k">Best Fit</div><div class="v">core_plus_trim</div></div>
+        <div class="row"><div class="k">Role</div><div class="v">core_anchor</div></div>
+        <div class="row"><div class="k">Trend</div><div class="v">uptrend_watch_event</div></div>
+        <div class="row"><div class="k">Relative Strength</div><div class="v">leader</div></div>
+        <div class="row"><div class="k">Valuation</div><div class="v">demanding_but_supported_by_growth</div></div>
+      </div>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Narrative Exposure</h2>
+      
+        <div class="narrative-card">
+          <div class="n-head"><b>AI Infrastructure</b><span>capital_expansion</span></div>
+          <label>Strength <b>82</b></label><div class="bar"><i style="width:82%;background:var(--green)"></i></div>
+          <label>Maturity <b>63</b></label><div class="bar"><i style="width:63%;background:var(--gold)"></i></div>
+          <label>Failure Risk <b>38</b></label><div class="bar"><i style="width:38%;background:var(--red)"></i></div>
+        </div>
+        
+    </div>
+    <div class="card box warning">
+      <h2>Data Limits</h2>
+      <ul>
+        <li>Current data is sample/manual-ready, not live.</li>
+        <li>Decision confidence is capped.</li>
+        <li>Real price / RSI / AVWAP / Gamma not connected.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="card box green"><h2>Evidence Chain</h2><ul><li>AI Infra anchor</li><li>Institutional core holding</li><li>Event read-through affects whole chain</li></ul></div>
+    <div class="card box gold"><h2>Counter Evidence</h2><ul><li>Valuation and event pressure can cause good-news fade</li></ul></div>
+    <div class="card box warning"><h2>Invalidation Conditions</h2><ul><li>Fails to hold post-event AVWAP</li><li>AI CapEx language weakens</li><li>Relative strength vs QQQ deteriorates</li></ul></div>
+  </div>
+</div>
+</body>
+</html>

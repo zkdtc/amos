@@ -1,0 +1,189 @@
+{
+  "version": "AMOS Gann Cluster & Distance Engine v0.2",
+  "created": "2026-05-24",
+  "ticker": "CRDO",
+  "current_price": 78.4,
+  "data_quality": "sample_only_not_live",
+  "purpose": "Calculate nearest Gann support/resistance, observation bands, multi-anchor clusters, and Gann price resonance score.",
+  "settings": {
+    "angles": [
+      45,
+      90,
+      180,
+      270,
+      360,
+      720
+    ],
+    "level_tolerance_pct": 0.5,
+    "cluster_band_pct": 1.0
+  },
+  "anchors": [
+    {
+      "anchor_id": "crdo_sample_major_low_2025_04_07",
+      "ticker": "CRDO",
+      "anchor_type": "sample_major_low",
+      "anchor_date": "2025-04-07",
+      "anchor_price": 32.1,
+      "quality_score": 72,
+      "reason": "Sample only: major swing low placeholder"
+    },
+    {
+      "anchor_id": "crdo_sample_major_high_2026_02_14",
+      "ticker": "CRDO",
+      "anchor_type": "sample_major_high",
+      "anchor_date": "2026-02-14",
+      "anchor_price": 86.7,
+      "quality_score": 68,
+      "reason": "Sample only: major swing high placeholder"
+    },
+    {
+      "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+      "ticker": "CRDO",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-12-02",
+      "anchor_price": 64.25,
+      "quality_score": 64,
+      "reason": "Sample only: earnings gap anchor placeholder"
+    }
+  ],
+  "nearest_support": {
+    "ticker": "CRDO",
+    "anchor_id": "crdo_sample_major_high_2026_02_14",
+    "anchor_type": "sample_major_high",
+    "anchor_date": "2026-02-14",
+    "anchor_price": 86.7,
+    "anchor_quality_score": 68,
+    "direction": "down",
+    "angle": 90,
+    "level": 77.64,
+    "band_low": 77.25,
+    "band_high": 78.03,
+    "distance_pct": -0.97,
+    "abs_distance_pct": 0.97,
+    "in_observation_band": false
+  },
+  "nearest_resistance": {
+    "ticker": "CRDO",
+    "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+    "anchor_type": "sample_earnings_gap",
+    "anchor_date": "2025-12-02",
+    "anchor_price": 64.25,
+    "anchor_quality_score": 64,
+    "direction": "up",
+    "angle": 180,
+    "level": 81.28,
+    "band_low": 80.87,
+    "band_high": 81.69,
+    "distance_pct": 3.67,
+    "abs_distance_pct": 3.67,
+    "in_observation_band": false
+  },
+  "in_observation_band_levels": [],
+  "clusters": [
+    {
+      "cluster_center": 90.98,
+      "cluster_low": 90.55,
+      "cluster_high": 91.42,
+      "member_count": 2,
+      "avg_anchor_quality": 66.0,
+      "distance_pct": 16.05,
+      "abs_distance_pct": 16.05,
+      "members": [
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+          "anchor_type": "sample_earnings_gap",
+          "anchor_date": "2025-12-02",
+          "anchor_price": 64.25,
+          "anchor_quality_score": 64,
+          "direction": "up",
+          "angle": 270,
+          "level": 90.55,
+          "band_low": 90.09,
+          "band_high": 91.0,
+          "distance_pct": 15.5,
+          "abs_distance_pct": 15.5,
+          "in_observation_band": false
+        },
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_major_high_2026_02_14",
+          "anchor_type": "sample_major_high",
+          "anchor_date": "2026-02-14",
+          "anchor_price": 86.7,
+          "anchor_quality_score": 68,
+          "direction": "up",
+          "angle": 45,
+          "level": 91.42,
+          "band_low": 90.96,
+          "band_high": 91.88,
+          "distance_pct": 16.61,
+          "abs_distance_pct": 16.61,
+          "in_observation_band": false
+        }
+      ]
+    }
+  ],
+  "nearest_cluster": {
+    "cluster_center": 90.98,
+    "cluster_low": 90.55,
+    "cluster_high": 91.42,
+    "member_count": 2,
+    "avg_anchor_quality": 66.0,
+    "distance_pct": 16.05,
+    "abs_distance_pct": 16.05,
+    "members": [
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+        "anchor_type": "sample_earnings_gap",
+        "anchor_date": "2025-12-02",
+        "anchor_price": 64.25,
+        "anchor_quality_score": 64,
+        "direction": "up",
+        "angle": 270,
+        "level": 90.55,
+        "band_low": 90.09,
+        "band_high": 91.0,
+        "distance_pct": 15.5,
+        "abs_distance_pct": 15.5,
+        "in_observation_band": false
+      },
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_major_high_2026_02_14",
+        "anchor_type": "sample_major_high",
+        "anchor_date": "2026-02-14",
+        "anchor_price": 86.7,
+        "anchor_quality_score": 68,
+        "direction": "up",
+        "angle": 45,
+        "level": 91.42,
+        "band_low": 90.96,
+        "band_high": 91.88,
+        "distance_pct": 16.61,
+        "abs_distance_pct": 16.61,
+        "in_observation_band": false
+      }
+    ]
+  },
+  "scores": {
+    "price_proximity_score": 81,
+    "cluster_score": 26,
+    "observation_band_score": 81,
+    "gann_price_score": 62,
+    "resonance_zone": "watch_zone"
+  },
+  "rules": [
+    "If price is inside ±0.5% band of a Gann level, mark observation band active.",
+    "If two or more levels from different anchors cluster within 1%, mark cluster.",
+    "Nearest cluster matters more than isolated level if anchor quality is acceptable.",
+    "Gann price score alone cannot trigger trade; it must combine with Gann time, AVWAP, RSI, TCG structure, Gamma and event context."
+  ],
+  "next": [
+    "Add Gann time distance score",
+    "Add trading-day time windows",
+    "Connect current price from market_data_adapter",
+    "Connect to CRDO scoring page v0.4"
+  ]
+}

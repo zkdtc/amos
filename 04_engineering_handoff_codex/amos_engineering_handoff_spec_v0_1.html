@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Engineering Handoff Spec v0.1</title>
+<style>
+:root{--bg:#05070c;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1400px;margin:0 auto;padding:22px}
+.card,.section{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:26px;margin-bottom:14px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:42px;margin:6px 0 8px}h2{font-size:23px;margin:4px 0 10px;color:var(--gold)}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat span{display:block;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase}.stat b{display:block;color:var(--green);font-size:28px}
+.section{padding:18px;margin-bottom:14px}li{color:var(--soft);margin:7px 0}code{color:var(--cyan)}.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:900px){.stats{grid-template-columns:1fr 1fr}}@media(max-width:600px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Engineering Handoff · v0.1</div>
+    <h1>Engineering Handoff Spec</h1>
+    <div class="motto">把 AMOS v0.3A Manual Data Alpha 转成 Codex 可接手的工程任务、组件、路由、数据模型和验收标准。</div>
+  </div>
+  <div class="stats">
+    <div class="card stat"><span>Phase</span><b>v0.3A</b></div>
+    <div class="card stat"><span>Target</span><b>React</b></div>
+    <div class="card stat"><span>Data</span><b>JSON/CSV</b></div>
+    <div class="card stat"><span>APIs</span><b>None</b></div>
+  </div>
+  <div class="section warning"><h2>不可协商原则</h2><ul><li>整合，不是推翻</li><li>Do not simplify AMOS into a generic stock dashboard.</li><li>Do not remove Gann Research Zone depth.</li><li>Do not remove Anchor Verification gate.</li><li>Do not allow Gann-only trade triggers.</li><li>Do not present sample/manual-ready data as live market data.</li><li>Do not drop user-specific risk protection and behavior guardrails.</li></ul></div>
+  <div class="section"><h2>App Routes</h2><ul><li><code>/</code> → <b>MasterIndexPage</b> — Entry point linking all modules and showing current phase/status.</li><li><code>/command-center</code> → <b>HomeCommandCenter</b> — Macro/liquidity/portfolio/event overview.</li><li><code>/stocks/:ticker</code> → <b>StockIntelligencePage</b> — Full ticker battle room with Gann, price action, evidence, risk and strategy.</li><li><code>/gann-registry</code> → <b>GannRegistryPage</b> — Show Gann Live engines, scores, missing gates, registry metadata.</li><li><code>/anchors</code> → <b>AnchorVerificationPage</b> — Display and edit anchor verification state later; read-only first.</li><li><code>/manual-workbook</code> → <b>ManualWorkbookViewer</b> — Render Manual Inputs, Generated Brief, Priority, Evidence as app views.</li><li><code>/daily-brief</code> → <b>DailyBriefPage</b> — Render exported daily brief from local JSON/CSV.</li><li><code>/evidence</code> → <b>EvidencePacketPage</b> — Claims, source quality, counter-evidence and action gate.</li><li><code>/events</code> → <b>MacroEventCalendarPage</b> — Event calendar with No Attack gates.</li><li><code>/portfolio</code> → <b>PortfolioBattleMapPage</b> — Position roles, migration, opportunity cost and risk alerts.</li></ul></div>
+  <div class="section"><h2>First Codex Tasks</h2><ol><li>Create repo skeleton with Next.js or Vite React + TypeScript.</li><li>Copy canonical JSON manifests into /data/manifests.</li><li>Create static routes and AppShell.</li><li>Implement MasterIndexPage from amos_alpha_master_index_v0_5.</li><li>Implement GannRegistryPage using amos_gann_live_ticker_registry_v0_4.json.</li><li>Implement StockIntelligencePage for five sample tickers using local JSON and generated HTML reference.</li><li>Implement GuardrailBanner, AnchorVerificationGate and DataFreshnessBadge.</li><li>Implement DailyBriefPage from exporter output/fallback JSON.</li><li>Add tests for guardrails.</li><li>Do not connect live APIs yet.</li></ol></div>
+  <div class="section"><h2>Acceptance Criteria</h2><ul><li>App runs locally with npm install + npm run dev.</li><li>Home page clearly shows v0.3A Manual Data Alpha and sample-data guardrail.</li><li>Five sample tickers render stock pages.</li><li>Each Gann page shows Gann Live, missing gates and anchor verification link.</li><li>No component claims live data unless explicitly provided.</li><li>Guardrail tests pass.</li><li>No-Omission Checklist is present in repo and linked from README.</li><li>All source artifacts are preserved in /artifacts or /docs, not discarded.</li></ul></div>
+</div>
+</body>
+</html>

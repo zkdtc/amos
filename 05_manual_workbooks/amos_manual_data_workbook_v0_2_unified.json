@@ -1,0 +1,23 @@
+{
+  "version": "AMOS Manual Data Workbook v0.2 unified workbook",
+  "created": "2026-05-24",
+  "output_workbook": "amos_manual_data_workbook_v0_2_unified.xlsx",
+  "sheets": [
+    "Control Center",
+    "Manual Inputs",
+    "Generated Brief",
+    "Priority Checklist",
+    "Evidence Packet",
+    "Gann Registry",
+    "Anchor Verification",
+    "Lists"
+  ],
+  "gann_live": [
+    "CRDO",
+    "NVDA",
+    "LITE",
+    "IREN",
+    "HOOD"
+  ],
+  "purpose": "Unify manual data inputs, generated brief, evidence packet, priority checklist, Gann registry and anchor verification entry points."
+}

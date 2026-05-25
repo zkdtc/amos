@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AMOS AI投研工程完全版 · UI Blueprint</title>
+<style>
+:root{
+  --bg:#07090d;--panel:#101620;--panel2:#0c1119;--line:#243044;--muted:#7f8aa3;--text:#dbe4f2;
+  --gold:#d1ad52;--teal:#40c7bd;--blue:#58a6ff;--rose:#ff6b7a;--green:#4ed18f;--purple:#b388ff;--orange:#ffb86b;
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.55 Inter,Segoe UI,Arial,'Noto Sans SC',sans-serif}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#080b11;border-right:1px solid var(--line);padding:22px 18px;overflow:auto}.logo{font-size:24px;font-weight:800;color:var(--gold);letter-spacing:.08em}.sub{color:var(--muted);font-size:11px;margin:2px 0 24px}.nav a{display:block;color:var(--muted);text-decoration:none;padding:10px 12px;border-radius:8px;margin:5px 0}.nav a:hover,.nav a.active{background:#121a27;color:var(--text)}.main{padding:22px 28px 80px}.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px}.pill{border:1px solid var(--line);background:#0c121b;border-radius:999px;padding:6px 11px;color:var(--muted);font-size:11px}.pill strong{color:var(--text)}.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}.card{background:linear-gradient(180deg,var(--panel),#0c1119);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}.card h3{margin:0 0 10px;font-size:14px}.card h2{margin:0 0 12px;font-size:20px}.muted{color:var(--muted)}.small{font-size:11px}.score{font-size:30px;font-weight:850}.green{color:var(--green)}.rose{color:var(--rose)}.gold{color:var(--gold)}.blue{color:var(--blue)}.teal{color:var(--teal)}.purple{color:var(--purple)}.orange{color:var(--orange)}.section{margin:26px 0 12px;display:flex;align-items:center;gap:12px}.section h1{font-size:22px;margin:0}.badge{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--muted)}.bar{height:8px;background:#1c2635;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;border-radius:99px;background:var(--green)}.bar.gold span{background:var(--gold)}.bar.rose span{background:var(--rose)}.bar.blue span{background:var(--blue)}.bar.teal span{background:var(--teal)}.kv{display:grid;grid-template-columns:150px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}.kv:last-child{border-bottom:0}.tag{display:inline-block;margin:3px 4px 3px 0;padding:3px 7px;border-radius:5px;border:1px solid rgba(255,255,255,.12);font-size:10px;color:#b9c4d6}.tag.g{border-color:rgba(209,173,82,.35);color:var(--gold)}.tag.t{border-color:rgba(64,199,189,.35);color:var(--teal)}.tag.b{border-color:rgba(88,166,255,.35);color:var(--blue)}.tag.r{border-color:rgba(255,107,122,.35);color:var(--rose)}.tag.p{border-color:rgba(179,136,255,.35);color:var(--purple)}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:9px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}.table th{color:var(--muted);font-weight:600;font-size:11px}.map{min-height:190px;border:1px dashed #324158;border-radius:12px;background:radial-gradient(circle at 30% 30%,rgba(88,166,255,.14),transparent 25%),radial-gradient(circle at 70% 65%,rgba(255,107,122,.12),transparent 22%),#0a1018;position:relative;overflow:hidden}.node{position:absolute;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 10px;background:#101722;font-size:11px}.line{position:absolute;height:1px;background:#33445f;transform-origin:left}.chart{height:260px;border:1px solid #263347;border-radius:12px;background:linear-gradient(180deg,#0a1018,#090d13);position:relative;overflow:hidden}.chart:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to right,transparent 0 60px,rgba(255,255,255,.04) 61px),repeating-linear-gradient(to bottom,transparent 0 42px,rgba(255,255,255,.04) 43px)}.candle{position:absolute;width:8px;background:var(--green);bottom:60px}.level{position:absolute;left:0;right:0;height:1px;border-top:1px dashed}.level span{position:absolute;right:8px;top:-10px;background:#0b1119;padding:0 5px;font-size:10px}.timeline{display:flex;gap:10px;overflow:auto;padding-bottom:4px}.event{min-width:135px;border:1px solid var(--line);border-radius:10px;padding:10px;background:#0b1119}.heat{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.heat div{height:58px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px}.hgreen{background:rgba(78,209,143,.15)}.hgold{background:rgba(209,173,82,.15)}.hrose{background:rgba(255,107,122,.15)}.hblue{background:rgba(88,166,255,.15)}.hp{background:rgba(179,136,255,.15)}.warning{border-color:rgba(255,107,122,.45);background:rgba(255,107,122,.08)}.ok{border-color:rgba(78,209,143,.35);background:rgba(78,209,143,.07)}.phase{display:flex;align-items:center;gap:6px}.dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}.dot.on{background:var(--green);box-shadow:0 0 12px var(--green)}.sticky{position:sticky;top:0;z-index:5;background:rgba(7,9,13,.86);backdrop-filter:blur(10px);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}@media(max-width:1100px){.app{grid-template-columns:1fr}.side{display:none}.g2,.g3,.g4,.g5{grid-template-columns:1fr}.main{padding:16px}.heat{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="logo">AMOS</div>
+  <div class="sub">AI投研工程完全版 · UI Blueprint</div>
+  <div class="nav">
+    <a class="active" href="#home">Home Command Center</a>
+    <a href="#stock">Stock Intelligence Page</a>
+    <a href="#visuals">Visual Intelligence Layer</a>
+    <a href="#risk">Risk / Bottom / Exit</a>
+    <a href="#review">Prediction → Action → Result</a>
+  </div>
+</aside>
+<main class="main">
+  <div class="topbar sticky">
+    <div>
+      <span class="pill"><strong>完全版架构</strong> · 分阶段上线，不删核心框架</span>
+      <span class="pill"><strong>Universe</strong> · US Equities Only</span>
+    </div>
+    <div><span class="pill">UI First · Evidence → Score → Action → Review</span></div>
+  </div>
+
+  <section id="home">
+    <div class="section"><span class="badge">HOME</span><h1>首页 · Home Command Center</h1></div>
+    <div class="grid g4">
+      <div class="card"><h3>Market Mode</h3><div class="score green">Risk-On</div><div class="muted">流动性支持高Beta，但需观察尾部狂欢。</div></div>
+      <div class="card"><h3>Macro Flow Engine</h3><div class="score gold">7.8</div><div class="muted">CTA / Pension / Dealer Gamma / Goldman Prime 综合。</div></div>
+      <div class="card warning"><h3>Top Risk</h3><div class="score rose">AAOI</div><div class="muted">AI Optical尾部Gamma热度过高。</div></div>
+      <div class="card ok"><h3>Best Focus</h3><div class="score teal">CRDO</div><div class="muted">核心龙头 + AVWAP + Gann窗口。</div></div>
+    </div>
+
+    <div class="section"><span class="badge">MECHANICAL FLOW</span><h1>机械资金流定调</h1></div>
+    <div class="grid g4">
+      <div class="card"><h3>CTA Positioning</h3><div class="kv"><span>方向</span><b class="green">Long Momentum</b></div><div class="kv"><span>买盘阈值</span><span>SPX上方触发机械买盘</span></div><div class="kv"><span>卖盘阈值</span><span>跌破趋势线触发去杠杆</span></div></div>
+      <div class="card"><h3>Pension Rebalance</h3><div class="kv"><span>窗口</span><span>月末/季末</span></div><div class="kv"><span>方向</span><b class="green">偏买入股票</b></div><div class="kv"><span>强度</span><span>中等</span></div></div>
+      <div class="card"><h3>Dealer Gamma</h3><div class="kv"><span>状态</span><b class="blue">Positive Gamma</b></div><div class="kv"><span>含义</span><span>低波钉仓，缓慢上行</span></div><div class="kv"><span>风险</span><span>Gamma Flip下方加速</span></div></div>
+      <div class="card"><h3>Goldman / HF</h3><div class="kv"><span>Prime Exposure</span><span>偏高</span></div><div class="kv"><span>Crowdedness</span><b class="gold">AI拥挤</b></div><div class="kv"><span>Put/Call</span><span>保护需求偏低</span></div></div>
+    </div>
+
+    <div class="section"><span class="badge">MAPS</span><h1>主页核心图形层</h1></div>
+    <div class="grid g2">
+      <div class="card"><h3>Macro Liquidity Map</h3><div class="map"><div class="node" style="left:8%;top:22%">10Y ↑</div><div class="node" style="left:34%;top:12%">DXY →</div><div class="node" style="left:62%;top:25%">BTC ↑</div><div class="node" style="left:42%;top:58%">QQQ ↑</div><div class="node" style="left:70%;top:68%">VIX ↓</div></div><p class="muted small">用于判断：流动性是否支持成长股扩估值。</p></div>
+      <div class="card"><h3>Sector Rotation Heatmap</h3><div class="heat"><div class="hgreen">AI Infra<br/>Strong</div><div class="hblue">Optics<br/>Expanding</div><div class="hgold">BTC<br/>Risk-On</div><div class="hp">Quantum<br/>Early</div><div class="hgreen">Power<br/>Emerging</div><div class="hrose">AI Meme<br/>Hot</div></div><p class="muted small">用于判断：核心扩散还是尾部狂欢。</p></div>
+      <div class="card"><h3>Leadership Structure Graph</h3><div class="map"><div class="node" style="left:42%;top:7%">NVDA</div><div class="node" style="left:25%;top:32%">AVGO</div><div class="node" style="left:55%;top:34%">CRDO</div><div class="node" style="left:18%;top:65%">LITE</div><div class="node" style="left:48%;top:70%">COHR</div><div class="node" style="left:72%;top:72%">AAOI</div></div><p class="muted small">用于判断：Leader / Secondary / Momentum / Speculative Tail。</p></div>
+      <div class="card"><h3>Portfolio Battle Map</h3><div class="kv"><span>Core</span><span>CRDO / COHR / RBLX</span></div><div class="kv"><span>Swing</span><span>IREN / CPNG / LITE</span></div><div class="kv"><span>Tactical</span><span>AAOI Put Watch / AI Meme</span></div><div class="kv"><span>Runner</span><span>保留主升浪利润</span></div></div>
+    </div>
+  </section>
+
+  <section id="stock">
+    <div class="section"><span class="badge">STOCK PAGE</span><h1>个股页 · 龙头周期作战室</h1></div>
+    <div class="card">
+      <div class="grid g4">
+        <div><h2>CRDO</h2><div class="muted">AI Infra → Networking → Interconnect</div><div><span class="tag g">LEADER</span><span class="tag b">AI_INFRA</span><span class="tag t">INSTITUTIONAL_TREND</span><span class="tag p">[GANN]</span><span class="tag p">[SHANNON]</span><span class="tag p">[TCG]</span></div></div>
+        <div><h3>AMOS Score</h3><div class="score green">91</div></div>
+        <div><h3>Cycle Phase</h3><div class="score gold">Acceleration</div><div class="muted">大周期向上，小周期回踩可操作。</div></div>
+        <div><h3>Action</h3><div class="score teal">Hold / Add</div><div class="muted">回踩AVWAP + Gann支撑确认。</div></div>
+      </div>
+    </div>
+
+    <div class="section"><span class="badge">LAYER 1</span><h1>战略层：标签 / 行业细分 / 龙头定位 / 大周期</h1></div>
+    <div class="grid g3">
+      <div class="card"><h3>Industry Tags</h3><div class="tag b">AI Infrastructure</div><div class="tag b">Scale-Out Networking</div><div class="tag b">Optical Connectivity</div><div class="tag b">Hyperscaler AI Fabric</div><div class="tag g">High Future Density</div></div>
+      <div class="card"><h3>Leadership Rank</h3><table class="table"><tr><th>Tier</th><th>Name</th><th>Status</th></tr><tr><td>Leader</td><td>CRDO</td><td class="green">Core</td></tr><tr><td>Infra</td><td>LITE/COHR</td><td>Institutional</td></tr><tr><td>Tail</td><td>AAOI/POET</td><td class="rose">Speculative</td></tr></table></div>
+      <div class="card"><h3>Major Cycle</h3><div class="phase"><span class="dot"></span>Birth</div><div class="phase"><span class="dot"></span>Accumulation</div><div class="phase"><span class="dot on"></span>Expansion / Acceleration</div><div class="phase"><span class="dot"></span>Distribution</div><div class="phase"><span class="dot"></span>Collapse</div></div>
+    </div>
+
+    <div class="section"><span class="badge">EVIDENCE</span><h1>硬指标证据面板 → 每日评分</h1></div>
+    <div class="grid g4">
+      <div class="card"><h3>Valuation</h3><div class="score green">82</div><div class="bar"><span style="width:82%"></span></div><div class="kv"><span>DCF</span><span>保守/中性/乐观</span></div><div class="kv"><span>PEG</span><span>0.9-1.2区</span></div><div class="kv"><span>SBC</span><span>稀释监控</span></div><div class="kv"><span>EV/Sales</span><span>历史分位</span></div></div>
+      <div class="card"><h3>Earnings</h3><div class="score green">88</div><div class="bar teal"><span style="width:88%"></span></div><div class="kv"><span>Guidance</span><span>上修/下修</span></div><div class="kv"><span>GM</span><span>边际变化</span></div><div class="kv"><span>Backlog</span><span>订单质量</span></div><div class="kv"><span>CapEx Chain</span><span>MSFT/GOOG/META</span></div></div>
+      <div class="card"><h3>Gann</h3><div class="score gold">93</div><div class="bar gold"><span style="width:93%"></span></div><div class="kv"><span>大周期</span><span>90/144/180/360天</span></div><div class="kv"><span>小周期</span><span>7/14/21/34/55天</span></div><div class="kv"><span>九方图</span><span>45-720° 多锚点</span></div><div class="kv"><span>时价平方</span><span>接近共振</span></div></div>
+      <div class="card"><h3>Risk</h3><div class="score rose">37</div><div class="bar rose"><span style="width:37%"></span></div><div class="kv"><span>高位热度</span><span>未极致</span></div><div class="kv"><span>估值透支</span><span>低</span></div><div class="kv"><span>尾部狂欢</span><span>观察AAOI</span></div><div class="kv"><span>操作</span><span>不追高</span></div></div>
+    </div>
+
+    <div class="section"><span class="badge">CHART</span><h1>主图：TradingView + AMOS标注层</h1></div>
+    <div class="grid g2">
+      <div class="card"><h3>Price / Gann / AVWAP / Gamma / Dark Pool Overlay</h3><div class="chart">
+        <div class="level" style="top:22%;border-color:var(--rose)"><span class="rose">Call Wall / Gann 180°</span></div>
+        <div class="level" style="top:48%;border-color:var(--gold)"><span class="gold">Earnings AVWAP</span></div>
+        <div class="level" style="top:62%;border-color:var(--blue)"><span class="blue">Gamma Flip</span></div>
+        <div class="level" style="top:76%;border-color:var(--teal)"><span class="teal">Dark Pool Accumulation</span></div>
+        <div class="candle" style="left:8%;height:60px"></div><div class="candle" style="left:14%;height:78px"></div><div class="candle" style="left:20%;height:50px;background:var(--rose)"></div><div class="candle" style="left:28%;height:92px"></div><div class="candle" style="left:36%;height:120px"></div><div class="candle" style="left:44%;height:96px;background:var(--rose)"></div><div class="candle" style="left:52%;height:135px"></div><div class="candle" style="left:60%;height:150px"></div><div class="candle" style="left:68%;height:118px;background:var(--rose)"></div><div class="candle" style="left:76%;height:160px"></div><div class="candle" style="left:84%;height:180px"></div>
+      </div></div>
+      <div class="card"><h3>Chart Annotation / 买卖点标记</h3><table class="table"><tr><th>标记</th><th>含义</th></tr><tr><td class="green">[BUY]</td><td>Gann支撑 + AVWAP回踩 + 4H反转</td></tr><tr><td class="gold">[SELL CALL]</td><td>缓慢攀爬 + IV可用 + 未到极致热区</td></tr><tr><td class="rose">[TRIM]</td><td>Gann压力 + RSI超买 + 量能衰竭</td></tr><tr><td class="blue">[PUT WATCH]</td><td>只用于行业里最妖、最高估、最脆弱标的</td></tr></table></div>
+    </div>
+
+    <div class="section"><span class="badge">MARKET STRUCTURE</span><h1>Price Action / Options / Dark Pool / Sector Flow</h1></div>
+    <div class="grid g4">
+      <div class="card"><h3>Price Action</h3><div class="kv"><span>Stage</span><b class="green">Stage 2</b></div><div class="kv"><span>Structure</span><span>HH / HL intact</span></div><div class="kv"><span>EMA</span><span>8/12/21 多头</span></div><div class="kv"><span>RSI</span><span>D/4H/1H</span></div><div class="kv"><span>Volume</span><span>缩量回踩</span></div><div class="kv"><span>RS</span><span>vs QQQ/SMH/Peers</span></div></div>
+      <div class="card"><h3>Options / Gamma</h3><div class="kv"><span>Call Wall</span><span>$90</span></div><div class="kv"><span>Put Wall</span><span>$75</span></div><div class="kv"><span>Gamma Flip</span><span>$78</span></div><div class="kv"><span>IV Rank</span><span>中等</span></div><div class="kv"><span>OPEX</span><span>3 Days</span></div><div class="kv"><span>Strategy</span><b class="gold">Sell Call / Hold</b></div></div>
+      <div class="card"><h3>Dark Pool / Flow</h3><div class="kv"><span>Accum Zone</span><span>$73-$76</span></div><div class="kv"><span>Block Trade</span><span>偏多</span></div><div class="kv"><span>RVOL</span><span>健康</span></div><div class="kv"><span>Short Interest</span><span>中等偏高</span></div><div class="kv"><span>解释</span><span>下跌有承接</span></div></div>
+      <div class="card"><h3>Sector / Liquidity</h3><div class="kv"><span>ETF</span><span>SMH/SOXX/QQQ</span></div><div class="kv"><span>Leader</span><span>NVDA/AVGO/CRDO</span></div><div class="kv"><span>Tail</span><span>AAOI/POET</span></div><div class="kv"><span>10Y/BTC</span><span>Risk支持</span></div><div class="kv"><span>阶段</span><b class="green">健康扩散</b></div></div>
+    </div>
+
+    <div class="section"><span class="badge">EVENT</span><h1>Event × Cycle 共振时间轴</h1></div>
+    <div class="card"><div class="timeline"><div class="event"><b class="gold">Gann 144D</b><br/><span class="muted">+2 Days</span></div><div class="event"><b class="blue">OPEX</b><br/><span class="muted">+3 Days</span></div><div class="event"><b class="green">NVDA Earnings</b><br/><span class="muted">+5 Days</span></div><div class="event"><b class="rose">CPI/FOMC</b><br/><span class="muted">Macro Window</span></div><div class="event"><b class="teal">Industry Event</b><br/><span class="muted">AI CapEx</span></div></div><p class="muted small">输出：未来1-2天 / 3天 / 周五 / 财报前后的波动率与操作推演。</p></div>
+  </section>
+
+  <section id="visuals">
+    <div class="section"><span class="badge">VISUALS</span><h1>完全版必须保留的图形清单</h1></div>
+    <div class="grid g3">
+      <div class="card"><h3>Macro Liquidity Map</h3><p class="muted">10Y / DXY / BTC / VIX / Breadth / Fed liquidity联动。</p></div>
+      <div class="card"><h3>Sector Rotation Heatmap</h3><p class="muted">AI Infra、Optics、Power、Crypto、Robotics、Quantum资金热度。</p></div>
+      <div class="card"><h3>Leadership Structure Graph</h3><p class="muted">核心龙头、二线、Momentum、尾部妖股分层。</p></div>
+      <div class="card"><h3>Stock Correlation Network</h3><p class="muted">CRDO↔NVDA、BTC Miner↔BTC、Software↔Rates。</p></div>
+      <div class="card"><h3>Gann Time Wheel</h3><p class="muted">大周期、小周期、事件窗口共振圆盘。</p></div>
+      <div class="card"><h3>Options / Gamma Map</h3><p class="muted">Call Wall、Put Wall、Gamma Flip、GEX热力图。</p></div>
+      <div class="card"><h3>Dark Pool Accumulation Map</h3><p class="muted">暗池成交集中区、机构成本区、吸筹/派发。</p></div>
+      <div class="card"><h3>Portfolio Battle Map</h3><p class="muted">Core / Swing / Tactical / Runner仓位结构。</p></div>
+      <div class="card"><h3>Personality Radar</h3><p class="muted">个股股性雷达：趋势性、Gamma性、机构性、崩塌风险。</p></div>
+    </div>
+  </section>
+
+  <section id="risk">
+    <div class="section"><span class="badge">RISK</span><h1>风险 / 抄底 / 退出系统</h1></div>
+    <div class="grid g3">
+      <div class="card warning"><h3>Risk Command Center</h3><p>高位共振时高亮：Gann压力 + RSI超买 + 量能衰竭 + TCG动能破坏 + Gamma/Call Wall + 尾部狂欢 + 估值透支。</p></div>
+      <div class="card ok"><h3>Panic Maturity Engine</h3><p>只针对优质成长股/核心龙头：估值压缩、Narrative未死、Gann支撑、RSI超卖、AVWAP/周线12EMA、缩量衰竭、1H/4H反转。</p></div>
+      <div class="card"><h3>Exit / Hedge / Call Overlay</h3><p>缓慢攀爬优先卖Call；极致热区直接减仓/卖出；Put只选最高估、最妖、最脆弱标的，不默认买核心持仓Put。</p></div>
+    </div>
+  </section>
+
+  <section id="review">
+    <div class="section"><span class="badge">LEARNING</span><h1>Prediction → Action → Result 复盘闭环</h1></div>
+    <div class="card"><table class="table"><tr><th>日期</th><th>标的</th><th>预测</th><th>动作</th><th>AI当时评分</th><th>结果</th><th>学习</th></tr><tr><td>May 18</td><td>CRDO</td><td>估值洗盘，不是顶部</td><td>Hold</td><td>87</td><td class="green">验证</td><td>AVWAP+Gann有效</td></tr><tr><td>May 19</td><td>AAOI</td><td>尾部Gamma狂欢</td><td>Put Watch</td><td>Risk 92</td><td class="gold">待验证</td><td>等待结构破坏，不提前做空</td></tr></table></div>
+  </section>
+</main>
+</div>
+</body>
+</html>

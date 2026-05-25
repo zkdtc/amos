@@ -1,0 +1,322 @@
+{
+  "version": "AMOS Gann Calculator Module v0.1",
+  "created": "2026-05-24",
+  "purpose": "Independent calculator for Gann Square of Nine price levels, time windows, and price-time resonance preparation.",
+  "core_principles": [
+    "Gann is a timing and level research tool, not a standalone trading signal.",
+    "Anchor quality determines calculation quality.",
+    "Price levels must be treated as zones, not exact magic points.",
+    "Gann signal becomes actionable only when confirmed by price action, AVWAP, RSI, volume, options/gamma and event context.",
+    "Multiple anchors are preferred; dense clusters matter more than isolated levels."
+  ],
+  "square_of_nine_formula": {
+    "formula": "P_target = (sqrt(P_base) ± angle/180)^2",
+    "default_angles": [
+      45,
+      90,
+      180,
+      270,
+      360,
+      720
+    ],
+    "default_tolerance_pct": 0.5
+  },
+  "time_window_defaults": {
+    "short_term_days": [
+      7,
+      14,
+      21,
+      34,
+      45,
+      55
+    ],
+    "medium_term_days": [
+      60,
+      90,
+      144,
+      180
+    ],
+    "long_term_days": [
+      360
+    ],
+    "note": "Later version should distinguish calendar days vs trading days."
+  },
+  "anchor_selection_rules": {
+    "preferred": [
+      "absolute major low",
+      "absolute major high",
+      "earnings gap high/low",
+      "major swing low/high",
+      "ATH",
+      "post-capitulation low",
+      "post-breakout retest low"
+    ],
+    "bad_anchors": [
+      "random intraday points",
+      "emotionally chosen prices",
+      "minor noise pivots",
+      "post-hoc anchors selected only because they fit"
+    ],
+    "anchor_quality_score_inputs": [
+      "market recognition",
+      "volume significance",
+      "event significance",
+      "multi-timeframe visibility",
+      "subsequent price reaction"
+    ]
+  },
+  "resonance_score_v0": {
+    "components": {
+      "gann_time_proximity": 0.25,
+      "gann_price_proximity": 0.25,
+      "anchor_quality": 0.15,
+      "multi_anchor_cluster": 0.15,
+      "price_action_confirmation": 0.2
+    },
+    "interpretation": {
+      "80_100": "high resonance action window",
+      "60_79": "watch/partial action",
+      "40_59": "incomplete setup",
+      "0_39": "weak/no setup"
+    }
+  },
+  "sample_computed_CRDO": [
+    {
+      "ticker": "CRDO",
+      "anchor_type": "sample_major_low",
+      "anchor_date": "2025-04-07",
+      "anchor_price": 32.1,
+      "reason": "Sample only: major swing low placeholder",
+      "square_of_nine": [
+        {
+          "angle": 45,
+          "up_level": 35.0,
+          "up_band_low": 34.82,
+          "up_band_high": 35.17,
+          "down_level": 29.33,
+          "down_band_low": 29.18,
+          "down_band_high": 29.48,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 90,
+          "up_level": 38.02,
+          "up_band_low": 37.83,
+          "up_band_high": 38.21,
+          "down_level": 26.68,
+          "down_band_low": 26.55,
+          "down_band_high": 26.82,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 180,
+          "up_level": 44.43,
+          "up_band_low": 44.21,
+          "up_band_high": 44.65,
+          "down_level": 21.77,
+          "down_band_low": 21.66,
+          "down_band_high": 21.88,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 270,
+          "up_level": 51.35,
+          "up_band_low": 51.09,
+          "up_band_high": 51.6,
+          "down_level": 17.35,
+          "down_band_low": 17.27,
+          "down_band_high": 17.44,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 360,
+          "up_level": 58.76,
+          "up_band_low": 58.47,
+          "up_band_high": 59.06,
+          "down_level": 13.44,
+          "down_band_low": 13.37,
+          "down_band_high": 13.5,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 720,
+          "up_level": 93.43,
+          "up_band_low": 92.96,
+          "up_band_high": 93.89,
+          "down_level": 2.77,
+          "down_band_low": 2.76,
+          "down_band_high": 2.79,
+          "tolerance_pct": 0.5
+        }
+      ],
+      "time_windows": [
+        {
+          "days": 7,
+          "target_date": "2025-04-14"
+        },
+        {
+          "days": 14,
+          "target_date": "2025-04-21"
+        },
+        {
+          "days": 21,
+          "target_date": "2025-04-28"
+        },
+        {
+          "days": 34,
+          "target_date": "2025-05-11"
+        },
+        {
+          "days": 45,
+          "target_date": "2025-05-22"
+        },
+        {
+          "days": 55,
+          "target_date": "2025-06-01"
+        },
+        {
+          "days": 60,
+          "target_date": "2025-06-06"
+        },
+        {
+          "days": 90,
+          "target_date": "2025-07-06"
+        },
+        {
+          "days": 144,
+          "target_date": "2025-08-29"
+        },
+        {
+          "days": 180,
+          "target_date": "2025-10-04"
+        },
+        {
+          "days": 360,
+          "target_date": "2026-04-02"
+        }
+      ]
+    },
+    {
+      "ticker": "CRDO",
+      "anchor_type": "sample_major_high",
+      "anchor_date": "2026-02-14",
+      "anchor_price": 86.7,
+      "reason": "Sample only: major swing high placeholder",
+      "square_of_nine": [
+        {
+          "angle": 45,
+          "up_level": 91.42,
+          "up_band_low": 90.96,
+          "up_band_high": 91.88,
+          "down_level": 82.11,
+          "down_band_low": 81.7,
+          "down_band_high": 82.52,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 90,
+          "up_level": 96.26,
+          "up_band_low": 95.78,
+          "up_band_high": 96.74,
+          "down_level": 77.64,
+          "down_band_low": 77.25,
+          "down_band_high": 78.03,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 180,
+          "up_level": 106.32,
+          "up_band_low": 105.79,
+          "up_band_high": 106.85,
+          "down_level": 69.08,
+          "down_band_low": 68.73,
+          "down_band_high": 69.42,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 270,
+          "up_level": 116.88,
+          "up_band_low": 116.3,
+          "up_band_high": 117.47,
+          "down_level": 61.02,
+          "down_band_low": 60.71,
+          "down_band_high": 61.32,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 360,
+          "up_level": 127.95,
+          "up_band_low": 127.31,
+          "up_band_high": 128.58,
+          "down_level": 53.45,
+          "down_band_low": 53.19,
+          "down_band_high": 53.72,
+          "tolerance_pct": 0.5
+        },
+        {
+          "angle": 720,
+          "up_level": 177.19,
+          "up_band_low": 176.3,
+          "up_band_high": 178.08,
+          "down_level": 28.21,
+          "down_band_low": 28.07,
+          "down_band_high": 28.35,
+          "tolerance_pct": 0.5
+        }
+      ],
+      "time_windows": [
+        {
+          "days": 7,
+          "target_date": "2026-02-21"
+        },
+        {
+          "days": 14,
+          "target_date": "2026-02-28"
+        },
+        {
+          "days": 21,
+          "target_date": "2026-03-07"
+        },
+        {
+          "days": 34,
+          "target_date": "2026-03-20"
+        },
+        {
+          "days": 45,
+          "target_date": "2026-03-31"
+        },
+        {
+          "days": 55,
+          "target_date": "2026-04-10"
+        },
+        {
+          "days": 60,
+          "target_date": "2026-04-15"
+        },
+        {
+          "days": 90,
+          "target_date": "2026-05-15"
+        },
+        {
+          "days": 144,
+          "target_date": "2026-07-08"
+        },
+        {
+          "days": 180,
+          "target_date": "2026-08-13"
+        },
+        {
+          "days": 360,
+          "target_date": "2027-02-09"
+        }
+      ]
+    }
+  ],
+  "next": [
+    "Add trading-day calendar option",
+    "Add current price distance-to-level calculator",
+    "Add multi-anchor cluster detector",
+    "Add Gann time × price resonance score",
+    "Connect to CRDO v0.4 stock page"
+  ]
+}

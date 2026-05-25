@@ -1,0 +1,244 @@
+{
+  "version": "AMOS Scoring Logic v0.1",
+  "created": "2026-05-24",
+  "purpose": "Convert AMOS engines from conceptual modules into computable scoring logic.",
+  "principle": "Scores are decision aids, not truth. Every score must be explainable and revisable.",
+  "global_score_policy": {
+    "scale": "0-100",
+    "confidence_required": true,
+    "evidence_required": true,
+    "counter_evidence_required": true,
+    "invalidation_required": true,
+    "no_single_score_decisions": true
+  },
+  "scores": {
+    "macro_regime_score": {
+      "description": "Determines whether macro allows attack, balance, defense, or crisis posture.",
+      "components": {
+        "liquidity_support": 0.22,
+        "rate_pressure_inverse": 0.18,
+        "credit_calm": 0.16,
+        "volatility_calm": 0.14,
+        "breadth_health": 0.14,
+        "dollar_pressure_inverse": 0.08,
+        "btc_risk_appetite": 0.08
+      },
+      "interpretation": {
+        "80_100": "attack_beta_allowed",
+        "60_79": "balanced_to_selective_attack",
+        "40_59": "neutral_or_transition",
+        "20_39": "defensive_beta",
+        "0_19": "crisis_beta"
+      },
+      "hard_overrides": [
+        "If credit spreads widen sharply and VIX spikes, cap score at 35.",
+        "If MOVE and 10Y rise sharply with high-growth selloff, cap high-beta permission.",
+        "If breadth collapses but panic maturity not confirmed, do not treat as buy signal."
+      ]
+    },
+    "narrative_strength_score": {
+      "description": "Measures whether a theme is actually being priced and funded.",
+      "components": {
+        "leader_relative_strength": 0.25,
+        "capital_flow_confirmation": 0.25,
+        "earnings_or_policy_validation": 0.2,
+        "theme_breadth": 0.15,
+        "quality_of_attention": 0.15
+      },
+      "interpretation": {
+        "80_100": "dominant_theme",
+        "60_79": "confirmed_theme",
+        "40_59": "watch_theme",
+        "20_39": "weak_or_unconfirmed",
+        "0_19": "noise"
+      },
+      "hard_overrides": [
+        "If leaders break down, narrative strength cannot exceed 60.",
+        "If only tail names move, classify as late-cycle chase unless leaders confirm."
+      ]
+    },
+    "narrative_maturity_score": {
+      "description": "Measures how crowded or late a theme has become.",
+      "components": {
+        "valuation_stretch": 0.2,
+        "retail_attention": 0.2,
+        "tail_name_participation": 0.2,
+        "options_mania": 0.2,
+        "good_news_fade": 0.2
+      },
+      "interpretation": {
+        "80_100": "crowded_consensus_or_exhaustion",
+        "60_79": "mainstream_fomo",
+        "40_59": "capital_expansion",
+        "20_39": "institutional_recognition",
+        "0_19": "early_or_dormant"
+      }
+    },
+    "risk_stack_score": {
+      "description": "Aggregates euphoria, event, valuation, crowding and behavior risks.",
+      "components": {
+        "euphoria_exhaustion": 0.25,
+        "valuation_extension": 0.18,
+        "event_pressure": 0.17,
+        "crowding": 0.16,
+        "gamma_instability": 0.12,
+        "user_behavior_risk": 0.12
+      },
+      "interpretation": {
+        "80_100": "black_or_red_alert",
+        "60_79": "orange_red_trim_zone",
+        "40_59": "yellow_watch",
+        "20_39": "normal_risk",
+        "0_19": "low_risk"
+      },
+      "hard_overrides": [
+        "If leverage is present or planned, severity becomes black regardless of score.",
+        "If failed swing is being treated as core, severity at least red.",
+        "If Gann resistance/time window plus RSI overbought plus event risk, severity at least orange."
+      ]
+    },
+    "panic_maturity_score": {
+      "description": "Determines whether a falling stock is becoming buyable or still a falling knife.",
+      "components": {
+        "drawdown_depth_normalized": 0.12,
+        "rsi_oversold_or_divergence": 0.16,
+        "gann_support_time_resonance": 0.18,
+        "volume_exhaustion": 0.14,
+        "avwap_reclaim": 0.16,
+        "narrative_health": 0.14,
+        "eps_revision_not_broken": 0.1
+      },
+      "interpretation": {
+        "80_100": "reversal_confirmed_build_allowed",
+        "60_79": "panic_mature_probe_allowed",
+        "40_59": "forced_selling_watch_only",
+        "20_39": "early_drop_no_add",
+        "0_19": "normal_pullback_or_no_edge"
+      },
+      "hard_overrides": [
+        "If business thesis is broken, panic maturity cannot exceed 45.",
+        "If no reversal/AVWAP reclaim, build action is not allowed."
+      ]
+    },
+    "gann_event_gamma_resonance_score": {
+      "description": "Execution timing score combining Gann, events, gamma and price action.",
+      "components": {
+        "gann_time": 0.25,
+        "gann_price": 0.25,
+        "event_pressure": 0.15,
+        "gamma_structure": 0.15,
+        "price_action_confirmation": 0.2
+      },
+      "interpretation": {
+        "80_100": "high_resonance_action_window",
+        "60_79": "valid_watch_or_partial_action",
+        "40_59": "incomplete_setup",
+        "20_39": "weak_setup",
+        "0_19": "no_setup"
+      },
+      "setup_classification": {
+        "panic_buy": "high support/time + oversold/divergence + reclaim",
+        "breakout_add": "resistance break + volume + supportive gamma",
+        "trim_zone": "resistance/time + overbought + divergence/crowding",
+        "hedge_zone": "extended valuation + weakening structure + negative gamma",
+        "exit_zone": "thesis break + LH/LL + AVWAP failure + support break"
+      }
+    },
+    "valuation_battle_score": {
+      "description": "Evaluates valuation attractiveness across intrinsic, consensus, narrative, cycle, personality and extreme-risk layers.",
+      "components": {
+        "intrinsic_margin_of_safety": 0.22,
+        "consensus_revision": 0.18,
+        "narrative_value_support": 0.16,
+        "cycle_stage_support": 0.16,
+        "personality_premium_validity": 0.12,
+        "extreme_zone_asymmetry": 0.16
+      },
+      "interpretation": {
+        "80_100": "valuation_supports_attack",
+        "60_79": "valuation_supports_build",
+        "40_59": "fair_or_unclear",
+        "20_39": "demanding",
+        "0_19": "overextended_or_unjustified"
+      },
+      "hard_overrides": [
+        "If EPS/revenue revisions materially down, valuation score capped at 50.",
+        "If SBC/FCF quality deteriorates materially, intrinsic layer must be penalized.",
+        "If narrative is strong but price no longer responds, narrative premium validity drops."
+      ]
+    },
+    "decision_confidence_score": {
+      "description": "Confidence of final action after multi-agent debate.",
+      "components": {
+        "evidence_quality": 0.2,
+        "cross_module_alignment": 0.22,
+        "counter_evidence_strength_inverse": 0.18,
+        "data_freshness": 0.12,
+        "setup_clarity": 0.16,
+        "agent_disagreement_inverse": 0.12
+      },
+      "interpretation": {
+        "80_100": "high_confidence",
+        "60_79": "medium_high_confidence",
+        "40_59": "medium_low_confidence",
+        "20_39": "low_confidence",
+        "0_19": "research_only"
+      },
+      "hard_overrides": [
+        "If data is stale, confidence cannot exceed 60.",
+        "If agents strongly disagree, confidence cannot exceed 65.",
+        "If no counter-evidence was searched, confidence cannot exceed 50."
+      ]
+    }
+  },
+  "action_policy": {
+    "attack": {
+      "requires": [
+        "macro_regime_score >= 70",
+        "narrative_strength_score >= 70",
+        "risk_stack_score < 60",
+        "decision_confidence_score >= 65",
+        "execution setup confirmed"
+      ]
+    },
+    "build": {
+      "requires": [
+        "macro_regime_score >= 55",
+        "valuation_battle_score >= 55 or narrative_strength_score >= 70",
+        "risk_stack_score < 70",
+        "decision_confidence_score >= 55"
+      ]
+    },
+    "hold": {
+      "requires": [
+        "thesis intact",
+        "risk_stack_score < 75",
+        "no invalidation triggered"
+      ]
+    },
+    "trim": {
+      "requires_any": [
+        "risk_stack_score >= 65",
+        "trim_zone setup",
+        "euphoria exhaustion",
+        "event pressure high and valuation demanding"
+      ]
+    },
+    "exit": {
+      "requires_any": [
+        "business thesis broken",
+        "EPS/revenue revision materially down",
+        "exit_zone setup",
+        "failed swing role confusion"
+      ]
+    },
+    "wait": {
+      "requires_any": [
+        "setup incomplete",
+        "panic_maturity_score < 60 during decline",
+        "decision_confidence_score < 55",
+        "macro transition unclear"
+      ]
+    }
+  }
+}

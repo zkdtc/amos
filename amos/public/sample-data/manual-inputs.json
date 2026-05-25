@@ -1,0 +1,81 @@
+{
+  "version": "AMOS Manual Inputs Sample v0.1",
+  "data_quality": "sample_manual_ready_not_live",
+  "inputs": [
+    {
+      "ticker": "NVDA",
+      "lastPrice": 141.0,
+      "rsi14d": 52,
+      "ema8State": "above",
+      "ema12State": "above",
+      "trendStructure": "HH/HL",
+      "rsVsQqq": "Leader",
+      "rsVsPeers": "Leader",
+      "avwapStatus": "Reclaimed",
+      "riskStack": "Core",
+      "actionBias": "Hold",
+      "freshness": "Missing",
+      "invalidation": "Fails post-event AVWAP / AI CapEx weakens / RS deteriorates"
+    },
+    {
+      "ticker": "CRDO",
+      "lastPrice": null,
+      "rsi14d": 58,
+      "ema8State": "above",
+      "ema12State": "above",
+      "trendStructure": "HH/HL",
+      "rsVsQqq": "Leader",
+      "rsVsPeers": "Leader",
+      "avwapStatus": "Extended",
+      "riskStack": "Swing",
+      "actionBias": "Trim Watch",
+      "freshness": "Missing",
+      "invalidation": "Breaks AVWAP / loses RS / revisions down"
+    },
+    {
+      "ticker": "LITE",
+      "lastPrice": 91.0,
+      "rsi14d": 45,
+      "ema8State": "below",
+      "ema12State": "above",
+      "trendStructure": "Inside Bar",
+      "rsVsQqq": "Mixed",
+      "rsVsPeers": "Follower",
+      "avwapStatus": "At AVWAP",
+      "riskStack": "Swing",
+      "actionBias": "Hold",
+      "freshness": "Missing",
+      "invalidation": "Optical strong but LITE underperforms peers / guidance weakens"
+    },
+    {
+      "ticker": "IREN",
+      "lastPrice": 12.5,
+      "rsi14d": 39,
+      "ema8State": "below",
+      "ema12State": "below",
+      "trendStructure": "LH/LL",
+      "rsVsQqq": "Laggard",
+      "rsVsPeers": "Laggard",
+      "avwapStatus": "Lost",
+      "riskStack": "Tactical",
+      "actionBias": "Wait",
+      "freshness": "Missing",
+      "invalidation": "BTC loses structure / AI compute thesis weakens / dilution risk rises"
+    },
+    {
+      "ticker": "HOOD",
+      "lastPrice": 72.0,
+      "rsi14d": 47,
+      "ema8State": "above",
+      "ema12State": "above",
+      "trendStructure": "Equilibrium",
+      "rsVsQqq": "Mixed",
+      "rsVsPeers": "Mixed",
+      "avwapStatus": "At AVWAP",
+      "riskStack": "Research",
+      "actionBias": "Wait",
+      "freshness": "Missing",
+      "invalidation": "Regulatory pressure expands / BTC remains liquidation regime"
+    }
+  ]
+}

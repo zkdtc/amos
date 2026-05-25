@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Origin Process and Design Manual v0.1</title>
+<style>
+:root{--bg:#05070c;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:14px;line-height:1.6}
+.app{max-width:1380px;margin:0 auto;padding:24px}
+.hero,.section,.gridbox{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:28px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:42px;margin:6px 0 8px}h2{font-size:23px;margin:6px 0 10px;color:var(--gold)}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat span{display:block;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase}.stat b{display:block;color:var(--green);font-size:26px}
+.section{padding:18px;margin-bottom:14px}.section p{color:var(--soft)}.why{border:1px solid rgba(255,209,102,.35);border-radius:10px;padding:12px;color:var(--soft);background:rgba(255,209,102,.04)}.why b{color:var(--gold)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.gridbox{padding:18px}li{color:var(--soft);margin:7px 0}code{color:var(--cyan)}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:900px){.twocol,.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="eyebrow">AMOS · Origin Manual · v0.1</div>
+    <h1>Origin Process and Design Manual</h1>
+    <div class="motto">给工程师看的 AMOS 说明书：原始想法、搭建需求、设计逻辑、不可遗漏项。1-65 交付明细不重复，最新入口看 v0.6。</div>
+  </div>
+  <div class="stats">
+    <div class="gridbox stat"><span>Phase</span><b>v0.3A</b></div>
+    <div class="gridbox stat"><span>Status</span><b>Handoff</b></div>
+    <div class="gridbox stat"><span>Artifacts</span><b>246</b></div>
+    <div class="gridbox stat"><span>Use With</span><b>#65</b></div>
+  </div>
+
+  <div class="section warning">
+    <h2>工程师先读什么</h2>
+    <ol><li><code>1. amos_alpha_master_index_v0_6.html</code></li><li><code>2. amos_origin_process_and_design_manual_v0_1.md</code></li><li><code>3. amos_canonical_system_integration_spec_v0_1.md</code></li><li><code>4. amos_no_omission_master_checklist_v0_1.md</code></li><li><code>5. amos_engineering_handoff_spec_v0_1.md</code></li><li><code>6. amos_codex_task_pack_v0_1.md</code></li><li><code>7. amos_repo_structure_v0_1.md</code></li><li><code>8. Specific artifacts only when implementing a module</code></li></ol>
+  </div>
+
+  
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>1. 投资问题不是缺信息，而是缺一个能保护真实决策的系统</h2>
+      <p>最初的核心不是做一个普通股票页面，而是用户在高波动成长股、AI周期、光模块、BTC/fintech、硬科技龙头中，需要一个能帮助判断周期、资金迁移、估值、风险、买卖节奏和心理纪律的个人化系统。</p>
+      <div class="why"><b>工程意义：</b>工程师必须明白 AMOS 不是资讯聚合器，也不是股票价格看板。它是用户的认知与操作系统，要围绕真实持仓、真实风险、真实错误和真实行动建议设计。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>2. 用户反复强调：需要 B，不是陪伴聊天，而是工程化搭建和验证</h2>
+      <p>对话中用户明确指出，她要的是主动搭建、结构化、验证和交付，而不是不断问她要资料、让她确认所有证据，或把 AI 定位为陪伴者。AMOS 因此转向持续交付 artifacts、系统主干和工程化文件。</p>
+      <div class="why"><b>工程意义：</b>工程师接手时不能把需求理解成‘写一些投资笔记’。需要把每个概念落实到页面、数据字段、规则、导入表、护栏和测试。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>3. 核心设计原则锁定：整合，不是推翻</h2>
+      <p>用户明确要求所有新资料用于归类、抽象、收敛和优化已有主干，不允许听到新想法就推翻结构，也不允许为了简化而删除已经确认的模块。</p>
+      <div class="why"><b>工程意义：</b>任何重构或工程迁移都必须用 No-Omission Checklist 对照。缺失不是简化，而是回退。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>4. AMOS 从理念变成 Home Command Center + Stock Intelligence Page</h2>
+      <p>系统主干逐渐稳定为：主页战情室负责宏观、流动性、机械资金、行业轮动、事件日历、组合风险；个股页负责标签、龙头定位、Gann、价格行为、AVWAP、RSI、Gamma、估值、证据、风险和操作策略。</p>
+      <div class="why"><b>工程意义：</b>工程师要先实现这些结构与信息层级，而不是先做漂亮图表或实时价格。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>5. Gann / 江恩成为不可简化的核心研究区</h2>
+      <p>用户强调江恩是最依赖的工具之一，不能简化成几条支撑压力线。系统必须有独立 Gann Research Zone，包含 Square of Nine、多锚点、价格区间、时间窗、价格×时间共振、确认门和锚点验证。</p>
+      <div class="why"><b>工程意义：</b>Gann 页面必须深，不允许只显示 support/resistance。并且所有 sample anchors 必须通过 Anchor Verification 才能正式使用。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>6. TCG / Price Action 与 AVWAP 成为执行确认层</h2>
+      <p>The Chart Guys 的 8/12 EMA、HH/HL、LH/LL、Inside Bar、Equilibrium、RSI背离/超卖，用于确认趋势、突破、回调、出场和防接飞刀。AVWAP 用于判断机构成本和事件后 reclaim/failure。</p>
+      <div class="why"><b>工程意义：</b>工程师应把这些做成执行层组件和字段，而不是把它们混成普通技术指标。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>7. 风险系统必须围绕用户的真实弱点：高位不止盈、底部爆仓、杠杆、周期误判</h2>
+      <p>AMOS 要在高位狂热时强提醒减仓/卖出/卖 Call，在恐慌成熟时帮助分批试仓，在周期不明或数据缺失时限制攻击。风险不是泛泛提醒，而是具体作用在行动上限。</p>
+      <div class="why"><b>工程意义：</b>工程里要有 Action Cap、Data Freshness Cap、Event No Attack、Anchor Verification Gate、Evidence Gate。不能只用 UI 文案提醒。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>8. 系统转为 v0.3A Manual Data Alpha，而不是直接接实时 API</h2>
+      <p>为了避免过早工程化和假实时，AMOS 先建立手动工作流：Manual Data Workbook、CSV Import Schema、Evidence Packet、Generated Brief、Macro Event Calendar、Daily Brief Exporter。</p>
+      <div class="why"><b>工程意义：</b>工程第一版必须 local JSON/CSV driven。不能一上来接 API、券商或交易。先保证结构、字段、护栏、流程和测试正确。</div>
+    </section>
+    
+    <section class="section">
+      <div class="eyebrow">Origin Stage</div>
+      <h2>9. 进入工程交接：正本规格、工程交接包、Codex 任务包</h2>
+      <p>在第 62-65 交付后，AMOS 已形成 Canonical Spec、No-Omission Checklist、Engineering Handoff、Codex Task Pack、Master Index v0.6，可以交给工程师/Codex 开始本地 Web App 原型。</p>
+      <div class="why"><b>工程意义：</b>工程师应从第 65 和第 66 文件开始读，必要时再进入具体 artifacts。</div>
+    </section>
+    
+
+  <div class="twocol">
+    <div class="gridbox"><h2>用户真实需求</h2><ul><li>Build a personal market decision system, not a general stock website.</li><li>Help decide when to attack, shrink, hold, rotate, wait, trim, exit or hedge.</li><li>Protect against user’s known behavioral risks: leverage, euphoria, refusal to take profits, forced liquidation, bottom panic.</li><li>Focus on U.S. high-growth / hard AI / AI infrastructure / optical / BTC-fintech / space / defense / robotics / quantum / AI healthcare opportunities.</li><li>Use evidence, source quality and counter-evidence to avoid narrative self-deception.</li><li>Preserve user’s own methods: Gann, TCG price action, AVWAP, RSI oversold bounce, valuation and cycle rhythm.</li></ul></div>
+    <div class="gridbox warning"><h2>不要做什么</h2><ul><li>Do not turn AMOS into a generic portfolio tracker.</li><li>Do not reduce Gann to support/resistance.</li><li>Do not hide missing data.</li><li>Do not let sample data look live.</li><li>Do not remove user-specific risk guardrails.</li><li>Do not ask the user to re-provide the same conceptual system; the AI/system must retain and integrate.</li></ul></div>
+  </div>
+
+  <div class="section">
+    <h2>工程师必须理解</h2>
+    <ul><li>AMOS is not a trading bot.</li><li>AMOS is not a generic dashboard.</li><li>AMOS is a personal operating system for market cognition and disciplined execution.</li><li>The first app version must be local JSON/CSV-driven.</li><li>Every page using sample/manual data must show a warning.</li><li>Gann Live means the module exists, not that the levels are tradable.</li><li>Anchor Verification is mandatory before formal Gann use.</li><li>Data Freshness and Event Risk must cap action.</li><li>Evidence must include counter-evidence before it can influence action.</li><li>User wants speed, but not at the cost of losing the confirmed architecture.</li></ul>
+  </div>
+</div>
+</body>
+</html>

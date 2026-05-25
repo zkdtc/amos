@@ -1,0 +1,26 @@
+{
+  "version": "CRDO Scoring-connected Stock Page v0.3",
+  "html": "crdo_scoring_connected_stock_page_v0_3.html",
+  "source_fixture": "amos_sample_data_fixture_v0_1.json",
+  "source_scoring_logic": "amos_scoring_logic_v0_1.json",
+  "ticker": "CRDO",
+  "computed_scores": {
+    "macro_regime_score": 65,
+    "narrative_strength_score": 79,
+    "narrative_maturity_score": 67,
+    "risk_stack_score": 73,
+    "panic_maturity_score": 36,
+    "valuation_battle_score": 54,
+    "decision_confidence_score": 54,
+    "auto_action": "trim_watch"
+  },
+  "interpretation": "CRDO sample scoring shifts from static Hold/No Chase into auto trim_watch because risk_stack_score is elevated.",
+  "data_limits": [
+    "sample-only fixture",
+    "no live price",
+    "no AVWAP",
+    "no Gann levels",
+    "no options/gamma",
+    "no live revisions"
+  ]
+}

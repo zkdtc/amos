@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Codex Task Pack v0.1</title>
+<style>
+:root{--bg:#05070c;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1440px;margin:0 auto;padding:22px}
+.hero,.task,.box{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:26px;margin-bottom:14px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:42px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.box{padding:18px;margin-bottom:14px;border-color:rgba(255,77,109,.55)}.box h2{color:var(--red);margin:0 0 8px}
+.task{padding:18px;margin-bottom:14px}.task-head{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}.task-head h2{font-size:24px;margin:4px 0;color:var(--gold)}.task-head p{color:var(--soft);margin:0}.task-head b{font-size:22px;color:var(--green)}
+.id{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.12em;font-size:10px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}h3{font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}.red{color:var(--red)}li{color:var(--soft);margin:6px 0}code{color:var(--cyan)}
+@media(max-width:800px){.cols,.task-head{display:block}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="eyebrow">AMOS · Codex Task Pack · v0.1</div>
+    <h1>Codex Task Pack</h1>
+    <div class="motto">把 AMOS 工程交接拆成可执行任务卡：目标、输入、输出、验收标准、禁止事项。</div>
+  </div>
+  <div class="box"><h2>Global Constraints</h2><ul><li>No live APIs in first pass.</li><li>No brokerage or trading execution.</li><li>No sample data presented as live.</li><li>No Gann-only trade trigger.</li><li>Preserve Anchor Verification gate.</li><li>Preserve Data Freshness action caps.</li><li>Preserve No Attack macro event gating.</li><li>Preserve user-specific risk and behavior guardrails.</li></ul></div>
+  
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-001</span><h2>Create repository skeleton</h2><p>Create a local React/TypeScript project skeleton for AMOS without connecting live APIs.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_engineering_handoff_spec_v0_1.md</code></li><li><code>amos_repo_structure_v0_1.md</code></li><li><code>amos_no_omission_master_checklist_v0_1.md</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>package.json</code></li><li><code>src/</code></li><li><code>docs/</code></li><li><code>artifacts/</code></li><li><code>README.md</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>npm install succeeds.</li><li>npm run dev starts local app.</li><li>README links to no-omission checklist.</li><li>No live APIs are configured.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not connect brokerage.</li><li>Do not add live market data API.</li><li>Do not delete source artifacts.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-002</span><h2>Implement design tokens and AppShell</h2><p>Preserve the AMOS dark terminal/research cockpit visual language in reusable layout components.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_alpha_master_index_v0_5.html</code></li><li><code>amos_canonical_system_integration_spec_v0_1.html</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/components/shell/AppShell.tsx</code></li><li><code>src/components/shell/Sidebar.tsx</code></li><li><code>src/components/shell/StatusBar.tsx</code></li><li><code>src/styles/tokens.css</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>AppShell matches AMOS prototype language.</li><li>StatusBar shows v0.3A, Manual, Gann Live 5, Anchor Check v0.2.</li><li>No generic template styling replaces AMOS style.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not use a plain white dashboard style.</li><li>Do not remove guardrail visibility.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-003</span><h2>Load local manifests and sample data</h2><p>Create local data loaders and TypeScript schemas for AMOS JSON/CSV-driven prototype.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_gann_live_ticker_registry_v0_4.json</code></li><li><code>amos_canonical_system_integration_spec_v0_1.json</code></li><li><code>amos_daily_brief_html_exporter_config_v0_2.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>public/sample-data/gann-registry.json</code></li><li><code>public/sample-data/daily-brief.json</code></li><li><code>src/data/loaders.ts</code></li><li><code>src/data/schemas.ts</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Gann registry loads locally.</li><li>Daily brief fallback rows load locally.</li><li>Types compile.</li><li>Missing optional fields do not crash app.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not fetch remote APIs.</li><li>Do not hardcode live data claims.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-004</span><h2>Implement Guardrail system</h2><p>Encode AMOS guardrails in UI and logic, not just static text.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_no_omission_master_checklist_v0_1.md</code></li><li><code>amos_engineering_handoff_spec_v0_1.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/components/guardrails/GuardrailBanner.tsx</code></li><li><code>src/components/guardrails/DataFreshnessBadge.tsx</code></li><li><code>src/components/guardrails/ActionCapBadge.tsx</code></li><li><code>src/components/guardrails/AnchorVerificationGate.tsx</code></li><li><code>src/rules/actionCaps.ts</code></li><li><code>src/rules/gannGuards.ts</code></li><li><code>src/rules/eventGuards.ts</code></li><li><code>src/rules/evidenceGuards.ts</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Guardrails are visible on all relevant pages.</li><li>Rules are reusable pure functions.</li><li>Rules have tests in later task.</li><li>Gann cannot emit buy/sell alone.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not make guardrails dismissible by default.</li><li>Do not hide sample-data warning behind tooltip only.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-005</span><h2>Implement Master Index page</h2><p>Convert AMOS Alpha Master Index v0.5 into the app home page.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_alpha_master_index_v0_5.html</code></li><li><code>amos_alpha_master_index_v0_5.json</code></li><li><code>amos_canonical_system_integration_spec_v0_1.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/page.tsx or src/pages/index.tsx</code></li><li><code>src/components/master/MasterIndex.tsx</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Home page clearly says v0.3A Manual Data Alpha.</li><li>Shows Gann Live 5 / Pending 0.</li><li>Links to Gann Registry, stock pages, Daily Brief, Events, Evidence.</li><li>No source section from v0.5 is silently omitted.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not replace master index with a generic landing page.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-006</span><h2>Implement Gann Registry page</h2><p>Render Gann Live Registry v0.4 from local JSON.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_gann_live_ticker_registry_v0_4.json</code></li><li><code>amos_gann_live_ticker_registry_v0_4.html</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/gann-registry/page.tsx or src/pages/gann-registry.tsx</code></li><li><code>src/components/gann/GannRegistry.tsx</code></li><li><code>src/components/gann/GannMissingGates.tsx</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>CRDO / NVDA / LITE / IREN / HOOD all render as Gann Live.</li><li>No pending tickers in sample set.</li><li>Missing gates are visible.</li><li>Anchor Verification link is visible.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not convert Gann Live into trade signal.</li><li>Do not hide hard_missing_data.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-007</span><h2>Implement Stock Intelligence pages</h2><p>Create reusable StockIntelligencePage for five sample tickers.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>nvda_stock_page_gann_registry_v0_6.html</code></li><li><code>crdo_stock_page_gann_registry_v0_6.html</code></li><li><code>lite_stock_page_gann_registry_v0_6.html</code></li><li><code>iren_stock_page_gann_registry_v0_6.html</code></li><li><code>hood_stock_page_gann_registry_v0_6.html</code></li><li><code>amos_canonical_system_integration_spec_v0_1.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/stocks/[ticker]/page.tsx or src/pages/stocks/[ticker].tsx</code></li><li><code>src/components/stock/StockHeader.tsx</code></li><li><code>src/components/stock/DecisionSummary.tsx</code></li><li><code>src/components/gann/GannResearchZone.tsx</code></li><li><code>src/components/stock/EvidencePanel.tsx</code></li><li><code>src/components/stock/RiskProtectionPanel.tsx</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Five sample tickers render.</li><li>Every page has Gann Zone.</li><li>Every page has sample-data warning.</li><li>No required Stock Intelligence module heading is omitted.</li><li>Missing modules are marked Pending, not silently deleted.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not simplify stock page to only price chart and summary.</li><li>Do not remove user-specific risk protection modules.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-008</span><h2>Implement Daily Brief page</h2><p>Render daily brief from local JSON/config fallback and preserve action buckets.</p></div>
+        <b>P1</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_daily_brief_html_exporter_config_v0_2.json</code></li><li><code>amos_daily_brief_exported_from_unified_v0_2.html</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/daily-brief/page.tsx or src/pages/daily-brief.tsx</code></li><li><code>src/components/dailyBrief/DailyBrief.tsx</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Daily brief matches exported HTML structure.</li><li>Missing Data count is visible.</li><li>Gann Live count is visible.</li><li>Trim Watch and Wait are visually distinct.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not remove guardrails from brief.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-009</span><h2>Implement Macro Events page</h2><p>Render manual macro/event calendar structure and No Attack logic.</p></div>
+        <b>P1</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_macro_event_calendar_manual_input_v0_1.xlsx</code></li><li><code>amos_macro_event_calendar_manual_input_v0_1.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/events/page.tsx or src/pages/events.tsx</code></li><li><code>src/components/events/MacroEventCalendar.tsx</code></li><li><code>src/rules/eventGuards.ts</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Critical events default to No Attack.</li><li>OPEX/FOMC/CPI/Treasury/BTC/Earnings categories are present.</li><li>Event guardrail tests pass.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not treat event calendar as decoration; it must cap action.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-010</span><h2>Implement Evidence Packet page</h2><p>Render evidence claims with quality, bias, counter-evidence and action gate.</p></div>
+        <b>P1</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_manual_data_workbook_v0_2_unified.xlsx</code></li><li><code>amos_csv_import_schema_v0_1.xlsx</code></li><li><code>amos_canonical_system_integration_spec_v0_1.json</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/app/evidence/page.tsx or src/pages/evidence.tsx</code></li><li><code>src/components/stock/EvidencePanel.tsx</code></li><li><code>src/rules/evidenceGuards.ts</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>Evidence without counter-evidence cannot influence action.</li><li>Source quality and bias risk are visible.</li><li>Claims are linked to ticker(s).</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not allow YouTube/X claims to bypass evidence gates.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-011</span><h2>Add guardrail test suite</h2><p>Make AMOS safety and no-omission guardrails executable tests.</p></div>
+        <b>P0</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_engineering_handoff_spec_v0_1.json</code></li><li><code>amos_no_omission_master_checklist_v0_1.md</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>src/tests/actionCaps.test.ts</code></li><li><code>src/tests/gannGuards.test.ts</code></li><li><code>src/tests/evidenceGuards.test.ts</code></li><li><code>src/tests/eventGuards.test.ts</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>All guardrail tests pass.</li><li>Tests fail if Gann emits buy/sell alone.</li><li>Tests fail if missing-data aggressive action is allowed.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not mark guardrail tests as optional.</li></ul>
+    </section>
+    
+    <section class="task">
+      <div class="task-head">
+        <div><span class="id">AMOS-CODEX-012</span><h2>Create engineering README and implementation report</h2><p>Document what Codex implemented, what remains, and where source artifacts live.</p></div>
+        <b>P1</b>
+      </div>
+      <div class="cols">
+        <div><h3>Inputs</h3><ul><li><code>amos_engineering_handoff_spec_v0_1.md</code></li><li><code>amos_repo_structure_v0_1.md</code></li><li><code>amos_codex_task_pack_v0_1.md</code></li></ul></div>
+        <div><h3>Outputs</h3><ul><li><code>README.md</code></li><li><code>docs/IMPLEMENTATION_REPORT.md</code></li></ul></div>
+      </div>
+      <h3>Acceptance</h3><ul><li>New engineer can run project from README.</li><li>Implementation report states exactly what is done and not done.</li><li>No-omission checklist is linked.</li></ul>
+      <h3 class="red">Forbidden</h3><ul><li>Do not claim production readiness.</li></ul>
+    </section>
+    
+</div>
+</body>
+</html>

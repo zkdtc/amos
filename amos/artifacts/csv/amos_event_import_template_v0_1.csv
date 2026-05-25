@@ -1,0 +1,4 @@
+event_id,event_date,ticker,event_type,event_name,importance_0_100,expected_impact,event_pressure_0_100,pre_event_action_cap,post_event_review_required,source,notes
+EV-0001,2026-05-24,NVDA,Earnings,Next earnings / AI capex read-through,,,,No Attack,Yes,manual,placeholder
+EV-0002,2026-05-24,CRDO,Earnings,Next earnings / optical connectivity read-through,,,,No Attack,Yes,manual,placeholder
+EV-0003,2026-05-24,HOOD,Regulatory,Crypto/fintech regulatory catalyst,,,,No Attack,Yes,manual,placeholder

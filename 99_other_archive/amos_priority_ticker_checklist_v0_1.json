@@ -1,0 +1,30 @@
+{
+  "version": "AMOS Priority Ticker Checklist v0.1",
+  "source_workbook": "amos_daily_brief_generator_from_manual_packet_v0_2.xlsx",
+  "output_workbook": "amos_priority_ticker_checklist_v0_1.xlsx",
+  "new_sheet": "Priority Checklist v0.1",
+  "priority_tickers": {
+    "P0": [
+      "NVDA",
+      "CRDO",
+      "LITE"
+    ],
+    "P1": [
+      "IREN",
+      "HOOD",
+      "GOOG",
+      "MSFT",
+      "AVGO"
+    ],
+    "P2": [
+      "RKLB",
+      "IONQ"
+    ]
+  },
+  "action_cap_logic": {
+    "0_missing": "No Cap",
+    "1_2_missing": "Build/Hold Only",
+    "3_4_missing": "No Attack",
+    "5_plus_missing": "Wait Only"
+  }
+}

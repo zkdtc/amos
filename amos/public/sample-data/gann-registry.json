@@ -1,0 +1,155 @@
+{
+  "version": "AMOS Gann Live Ticker Registry v0.4",
+  "created": "2026-05-24",
+  "purpose": "Central registry for tickers with independent Gann engines. v0.4 adds HOOD and completes the five sample-ticker Gann Live set.",
+  "live_tickers": [
+    {
+      "ticker": "CRDO",
+      "engine_file": "amos_unified_gann_resonance_engine_v0_4.json",
+      "engine_version": "AMOS Unified Gann Resonance Engine v0.4",
+      "data_quality": "sample_only_not_live",
+      "current_price": null,
+      "current_date": "",
+      "gann_price_score": 62,
+      "gann_time_score": -7,
+      "unified_gann_resonance_score": 32,
+      "resonance_state": "no_actionable_resonance",
+      "hard_missing_data": [
+        "AVWAP not connected",
+        "RSI not connected",
+        "Gamma/options not connected",
+        "Live price not connected"
+      ],
+      "status": "Gann Live",
+      "next_required": [
+        "Verify anchors from real chart data",
+        "Connect live price / AVWAP / RSI / options data",
+        "Keep Gann as confirmation, not standalone trigger"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "engine_file": "amos_nvda_gann_engine_v0_1.json",
+      "engine_version": "AMOS NVDA Gann Engine v0.1",
+      "data_quality": "sample_manual_ready_not_live",
+      "current_price": 141.0,
+      "current_date": "2026-05-24",
+      "gann_price_score": 65,
+      "gann_time_score": 64,
+      "unified_gann_resonance_score": 53,
+      "resonance_state": "incomplete_resonance",
+      "hard_missing_data": [
+        "Live price not connected",
+        "Verified anchors not confirmed",
+        "AVWAP not connected",
+        "RSI not connected",
+        "Gamma/options not connected"
+      ],
+      "status": "Gann Live",
+      "next_required": [
+        "Verify anchors from real chart data",
+        "Connect live price / AVWAP / RSI / options data",
+        "Keep Gann as confirmation, not standalone trigger"
+      ]
+    },
+    {
+      "ticker": "LITE",
+      "engine_file": "amos_lite_gann_engine_v0_1.json",
+      "engine_version": "AMOS LITE Gann Engine v0.1",
+      "data_quality": "sample_manual_ready_not_live",
+      "current_price": 91.0,
+      "current_date": "2026-05-24",
+      "gann_price_score": 30,
+      "gann_time_score": 33,
+      "unified_gann_resonance_score": 33,
+      "resonance_state": "no_actionable_resonance",
+      "hard_missing_data": [
+        "Live price not connected",
+        "Verified anchors not confirmed",
+        "AVWAP not connected",
+        "RSI not connected",
+        "Gamma/options not connected"
+      ],
+      "status": "Gann Live",
+      "next_required": [
+        "Verify anchors from real chart data",
+        "Connect live price / AVWAP / RSI / options data",
+        "Keep Gann as confirmation, not standalone trigger"
+      ]
+    },
+    {
+      "ticker": "IREN",
+      "engine_file": "amos_iren_gann_engine_v0_1.json",
+      "engine_version": "AMOS IREN Gann Engine v0.1",
+      "data_quality": "sample_manual_ready_not_live",
+      "current_price": 12.5,
+      "current_date": "2026-05-24",
+      "gann_price_score": 22,
+      "gann_time_score": 62,
+      "unified_gann_resonance_score": 37,
+      "resonance_state": "no_actionable_resonance",
+      "hard_missing_data": [
+        "Live price not connected",
+        "Verified anchors not confirmed",
+        "AVWAP not connected",
+        "RSI not connected",
+        "Gamma/options not connected",
+        "BTC/miner correlation data not connected"
+      ],
+      "status": "Gann Live",
+      "next_required": [
+        "Verify anchors from real chart data",
+        "Connect live price / AVWAP / RSI / options data",
+        "Keep Gann as confirmation, not standalone trigger"
+      ]
+    },
+    {
+      "ticker": "HOOD",
+      "engine_file": "amos_hood_gann_engine_v0_1.json",
+      "engine_version": "AMOS HOOD Gann Engine v0.1",
+      "data_quality": "sample_manual_ready_not_live",
+      "current_price": 72.0,
+      "current_date": "2026-05-24",
+      "gann_price_score": 31,
+      "gann_time_score": 48,
+      "unified_gann_resonance_score": 37,
+      "resonance_state": "no_actionable_resonance",
+      "hard_missing_data": [
+        "Live price not connected",
+        "Verified anchors not confirmed",
+        "AVWAP not connected",
+        "RSI not connected",
+        "Gamma/options not connected",
+        "BTC/crypto activity data not connected",
+        "Regulatory/news risk feed not connected"
+      ],
+      "status": "Gann Live",
+      "next_required": [
+        "Verify anchors from real chart data",
+        "Connect live price / AVWAP / RSI / options data",
+        "Keep Gann as confirmation, not standalone trigger"
+      ]
+    }
+  ],
+  "pending_tickers": [],
+  "lookup_rule": "For each ticker, look for a registry live_tickers entry; if present, insert Gann Research Zone; otherwise show Gann Pending.",
+  "guardrails": [
+    "Do not treat sample/manual-ready Gann data as live market data.",
+    "Do not allow Gann alone to trigger buy/sell.",
+    "If hard_missing_data is non-empty, cap action to Watch / Research Only unless other modules confirm.",
+    "Verified anchors must replace sample anchors before real trading use.",
+    "Every Gann Live page must link back to anchor verification before formal use."
+  ],
+  "delta_from_v0_3": [
+    "Added HOOD Gann Engine v0.1",
+    "HOOD moved from Gann Pending to Gann Live",
+    "All five sample tickers are now Gann Live",
+    "Pending list is empty for the sample set"
+  ],
+  "next": [
+    "Update Anchor Verification Checklist to include IREN and HOOD",
+    "Add Anchor Verification link into every Gann Live page",
+    "Build Manual Data Workbook v0.2 unified workbook",
+    "Build CSV Import Schema v0.1"
+  ]
+}

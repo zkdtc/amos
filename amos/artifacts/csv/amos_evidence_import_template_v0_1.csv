@@ -1,0 +1,2 @@
+packet_id,date,tickers,source_type,source_name_url,claim,claim_type,time_horizon,stance,evidence_quality_0_100,bias_risk_0_100,freshness_0_100,specificity_0_100,actionability_0_100,counter_evidence_required,counter_evidence,what_would_prove_it_wrong,linked_data_fields_needed,status,notes
+EP-CSV-0001,2026-05-24,"CRDO,LITE",User Observation,manual,Optical peers need RS confirmation before rotation.,Interpretation,1-4 weeks,Neutral,45,45,70,65,60,Yes,Need peer RS and volume data,CRDO/LITE both lose RS vs QQQ,rs_vs_peers; volume; avwap,Open,

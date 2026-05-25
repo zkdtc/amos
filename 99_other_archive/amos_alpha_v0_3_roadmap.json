@@ -1,0 +1,130 @@
+{
+  "version": "AMOS Alpha v0.3 Roadmap",
+  "created": "2026-05-24",
+  "purpose": "Convert AMOS from static/sample-data Alpha into a usable real-data-ready personal market operating system.",
+  "current_state": {
+    "phase": "Static Alpha + sample-data-driven prototype",
+    "completed": [
+      "Product shell",
+      "Master index",
+      "Core engines",
+      "Data schema",
+      "Scoring logic",
+      "Sample fixture",
+      "Scoring-connected dashboard",
+      "CRDO full page",
+      "Gann modules",
+      "Generic stock page generator"
+    ],
+    "bottleneck": "Real data input and repeatable daily workflow."
+  },
+  "phases": [
+    {
+      "phase_id": "v0.3A",
+      "title": "Manual Data Alpha",
+      "goal": "Make AMOS usable with manually entered daily data for priority tickers.",
+      "why": "Fastest path to usefulness without waiting for API automation.",
+      "deliverables": [
+        "Manual data input sheet/schema",
+        "Priority ticker field checklist",
+        "Daily Brief generated from manually updated score packet",
+        "CRDO/NVDA/LITE/HOOD/IREN manually refreshed pages",
+        "Manual evidence packet template"
+      ],
+      "must_have_fields": [
+        "price",
+        "RSI",
+        "8/12 EMA state",
+        "relative strength vs QQQ",
+        "key AVWAP status",
+        "nearest Gann support/resistance",
+        "next event",
+        "action bias",
+        "invalidation"
+      ],
+      "success_criteria": [
+        "User can update 5-10 fields per ticker and get a coherent Daily Brief.",
+        "AMOS can distinguish Hold / Wait / Trim Watch / Build Watch from manual inputs.",
+        "Every action output includes evidence, counter-evidence and invalidation."
+      ]
+    },
+    {
+      "phase_id": "v0.3B",
+      "title": "Semi-automated Data Alpha",
+      "goal": "Allow CSV/JSON imports from charting/broker/research tools.",
+      "why": "Reduce manual burden while keeping control and transparency.",
+      "deliverables": [
+        "CSV import schema",
+        "Broker/export parser",
+        "TradingView-style technical snapshot parser",
+        "Manual + imported data conflict checker",
+        "Data freshness warning system"
+      ],
+      "success_criteria": [
+        "System flags stale data automatically.",
+        "Imported technical data updates stock pages and dashboard.",
+        "Conflicting manual vs imported values are visible, not hidden."
+      ]
+    },
+    {
+      "phase_id": "v0.3C",
+      "title": "Real-time / API-ready Alpha",
+      "goal": "Prepare AMOS to connect to live market/fundamental/options/event APIs.",
+      "why": "Daily use needs freshness, but API data must enter through controlled adapters.",
+      "deliverables": [
+        "Market data adapter",
+        "Macro data adapter",
+        "Earnings/fundamental adapter",
+        "Options/gamma adapter",
+        "Event calendar adapter",
+        "Evidence/source adapter"
+      ],
+      "success_criteria": [
+        "Daily Brief can regenerate from fresh data packets.",
+        "Stock pages update key scores automatically.",
+        "Decision confidence is capped when required fields are stale/missing."
+      ]
+    },
+    {
+      "phase_id": "v0.3D",
+      "title": "Review & Learning Alpha",
+      "goal": "Build prediction-action-result review loops.",
+      "why": "AMOS should improve by testing which signals worked for which stock personality.",
+      "deliverables": [
+        "Prediction log",
+        "Action log",
+        "Result review",
+        "Signal effectiveness by ticker",
+        "Source quality update",
+        "Behavior guardrail update"
+      ],
+      "success_criteria": [
+        "Each major decision can be reviewed later.",
+        "System learns which indicators work better for CRDO vs HOOD vs IREN etc.",
+        "User behavior risk is tracked without moralizing or generic warnings."
+      ]
+    }
+  ],
+  "priority_order": [
+    "v0.3A Manual Data Alpha",
+    "Daily Brief from Manual Data",
+    "CRDO/NVDA/LITE/HOOD/IREN refresh workflow",
+    "CSV/JSON import",
+    "Real API adapters",
+    "Review & Learning"
+  ],
+  "next_immediate_builds": [
+    "AMOS Manual Data Input Sheet v0.1",
+    "Daily Brief Generator from Manual Packet v0.2",
+    "Priority Ticker Checklist v0.1",
+    "Real Evidence Packet Template v0.1",
+    "CRDO Peer Map v0.1"
+  ],
+  "guardrails": [
+    "Do not expand new modules before v0.3A manual workflow is usable.",
+    "Do not pretend sample data is live data.",
+    "Do not output action without invalidation conditions.",
+    "Do not let Gann alone trigger buy/sell.",
+    "Do not let user observation replace market evidence."
+  ]
+}

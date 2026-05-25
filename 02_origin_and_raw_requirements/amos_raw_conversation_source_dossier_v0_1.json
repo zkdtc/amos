@@ -1,0 +1,92 @@
+{
+  "version": "AMOS Raw Conversation Source Dossier v0.1",
+  "created": "2026-05-24",
+  "purpose": "Provide designers/engineers with the most original available AMOS conversation-derived source material: user intent, language, needs, frustrations, conceptual requirements and architecture logic.",
+  "important_boundary": [
+    "This is not a full verbatim ChatGPT database export.",
+    "It is reconstructed from the currently available conversation context, stable memory, generated AMOS specs and visible user messages.",
+    "For legal/archival-grade raw transcript, the user should export ChatGPT data from account settings and give the target conversation HTML/JSON to the engineer.",
+    "This pack is intended as design source material, not a substitute for raw account export."
+  ],
+  "core_raw_user_intent": [
+    "用户不是要普通投资文章、普通看板或陪伴式聊天，而是要一个能持续搭建、验证、交付的认知提升和决策辅助系统。",
+    "用户明确说：在这个对话里，我一直要的是 B。这里的 B 指工程化搭建、结构化验证和主动推进，而不是让用户不断提供系统、不断确认 AI 的认知。",
+    "用户对 AI 的期待是：自己有认知、有分类、有结构，就应该能主动为结构找证据、搭建系统、验证逻辑，而不是把所有证据寻找责任推回给用户。",
+    "用户要求 AI 从完成工程的角度，把对话从头到尾彻底过一遍，然后好好干活，不要偷懒。",
+    "用户希望后续投喂资料不是为了无限增加功能，而是帮助 AI 更快理解、搭建和优化系统主干。",
+    "用户反复强调：整合，不是推翻。所有已经讨论并确认的内容都必须进入产品框架，不允许被简化、遗漏或新想法推翻。"
+  ],
+  "raw_need_clusters": {
+    "personal_market_os": [
+      "AMOS 必须是用户个人的 AI Market Operating System，不是普通股票网站。",
+      "系统围绕用户真实持仓、真实操作、真实亏盈和真实心理弱点提供保护。",
+      "目标是帮助用户观察、研究和操作美股，通过波段持仓增加利润，同时建立坚定底仓，乘上时代浪潮。"
+    ],
+    "cycle_and_action_rhythm": [
+      "重点围绕周期节奏感：什么时候猛攻、什么时候收缩、什么时候空仓、什么时候只做核心资产、什么时候做超跌反弹、什么时候不能抄底。",
+      "用户偏好的高波动成长股回撤不可承受，所以不能长期满仓死抱。",
+      "系统必须把宏观、流动性、机械资金日期、事件窗口、行业轮动和个股行为结合成行动上限。"
+    ],
+    "gann_as_core_tool": [
+      "用户明确要求江恩是最依赖的工具之一。",
+      "每个个股页面必须有专门 Gann / 江恩研究区。",
+      "不能把 Gann 简化为几条支撑压力线。",
+      "需要 Square of Nine、多锚点、价格区间、时间窗口、价格×时间共振、角度线、AVWAP/RSI/TCG/Gamma/事件确认。",
+      "Gann 输出服务买点和卖点，尤其用于阶段止盈和顶部退出警报。"
+    ],
+    "tcg_price_action": [
+      "The Chart Guys / TCG 系统作为极简 Price Action 与龙头动能执行层。",
+      "8 EMA / 12 EMA、HH/HL、LH/LL、Inside Bar、Equilibrium、4H/日线 RSI 背离和超卖，构成执行确认。",
+      "这一层不替代江恩、估值、流动性和 Narrative，而是防接飞刀、确认主升浪、管理 Runner 和趋势反转。"
+    ],
+    "risk_behavior_protection": [
+      "风险管理不是泛泛恐吓，而是围绕用户真实持仓、真实操作、真实盈利亏损进行实战保护。",
+      "用户擅长在周期低点做极致，但高点容易兴奋而忘记止盈。",
+      "系统在高位极致区必须高亮、抓眼、明确喊用户减仓/卖出/卖 Call/退出。",
+      "Put 不是默认对冲；用户不熟 Put，更偏好缓慢攀爬阶段卖 Call、极致热区直接卖出。",
+      "系统必须建立 Panic Maturity、Narrative Health、Exit/Hedge、Risk Training/Behavior Protection。"
+    ],
+    "home_command_center": [
+      "主页必须是完整 Home Command Center，不得简化成普通宏观面板。",
+      "必须包含宏观流动性、机械资金层、机械日期和事件日历、龙头财报与产业事件、政治地缘事件、行业分支地图、图形层、真实持仓和操作入口。"
+    ],
+    "stock_intelligence_page": [
+      "个股页必须是完整 Stock Intelligence Page / 龙头周期作战室，不是阉割版。",
+      "必须包括顶部总判断、标签、行业细分、龙头/跟风/尾部妖股定位、行业流动性、估值财报、Gann、Price Action、AVWAP/TCG/MTFA、Options/Gamma、Dark Pool/资金流、Sector/Liquidity、Event×Cycle、Stock Personality、硬指标证据、AI综合操作策略、复盘。",
+      "核心是：硬证据详尽可查 → AI分析总结打分 → 操作策略 → 动态追踪复盘。"
+    ],
+    "evidence_and_blogger_system": [
+      "用户认为长期跟踪的 YouTube 博主有长期有效性，观众和操作结果也验证了。",
+      "系统不能只向用户要证据，而应擅长为结构寻找证据、分类证据、验证认知和操作有效性。",
+      "博主/YouTube/X 等来源不能直接变成行动，需要 Evidence Packet、source quality、bias risk、counter-evidence 和事后验证。"
+    ],
+    "engineering_transition": [
+      "当前在 ChatGPT 中完成产品结构、HTML/Excel/JSON 原型、数据字段、护栏和交接。",
+      "进入工程阶段后适合 Codex：React/Next/Vite、组件、路由、CSV导入、导出脚本、Gann engine 可复用模块、测试、数据校验、版本记录。",
+      "第一版工程必须 local JSON/CSV driven，不接 live APIs、不接券商、不交易。"
+    ]
+  },
+  "source_like_user_phrases": [
+    "我把你当认知提升和决策辅助系统。",
+    "在这个对话里，我一直要的是 B。",
+    "你应该很擅长为我们搭建的结构找证据才对。",
+    "从完成工程的角度，把我们的对话从头到尾彻底过一遍，然后好好干活。",
+    "后续投喂资料的目的，是帮助 AI 更快理解、搭建和优化系统设计，不是为了不断增加功能。",
+    "整合，不是推翻。",
+    "个股页必须是完整‘龙头周期作战室/Stock Intelligence Page’，不是阉割版。",
+    "主页必须是完整 Home Command Center，不得简化成普通宏观面板。",
+    "每个个股页面都必须有专门的 Gann/江恩研究区。",
+    "风险管理不是泛泛恐吓，而是围绕用户真实持仓、真实操作、真实盈利亏损进行实战保护。"
+  ],
+  "designer_implications": [
+    "Design should feel like a professional dark research cockpit, not a consumer finance app.",
+    "Use layered cards, evidence panels, score bars, warning states, action caps and research zones.",
+    "Every page must show data freshness and whether data is sample/manual-ready.",
+    "Avoid over-clean simplification that removes the user's cognitive framework.",
+    "The UI must support long-form research and repeated daily use, not only quick glance.",
+    "Warnings must be visually loud when the user's behavioral weak points are triggered.",
+    "Gann zone should feel like a serious research desk with anchors, time windows, clusters and verification state.",
+    "Evidence and counter-evidence must be visible; not hidden in footnotes."
+  ],
+  "handoff_note": "Give this file together with AMOS Alpha Master Index v0.6 to designers/engineers as the original source-material companion."
+}

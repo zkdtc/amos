@@ -1,0 +1,203 @@
+{
+  "version": "AMOS Risk Protection & Behavior Guardrail Engine v0.1",
+  "purpose": "Protect the user from known failure modes: leverage, euphoric over-holding, premature bottom-fishing, and turning failed swings into core positions.",
+  "core_principles": [
+    "Risk protection must be based on real positions and real market state, not generic fear.",
+    "The user's strongest edge is buying mature panic in high-quality growth; the user's biggest risk is not trimming during euphoria.",
+    "High conviction plus leverage is forbidden.",
+    "A failed swing must not become a core position.",
+    "Risk alerts must be visually stronger at highs than at lows because the user tends to under-sell at highs."
+  ],
+  "risk_modules": {
+    "euphoria_exhaustion_engine": {
+      "purpose": "Detect when a winner becomes dangerous due to price/time/valuation/crowding resonance.",
+      "inputs": [
+        "Gann resistance/time window",
+        "RSI overbought",
+        "volume divergence",
+        "TCG 8/12EMA stretch",
+        "AVWAP distance",
+        "valuation premium",
+        "options call mania",
+        "tail-name participation",
+        "event pressure",
+        "narrative maturity"
+      ],
+      "alert_levels": {
+        "yellow": "Watch profit protection",
+        "orange": "Trim 20-30%",
+        "red": "Trim 30-50% / sell call / stop adding",
+        "black": "Exit weak positions; protect core"
+      },
+      "user_specific_rule": "At euphoria zones, alerts must be explicit and visually intrusive."
+    },
+    "panic_maturity_engine": {
+      "purpose": "Distinguish mature panic from early falling knife.",
+      "inputs": [
+        "drawdown depth",
+        "RSI oversold / divergence",
+        "Gann support/time window",
+        "AVWAP reclaim",
+        "volume exhaustion",
+        "capitulation volume",
+        "options put wall / IV spike",
+        "narrative health",
+        "EPS revision trend",
+        "macro regime"
+      ],
+      "maturity_stages": {
+        "stage_0_normal_pullback": "No action or small watch.",
+        "stage_1_early_drop": "Do not add aggressively.",
+        "stage_2_forced_selling": "Watch only; liquidity still clearing.",
+        "stage_3_panic_mature": "Probe allowed if thesis intact.",
+        "stage_4_reversal_confirmed": "Build/add allowed."
+      },
+      "hard_rule": "Falling price alone is not a buy signal."
+    },
+    "leverage_prohibition_engine": {
+      "purpose": "Prevent high conviction + leverage disasters.",
+      "rules": [
+        "No margin leverage for high-beta growth stocks.",
+        "No averaging down with leverage.",
+        "No option over-sizing to recover losses.",
+        "No thesis can override forced liquidation risk."
+      ],
+      "alert": "If leverage is detected or contemplated, AMOS must issue a hard stop."
+    },
+    "core_swing_separation_engine": {
+      "purpose": "Prevent role confusion.",
+      "rules": [
+        "Core positions require durable business/narrative and acceptable valuation.",
+        "Swing positions require technical/event cycle discipline.",
+        "Tactical positions require catalyst and small size.",
+        "Runner positions are leftovers after profit protection.",
+        "Failed swing cannot be re-labeled core without fresh evidence."
+      ]
+    },
+    "narrative_health_engine": {
+      "purpose": "Check whether a story is alive, saturated, or broken.",
+      "inputs": [
+        "leader behavior",
+        "second-line behavior",
+        "fundamental confirmation",
+        "market response to good news",
+        "analyst revisions",
+        "capital flow",
+        "crowding"
+      ],
+      "states": [
+        "healthy",
+        "maturing",
+        "crowded",
+        "exhausting",
+        "broken"
+      ]
+    },
+    "opportunity_cost_engine": {
+      "purpose": "Detect when capital trapped in a weak thesis blocks better opportunities.",
+      "inputs": [
+        "relative strength",
+        "event timing",
+        "narrative stage",
+        "position health",
+        "new battlefield strength",
+        "2-6 week expected opportunity"
+      ],
+      "outputs": [
+        "low_opportunity_cost",
+        "medium",
+        "high",
+        "must_review"
+      ]
+    }
+  },
+  "known_user_failure_modes": {
+    "leverage_on_high_conviction": {
+      "description": "High confidence in long-term thesis combined with leverage causes forced liquidation risk.",
+      "guardrail": "Hard prohibition."
+    },
+    "not_trimming_at_highs": {
+      "description": "At euphoric highs, user tends to keep extending future imagination and forgets to take profit.",
+      "guardrail": "Euphoria alerts must be strong, visual, and action-oriented."
+    },
+    "premature_bottom_fishing": {
+      "description": "User is good at panic buying but can enter before liquidation completes.",
+      "guardrail": "Require panic maturity stack before build."
+    },
+    "turning_failed_swing_into_core": {
+      "description": "A trade that violates entry thesis may be mentally reclassified as long-term hold.",
+      "guardrail": "Role lock: swing/core/tactical must be recorded at entry."
+    },
+    "narrative_overabsorption": {
+      "description": "Macro/AI/BTC/geopolitical narratives can absorb attention and weaken execution discipline.",
+      "guardrail": "Attention governance and evidence requirements."
+    },
+    "regret_chasing": {
+      "description": "Missing a move like ASTS can create urge to chase the next similar theme.",
+      "guardrail": "Regret Guardrail and migration evidence stack."
+    }
+  },
+  "risk_alert_contract": {
+    "required_fields": [
+      "risk_type",
+      "severity",
+      "affected_positions",
+      "why_now",
+      "evidence",
+      "counter_evidence",
+      "recommended_action",
+      "invalidation_or_relief_condition"
+    ],
+    "severity_levels": [
+      "info",
+      "yellow",
+      "orange",
+      "red",
+      "black"
+    ]
+  },
+  "example_alerts": {
+    "euphoria_trim": {
+      "risk_type": "Euphoria Exhaustion",
+      "severity": "red",
+      "affected_positions": [
+        "CRDO",
+        "LITE"
+      ],
+      "why_now": "Gann resistance/time window + RSI overbought + event risk + crowding rising.",
+      "recommended_action": "Trim 30-50%, stop adding, consider sell call on remaining swing exposure.",
+      "relief_condition": "Price consolidates above AVWAP with volume reset and no failed breakout."
+    },
+    "panic_not_mature": {
+      "risk_type": "Premature Bottom Fishing",
+      "severity": "orange",
+      "affected_positions": [
+        "HOOD",
+        "IREN"
+      ],
+      "why_now": "Headline-driven drop but no volume exhaustion, no AVWAP reclaim, BTC liquidity still clearing.",
+      "recommended_action": "Wait. Define panic maturity conditions before entry.",
+      "relief_condition": "RSI divergence + Gann support + liquidity stabilization + reversal confirmation."
+    },
+    "failed_swing": {
+      "risk_type": "Role Confusion",
+      "severity": "red",
+      "affected_positions": [
+        "LITE"
+      ],
+      "why_now": "Swing thesis invalidated but position is being mentally treated as core.",
+      "recommended_action": "Review original entry thesis; exit or resize unless fresh core evidence exists.",
+      "relief_condition": "New evidence upgrades stock to core role."
+    }
+  },
+  "ui_components": [
+    "Risk Stack Meter",
+    "Euphoria Warning Banner",
+    "Panic Maturity Ladder",
+    "Core/Swing/Tactical Role Lock",
+    "Leverage Hard Stop",
+    "Narrative Health Badge",
+    "Opportunity Cost Alert",
+    "Regret Guardrail"
+  ]
+}

@@ -1,0 +1,511 @@
+{
+  "version": "AMOS LITE Gann Engine v0.1",
+  "created": "2026-05-24",
+  "ticker": "LITE",
+  "current_price": 91.0,
+  "current_date": "2026-05-24",
+  "data_quality": "sample_manual_ready_not_live",
+  "purpose": "Create an independent Gann engine for LITE as optical recovery / AI connectivity peer.",
+  "settings": {
+    "angles": [
+      45,
+      90,
+      180,
+      270,
+      360,
+      720
+    ],
+    "windows": [
+      7,
+      14,
+      21,
+      34,
+      45,
+      55,
+      60,
+      90,
+      144,
+      180,
+      270,
+      360
+    ],
+    "level_tolerance_pct": 0.5,
+    "cluster_band_pct": 1.0,
+    "time_band_days": 3
+  },
+  "anchors": [
+    {
+      "anchor_id": "lite_sample_major_low_2025_04_08",
+      "ticker": "LITE",
+      "anchor_type": "sample_major_low",
+      "anchor_date": "2025-04-08",
+      "anchor_price": 38.44,
+      "quality_score": 72,
+      "reason": "Sample only: market-wide panic / optical reset placeholder"
+    },
+    {
+      "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+      "ticker": "LITE",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-11-07",
+      "anchor_price": 78.35,
+      "quality_score": 66,
+      "reason": "Sample only: earnings/event anchor placeholder"
+    },
+    {
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "ticker": "LITE",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_price": 106.7,
+      "quality_score": 70,
+      "reason": "Sample only: swing high / recovery high placeholder"
+    }
+  ],
+  "nearest_support": {
+    "direction": "up",
+    "angle": 90,
+    "level": 87.45,
+    "band_low": 87.01,
+    "band_high": 87.89,
+    "ticker": "LITE",
+    "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+    "anchor_type": "sample_earnings_gap",
+    "anchor_date": "2025-11-07",
+    "anchor_price": 78.35,
+    "anchor_quality_score": 66,
+    "distance_pct": -3.9,
+    "abs_distance_pct": 3.9,
+    "in_observation_band": false
+  },
+  "nearest_resistance": {
+    "direction": "down",
+    "angle": 90,
+    "level": 96.62,
+    "band_low": 96.14,
+    "band_high": 97.1,
+    "ticker": "LITE",
+    "anchor_id": "lite_sample_swing_high_2026_03_18",
+    "anchor_type": "sample_swing_high",
+    "anchor_date": "2026-03-18",
+    "anchor_price": 106.7,
+    "anchor_quality_score": 70,
+    "distance_pct": 6.18,
+    "abs_distance_pct": 6.18,
+    "in_observation_band": false
+  },
+  "nearest_price_cluster": {
+    "cluster_center": 87.25,
+    "cluster_low": 87.04,
+    "cluster_high": 87.45,
+    "member_count": 2,
+    "avg_anchor_quality": 68.0,
+    "distance_pct": -4.12,
+    "abs_distance_pct": 4.12,
+    "members": [
+      {
+        "direction": "down",
+        "angle": 180,
+        "level": 87.04,
+        "band_low": 86.61,
+        "band_high": 87.48,
+        "ticker": "LITE",
+        "anchor_id": "lite_sample_swing_high_2026_03_18",
+        "anchor_type": "sample_swing_high",
+        "anchor_date": "2026-03-18",
+        "anchor_price": 106.7,
+        "anchor_quality_score": 70,
+        "distance_pct": -4.35,
+        "abs_distance_pct": 4.35,
+        "in_observation_band": false
+      },
+      {
+        "direction": "up",
+        "angle": 90,
+        "level": 87.45,
+        "band_low": 87.01,
+        "band_high": 87.89,
+        "ticker": "LITE",
+        "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+        "anchor_type": "sample_earnings_gap",
+        "anchor_date": "2025-11-07",
+        "anchor_price": 78.35,
+        "anchor_quality_score": 66,
+        "distance_pct": -3.9,
+        "abs_distance_pct": 3.9,
+        "in_observation_band": false
+      }
+    ]
+  },
+  "nearest_time_windows": [
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 60,
+      "target_date": "2026-05-17",
+      "days_to_window": -7,
+      "abs_days_to_window": 7,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 44
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 55,
+      "target_date": "2026-05-12",
+      "days_to_window": -12,
+      "abs_days_to_window": 12,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 5
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-11-07",
+      "anchor_quality_score": 66,
+      "window_days": 180,
+      "target_date": "2026-05-06",
+      "days_to_window": -18,
+      "abs_days_to_window": 18,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 45,
+      "target_date": "2026-05-02",
+      "days_to_window": -22,
+      "abs_days_to_window": 22,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 90,
+      "target_date": "2026-06-16",
+      "days_to_window": 23,
+      "abs_days_to_window": 23,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 34,
+      "target_date": "2026-04-21",
+      "days_to_window": -33,
+      "abs_days_to_window": 33,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 21,
+      "target_date": "2026-04-08",
+      "days_to_window": -46,
+      "abs_days_to_window": 46,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_major_low_2025_04_08",
+      "anchor_type": "sample_major_low",
+      "anchor_date": "2025-04-08",
+      "anchor_quality_score": 72,
+      "window_days": 360,
+      "target_date": "2026-04-03",
+      "days_to_window": -51,
+      "abs_days_to_window": 51,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 14,
+      "target_date": "2026-04-01",
+      "days_to_window": -53,
+      "abs_days_to_window": 53,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-11-07",
+      "anchor_quality_score": 66,
+      "window_days": 144,
+      "target_date": "2026-03-31",
+      "days_to_window": -54,
+      "abs_days_to_window": 54,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    }
+  ],
+  "upcoming_time_windows": [
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 90,
+      "target_date": "2026-06-16",
+      "days_to_window": 23,
+      "abs_days_to_window": 23,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-11-07",
+      "anchor_quality_score": 66,
+      "window_days": 270,
+      "target_date": "2026-08-04",
+      "days_to_window": 72,
+      "abs_days_to_window": 72,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 144,
+      "target_date": "2026-08-09",
+      "days_to_window": 77,
+      "abs_days_to_window": 77,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 180,
+      "target_date": "2026-09-14",
+      "days_to_window": 113,
+      "abs_days_to_window": 113,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-11-07",
+      "anchor_quality_score": 66,
+      "window_days": 360,
+      "target_date": "2026-11-02",
+      "days_to_window": 162,
+      "abs_days_to_window": 162,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 270,
+      "target_date": "2026-12-13",
+      "days_to_window": 203,
+      "abs_days_to_window": 203,
+      "in_time_observation_band": false,
+      "window_importance": "normal",
+      "time_window_score": 0
+    },
+    {
+      "ticker": "LITE",
+      "anchor_id": "lite_sample_swing_high_2026_03_18",
+      "anchor_type": "sample_swing_high",
+      "anchor_date": "2026-03-18",
+      "anchor_quality_score": 70,
+      "window_days": 360,
+      "target_date": "2027-03-13",
+      "days_to_window": 293,
+      "abs_days_to_window": 293,
+      "in_time_observation_band": false,
+      "window_importance": "high",
+      "time_window_score": 0
+    }
+  ],
+  "nearest_time_cluster": {
+    "cluster_center_date": "2026-04-01",
+    "member_count": 3,
+    "avg_anchor_quality": 69.3,
+    "nearest_abs_days": 51,
+    "cluster_score": 0,
+    "members": [
+      {
+        "ticker": "LITE",
+        "anchor_id": "lite_sample_earnings_gap_2025_11_07",
+        "anchor_type": "sample_earnings_gap",
+        "anchor_date": "2025-11-07",
+        "anchor_quality_score": 66,
+        "window_days": 144,
+        "target_date": "2026-03-31",
+        "days_to_window": -54,
+        "abs_days_to_window": 54,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 0
+      },
+      {
+        "ticker": "LITE",
+        "anchor_id": "lite_sample_swing_high_2026_03_18",
+        "anchor_type": "sample_swing_high",
+        "anchor_date": "2026-03-18",
+        "anchor_quality_score": 70,
+        "window_days": 14,
+        "target_date": "2026-04-01",
+        "days_to_window": -53,
+        "abs_days_to_window": 53,
+        "in_time_observation_band": false,
+        "window_importance": "normal",
+        "time_window_score": 0
+      },
+      {
+        "ticker": "LITE",
+        "anchor_id": "lite_sample_major_low_2025_04_08",
+        "anchor_type": "sample_major_low",
+        "anchor_date": "2025-04-08",
+        "anchor_quality_score": 72,
+        "window_days": 360,
+        "target_date": "2026-04-03",
+        "days_to_window": -51,
+        "abs_days_to_window": 51,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 0
+      }
+    ]
+  },
+  "scores": {
+    "gann_price_score": 30,
+    "gann_time_score": 33,
+    "avwap_confirmation_score": 35,
+    "rsi_momentum_score": 38,
+    "tcg_price_action_score": 35,
+    "gamma_event_score": 35,
+    "volume_confirmation_score": 35,
+    "unified_gann_resonance_score": 33,
+    "resonance_state": "no_actionable_resonance"
+  },
+  "confirmation_gates": {
+    "avwap_confirmation_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "earnings AVWAP",
+        "major low AVWAP",
+        "swing high AVWAP"
+      ]
+    },
+    "rsi_momentum_score": {
+      "score": 38,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "daily RSI",
+        "4H RSI",
+        "RSI divergence"
+      ]
+    },
+    "tcg_price_action_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "HH/HL",
+        "8/12 EMA",
+        "inside bar/equilibrium"
+      ]
+    },
+    "gamma_event_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "options wall",
+        "IV",
+        "earnings/event"
+      ]
+    },
+    "volume_confirmation_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "relative volume",
+        "volume exhaustion",
+        "accumulation"
+      ]
+    }
+  },
+  "hard_missing_data": [
+    "Live price not connected",
+    "Verified anchors not confirmed",
+    "AVWAP not connected",
+    "RSI not connected",
+    "Gamma/options not connected"
+  ],
+  "rules": [
+    "LITE is an optical recovery / AI connectivity peer; it must be compared against CRDO, COHR, ANET and AVGO.",
+    "Gann cannot trigger trade alone.",
+    "Build requires Gann support/time plus AVWAP reclaim and relative strength improvement vs CRDO/COHR.",
+    "Trim/watch requires Gann resistance/time plus failed reclaim, RS deterioration or guidance weakness.",
+    "Sample anchors must be replaced with verified chart anchors before use."
+  ],
+  "next": [
+    "Verify LITE anchors from actual chart data",
+    "Register LITE as Gann Live",
+    "Regenerate generic pages with CRDO/NVDA/LITE Gann Live",
+    "Build Gann anchor verification checklist"
+  ]
+}

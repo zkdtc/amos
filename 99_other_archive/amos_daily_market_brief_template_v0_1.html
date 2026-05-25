@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Daily Market Brief Template v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 10%,rgba(255,209,102,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:20px}
+.card,.pos,.action{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box li,.box p{color:#a9b8d8}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.stat{padding:15px}.stat b{display:block;font-size:20px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--muted);text-transform:uppercase}
+.positions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.pos{padding:14px}.pos-head{display:flex;justify-content:space-between}.pos-head b{font-size:20px}.pos-head span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);font-size:10px}.role{color:var(--muted);font-size:12px;margin:5px 0}.bias{color:var(--cyan);font-weight:800}.pos p{color:#a9b8d8}.pos small{color:var(--red)}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.action{padding:14px}.action h3{margin:0 0 8px;color:var(--gold);font-size:13px}.action li{color:#a9b8d8;margin:5px 0}
+.guard{border-color:rgba(255,77,109,.45)}.guard li{color:#ffb3be!important}
+@media(max-width:1100px){.grid,.positions,.actions,.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.grid,.positions,.actions,.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Daily Report System · v0.1</div>
+    <h1>Daily Market Brief Template</h1>
+    <div class="motto">盘前/盘后/周末复盘报告结构：状态、证据、反证、行动、失效条件。</div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><span>Mode</span><b>pre_market_sample</b></div>
+    <div class="card stat"><span>Regime</span><b>Liquidity expansion with rising crowding</b></div>
+    <div class="card stat"><span>Macro Score</span><b>62</b></div>
+    <div class="card stat"><span>Beta Ceiling</span><b>1.1-1.3</b></div>
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Market Regime</h2>
+      <p><b>Risk Bias:</b> Selective risk-on, no blind high-beta chase</p>
+      <h3>Supporting Evidence</h3>
+      <ul><li>AI Infra remains primary theater in current model</li><li>Space/Quantum/Power rising appears more like expansion than confirmed rotation</li><li>Risk appetite not broken in sample state</li></ul>
+      <h3>Counter Evidence</h3>
+      <ul><li>High-beta second-line names may be increasingly crowded</li><li>Event pressure around NVDA/OPEX can produce good-news fade</li><li>Real-time 10Y/MOVE/DXY data not yet connected</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Event Pressure</h2>
+      <p><b>Highest Pressure:</b> NVDA / AI Infra read-through + OPEX/Gamma</p>
+      <p><b>Affected:</b> CRDO, LITE, NVDA, IREN</p>
+      <ul><li>Does good news create continuation or fade?</li><li>Does Optical follow leaders or diverge?</li><li>Does Gamma pin or release volatility?</li></ul>
+    </div>
+  </div>
+
+  <div class="card box" style="margin-bottom:14px">
+    <h2 style="color:var(--green)">Capital Flow</h2>
+    <p><b>Primary Theater:</b> AI Infra · <b>Rotation Type:</b> Expansion with crowding watch</p>
+    <p><b>Leader Chain:</b> NVDA → AVGO → ANET → CRDO → LITE</p>
+  </div>
+
+  <div class="positions">
+    
+    <div class="pos">
+      <div class="pos-head"><b>CRDO</b><span>orange watch</span></div>
+      <div class="role">swing/core candidate · strong but event-sensitive</div>
+      <div class="bias">Hold / No Chase / Trim if exhaustion</div>
+      <p>AI Infra + Optical strong, but valuation/crowding/event pressure elevated.</p>
+      <small>Invalidation: Breaks AVWAP, loses relative strength, revisions down.</small>
+    </div>
+    
+    <div class="pos">
+      <div class="pos-head"><b>LITE</b><span>yellow</span></div>
+      <div class="role">swing recovery · watch relative strength</div>
+      <div class="bias">Hold or migrate if lagging</div>
+      <p>Optical theme supports it, but opportunity cost rises if it lags CRDO/COHR.</p>
+      <small>Invalidation: Weak guidance, margin pressure, underperformance vs peers.</small>
+    </div>
+    
+    <div class="pos">
+      <div class="pos-head"><b>IREN</b><span>yellow/orange</span></div>
+      <div class="role">swing/tactical · BTC/AI compute reset watch</div>
+      <div class="bias">Wait for maturity</div>
+      <p>Dual upside but liquidity/BTC risk not mature enough.</p>
+      <small>Invalidation: BTC loses structure or AI compute thesis weakens.</small>
+    </div>
+    
+    <div class="pos">
+      <div class="pos-head"><b>HOOD</b><span>yellow</span></div>
+      <div class="role">watchlist build candidate · headline dip reset watch</div>
+      <div class="bias">Wait</div>
+      <p>BTC finance opportunity possible, but headline dip alone is not maturity.</p>
+      <small>Invalidation: Regulatory pressure expands or BTC remains liquidation regime.</small>
+    </div>
+    
+  </div>
+
+  <div class="actions">
+    <div class='action'><h3>HOLD</h3><ul><li>NVDA</li><li>CRDO</li><li>LITE</li></ul></div><div class='action'><h3>TRIM</h3><ul><li>CRDO if Gann/RSI/event exhaustion confirms</li><li>LITE if Optical stays strong but LITE lags</li></ul></div><div class='action'><h3>WAIT</h3><ul><li>HOOD</li><li>IREN</li></ul></div><div class='action'><h3>NO_TRADE_RULES</h3><ul><li>No chasing high-beta tail names after missed ASTS-like move</li><li>No leverage</li><li>No buying HOOD/IREN solely because of headline dip</li><li>No turning failed swing into core</li></ul></div>
+  </div>
+
+  <div class="card box guard">
+    <h2 style="color:var(--red)">Behavior Guardrails</h2>
+    <p><b>Main Risk:</b> Chasing new hot themes or refusing to trim overextended winners.</p>
+    <h3>Forbidden Actions</h3>
+    <ul><li>Add leverage</li><li>Full-size into headline dip</li><li>Chase tail names without leader confirmation</li></ul>
+    <h3>Discipline Reminders</h3>
+    <ul><li>High位利润是真钱，Narrative未来不是现金。</li><li>Panic maturity requires evidence, not just red candles.</li><li>Healthy leader > low-quality tail.</li></ul>
+  </div>
+</div>
+</body>
+</html>

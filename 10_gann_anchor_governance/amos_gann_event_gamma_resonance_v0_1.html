@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · Gann × Event × Gamma Resonance Map v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 18% 0%,rgba(255,77,109,.08),transparent 28%),radial-gradient(circle at 84% 12%,rgba(35,217,255,.08),transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1500px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}
+.motto{font-size:15px;color:var(--gold);font-weight:800}
+.pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
+.layer{padding:14px;min-height:230px;position:relative;overflow:hidden}
+.layer:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--cyan)}
+.layer h2{font-size:14px;margin:0 0 8px}
+.layer .q{color:var(--gold);font-weight:900;margin-bottom:8px}
+.layer ul{padding-left:17px;color:#a9b8d8;margin:0}
+.l1:before{background:var(--red)}.l2:before{background:var(--gold)}.l3:before{background:var(--violet)}.l4:before{background:var(--cyan)}.l5:before{background:var(--green)}.l6:before{background:var(--blue)}
+.map{display:grid;grid-template-columns:1.2fr 1.4fr 1.2fr;gap:12px;margin-bottom:14px}
+.zone{padding:16px}
+.zone h3{margin:0 0 10px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.ladder{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:90px 1fr 90px;gap:8px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px;background:rgba(255,255,255,.02)}
+.bar{height:7px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.tag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--muted);text-align:right}
+.setup{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.setup .card{padding:14px}
+.setup h3{margin:0 0 8px;font-size:13px}
+.setup p{color:#a9b8d8;margin:0}
+@media(max-width:1200px){.pipeline,.setup{grid-template-columns:1fr 1fr}.map{grid-template-columns:1fr}}
+@media(max-width:700px){.pipeline,.setup{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Execution Layer · v0.1</div>
+    <h1>Gann × Event × Gamma Resonance Map</h1>
+    <div class="motto">江恩给候选窗口 · 事件/Gamma解释波动释放 · Price Action确认行动</div>
+  </div>
+
+  <div class="pipeline">
+    <div class="card layer l1"><h2>1. Gann Time</h2><div class="q">时间到了吗？</div><ul><li>7/14/21/34/55</li><li>60/90/144/180/360</li><li>财报周年</li><li>Time = Price</li></ul></div>
+    <div class="card layer l2"><h2>2. Gann Price</h2><div class="q">价格到位吗？</div><ul><li>九方图</li><li>多锚点</li><li>角度线</li><li>±0.5%区间</li></ul></div>
+    <div class="card layer l3"><h2>3. Event Pressure</h2><div class="q">事件临近吗？</div><ul><li>财报</li><li>NVDA/AI事件</li><li>FOMC/CPI</li><li>OPEX</li></ul></div>
+    <div class="card layer l4"><h2>4. Gamma</h2><div class="q">波动被压制还是放大？</div><ul><li>Call wall</li><li>Put wall</li><li>Max pain</li><li>Dealer gamma</li></ul></div>
+    <div class="card layer l5"><h2>5. Price Action</h2><div class="q">结构确认了吗？</div><ul><li>HH/HL or LH/LL</li><li>8/12EMA</li><li>AVWAP</li><li>RSI背离</li></ul></div>
+    <div class="card layer l6"><h2>6. Trigger</h2><div class="q">该行动吗？</div><ul><li>Panic Buy</li><li>Breakout Add</li><li>Trim</li><li>Exit / Wait</li></ul></div>
+  </div>
+
+  <div class="map">
+    <div class="card zone"><h3 style="color:var(--red)">Resistance / Trim Side</h3><div class="ladder">
+      <div class="row"><b>+360°</b><div class="bar"><i style="width:96%;background:var(--red)"></i></div><div class="tag">Major top</div></div>
+      <div class="row"><b>+180°</b><div class="bar"><i style="width:82%;background:var(--orange)"></i></div><div class="tag">Trim</div></div>
+      <div class="row"><b>+90°</b><div class="bar"><i style="width:70%;background:var(--gold)"></i></div><div class="tag">Watch</div></div>
+    </div></div>
+    <div class="card zone"><h3 style="color:var(--cyan)">Resonance Formula v0</h3>
+      <p><b>Score =</b></p>
+      <p>0.25 × Gann Time<br/>0.25 × Gann Price<br/>0.15 × Event Pressure<br/>0.15 × Gamma Structure<br/>0.20 × Price Action Confirmation</p>
+      <p style="color:#a9b8d8">Gann权重高，但必须由Price Action确认，防止盲目相信点位。</p>
+    </div>
+    <div class="card zone"><h3 style="color:var(--green)">Support / Panic Buy Side</h3><div class="ladder">
+      <div class="row"><b>-90°</b><div class="bar"><i style="width:58%;background:var(--cyan)"></i></div><div class="tag">First support</div></div>
+      <div class="row"><b>-180°</b><div class="bar"><i style="width:42%;background:var(--green)"></i></div><div class="tag">Buy zone</div></div>
+      <div class="row"><b>-360°</b><div class="bar"><i style="width:25%;background:var(--red)"></i></div><div class="tag">Stress</div></div>
+    </div></div>
+  </div>
+
+  <div class="setup">
+    <div class="card"><h3 style="color:var(--green)">Panic Buy</h3><p>Gann支撑+时间窗+恐慌成熟+RSI背离+AVWAP reclaim。</p></div>
+    <div class="card"><h3 style="color:var(--cyan)">Breakout Add</h3><p>Regime支持高Beta，放量突破Gann压力，Gamma支持。</p></div>
+    <div class="card"><h3 style="color:var(--gold)">Trim Zone</h3><p>Gann压力+时间窗+RSI超买+量价背离+拥挤。</p></div>
+    <div class="card"><h3 style="color:var(--violet)">Hedge Zone</h3><p>核心逻辑仍在，但估值扩张、事件风险、Gamma转负。</p></div>
+    <div class="card"><h3 style="color:var(--red)">Exit Zone</h3><p>基本面破坏，LH/LL确认，AVWAP反抽失败，Gann支撑失效。</p></div>
+  </div>
+</div>
+</body>
+</html>

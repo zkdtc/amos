@@ -1,0 +1,20 @@
+{
+  "version": "AMOS Generic Page + Gann Zone Auto-Insertion v0.2",
+  "created": "2026-05-24",
+  "source_files": [
+    "amos_sample_data_fixture_v0_1.json",
+    "amos_scoring_connected_dashboard_v0_2.json",
+    "amos_unified_gann_resonance_engine_v0_4.json"
+  ],
+  "generated_pages": [
+    "nvda_stock_page_gann_auto_v0_2.html",
+    "crdo_stock_page_gann_auto_v0_2.html",
+    "lite_stock_page_gann_auto_v0_2.html",
+    "iren_stock_page_gann_auto_v0_2.html",
+    "hood_stock_page_gann_auto_v0_2.html"
+  ],
+  "gann_live_tickers": [
+    "CRDO"
+  ],
+  "rule": "If ticker has Gann engine data, insert Gann Research Zone; otherwise display Gann Pending block."
+}

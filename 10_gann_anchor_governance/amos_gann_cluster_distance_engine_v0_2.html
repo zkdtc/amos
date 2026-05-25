@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Gann Cluster & Distance Engine v0.2</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(224,95,106,.12),transparent 30%),radial-gradient(circle at 88% 10%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--red);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}
+.score{font-size:42px;font-weight:900;color:var(--gold)}
+.level-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:12px;margin-bottom:14px}
+.level-box{border:1px solid var(--line);border-radius:12px;padding:14px;background:rgba(255,255,255,.02)}
+.level-box b{display:block;font-size:34px;color:var(--cyan)}.level-box span{display:block;color:var(--soft)}.level-box small{display:block;color:var(--muted);margin-top:6px}
+.muted{color:var(--muted)}.box li,.box p{color:var(--soft)}
+table{width:100%;border-collapse:collapse}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65);vertical-align:top}
+.table-card{padding:16px}
+@media(max-width:1100px){.top,.level-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Gann Research Tool · v0.2</div>
+    <h1>Gann Cluster & Distance Engine</h1>
+    <div class="motto">当前价格 → 最近支撑/压力 → 多锚点密集区 → 观察带 → Gann Price Score。</div>
+  </div>
+
+  <div class="top">
+    <div class="card box"><h2>Ticker</h2><div class="score">CRDO</div><p>Sample current price: 78.4</p></div>
+    <div class="card box"><h2>Gann Price Score</h2><div class="score">62</div><p>watch_zone</p></div>
+    <div class="card box"><h2>Cluster Score</h2><div class="score">26</div><p>Cluster band 1.0%</p></div>
+    <div class="card box"><h2>Observation Band</h2><div class="score">81</div><p>Level tolerance ±0.5%</p></div>
+  </div>
+
+  <div class="level-grid">
+    <div class="card box">
+      <h2 style="color:var(--green)">Nearest Support</h2>
+      
+    <div class="level-box">
+      <b>77.64</b>
+      <span>sample_major_high · 90° · down</span>
+      <small>Distance -0.97% · Zone 77.25 - 78.03</small>
+    </div>
+    
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--red)">Nearest Resistance</h2>
+      
+    <div class="level-box">
+      <b>81.28</b>
+      <span>sample_earnings_gap · 180° · up</span>
+      <small>Distance 3.67% · Zone 80.87 - 81.69</small>
+    </div>
+    
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Nearest Cluster</h2>
+      <p>Center: <b style="color:var(--gold);font-size:22px">90.98</b></p>
+      <ul><li>90.55 · sample_earnings_gap · 270° · up</li><li>91.42 · sample_major_high · 45° · up</li></ul>
+    </div>
+  </div>
+
+  <div class="card table-card">
+    <div class="eyebrow">Closest Gann Levels</div>
+    <table>
+      <thead><tr><th>Level</th><th>Distance</th><th>Anchor</th><th>Angle</th><th>Direction</th><th>Observation Zone</th><th>Active</th></tr></thead>
+      <tbody>
+    <tr>
+      <td>77.64</td>
+      <td>-0.97%</td>
+      <td>sample_major_high</td>
+      <td>90°</td>
+      <td>down</td>
+      <td>77.25 - 78.03</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>81.28</td>
+      <td>3.67%</td>
+      <td>sample_earnings_gap</td>
+      <td>180°</td>
+      <td>up</td>
+      <td>80.87 - 81.69</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>82.11</td>
+      <td>4.73%</td>
+      <td>sample_major_high</td>
+      <td>45°</td>
+      <td>down</td>
+      <td>81.7 - 82.52</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>72.52</td>
+      <td>-7.5%</td>
+      <td>sample_earnings_gap</td>
+      <td>90°</td>
+      <td>up</td>
+      <td>72.15 - 72.88</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>69.08</td>
+      <td>-11.89%</td>
+      <td>sample_major_high</td>
+      <td>180°</td>
+      <td>down</td>
+      <td>68.73 - 69.42</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>68.32</td>
+      <td>-12.86%</td>
+      <td>sample_earnings_gap</td>
+      <td>45°</td>
+      <td>up</td>
+      <td>67.98 - 68.66</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>90.55</td>
+      <td>15.5%</td>
+      <td>sample_earnings_gap</td>
+      <td>270°</td>
+      <td>up</td>
+      <td>90.09 - 91.0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>91.42</td>
+      <td>16.61%</td>
+      <td>sample_major_high</td>
+      <td>45°</td>
+      <td>up</td>
+      <td>90.96 - 91.88</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>93.43</td>
+      <td>19.17%</td>
+      <td>sample_major_low</td>
+      <td>720°</td>
+      <td>up</td>
+      <td>92.96 - 93.89</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>61.02</td>
+      <td>-22.17%</td>
+      <td>sample_major_high</td>
+      <td>270°</td>
+      <td>down</td>
+      <td>60.71 - 61.32</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>96.26</td>
+      <td>22.78%</td>
+      <td>sample_major_high</td>
+      <td>90°</td>
+      <td>up</td>
+      <td>95.78 - 96.74</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>60.3</td>
+      <td>-23.09%</td>
+      <td>sample_earnings_gap</td>
+      <td>45°</td>
+      <td>down</td>
+      <td>60.0 - 60.61</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>58.76</td>
+      <td>-25.05%</td>
+      <td>sample_major_low</td>
+      <td>360°</td>
+      <td>up</td>
+      <td>58.47 - 59.06</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>100.31</td>
+      <td>27.95%</td>
+      <td>sample_earnings_gap</td>
+      <td>360°</td>
+      <td>up</td>
+      <td>99.81 - 100.81</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>56.48</td>
+      <td>-27.96%</td>
+      <td>sample_earnings_gap</td>
+      <td>90°</td>
+      <td>down</td>
+      <td>56.2 - 56.77</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>53.45</td>
+      <td>-31.82%</td>
+      <td>sample_major_high</td>
+      <td>360°</td>
+      <td>down</td>
+      <td>53.19 - 53.72</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>51.35</td>
+      <td>-34.5%</td>
+      <td>sample_major_low</td>
+      <td>270°</td>
+      <td>up</td>
+      <td>51.09 - 51.6</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>106.32</td>
+      <td>35.61%</td>
+      <td>sample_major_high</td>
+      <td>180°</td>
+      <td>up</td>
+      <td>105.79 - 106.85</td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

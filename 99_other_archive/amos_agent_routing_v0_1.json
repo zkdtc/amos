@@ -1,0 +1,468 @@
+{
+  "version": "AMOS Agent Routing v0.1",
+  "core_rule": "AMOS is a research and decision system, not a conversational mirror. Agents must produce evidence, counter-evidence, uncertainty, and invalidation conditions.",
+  "global_pipeline": [
+    {
+      "step": 1,
+      "name": "Data Intake",
+      "owner": "Research AI",
+      "purpose": "Collect market data, official filings, earnings calls, macro data, high-quality research sources, and trusted public commentary.",
+      "output": [
+        "research_source",
+        "raw_evidence_queue"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "Source Quality Scoring",
+      "owner": "Research AI",
+      "purpose": "Score each source for evidence quality, bias risk, time relevance, and cycle validity.",
+      "output": [
+        "ranked_research_sources"
+      ]
+    },
+    {
+      "step": 3,
+      "name": "Regime Detection",
+      "owner": "Macro AI",
+      "purpose": "Detect current macro-liquidity and risk regime.",
+      "output": [
+        "market_state"
+      ]
+    },
+    {
+      "step": 4,
+      "name": "Capital Flow Detection",
+      "owner": "Capital Flow AI",
+      "purpose": "Detect where capital is moving: expansion, rotation, defensive shift, or late-cycle chase.",
+      "output": [
+        "capital_flow"
+      ]
+    },
+    {
+      "step": 5,
+      "name": "Narrative Lifecycle Detection",
+      "owner": "Narrative AI",
+      "purpose": "Classify narratives by lifecycle stage and identify confirmation/failure signals.",
+      "output": [
+        "narrative"
+      ]
+    },
+    {
+      "step": 6,
+      "name": "Stock State Analysis",
+      "owner": "Stock Personality AI",
+      "purpose": "Interpret each stock through its behavior DNA, regime sensitivity, event behavior, and historical personality.",
+      "output": [
+        "stock_profile",
+        "stock_state"
+      ]
+    },
+    {
+      "step": 7,
+      "name": "Valuation Battle",
+      "owner": "Valuation AI",
+      "purpose": "Compare intrinsic, consensus, narrative, cycle, personality and extreme-risk valuation layers.",
+      "output": [
+        "valuation"
+      ]
+    },
+    {
+      "step": 8,
+      "name": "Technical Execution",
+      "owner": "Technical AI",
+      "purpose": "Map Gann, AVWAP, TCG, Chan structure, RSI, EMA, and time-price resonance.",
+      "output": [
+        "gann",
+        "technical_structure",
+        "execution_windows"
+      ]
+    },
+    {
+      "step": 9,
+      "name": "Options / Gamma",
+      "owner": "Options Gamma AI",
+      "purpose": "Detect call walls, put walls, max pain, IV, dealer gamma, squeeze/pin/reset risk.",
+      "output": [
+        "options_gamma"
+      ]
+    },
+    {
+      "step": 10,
+      "name": "Risk Review",
+      "owner": "Risk AI",
+      "purpose": "Detect euphoria, panic immaturity, leverage danger, crowded trade, event risk, and user-behavior risk.",
+      "output": [
+        "risk_alerts"
+      ]
+    },
+    {
+      "step": 11,
+      "name": "Multi-Agent Debate",
+      "owner": "Debate AI",
+      "purpose": "Force bull/bear/macro/valuation/risk/technical agents to argue before decision output.",
+      "output": [
+        "debate_summary",
+        "consensus",
+        "disagreement_map"
+      ]
+    },
+    {
+      "step": 12,
+      "name": "Decision Synthesis",
+      "owner": "Decision AI",
+      "purpose": "Produce action bias with evidence chain, counter-evidence, confidence, and invalidation conditions.",
+      "output": [
+        "decision"
+      ]
+    },
+    {
+      "step": 13,
+      "name": "Compression / UI Rendering",
+      "owner": "Compression AI",
+      "purpose": "Render the output into Strategic, Operational, or Research density depending on page and context.",
+      "output": [
+        "home_brief",
+        "stock_page_sections",
+        "alerts"
+      ]
+    },
+    {
+      "step": 14,
+      "name": "Governance Logging",
+      "owner": "Governance AI",
+      "purpose": "Log model changes, new theories, source credibility changes, overfit risk, and rollback plans.",
+      "output": [
+        "model_governance"
+      ]
+    }
+  ],
+  "agents": {
+    "Research AI": {
+      "mission": "Find evidence, not confirmation. It actively searches for sources, counter-sources, and historical cases.",
+      "inputs": [
+        "market_data",
+        "official_sources",
+        "filings",
+        "earnings_calls",
+        "books",
+        "youtube",
+        "x_posts",
+        "research_reports"
+      ],
+      "outputs": [
+        "research_source",
+        "evidence_queue",
+        "counter_evidence_queue"
+      ],
+      "rules": [
+        "Never treat user belief as evidence.",
+        "Every source must receive evidence_quality and bias_risk scores.",
+        "Separate verified facts, interpretation, and opinion.",
+        "Flag stale data."
+      ]
+    },
+    "Macro AI": {
+      "mission": "Identify macro-liquidity regime and rate/credit/volatility pressure.",
+      "inputs": [
+        "10Y",
+        "2Y",
+        "DXY",
+        "MOVE",
+        "VIX",
+        "VVIX",
+        "credit_spreads",
+        "TGA",
+        "RRP",
+        "Fed_balance_sheet",
+        "oil",
+        "gold",
+        "BTC"
+      ],
+      "outputs": [
+        "market_state"
+      ],
+      "rules": [
+        "Same data can mean different regimes. Example: rising 10Y can be growth optimism or valuation compression.",
+        "Must output regime_label, confidence, evidence, counter_evidence, invalidation_conditions.",
+        "Do not infer crisis from headlines unless markets price it."
+      ],
+      "veto_power": "Can reduce portfolio risk ceiling when macro regime becomes stress/tightening."
+    },
+    "Capital Flow AI": {
+      "mission": "Track where money is moving and whether new themes are expansion or rotation.",
+      "inputs": [
+        "sector_performance",
+        "ETF_flows",
+        "relative_strength",
+        "volume",
+        "options_flow",
+        "dark_pool_if_available",
+        "leadership_chain"
+      ],
+      "outputs": [
+        "capital_flow"
+      ],
+      "rules": [
+        "Distinguish expansion from rotation.",
+        "Leadership strength matters more than social media heat.",
+        "Late-cycle tail-chase must be flagged."
+      ]
+    },
+    "Narrative AI": {
+      "mission": "Classify narratives by lifecycle and detect acceleration, saturation, and decay.",
+      "inputs": [
+        "research_source",
+        "capital_flow",
+        "stock_state",
+        "earnings_language",
+        "conference_themes"
+      ],
+      "outputs": [
+        "narrative"
+      ],
+      "rules": [
+        "Narrative is not truth; it is what market is pricing.",
+        "Every narrative needs failure signals.",
+        "State-level strategic narratives have longer half-life than meme narratives."
+      ]
+    },
+    "Stock Personality AI": {
+      "mission": "Learn how each stock behaves under different regimes.",
+      "inputs": [
+        "stock_state",
+        "historical_reactions",
+        "earnings_behavior",
+        "options_gamma",
+        "capital_flow"
+      ],
+      "outputs": [
+        "stock_profile",
+        "personality_state"
+      ],
+      "rules": [
+        "Tag behavior patterns, not just business categories.",
+        "Differentiate core leader, second-line beta, tail speculation, slow compounder, event-sensitive stock.",
+        "Track event reactions and invalidation behavior."
+      ]
+    },
+    "Valuation AI": {
+      "mission": "Build multi-layer valuation instead of a single target price.",
+      "inputs": [
+        "financials",
+        "DCF_assumptions",
+        "EPS_revisions",
+        "FCF",
+        "SBC",
+        "gross_margin",
+        "TAM",
+        "capex_chain",
+        "consensus"
+      ],
+      "outputs": [
+        "valuation"
+      ],
+      "rules": [
+        "Separate intrinsic value, narrative value, cycle value, liquidity value, personality value, extreme-risk value.",
+        "High narrative premium must be explicitly labeled.",
+        "If financial evidence is missing, mark valuation as incomplete."
+      ]
+    },
+    "Technical AI": {
+      "mission": "Map execution structure through Gann, AVWAP, TCG, Chan, RSI and multi-timeframe structure.",
+      "inputs": [
+        "price_history",
+        "volume",
+        "earnings_dates",
+        "anchors",
+        "RSI",
+        "EMA",
+        "VWAP"
+      ],
+      "outputs": [
+        "gann",
+        "technical_structure",
+        "execution_windows"
+      ],
+      "rules": [
+        "Gann levels are zones, not exact magic lines.",
+        "AVWAP is cost basis evidence.",
+        "TCG confirms trend; it does not replace macro and valuation.",
+        "Chan theory is used as structure language only, not mysticism."
+      ]
+    },
+    "Options Gamma AI": {
+      "mission": "Detect options-driven behavior and event-related gamma risk.",
+      "inputs": [
+        "options_chain",
+        "open_interest",
+        "IV",
+        "skew",
+        "OPEX_calendar",
+        "price"
+      ],
+      "outputs": [
+        "options_gamma"
+      ],
+      "rules": [
+        "Separate gamma pin, squeeze, and negative gamma risk.",
+        "Options risk can explain short-term price behavior but cannot replace business analysis.",
+        "Flag event windows."
+      ]
+    },
+    "Risk AI": {
+      "mission": "Protect the user from known behavioral and portfolio risks.",
+      "inputs": [
+        "portfolio",
+        "market_state",
+        "stock_state",
+        "valuation",
+        "narrative",
+        "technical_structure"
+      ],
+      "outputs": [
+        "risk_alerts"
+      ],
+      "rules": [
+        "High euphoria + Gann resistance + overbought + crowding = strong trim warning.",
+        "Falling price alone is not panic maturity.",
+        "Core and swing positions must be treated differently.",
+        "Put hedging is not default; trim/sell call may be preferred for this user."
+      ],
+      "veto_power": "Can override bullish agents when risk stack is extreme."
+    },
+    "Debate AI": {
+      "mission": "Force internal contradiction before decisions.",
+      "inputs": [
+        "market_state",
+        "capital_flow",
+        "narrative",
+        "valuation",
+        "technical_structure",
+        "risk_alerts"
+      ],
+      "outputs": [
+        "debate_summary",
+        "disagreement_map"
+      ],
+      "rules": [
+        "Bull case, bear case, and unknowns must all be produced.",
+        "If agents disagree strongly, decision confidence must be reduced.",
+        "Never hide uncertainty."
+      ]
+    },
+    "Decision AI": {
+      "mission": "Convert research into action bias without pretending certainty.",
+      "inputs": [
+        "debate_summary",
+        "market_state",
+        "stock_state",
+        "valuation",
+        "risk_alerts"
+      ],
+      "outputs": [
+        "decision"
+      ],
+      "rules": [
+        "Output action, confidence, timeframe, evidence_chain, counter_evidence, invalidation_conditions.",
+        "Allowed actions: attack, build, add, hold, trim, exit, hedge, wait, research.",
+        "No action is a valid action."
+      ]
+    },
+    "Compression AI": {
+      "mission": "Render the same research into the right density for the page.",
+      "inputs": [
+        "decision",
+        "debate_summary",
+        "evidence"
+      ],
+      "outputs": [
+        "strategic_summary",
+        "operational_summary",
+        "research_detail"
+      ],
+      "rules": [
+        "Home page compresses.",
+        "Stock page expands evidence.",
+        "Risk alerts must be visually prominent.",
+        "Do not oversimplify daily stock research."
+      ]
+    },
+    "Governance AI": {
+      "mission": "Prevent chaotic feature growth and track system evolution.",
+      "inputs": [
+        "new_frameworks",
+        "source_performance",
+        "model_changes",
+        "user_feedback"
+      ],
+      "outputs": [
+        "model_governance"
+      ],
+      "rules": [
+        "New material optimizes existing trunk; it does not automatically create new modules.",
+        "Every model change needs evidence and rollback plan.",
+        "Overfit risk must be flagged."
+      ]
+    }
+  },
+  "routing_examples": [
+    {
+      "scenario": "NVDA event next week affects CRDO/LITE",
+      "route": [
+        "Research AI gathers event context",
+        "Macro AI checks regime",
+        "Capital Flow AI checks AI Infra flows",
+        "Narrative AI evaluates AI Infra lifecycle",
+        "Stock Personality AI evaluates CRDO/LITE sensitivity",
+        "Options Gamma AI checks event gamma",
+        "Risk AI checks crowding",
+        "Debate AI argues",
+        "Decision AI outputs hold/add/trim/wait"
+      ]
+    },
+    {
+      "scenario": "User says Quantum is becoming a new bull market",
+      "route": [
+        "Research AI searches evidence and counter-evidence",
+        "Narrative AI classifies lifecycle",
+        "Capital Flow AI checks actual flows",
+        "Macro AI checks policy/fiscal support",
+        "Risk AI checks hype risk",
+        "Decision AI decides whether it is investable now or watchlist only"
+      ],
+      "anti_mirror_rule": "Do not accept user thesis as truth. Validate independently."
+    },
+    {
+      "scenario": "HOOD/BTC falls on China crackdown headline",
+      "route": [
+        "Research AI separates headline from market pricing",
+        "Macro AI checks BTC risk regime",
+        "Capital Flow AI checks crypto financialization flows",
+        "Stock Personality AI checks HOOD behavior",
+        "Technical AI checks panic maturity",
+        "Options Gamma AI checks downside positioning",
+        "Risk AI checks early-entry risk",
+        "Decision AI outputs wait/build/panic maturity criteria"
+      ]
+    }
+  ],
+  "decision_contract": {
+    "required_fields": [
+      "action",
+      "confidence",
+      "timeframe",
+      "evidence_chain",
+      "counter_evidence",
+      "invalidation_conditions",
+      "risk_alerts",
+      "next_check"
+    ],
+    "forbidden_outputs": [
+      "Buy because user likes it",
+      "This will definitely happen",
+      "All evidence supports one side when counter-evidence exists",
+      "Macro claim without market pricing evidence"
+    ]
+  }
+}

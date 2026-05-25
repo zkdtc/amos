@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS CRDO Peer Map v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--orange:#ff9f43}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 10%,rgba(255,209,102,.06),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1420px;margin:0 auto;padding:20px}.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.peer{padding:16px}.peer b{display:block;font-size:26px;color:var(--gold)}.peer span{color:var(--soft)}
+.box{padding:18px;margin-bottom:14px}.box h2{font-size:16px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box li,.box p{color:var(--soft)}
+table{width:100%;border-collapse:collapse}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65)}
+@media(max-width:1000px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Peer Map · v0.1</div>
+    <h1>CRDO Peer Map</h1>
+    <div class="motto">AI 光学 / 连接 / 网络 peer map：龙头、跟随、掉队与迁移规则。</div>
+  </div>
+  <div class="grid">
+    <div class="card peer"><b>NVDA</b><span>AI Anchor</span></div>
+    <div class="card peer"><b>AVGO</b><span>ASIC / Networking</span></div>
+    <div class="card peer"><b>ANET</b><span>Cloud Networking</span></div>
+    <div class="card peer"><b>CRDO</b><span>Connectivity / DSP</span></div>
+    <div class="card peer"><b>COHR</b><span>Optical Components</span></div>
+    <div class="card peer"><b>LITE</b><span>Optical Recovery</span></div>
+  </div>
+  <div class="card box">
+    <h2>Score Logic</h2>
+    <table>
+      <thead><tr><th>Score</th><th>Formula</th></tr></thead>
+      <tbody>
+        <tr><td>Composite Leader Score</td><td>Leadership + RS vs QQQ + RS vs peers + Revenue Visibility + Margin Quality + Valuation Comfort</td></tr>
+        <tr><td>Risk Adjusted Score</td><td>Composite minus Event Pressure, Crowding Risk and Execution Risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card box">
+    <h2>Migration Principle</h2>
+    <p>CRDO 继续领先时可以作为高 Beta runner；LITE/COHR 补涨时看 rotation；ANET/AVGO/NVDA 更适合作为降低 Beta 的 AI Infra 承接；结构破坏时迁移到现金。</p>
+  </div>
+</div>
+</body>
+</html>

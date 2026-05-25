@@ -1,0 +1,17 @@
+{
+  "version": "AMOS Daily Brief Generator from Manual Packet v0.2",
+  "source_workbook": "amos_manual_data_input_sheet_v0_1.xlsx",
+  "output_workbook": "amos_daily_brief_generator_from_manual_packet_v0_2.xlsx",
+  "added_sheets": [
+    "Generated Brief",
+    "Brief Config"
+  ],
+  "brief_sections": [
+    "Executive Summary",
+    "Action Buckets",
+    "Risk Alerts",
+    "Ticker Brief Lines",
+    "No-Trade Rules"
+  ],
+  "status": "manual_data_alpha"
+}

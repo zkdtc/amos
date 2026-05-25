@@ -1,0 +1,209 @@
+{
+  "version": "AMOS Alpha Data Flow Map v0.1",
+  "created": "2026-05-24",
+  "purpose": "Define the full data flow from raw inputs to AMOS decision outputs and UI rendering.",
+  "core_principle": "Every output must trace back to data, evidence, scoring, debate, and invalidation.",
+  "pipeline": [
+    {
+      "step": 1,
+      "name": "Raw Inputs",
+      "description": "Collect raw data and research leads.",
+      "inputs": [
+        "market data",
+        "macro data",
+        "earnings reports",
+        "company filings",
+        "options data",
+        "news/events",
+        "YouTube/X/creator sources",
+        "user observations"
+      ],
+      "outputs": [
+        "raw_input_objects"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "Evidence Quality Layer",
+      "description": "Separate facts, interpretations, forecasts and opinions; score source quality and bias.",
+      "inputs": [
+        "raw_input_objects"
+      ],
+      "outputs": [
+        "evidence_quality_score",
+        "bias_risk_score",
+        "cycle_validity_score",
+        "framework_value_score",
+        "counter_evidence_required"
+      ],
+      "module": "Research Source & Evidence Quality Engine"
+    },
+    {
+      "step": 3,
+      "name": "Normalized Data Objects",
+      "description": "Convert evidence into AMOS schema fields.",
+      "inputs": [
+        "validated_evidence"
+      ],
+      "outputs": [
+        "market_state",
+        "capital_flow",
+        "narrative",
+        "stock_state",
+        "valuation",
+        "gann",
+        "options_gamma",
+        "risk",
+        "decision"
+      ],
+      "module": "AMOS Data Schema"
+    },
+    {
+      "step": 4,
+      "name": "Engine Scoring",
+      "description": "Calculate macro, narrative, valuation, risk, panic maturity and execution scores.",
+      "inputs": [
+        "normalized_data_objects"
+      ],
+      "outputs": [
+        "macro_regime_score",
+        "narrative_strength_score",
+        "narrative_maturity_score",
+        "risk_stack_score",
+        "panic_maturity_score",
+        "gann_resonance_score",
+        "valuation_battle_score",
+        "decision_confidence_score"
+      ],
+      "module": "AMOS Scoring Logic"
+    },
+    {
+      "step": 5,
+      "name": "Agent Debate",
+      "description": "Specialized agents challenge and refine the scoring output.",
+      "inputs": [
+        "scores",
+        "evidence",
+        "counter_evidence"
+      ],
+      "outputs": [
+        "bull_case",
+        "bear_case",
+        "risk_objection",
+        "macro_objection",
+        "valuation_objection",
+        "technical_confirmation",
+        "decision_vote"
+      ],
+      "module": "Agent Routing"
+    },
+    {
+      "step": 6,
+      "name": "Decision Contract",
+      "description": "Convert debated outputs into explicit actions and invalidation conditions.",
+      "inputs": [
+        "agent_debate_output"
+      ],
+      "outputs": [
+        "action",
+        "position_role",
+        "confidence",
+        "evidence_chain",
+        "counter_evidence",
+        "invalidation_conditions",
+        "next_watch"
+      ],
+      "module": "Decision AI"
+    },
+    {
+      "step": 7,
+      "name": "UI Rendering",
+      "description": "Render dashboards and stock pages from unified data objects.",
+      "inputs": [
+        "decision_objects",
+        "scores",
+        "source_data"
+      ],
+      "outputs": [
+        "Unified App Shell",
+        "Multi-stock Dashboard",
+        "CRDO Stock Page",
+        "Daily Market Brief",
+        "Portfolio Migration View"
+      ],
+      "module": "UI Layer"
+    },
+    {
+      "step": 8,
+      "name": "Review & Learning",
+      "description": "Compare predictions, actions and results; update stock personality and scoring rules.",
+      "inputs": [
+        "prediction",
+        "action",
+        "result"
+      ],
+      "outputs": [
+        "stock_personality_update",
+        "scoring_calibration",
+        "source_quality_update",
+        "behavior_guardrail_update"
+      ],
+      "module": "Governance AI"
+    }
+  ],
+  "data_objects": {
+    "raw_input": {
+      "source_type": "",
+      "source_name": "",
+      "timestamp": "",
+      "claim": "",
+      "claim_type": "",
+      "raw_text_or_data": "",
+      "linked_tickers": [],
+      "linked_narratives": []
+    },
+    "evidence_item": {
+      "claim": "",
+      "fact_interpretation_forecast_opinion": "",
+      "quality_score": 0,
+      "bias_risk_score": 0,
+      "counter_evidence": [],
+      "confidence": 0,
+      "module_targets": []
+    },
+    "score_packet": {
+      "ticker": "",
+      "scores": {},
+      "score_explanation": {},
+      "hard_caps": [],
+      "missing_data": []
+    },
+    "decision_packet": {
+      "ticker": "",
+      "action": "",
+      "role": "",
+      "confidence": 0,
+      "evidence_chain": [],
+      "counter_evidence": [],
+      "invalidation": [],
+      "next_watch": []
+    }
+  },
+  "current_alpha_flow_files": {
+    "sample_data": "amos_sample_data_fixture_v0_1.json",
+    "scoring_logic": "amos_scoring_logic_v0_1.json",
+    "scoring_connected_dashboard": "amos_scoring_connected_dashboard_v0_2.html",
+    "crdo_scoring_connected_page": "crdo_scoring_connected_stock_page_v0_3.html",
+    "daily_brief_template": "amos_daily_market_brief_template_v0_1.html",
+    "unified_shell": "amos_unified_app_shell_v0_1.html"
+  },
+  "next_bottlenecks": [
+    "Create real-data adapter schema",
+    "Define required data vendors/APIs or manual collection sources",
+    "Implement Gann level calculator",
+    "Implement AVWAP/EMA/RSI technical adapter",
+    "Implement options/gamma adapter",
+    "Implement source/evidence database",
+    "Connect daily brief to computed score packets"
+  ]
+}

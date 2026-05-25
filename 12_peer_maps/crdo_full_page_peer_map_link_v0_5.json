@@ -1,0 +1,16 @@
+{
+  "version": "CRDO Full Page + Peer Map Link v0.5",
+  "created": "2026-05-24",
+  "source_page": "crdo_full_stock_intelligence_page_v0_4.html",
+  "output_page": "crdo_full_page_peer_map_link_v0_5.html",
+  "linked_peer_map": {
+    "excel": "amos_crdo_peer_map_v0_1.xlsx",
+    "html": "amos_crdo_peer_map_v0_1.html"
+  },
+  "migration_summary": [
+    "CRDO to LITE when LITE reclaims AVWAP and relative strength improves.",
+    "CRDO to AVGO/ANET when high-beta risk rises but AI Infra remains strong.",
+    "CRDO to NVDA when second-line uncertainty rises but NVDA remains anchor.",
+    "CRDO to Cash when AVWAP breaks, LH/LL appears, event fade and RS deterioration align."
+  ]
+}

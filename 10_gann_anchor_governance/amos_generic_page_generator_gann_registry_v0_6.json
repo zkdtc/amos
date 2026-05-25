@@ -1,0 +1,30 @@
+{
+  "version": "AMOS Generic Page Generator with Gann Registry v0.6",
+  "created": "2026-05-24",
+  "source_files": [
+    "amos_sample_data_fixture_v0_1.json",
+    "amos_scoring_connected_dashboard_v0_2.json",
+    "amos_gann_live_ticker_registry_v0_4.json"
+  ],
+  "gann_live_tickers": [
+    "CRDO",
+    "NVDA",
+    "LITE",
+    "IREN",
+    "HOOD"
+  ],
+  "gann_pending_tickers": [],
+  "generated_pages": [
+    "nvda_stock_page_gann_registry_v0_6.html",
+    "crdo_stock_page_gann_registry_v0_6.html",
+    "lite_stock_page_gann_registry_v0_6.html",
+    "iren_stock_page_gann_registry_v0_6.html",
+    "hood_stock_page_gann_registry_v0_6.html"
+  ],
+  "delta_from_v0_5": [
+    "Registry upgraded from v0.3 to v0.4",
+    "HOOD now displays Gann Live",
+    "All five sample tickers are Gann Live",
+    "Added Anchor Verification link into Gann zone"
+  ]
+}

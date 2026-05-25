@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Data-driven Multi-stock Dashboard v0.1</title>
+<style>
+:root{
+  --bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;
+  --cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 10%,rgba(155,92,255,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1640px;margin:0 auto;padding:20px}
+.card,.stock-card,.narrative{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:36px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box li,.box p{color:var(--soft)}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stat{border:1px solid var(--line);border-radius:10px;padding:10px;background:rgba(255,255,255,.02)}.stat b{display:block;font-size:20px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase}
+.stock-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.stock-card{padding:15px;min-height:440px}
+.stock-head{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:10px}
+.ticker{font-size:27px;font-weight:900}.category{color:var(--muted);font-size:11px}
+.risk-pill{border:1px solid;border-radius:999px;padding:4px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;height:max-content}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}.tags span{border:1px solid var(--line);border-radius:999px;padding:3px 6px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px}
+.action{color:var(--cyan);font-weight:900;min-height:42px;margin-bottom:10px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.metrics div{border:1px solid var(--line);border-radius:8px;padding:8px;background:rgba(255,255,255,.02)}.metrics b{display:block;color:var(--gold)}.metrics span{color:var(--muted);font-size:10px}
+.bars label,.narrative label{display:flex;justify-content:space-between;color:var(--soft);font-size:11px;margin:7px 0 4px}.bar{height:7px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.thesis{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}.thesis b{color:var(--gold);font-size:11px}.thesis p{color:var(--soft);margin:4px 0 8px;font-size:12px}
+.narrative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}.narrative{padding:15px}.n-head{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.n-head span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);font-size:10px;text-align:right}
+.table-card{padding:16px;margin-bottom:14px}table{width:100%;border-collapse:collapse}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65);vertical-align:top}
+@media(max-width:1400px){.stock-grid{grid-template-columns:repeat(2,1fr)}.top,.narrative-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.stock-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Data-driven Dashboard · v0.1</div>
+    <h1>Multi-stock Battle Dashboard</h1>
+    <div class="motto">NVDA / CRDO / LITE / IREN / HOOD：同一份 fixture 驱动的持仓与观察仓战场视图。</div>
+  </div>
+
+  <div class="top">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Market State</h2>
+      <p><b>Regime:</b> liquidity_expansion_with_rising_crowding</p>
+      <p><b>Risk Bias:</b> expanding · <b>Beta Ceiling:</b> 1.1-1.3</p>
+      <p><b>Confidence:</b> 62</p>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--red)">Primary Risks</h2>
+      <ul><li>AI Infra/Optical crowding</li><li>Event pressure around NVDA/OPEX</li><li>BTC Finance reset may not be mature</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Migration Candidates</h2>
+      <ul><li><b>LITE → CRDO_or_COHR</b>: Optical remains strong but LITE lags peers</li><li><b>IBM_or_cash → Big Tech Anchors</b>: Macro supports attack and GOOG/MSFT/NVDA evidence improves</li><li><b>high_beta_overextended → cash_or_stabilizer</b>: Euphoria/risk stack turns red</li></ul>
+    </div>
+  </div>
+
+  <div class="narrative-grid">
+    
+    <div class="narrative">
+      <div class="n-head">
+        <b>AI Infrastructure</b>
+        <span>capital_expansion</span>
+      </div>
+      <label>Strength <b>82</b></label><div class="bar"><i style="width:82%;background:var(--green)"></i></div>
+      <label>Maturity <b>63</b></label><div class="bar"><i style="width:63%;background:var(--gold)"></i></div>
+      <label>Failure Risk <b>38</b></label><div class="bar"><i style="width:38%;background:var(--red)"></i></div>
+    </div>
+    
+    <div class="narrative">
+      <div class="n-head">
+        <b>Optical / CPO / Connectivity</b>
+        <span>capital_expansion_to_mainstream_fomo</span>
+      </div>
+      <label>Strength <b>76</b></label><div class="bar"><i style="width:76%;background:var(--green)"></i></div>
+      <label>Maturity <b>71</b></label><div class="bar"><i style="width:71%;background:var(--gold)"></i></div>
+      <label>Failure Risk <b>47</b></label><div class="bar"><i style="width:47%;background:var(--red)"></i></div>
+    </div>
+    
+    <div class="narrative">
+      <div class="n-head">
+        <b>BTC Finance</b>
+        <span>reset_watch</span>
+      </div>
+      <label>Strength <b>48</b></label><div class="bar"><i style="width:48%;background:var(--green)"></i></div>
+      <label>Maturity <b>42</b></label><div class="bar"><i style="width:42%;background:var(--gold)"></i></div>
+      <label>Failure Risk <b>55</b></label><div class="bar"><i style="width:55%;background:var(--red)"></i></div>
+    </div>
+    
+  </div>
+
+  <div class="stock-grid">
+    
+    <article class="stock-card">
+      <div class="stock-head">
+        <div>
+          <div class="ticker">NVDA</div>
+          <div class="category">AI Core / Compute / Platform</div>
+        </div>
+        <div class="risk-pill" style="color:var(--gold);border-color:var(--gold)">YELLOW</div>
+      </div>
+      <div class="tags"><span>AI_core</span><span>institutional_core</span><span>capex_anchor</span><span>event_driver</span></div>
+      <div class="action">hold_core_trim_if_euphoria</div>
+      <div class="metrics">
+        <div><b>52</b><span>Avg Risk</span></div>
+        <div><b>66</b><span>Confidence</span></div>
+        <div><b>hold</b><span>Action</span></div>
+      </div>
+      <div class="bars">
+        <label>Euphoria <b>58</b></label><div class="bar"><i style="width:58%;background:var(--red)"></i></div>
+        <label>Panic Maturity <b>10</b></label><div class="bar"><i style="width:10%;background:var(--green)"></i></div>
+        <label>Event Pressure <b>78</b></label><div class="bar"><i style="width:78%;background:var(--gold)"></i></div>
+        <label>Crowding <b>62</b></label><div class="bar"><i style="width:62%;background:var(--orange)"></i></div>
+      </div>
+      <div class="thesis">
+        <b>Evidence</b><p>AI Infra anchor</p>
+        <b>Counter</b><p>Valuation and event pressure can cause good-news fade</p>
+      </div>
+    </article>
+    
+    <article class="stock-card">
+      <div class="stock-head">
+        <div>
+          <div class="ticker">CRDO</div>
+          <div class="category">AI Infra / Optical / SerDes</div>
+        </div>
+        <div class="risk-pill" style="color:var(--orange);border-color:var(--orange)">ORANGE</div>
+      </div>
+      <div class="tags"><span>AI_infra</span><span>optical</span><span>high_beta</span><span>earnings_sensitive</span></div>
+      <div class="action">hold_no_chase_trim_if_exhaustion</div>
+      <div class="metrics">
+        <div><b>58</b><span>Avg Risk</span></div>
+        <div><b>61</b><span>Confidence</span></div>
+        <div><b>hold</b><span>Action</span></div>
+      </div>
+      <div class="bars">
+        <label>Euphoria <b>72</b></label><div class="bar"><i style="width:72%;background:var(--red)"></i></div>
+        <label>Panic Maturity <b>5</b></label><div class="bar"><i style="width:5%;background:var(--green)"></i></div>
+        <label>Event Pressure <b>82</b></label><div class="bar"><i style="width:82%;background:var(--gold)"></i></div>
+        <label>Crowding <b>74</b></label><div class="bar"><i style="width:74%;background:var(--orange)"></i></div>
+      </div>
+      <div class="thesis">
+        <b>Evidence</b><p>AI Infra and Optical narratives strong</p>
+        <b>Counter</b><p>Valuation demanding</p>
+      </div>
+    </article>
+    
+    <article class="stock-card">
+      <div class="stock-head">
+        <div>
+          <div class="ticker">LITE</div>
+          <div class="category">Optical / AI Infra Recovery</div>
+        </div>
+        <div class="risk-pill" style="color:var(--gold);border-color:var(--gold)">YELLOW</div>
+      </div>
+      <div class="tags"><span>optical</span><span>turnaround</span><span>AI_infra_follow</span><span>profit_protection_needed</span></div>
+      <div class="action">hold_or_partial_migrate_if_lagging</div>
+      <div class="metrics">
+        <div><b>49</b><span>Avg Risk</span></div>
+        <div><b>55</b><span>Confidence</span></div>
+        <div><b>hold</b><span>Action</span></div>
+      </div>
+      <div class="bars">
+        <label>Euphoria <b>58</b></label><div class="bar"><i style="width:58%;background:var(--red)"></i></div>
+        <label>Panic Maturity <b>12</b></label><div class="bar"><i style="width:12%;background:var(--green)"></i></div>
+        <label>Event Pressure <b>70</b></label><div class="bar"><i style="width:70%;background:var(--gold)"></i></div>
+        <label>Crowding <b>55</b></label><div class="bar"><i style="width:55%;background:var(--orange)"></i></div>
+      </div>
+      <div class="thesis">
+        <b>Evidence</b><p>Optical narrative still relevant</p>
+        <b>Counter</b><p>If LITE lags CRDO/COHR during Optical strength, opportunity cost rises</p>
+      </div>
+    </article>
+    
+    <article class="stock-card">
+      <div class="stock-head">
+        <div>
+          <div class="ticker">IREN</div>
+          <div class="category">BTC + AI Compute</div>
+        </div>
+        <div class="risk-pill" style="color:var(--gold);border-color:var(--gold)">YELLOW</div>
+      </div>
+      <div class="tags"><span>BTC</span><span>AI_compute</span><span>high_beta</span><span>liquidity_sensitive</span></div>
+      <div class="action">wait_for_panic_maturity_or_validation</div>
+      <div class="metrics">
+        <div><b>45</b><span>Avg Risk</span></div>
+        <div><b>52</b><span>Confidence</span></div>
+        <div><b>wait</b><span>Action</span></div>
+      </div>
+      <div class="bars">
+        <label>Euphoria <b>35</b></label><div class="bar"><i style="width:35%;background:var(--red)"></i></div>
+        <label>Panic Maturity <b>45</b></label><div class="bar"><i style="width:45%;background:var(--green)"></i></div>
+        <label>Event Pressure <b>52</b></label><div class="bar"><i style="width:52%;background:var(--gold)"></i></div>
+        <label>Crowding <b>48</b></label><div class="bar"><i style="width:48%;background:var(--orange)"></i></div>
+      </div>
+      <div class="thesis">
+        <b>Evidence</b><p>Dual exposure to BTC and AI compute can create upside</p>
+        <b>Counter</b><p>Liquidity liquidation can continue longer than expected</p>
+      </div>
+    </article>
+    
+    <article class="stock-card">
+      <div class="stock-head">
+        <div>
+          <div class="ticker">HOOD</div>
+          <div class="category">Retail Trading / BTC Finance / Fintech</div>
+        </div>
+        <div class="risk-pill" style="color:var(--gold);border-color:var(--gold)">YELLOW</div>
+      </div>
+      <div class="tags"><span>retail_risk_appetite</span><span>BTC_finance</span><span>trading_volume</span><span>regulatory_sensitive</span></div>
+      <div class="action">wait_define_maturity_conditions</div>
+      <div class="metrics">
+        <div><b>44</b><span>Avg Risk</span></div>
+        <div><b>50</b><span>Confidence</span></div>
+        <div><b>wait</b><span>Action</span></div>
+      </div>
+      <div class="bars">
+        <label>Euphoria <b>25</b></label><div class="bar"><i style="width:25%;background:var(--red)"></i></div>
+        <label>Panic Maturity <b>48</b></label><div class="bar"><i style="width:48%;background:var(--green)"></i></div>
+        <label>Event Pressure <b>58</b></label><div class="bar"><i style="width:58%;background:var(--gold)"></i></div>
+        <label>Crowding <b>45</b></label><div class="bar"><i style="width:45%;background:var(--orange)"></i></div>
+      </div>
+      <div class="thesis">
+        <b>Evidence</b><p>BTC/retail trading reset could create opportunity</p>
+        <b>Counter</b><p>Regulatory headlines can extend pressure</p>
+      </div>
+    </article>
+    
+  </div>
+
+  <div class="card table-card">
+    <div class="eyebrow">Comparison Table</div>
+    <table>
+      <thead>
+        <tr><th>Ticker</th><th>Archetype</th><th>Role</th><th>Valuation</th><th>Action Bias</th><th>Risk</th><th>First Invalidation</th></tr>
+      </thead>
+      <tbody>
+    <tr>
+      <td><b>NVDA</b></td>
+      <td>core_sovereign_leader</td>
+      <td>core_anchor</td>
+      <td>demanding_but_supported_by_growth</td>
+      <td>hold_core_trim_if_euphoria</td>
+      <td style="color:var(--gold)">YELLOW / 52</td>
+      <td>Fails to hold post-event AVWAP</td>
+    </tr>
+    
+    <tr>
+      <td><b>CRDO</b></td>
+      <td>second_line_high_beta</td>
+      <td>swing_core_candidate</td>
+      <td>demanding</td>
+      <td>hold_no_chase_trim_if_exhaustion</td>
+      <td style="color:var(--orange)">ORANGE / 58</td>
+      <td>Breaks earnings AVWAP and fails reclaim</td>
+    </tr>
+    
+    <tr>
+      <td><b>LITE</b></td>
+      <td>second_line_high_beta</td>
+      <td>swing_recovery</td>
+      <td>recovery_discount_or_trap_requires_evidence</td>
+      <td>hold_or_partial_migrate_if_lagging</td>
+      <td style="color:var(--gold)">YELLOW / 49</td>
+      <td>Optical narrative remains strong but LITE underperforms peers</td>
+    </tr>
+    
+    <tr>
+      <td><b>IREN</b></td>
+      <td>dual_narrative_transformer</td>
+      <td>swing_tactical</td>
+      <td>transition_story_requires_validation</td>
+      <td>wait_for_panic_maturity_or_validation</td>
+      <td style="color:var(--gold)">YELLOW / 45</td>
+      <td>BTC loses key liquidity structure</td>
+    </tr>
+    
+    <tr>
+      <td><b>HOOD</b></td>
+      <td>liquidity_casino_proxy</td>
+      <td>watchlist_build_candidate</td>
+      <td>growth_fintech_requires_volume_cycle</td>
+      <td>wait_define_maturity_conditions</td>
+      <td style="color:var(--gold)">YELLOW / 44</td>
+      <td>Retail trading activity deteriorates</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

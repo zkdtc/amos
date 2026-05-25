@@ -1,0 +1,35 @@
+{
+  "version": "AMOS Master Index Sample v0.6",
+  "phase": "v0.3A Manual Data Alpha",
+  "mode": "manual_alpha",
+  "data_quality": "sample_manual_ready_not_live",
+  "deliveries": [
+    "Canonical System Integration Spec v0.1",
+    "No-Omission Master Checklist v0.1",
+    "Engineering Handoff Spec v0.1",
+    "Manual Data Workbook v0.2 Unified",
+    "Gann Live Ticker Registry v0.4 (CRDO/NVDA/LITE/IREN/HOOD)",
+    "Anchor Verification Checklist v0.2",
+    "Macro Event Calendar v0.1",
+    "Daily Brief HTML Exporter v0.2",
+    "CSV Import Schema v0.1"
+  ],
+  "gann_live": ["CRDO", "NVDA", "LITE", "IREN", "HOOD"],
+  "gann_pending": ["GOOG", "MSFT", "AVGO", "RKLB", "IONQ"],
+  "anchor_check": "v0.2 sample; verification pending for all sample anchors",
+  "guardrails": [
+    "Sample/manual-ready data is not live data.",
+    "Gann cannot trigger trades alone.",
+    "Anchor Verification gate is required before formal Gann use.",
+    "Critical events default to No Attack.",
+    "Evidence cannot influence action without counter-evidence.",
+    "Missing freshness blocks aggressive action."
+  ],
+  "links": [
+    {"label": "Gann Registry", "to": "/gann-registry"},
+    {"label": "Daily Brief", "to": "/daily-brief"},
+    {"label": "Macro Events", "to": "/events"},
+    {"label": "Evidence Packets", "to": "/evidence"},
+    {"label": "Anchor Verification", "to": "/anchors"}
+  ]
+}

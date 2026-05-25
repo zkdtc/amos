@@ -1,0 +1,120 @@
+{
+  "version": "AMOS Origin Process and Design Manual v0.1",
+  "created": "2026-05-24",
+  "purpose": "Explain the full conversation-driven evolution of AMOS so an engineer can understand the original ideas, user needs, design logic and non-negotiable requirements without reading 65 delivery summaries.",
+  "scope_note": "Deliveries 1-65 are intentionally not repeated in detail. The latest Master Index v0.6 and this manual are the two primary files to hand to engineers.",
+  "current_state": {
+    "phase": "v0.3A Manual Data Alpha → Engineering Handoff Ready",
+    "status": "Ready for Codex / engineering handoff",
+    "latest_master_index": "amos_alpha_master_index_v0_6.html",
+    "latest_canonical_spec": "amos_canonical_system_integration_spec_v0_1.md",
+    "latest_engineering_handoff": "amos_engineering_handoff_spec_v0_1.md",
+    "latest_codex_task_pack": "amos_codex_task_pack_v0_1.md"
+  },
+  "origin_story": [
+    {
+      "stage": "1. 投资问题不是缺信息，而是缺一个能保护真实决策的系统",
+      "summary": "最初的核心不是做一个普通股票页面，而是用户在高波动成长股、AI周期、光模块、BTC/fintech、硬科技龙头中，需要一个能帮助判断周期、资金迁移、估值、风险、买卖节奏和心理纪律的个人化系统。",
+      "why_it_matters": "工程师必须明白 AMOS 不是资讯聚合器，也不是股票价格看板。它是用户的认知与操作系统，要围绕真实持仓、真实风险、真实错误和真实行动建议设计。"
+    },
+    {
+      "stage": "2. 用户反复强调：需要 B，不是陪伴聊天，而是工程化搭建和验证",
+      "summary": "对话中用户明确指出，她要的是主动搭建、结构化、验证和交付，而不是不断问她要资料、让她确认所有证据，或把 AI 定位为陪伴者。AMOS 因此转向持续交付 artifacts、系统主干和工程化文件。",
+      "why_it_matters": "工程师接手时不能把需求理解成‘写一些投资笔记’。需要把每个概念落实到页面、数据字段、规则、导入表、护栏和测试。"
+    },
+    {
+      "stage": "3. 核心设计原则锁定：整合，不是推翻",
+      "summary": "用户明确要求所有新资料用于归类、抽象、收敛和优化已有主干，不允许听到新想法就推翻结构，也不允许为了简化而删除已经确认的模块。",
+      "why_it_matters": "任何重构或工程迁移都必须用 No-Omission Checklist 对照。缺失不是简化，而是回退。"
+    },
+    {
+      "stage": "4. AMOS 从理念变成 Home Command Center + Stock Intelligence Page",
+      "summary": "系统主干逐渐稳定为：主页战情室负责宏观、流动性、机械资金、行业轮动、事件日历、组合风险；个股页负责标签、龙头定位、Gann、价格行为、AVWAP、RSI、Gamma、估值、证据、风险和操作策略。",
+      "why_it_matters": "工程师要先实现这些结构与信息层级，而不是先做漂亮图表或实时价格。"
+    },
+    {
+      "stage": "5. Gann / 江恩成为不可简化的核心研究区",
+      "summary": "用户强调江恩是最依赖的工具之一，不能简化成几条支撑压力线。系统必须有独立 Gann Research Zone，包含 Square of Nine、多锚点、价格区间、时间窗、价格×时间共振、确认门和锚点验证。",
+      "why_it_matters": "Gann 页面必须深，不允许只显示 support/resistance。并且所有 sample anchors 必须通过 Anchor Verification 才能正式使用。"
+    },
+    {
+      "stage": "6. TCG / Price Action 与 AVWAP 成为执行确认层",
+      "summary": "The Chart Guys 的 8/12 EMA、HH/HL、LH/LL、Inside Bar、Equilibrium、RSI背离/超卖，用于确认趋势、突破、回调、出场和防接飞刀。AVWAP 用于判断机构成本和事件后 reclaim/failure。",
+      "why_it_matters": "工程师应把这些做成执行层组件和字段，而不是把它们混成普通技术指标。"
+    },
+    {
+      "stage": "7. 风险系统必须围绕用户的真实弱点：高位不止盈、底部爆仓、杠杆、周期误判",
+      "summary": "AMOS 要在高位狂热时强提醒减仓/卖出/卖 Call，在恐慌成熟时帮助分批试仓，在周期不明或数据缺失时限制攻击。风险不是泛泛提醒，而是具体作用在行动上限。",
+      "why_it_matters": "工程里要有 Action Cap、Data Freshness Cap、Event No Attack、Anchor Verification Gate、Evidence Gate。不能只用 UI 文案提醒。"
+    },
+    {
+      "stage": "8. 系统转为 v0.3A Manual Data Alpha，而不是直接接实时 API",
+      "summary": "为了避免过早工程化和假实时，AMOS 先建立手动工作流：Manual Data Workbook、CSV Import Schema、Evidence Packet、Generated Brief、Macro Event Calendar、Daily Brief Exporter。",
+      "why_it_matters": "工程第一版必须 local JSON/CSV driven。不能一上来接 API、券商或交易。先保证结构、字段、护栏、流程和测试正确。"
+    },
+    {
+      "stage": "9. 进入工程交接：正本规格、工程交接包、Codex 任务包",
+      "summary": "在第 62-65 交付后，AMOS 已形成 Canonical Spec、No-Omission Checklist、Engineering Handoff、Codex Task Pack、Master Index v0.6，可以交给工程师/Codex 开始本地 Web App 原型。",
+      "why_it_matters": "工程师应从第 65 和第 66 文件开始读，必要时再进入具体 artifacts。"
+    }
+  ],
+  "user_needs": {
+    "primary": [
+      "Build a personal market decision system, not a general stock website.",
+      "Help decide when to attack, shrink, hold, rotate, wait, trim, exit or hedge.",
+      "Protect against user’s known behavioral risks: leverage, euphoria, refusal to take profits, forced liquidation, bottom panic.",
+      "Focus on U.S. high-growth / hard AI / AI infrastructure / optical / BTC-fintech / space / defense / robotics / quantum / AI healthcare opportunities.",
+      "Use evidence, source quality and counter-evidence to avoid narrative self-deception.",
+      "Preserve user’s own methods: Gann, TCG price action, AVWAP, RSI oversold bounce, valuation and cycle rhythm."
+    ],
+    "what_not_to_do": [
+      "Do not turn AMOS into a generic portfolio tracker.",
+      "Do not reduce Gann to support/resistance.",
+      "Do not hide missing data.",
+      "Do not let sample data look live.",
+      "Do not remove user-specific risk guardrails.",
+      "Do not ask the user to re-provide the same conceptual system; the AI/system must retain and integrate."
+    ]
+  },
+  "design_logic": {
+    "why_manual_alpha_first": [
+      "The user needed something usable immediately but reliable enough not to fake live precision.",
+      "Manual inputs force data freshness awareness.",
+      "CSV import creates a bridge to semi-automation without prematurely choosing vendors.",
+      "Excel/HTML artifacts allow fast iteration before full React engineering."
+    ],
+    "why_guardrails_are_first_class": [
+      "User’s losses came from action errors, not merely analysis gaps.",
+      "The system must constrain action when data is stale, event risk is high, Gann anchors are unverified or evidence lacks counter-evidence.",
+      "Guardrails must become tests in engineering."
+    ],
+    "why_codex_after_v0_3A": [
+      "ChatGPT is good for product structure, artifacts, specs and reasoning.",
+      "Codex is better for repo creation, components, tests, scripts and local app implementation.",
+      "The handoff now contains enough canonical structure to avoid engineering drift."
+    ]
+  },
+  "engineer_must_understand": [
+    "AMOS is not a trading bot.",
+    "AMOS is not a generic dashboard.",
+    "AMOS is a personal operating system for market cognition and disciplined execution.",
+    "The first app version must be local JSON/CSV-driven.",
+    "Every page using sample/manual data must show a warning.",
+    "Gann Live means the module exists, not that the levels are tradable.",
+    "Anchor Verification is mandatory before formal Gann use.",
+    "Data Freshness and Event Risk must cap action.",
+    "Evidence must include counter-evidence before it can influence action.",
+    "User wants speed, but not at the cost of losing the confirmed architecture."
+  ],
+  "recommended_engineer_reading_order": [
+    "1. amos_alpha_master_index_v0_6.html",
+    "2. amos_origin_process_and_design_manual_v0_1.md",
+    "3. amos_canonical_system_integration_spec_v0_1.md",
+    "4. amos_no_omission_master_checklist_v0_1.md",
+    "5. amos_engineering_handoff_spec_v0_1.md",
+    "6. amos_codex_task_pack_v0_1.md",
+    "7. amos_repo_structure_v0_1.md",
+    "8. Specific artifacts only when implementing a module"
+  ],
+  "latest_artifact_count_snapshot": 246
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Scoring Logic v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 10%,rgba(255,209,102,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.score{padding:16px;min-height:245px;position:relative;overflow:hidden}.score:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--cyan)}
+.score h2{font-size:14px;margin:0 0 8px}.score p,.score li{color:#a9b8d8}.score ul{padding-left:17px}
+.s1:before{background:var(--green)}.s2:before{background:var(--cyan)}.s3:before{background:var(--gold)}.s4:before{background:var(--red)}.s5:before{background:var(--violet)}.s6:before{background:var(--orange)}.s7:before{background:var(--blue)}
+.actions{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.action{padding:15px}.action h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.1em}.action p{color:#a9b8d8;margin:0}
+@media(max-width:1200px){.grid{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:700px){.grid,.actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Computable Logic · v0.1</div>
+    <h1>Scoring Logic</h1>
+    <div class="motto">评分不是事实，而是可解释、可修正的决策辅助语言。</div>
+  </div>
+
+  <div class="grid">
+    <div class="card score s1"><h2>Macro Regime</h2><p>判断宏观是否允许进攻Beta。</p><ul><li>Liquidity</li><li>Rates</li><li>Credit</li><li>Volatility</li><li>Breadth</li></ul></div>
+    <div class="card score s2"><h2>Narrative Strength</h2><p>判断主题是否被真实资金定价。</p><ul><li>Leader RS</li><li>Capital Flow</li><li>Policy/Earnings</li><li>Breadth</li></ul></div>
+    <div class="card score s3"><h2>Narrative Maturity</h2><p>判断主题是否进入拥挤/尾声。</p><ul><li>Valuation Stretch</li><li>Retail Attention</li><li>Tail Names</li><li>Options Mania</li></ul></div>
+    <div class="card score s4"><h2>Risk Stack</h2><p>高位风险、事件、拥挤、Gamma、用户行为。</p><ul><li>Euphoria</li><li>Event</li><li>Crowding</li><li>Behavior Risk</li></ul></div>
+    <div class="card score s5"><h2>Panic Maturity</h2><p>区分成熟恐慌和下跌早期。</p><ul><li>RSI Divergence</li><li>Gann Support</li><li>Volume Exhaustion</li><li>AVWAP Reclaim</li></ul></div>
+    <div class="card score s6"><h2>Gann Resonance</h2><p>Gann时间/价格 + Event + Gamma + Price Action。</p><ul><li>Time</li><li>Price</li><li>Event</li><li>Gamma</li><li>Confirmation</li></ul></div>
+    <div class="card score s7"><h2>Valuation Battle</h2><p>内在价值、共识、叙事、周期、股性、极端区。</p><ul><li>Intrinsic</li><li>Consensus</li><li>Narrative</li><li>Cycle</li></ul></div>
+    <div class="card score"><h2>Decision Confidence</h2><p>最终行动置信度。</p><ul><li>Evidence</li><li>Module Alignment</li><li>Freshness</li><li>Agent Disagreement</li></ul></div>
+  </div>
+
+  <div class="actions">
+    <div class="card action"><h3 style="color:var(--green)">Attack</h3><p>Macro/Narrative强，Risk低，Setup确认。</p></div>
+    <div class="card action"><h3 style="color:var(--cyan)">Build</h3><p>逻辑成立，估值或叙事支持，风险可控。</p></div>
+    <div class="card action"><h3 style="color:var(--blue)">Hold</h3><p>Thesis intact，风险未触发失效。</p></div>
+    <div class="card action"><h3 style="color:var(--gold)">Trim</h3><p>Risk高，进入高位衰竭或事件压力区。</p></div>
+    <div class="card action"><h3 style="color:var(--red)">Exit</h3><p>基本面/结构/角色失效。</p></div>
+    <div class="card action"><h3 style="color:var(--orange)">Wait</h3><p>Setup不完整，置信度不足，恐慌未成熟。</p></div>
+  </div>
+</div>
+</body>
+</html>

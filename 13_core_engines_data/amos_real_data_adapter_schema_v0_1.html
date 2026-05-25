@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Real Data Adapter Schema v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 10%,rgba(50,230,138,.06),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1620px;margin:0 auto;padding:20px}
+.card,.layer{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.layer{padding:16px;min-height:300px;position:relative;overflow:hidden}
+.layer:before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--green))}
+.layer h2{font-size:15px;margin:8px 0;color:var(--text)}
+.priority{display:inline-block;border:1px solid rgba(255,209,102,.45);color:var(--gold);border-radius:999px;padding:3px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;margin-bottom:8px}
+.layer li,.layer p{color:var(--soft)}.layer ul{padding-left:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.box{padding:18px}.box h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box li{color:var(--soft);margin:6px 0}
+.tickers{display:flex;flex-wrap:wrap;gap:8px}.tickers span{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+@media(max-width:1200px){.layers{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+@media(max-width:700px){.layers{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Real Data Interface · v0.1</div>
+    <h1>Real Data Adapter Schema</h1>
+    <div class="motto">把 sample fixture 替换成真实数据前，先定义字段、来源、新鲜度、置信度和 fallback。</div>
+  </div>
+
+  <div class="layers">
+    
+    <div class="layer">
+      <div class="eyebrow">market_data_adapter</div>
+      <h2>Price, volume, relative strength, moving averages, RSI, breadth.</h2>
+      <div class="priority">highest</div>
+      <ul><li>ticker</li><li>last_price</li><li>prev_close</li><li>day_change_pct</li><li>volume</li><li>avg_volume_20d</li><li>relative_volume</li><li>ema_8</li></ul>
+      <p><b>Fallback:</b> manual chart reading / broker export / TradingView snapshot</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">macro_data_adapter</div>
+      <h2>Macro regime and liquidity state.</h2>
+      <div class="priority">highest</div>
+      <ul><li>us10y</li><li>us2y</li><li>yield_curve_10y2y</li><li>dxy</li><li>vix</li><li>vvix</li><li>move_index</li><li>credit_spread_hy</li></ul>
+      <p><b>Fallback:</b> FRED / TradingView / Koyfin / manually entered values</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">event_calendar_adapter</div>
+      <h2>Events as pressure points, not calendar clutter.</h2>
+      <div class="priority">high</div>
+      <ul><li>event_id</li><li>event_type</li><li>event_name</li><li>date</li><li>time</li><li>affected_tickers</li><li>affected_narratives</li><li>pressure_score</li></ul>
+      <p><b>Fallback:</b> manual curated calendar; not full noisy finance calendar</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">earnings_fundamental_adapter</div>
+      <h2>Company financials, guidance, revisions and quality of earnings.</h2>
+      <div class="priority">high</div>
+      <ul><li>ticker</li><li>quarter</li><li>revenue_actual</li><li>revenue_consensus</li><li>revenue_growth_yoy</li><li>gross_margin</li><li>operating_margin</li><li>fcf</li></ul>
+      <p><b>Fallback:</b> company IR, 10-Q/10-K, earnings transcript, manual extraction</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">valuation_adapter</div>
+      <h2>Valuation battle map inputs.</h2>
+      <div class="priority">medium_high</div>
+      <ul><li>ticker</li><li>market_cap</li><li>enterprise_value</li><li>forward_pe</li><li>ev_sales_ntm</li><li>ev_gross_profit</li><li>fcf_yield</li><li>peg</li></ul>
+      <p><b>Fallback:</b> manual model / Koyfin / TIKR / company filings</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">gann_adapter</div>
+      <h2>Gann price and time windows.</h2>
+      <div class="priority">high_for_user</div>
+      <ul><li>ticker</li><li>anchor_points</li><li>square_of_nine_levels</li><li>time_windows</li><li>time_price_square_windows</li><li>nearest_support</li><li>nearest_resistance</li><li>distance_to_support_pct</li></ul>
+      <p><b>Fallback:</b> manual anchor selection + calculator</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">avwap_technical_adapter</div>
+      <h2>AVWAP, TCG price action, Chan structure and execution confirmation.</h2>
+      <div class="priority">high</div>
+      <ul><li>ticker</li><li>avwap_anchors</li><li>tcg_structure</li><li>ema_state</li><li>volume_confirmation</li><li>chan_center_state</li><li>price_action_confirmation_score</li></ul>
+      <p><b>Fallback:</b> manual chart annotation / TradingView</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">options_gamma_adapter</div>
+      <h2>Options positioning, gamma pressure and volatility release.</h2>
+      <div class="priority">medium_high</div>
+      <ul><li>ticker</li><li>expiry</li><li>call_wall</li><li>put_wall</li><li>max_pain</li><li>iv_rank</li><li>skew</li><li>put_call_ratio</li></ul>
+      <p><b>Fallback:</b> manual option chain review / Unusual Whales / SpotGamma-like data if available</p>
+    </div>
+    
+    <div class="layer">
+      <div class="eyebrow">source_evidence_adapter</div>
+      <h2>Store claims from research sources and attach evidence quality.</h2>
+      <div class="priority">high</div>
+      <ul><li>source_id</li><li>source_type</li><li>source_name</li><li>date</li><li>claim</li><li>claim_type</li><li>linked_tickers</li><li>linked_narratives</li></ul>
+      <p><b>Fallback:</b> manual entry from research notes</p>
+    </div>
+    
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <div class="eyebrow">Minimum Viable Daily Brief</div>
+      <h2>日报最低真实字段</h2>
+      <ul><li>market_state.us10y</li><li>market_state.dxy</li><li>market_state.vix</li><li>market_state.breadth</li><li>ticker.last_price</li><li>ticker.rsi_14d</li><li>ticker.ema_8</li><li>ticker.ema_12</li><li>ticker.relative_strength_vs_QQQ</li><li>event_calendar.this_week</li><li>portfolio.positions</li></ul>
+    </div>
+    <div class="card box">
+      <div class="eyebrow">Minimum Viable Stock Page</div>
+      <h2>个股页最低真实字段</h2>
+      <ul><li>last_price</li><li>rsi_14d</li><li>ema_8</li><li>ema_12</li><li>avwap_earnings</li><li>gann_nearest_support</li><li>gann_nearest_resistance</li><li>next_event</li><li>valuation_state</li><li>latest_guidance_quality</li></ul>
+    </div>
+  </div>
+
+  <div class="card box">
+    <div class="eyebrow">Priority Tickers</div>
+    <h2>优先接入标的</h2>
+    <div class="tickers"><span>NVDA</span><span>CRDO</span><span>LITE</span><span>IREN</span><span>HOOD</span><span>GOOG</span><span>MSFT</span><span>AVGO</span><span>RKLB</span><span>IONQ</span></div>
+  </div>
+</div>
+</body>
+</html>

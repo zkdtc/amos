@@ -1,0 +1,260 @@
+filename,extension,category,status,importance,size_bytes,modified,path
+amos_agent_routing_v0_1.json,json,Other / Archive,Historical / Superseded,P3,14174,2026-05-24T23:42:43,/mnt/data/amos_agent_routing_v0_1.json
+amos_agent_routing_v0_1.md,md,Other / Archive,Historical / Superseded,P3,2930,2026-05-24T23:42:43,/mnt/data/amos_agent_routing_v0_1.md
+amos_alpha_data_flow_map_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,6909,2026-05-24T23:42:40,/mnt/data/amos_alpha_data_flow_map_v0_1.html
+amos_alpha_data_flow_map_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,5697,2026-05-24T23:42:41,/mnt/data/amos_alpha_data_flow_map_v0_1.json
+amos_alpha_data_flow_map_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,2307,2026-05-24T23:42:40,/mnt/data/amos_alpha_data_flow_map_v0_1.md
+amos_alpha_integration_index_v0_1.html,html,Other / Archive,Historical / Superseded,P3,10083,2026-05-24T23:42:42,/mnt/data/amos_alpha_integration_index_v0_1.html
+amos_alpha_integration_index_v0_1.json,json,Other / Archive,Historical / Superseded,P3,5366,2026-05-24T23:42:42,/mnt/data/amos_alpha_integration_index_v0_1.json
+amos_alpha_integration_index_v0_1.md,md,Other / Archive,Historical / Superseded,P3,4820,2026-05-24T23:42:42,/mnt/data/amos_alpha_integration_index_v0_1.md
+amos_alpha_master_index_v0_2.html,html,Master Index,Historical / Superseded,P3,20233,2026-05-24T23:42:39,/mnt/data/amos_alpha_master_index_v0_2.html
+amos_alpha_master_index_v0_2.json,json,Master Index,Historical / Superseded,P3,9253,2026-05-24T23:42:39,/mnt/data/amos_alpha_master_index_v0_2.json
+amos_alpha_master_index_v0_2.md,md,Master Index,Historical / Superseded,P3,5555,2026-05-24T23:42:39,/mnt/data/amos_alpha_master_index_v0_2.md
+amos_alpha_master_index_v0_3.html,html,Master Index,Historical / Superseded,P3,22764,2026-05-24T23:42:38,/mnt/data/amos_alpha_master_index_v0_3.html
+amos_alpha_master_index_v0_3.json,json,Master Index,Historical / Superseded,P3,10220,2026-05-24T23:42:38,/mnt/data/amos_alpha_master_index_v0_3.json
+amos_alpha_master_index_v0_3.md,md,Master Index,Historical / Superseded,P3,5947,2026-05-24T23:42:38,/mnt/data/amos_alpha_master_index_v0_3.md
+amos_alpha_master_index_v0_4.html,html,Master Index,Historical / Superseded,P3,28073,2026-05-24T23:42:36,/mnt/data/amos_alpha_master_index_v0_4.html
+amos_alpha_master_index_v0_4.json,json,Master Index,Historical / Superseded,P3,13496,2026-05-24T23:42:36,/mnt/data/amos_alpha_master_index_v0_4.json
+amos_alpha_master_index_v0_4.md,md,Master Index,Historical / Superseded,P3,7944,2026-05-24T23:42:36,/mnt/data/amos_alpha_master_index_v0_4.md
+amos_alpha_master_index_v0_5.html,html,Master Index,Historical / Superseded,P3,20037,2026-05-24T23:42:34,/mnt/data/amos_alpha_master_index_v0_5.html
+amos_alpha_master_index_v0_5.json,json,Master Index,Historical / Superseded,P3,9204,2026-05-24T23:42:34,/mnt/data/amos_alpha_master_index_v0_5.json
+amos_alpha_master_index_v0_5.md,md,Master Index,Historical / Superseded,P3,5314,2026-05-24T23:42:34,/mnt/data/amos_alpha_master_index_v0_5.md
+amos_alpha_master_index_v0_6.html,html,Master Index,Engineer Must Read,P0,21450,2026-05-24T23:42:32,/mnt/data/amos_alpha_master_index_v0_6.html
+amos_alpha_master_index_v0_6.json,json,Master Index,Latest / Current,P1,11818,2026-05-24T23:42:32,/mnt/data/amos_alpha_master_index_v0_6.json
+amos_alpha_master_index_v0_6.md,md,Master Index,Latest / Current,P1,6821,2026-05-24T23:42:32,/mnt/data/amos_alpha_master_index_v0_6.md
+amos_alpha_v0_3_roadmap.html,html,Other / Archive,Historical / Superseded,P3,7694,2026-05-24T23:42:39,/mnt/data/amos_alpha_v0_3_roadmap.html
+amos_alpha_v0_3_roadmap.json,json,Other / Archive,Historical / Superseded,P3,4658,2026-05-24T23:42:39,/mnt/data/amos_alpha_v0_3_roadmap.json
+amos_alpha_v0_3_roadmap.md,md,Other / Archive,Historical / Superseded,P3,2753,2026-05-24T23:42:39,/mnt/data/amos_alpha_v0_3_roadmap.md
+amos_canonical_system_integration_spec_v0_1.html,html,Canonical Spec / Checklist,Latest / Current,P1,13061,2026-05-24T23:42:32,/mnt/data/amos_canonical_system_integration_spec_v0_1.html
+amos_canonical_system_integration_spec_v0_1.json,json,Canonical Spec / Checklist,Latest / Current,P1,24035,2026-05-24T23:42:33,/mnt/data/amos_canonical_system_integration_spec_v0_1.json
+amos_canonical_system_integration_spec_v0_1.md,md,Canonical Spec / Checklist,Engineer Must Read,P0,11956,2026-05-24T23:42:33,/mnt/data/amos_canonical_system_integration_spec_v0_1.md
+amos_codex_initial_task_prompt_v0_1.md,md,Engineering / Codex,Latest / Current,P1,1931,2026-05-24T23:42:32,/mnt/data/amos_codex_initial_task_prompt_v0_1.md
+amos_codex_task_pack_v0_1.html,html,Engineering / Codex,Latest / Current,P1,16261,2026-05-24T23:42:32,/mnt/data/amos_codex_task_pack_v0_1.html
+amos_codex_task_pack_v0_1.json,json,Engineering / Codex,Latest / Current,P1,15057,2026-05-24T23:42:32,/mnt/data/amos_codex_task_pack_v0_1.json
+amos_codex_task_pack_v0_1.md,md,Engineering / Codex,Engineer Must Read,P0,12278,2026-05-24T23:42:32,/mnt/data/amos_codex_task_pack_v0_1.md
+amos_codex_task_pack_v0_1.zip,zip,Engineering / Codex,Latest / Current,P1,21664,2026-05-24T23:42:32,/mnt/data/amos_codex_task_pack_v0_1.zip
+amos_conversation_evolution_timeline_v0_1.md,md,Origin / Raw Source,Historical / Superseded,P3,4408,2026-05-24T23:42:31,/mnt/data/amos_conversation_evolution_timeline_v0_1.md
+amos_crdo_peer_map_v0_1.html,html,Peer Map,Historical / Superseded,P3,3365,2026-05-24T23:42:38,/mnt/data/amos_crdo_peer_map_v0_1.html
+amos_crdo_peer_map_v0_1.json,json,Peer Map,Historical / Superseded,P3,1755,2026-05-24T23:42:38,/mnt/data/amos_crdo_peer_map_v0_1.json
+amos_crdo_peer_map_v0_1.md,md,Peer Map,Historical / Superseded,P3,1163,2026-05-24T23:42:38,/mnt/data/amos_crdo_peer_map_v0_1.md
+amos_crdo_peer_map_v0_1.xlsx,xlsx,Peer Map,Historical / Superseded,P3,21950,2026-05-24T23:42:38,/mnt/data/amos_crdo_peer_map_v0_1.xlsx
+amos_csv_import_schema_v0_1.html,html,CSV Import,Historical / Superseded,P3,1702,2026-05-24T23:42:33,/mnt/data/amos_csv_import_schema_v0_1.html
+amos_csv_import_schema_v0_1.json,json,CSV Import,Historical / Superseded,P3,883,2026-05-24T23:42:34,/mnt/data/amos_csv_import_schema_v0_1.json
+amos_csv_import_schema_v0_1.md,md,CSV Import,Historical / Superseded,P3,927,2026-05-24T23:42:33,/mnt/data/amos_csv_import_schema_v0_1.md
+amos_csv_import_schema_v0_1.xlsx,xlsx,CSV Import,Latest / Current,P1,62160,2026-05-24T23:42:33,/mnt/data/amos_csv_import_schema_v0_1.xlsx
+amos_daily_brief_exported_from_unified_v0_2.html,html,Daily Brief,Latest / Current,P1,7409,2026-05-24T23:42:33,/mnt/data/amos_daily_brief_exported_from_unified_v0_2.html
+amos_daily_brief_generator_from_manual_packet_v0_2.html,html,Daily Brief,Historical / Superseded,P3,3596,2026-05-24T23:42:39,/mnt/data/amos_daily_brief_generator_from_manual_packet_v0_2.html
+amos_daily_brief_generator_from_manual_packet_v0_2.json,json,Daily Brief,Historical / Superseded,P3,452,2026-05-24T23:42:39,/mnt/data/amos_daily_brief_generator_from_manual_packet_v0_2.json
+amos_daily_brief_generator_from_manual_packet_v0_2.md,md,Daily Brief,Historical / Superseded,P3,783,2026-05-24T23:42:39,/mnt/data/amos_daily_brief_generator_from_manual_packet_v0_2.md
+amos_daily_brief_generator_from_manual_packet_v0_2.xlsx,xlsx,Daily Brief,Historical / Superseded,P3,36741,2026-05-24T23:42:39,/mnt/data/amos_daily_brief_generator_from_manual_packet_v0_2.xlsx
+amos_daily_brief_html_exporter_config_v0_2.json,json,Daily Brief,Latest / Current,P1,2633,2026-05-24T23:42:33,/mnt/data/amos_daily_brief_html_exporter_config_v0_2.json
+amos_daily_brief_html_exporter_v0_2.json,json,Daily Brief,Historical / Superseded,P3,1001,2026-05-24T23:42:33,/mnt/data/amos_daily_brief_html_exporter_v0_2.json
+amos_daily_brief_html_exporter_v0_2.md,md,Daily Brief,Historical / Superseded,P3,1133,2026-05-24T23:42:33,/mnt/data/amos_daily_brief_html_exporter_v0_2.md
+amos_daily_brief_html_exporter_v0_2.py,py,Daily Brief,Latest / Current,P1,10745,2026-05-24T23:42:33,/mnt/data/amos_daily_brief_html_exporter_v0_2.py
+amos_daily_market_brief_template_v0_1.html,html,Other / Archive,Historical / Superseded,P3,7465,2026-05-24T23:42:41,/mnt/data/amos_daily_market_brief_template_v0_1.html
+amos_daily_market_brief_template_v0_1.json,json,Other / Archive,Historical / Superseded,P3,7853,2026-05-24T23:42:41,/mnt/data/amos_daily_market_brief_template_v0_1.json
+amos_daily_market_brief_template_v0_1.md,md,Other / Archive,Historical / Superseded,P3,2669,2026-05-24T23:42:41,/mnt/data/amos_daily_market_brief_template_v0_1.md
+amos_data_schema_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,13773,2026-05-24T23:42:43,/mnt/data/amos_data_schema_v0_1.json
+amos_data_schema_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,2605,2026-05-24T23:42:43,/mnt/data/amos_data_schema_v0_1.md
+amos_designer_raw_material_brief_v0_1.md,md,Origin / Raw Source,Historical / Superseded,P3,983,2026-05-24T23:42:31,/mnt/data/amos_designer_raw_material_brief_v0_1.md
+amos_engineer_reading_guide_v0_1.md,md,Origin / Raw Source,Historical / Superseded,P3,1602,2026-05-24T23:42:31,/mnt/data/amos_engineer_reading_guide_v0_1.md
+amos_engineering_handoff_pack_v0_1.zip,zip,Engineering / Codex,Latest / Current,P1,33997,2026-05-24T23:42:32,/mnt/data/amos_engineering_handoff_pack_v0_1.zip
+amos_engineering_handoff_spec_v0_1.html,html,Engineering / Codex,Latest / Current,P1,5519,2026-05-24T23:42:32,/mnt/data/amos_engineering_handoff_spec_v0_1.html
+amos_engineering_handoff_spec_v0_1.json,json,Engineering / Codex,Latest / Current,P1,8037,2026-05-24T23:42:32,/mnt/data/amos_engineering_handoff_spec_v0_1.json
+amos_engineering_handoff_spec_v0_1.md,md,Engineering / Codex,Engineer Must Read,P0,6792,2026-05-24T23:42:32,/mnt/data/amos_engineering_handoff_spec_v0_1.md
+amos_event_import_template_v0_1.csv,csv,CSV Import,Historical / Superseded,P3,500,2026-05-24T23:42:34,/mnt/data/amos_event_import_template_v0_1.csv
+amos_evidence_import_template_v0_1.csv,csv,CSV Import,Historical / Superseded,P3,546,2026-05-24T23:42:34,/mnt/data/amos_evidence_import_template_v0_1.csv
+amos_full_ui_blueprint.html,html,Other / Archive,Optional Reference,P3,21765,2026-05-24T23:42:43,/mnt/data/amos_full_ui_blueprint.html
+amos_gann_anchor_verification_checklist_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,4081,2026-05-24T23:42:36,/mnt/data/amos_gann_anchor_verification_checklist_v0_1.html
+amos_gann_anchor_verification_checklist_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,586,2026-05-24T23:42:36,/mnt/data/amos_gann_anchor_verification_checklist_v0_1.json
+amos_gann_anchor_verification_checklist_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,893,2026-05-24T23:42:36,/mnt/data/amos_gann_anchor_verification_checklist_v0_1.md
+amos_gann_anchor_verification_checklist_v0_1.xlsx,xlsx,Gann / Anchor Governance,Historical / Superseded,P3,25090,2026-05-24T23:42:36,/mnt/data/amos_gann_anchor_verification_checklist_v0_1.xlsx
+amos_gann_anchor_verification_checklist_v0_2.html,html,Gann / Anchor Governance,Latest / Current,P1,7324,2026-05-24T23:42:34,/mnt/data/amos_gann_anchor_verification_checklist_v0_2.html
+amos_gann_anchor_verification_checklist_v0_2.json,json,Gann / Anchor Governance,Latest / Current,P1,924,2026-05-24T23:42:34,/mnt/data/amos_gann_anchor_verification_checklist_v0_2.json
+amos_gann_anchor_verification_checklist_v0_2.md,md,Gann / Anchor Governance,Latest / Current,P1,1214,2026-05-24T23:42:34,/mnt/data/amos_gann_anchor_verification_checklist_v0_2.md
+amos_gann_anchor_verification_checklist_v0_2.xlsx,xlsx,Gann / Anchor Governance,Latest / Current,P1,42706,2026-05-24T23:42:34,/mnt/data/amos_gann_anchor_verification_checklist_v0_2.xlsx
+amos_gann_calculator_module_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7393,2026-05-24T23:42:40,/mnt/data/amos_gann_calculator_module_v0_1.html
+amos_gann_calculator_module_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,8068,2026-05-24T23:42:40,/mnt/data/amos_gann_calculator_module_v0_1.json
+amos_gann_calculator_module_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1592,2026-05-24T23:42:40,/mnt/data/amos_gann_calculator_module_v0_1.md
+amos_gann_cluster_distance_engine_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7595,2026-05-24T23:42:40,/mnt/data/amos_gann_cluster_distance_engine_v0_2.html
+amos_gann_cluster_distance_engine_v0_2.json,json,Gann / Anchor Governance,Historical / Superseded,P3,5526,2026-05-24T23:42:40,/mnt/data/amos_gann_cluster_distance_engine_v0_2.json
+amos_gann_cluster_distance_engine_v0_2.md,md,Gann / Anchor Governance,Historical / Superseded,P3,3331,2026-05-24T23:42:40,/mnt/data/amos_gann_cluster_distance_engine_v0_2.md
+amos_gann_event_gamma_resonance_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,6538,2026-05-24T23:42:43,/mnt/data/amos_gann_event_gamma_resonance_v0_1.html
+amos_gann_event_gamma_resonance_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,6911,2026-05-24T23:42:43,/mnt/data/amos_gann_event_gamma_resonance_v0_1.json
+amos_gann_event_gamma_resonance_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,3235,2026-05-24T23:42:43,/mnt/data/amos_gann_event_gamma_resonance_v0_1.md
+amos_gann_import_template_v0_1.csv,csv,CSV Import,Historical / Superseded,P3,1048,2026-05-24T23:42:34,/mnt/data/amos_gann_import_template_v0_1.csv
+amos_gann_live_ticker_registry_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,5912,2026-05-24T23:42:37,/mnt/data/amos_gann_live_ticker_registry_v0_1.html
+amos_gann_live_ticker_registry_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,3341,2026-05-24T23:42:37,/mnt/data/amos_gann_live_ticker_registry_v0_1.json
+amos_gann_live_ticker_registry_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1263,2026-05-24T23:42:37,/mnt/data/amos_gann_live_ticker_registry_v0_1.md
+amos_gann_live_ticker_registry_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,6290,2026-05-24T23:42:36,/mnt/data/amos_gann_live_ticker_registry_v0_2.html
+amos_gann_live_ticker_registry_v0_2.json,json,Gann / Anchor Governance,Historical / Superseded,P3,4075,2026-05-24T23:42:37,/mnt/data/amos_gann_live_ticker_registry_v0_2.json
+amos_gann_live_ticker_registry_v0_2.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1283,2026-05-24T23:42:36,/mnt/data/amos_gann_live_ticker_registry_v0_2.md
+amos_gann_live_ticker_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,6750,2026-05-24T23:42:35,/mnt/data/amos_gann_live_ticker_registry_v0_3.html
+amos_gann_live_ticker_registry_v0_3.json,json,Gann / Anchor Governance,Historical / Superseded,P3,4773,2026-05-24T23:42:35,/mnt/data/amos_gann_live_ticker_registry_v0_3.json
+amos_gann_live_ticker_registry_v0_3.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1383,2026-05-24T23:42:35,/mnt/data/amos_gann_live_ticker_registry_v0_3.md
+amos_gann_live_ticker_registry_v0_4.html,html,Gann / Anchor Governance,Latest / Current,P1,7085,2026-05-24T23:42:35,/mnt/data/amos_gann_live_ticker_registry_v0_4.html
+amos_gann_live_ticker_registry_v0_4.json,json,Gann / Anchor Governance,Latest / Current,P1,5702,2026-05-24T23:42:35,/mnt/data/amos_gann_live_ticker_registry_v0_4.json
+amos_gann_live_ticker_registry_v0_4.md,md,Gann / Anchor Governance,Latest / Current,P1,1536,2026-05-24T23:42:34,/mnt/data/amos_gann_live_ticker_registry_v0_4.md
+amos_gann_time_distance_engine_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7039,2026-05-24T23:42:40,/mnt/data/amos_gann_time_distance_engine_v0_3.html
+amos_gann_time_distance_engine_v0_3.json,json,Gann / Anchor Governance,Historical / Superseded,P3,15455,2026-05-24T23:42:40,/mnt/data/amos_gann_time_distance_engine_v0_3.json
+amos_gann_time_distance_engine_v0_3.md,md,Gann / Anchor Governance,Historical / Superseded,P3,4762,2026-05-24T23:42:40,/mnt/data/amos_gann_time_distance_engine_v0_3.md
+amos_generated_daily_brief_snapshot_v0_1.html,html,Daily Brief,Historical / Superseded,P3,15747,2026-05-24T23:42:37,/mnt/data/amos_generated_daily_brief_snapshot_v0_1.html
+amos_generated_daily_brief_snapshot_v0_1.json,json,Daily Brief,Historical / Superseded,P3,2624,2026-05-24T23:42:37,/mnt/data/amos_generated_daily_brief_snapshot_v0_1.json
+amos_generated_daily_brief_snapshot_v0_1.md,md,Daily Brief,Historical / Superseded,P3,1775,2026-05-24T23:42:37,/mnt/data/amos_generated_daily_brief_snapshot_v0_1.md
+amos_generic_page_gann_auto_insertion_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,3078,2026-05-24T23:42:38,/mnt/data/amos_generic_page_gann_auto_insertion_v0_2.html
+amos_generic_page_gann_auto_insertion_v0_2.json,json,Gann / Anchor Governance,Historical / Superseded,P3,656,2026-05-24T23:42:38,/mnt/data/amos_generic_page_gann_auto_insertion_v0_2.json
+amos_generic_page_gann_auto_insertion_v0_2.md,md,Gann / Anchor Governance,Historical / Superseded,P3,881,2026-05-24T23:42:38,/mnt/data/amos_generic_page_gann_auto_insertion_v0_2.md
+amos_generic_page_generator_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,3104,2026-05-24T23:42:37,/mnt/data/amos_generic_page_generator_gann_registry_v0_3.html
+amos_generic_page_generator_gann_registry_v0_3.json,json,Gann / Anchor Governance,Historical / Superseded,P3,681,2026-05-24T23:42:37,/mnt/data/amos_generic_page_generator_gann_registry_v0_3.json
+amos_generic_page_generator_gann_registry_v0_3.md,md,Gann / Anchor Governance,Historical / Superseded,P3,768,2026-05-24T23:42:37,/mnt/data/amos_generic_page_generator_gann_registry_v0_3.md
+amos_generic_page_generator_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,3100,2026-05-24T23:42:36,/mnt/data/amos_generic_page_generator_gann_registry_v0_4.html
+amos_generic_page_generator_gann_registry_v0_4.json,json,Gann / Anchor Governance,Historical / Superseded,P3,902,2026-05-24T23:42:36,/mnt/data/amos_generic_page_generator_gann_registry_v0_4.json
+amos_generic_page_generator_gann_registry_v0_4.md,md,Gann / Anchor Governance,Historical / Superseded,P3,819,2026-05-24T23:42:36,/mnt/data/amos_generic_page_generator_gann_registry_v0_4.md
+amos_generic_page_generator_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,3094,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_5.html
+amos_generic_page_generator_gann_registry_v0_5.json,json,Gann / Anchor Governance,Historical / Superseded,P3,895,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_5.json
+amos_generic_page_generator_gann_registry_v0_5.md,md,Gann / Anchor Governance,Historical / Superseded,P3,809,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_5.md
+amos_generic_page_generator_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,3031,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_6.html
+amos_generic_page_generator_gann_registry_v0_6.json,json,Gann / Anchor Governance,Latest / Current,P1,845,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_6.json
+amos_generic_page_generator_gann_registry_v0_6.md,md,Gann / Anchor Governance,Latest / Current,P1,887,2026-05-24T23:42:35,/mnt/data/amos_generic_page_generator_gann_registry_v0_6.md
+amos_generic_stock_page_generator_v0_1.html,html,Stock Pages,Historical / Superseded,P3,2762,2026-05-24T23:42:39,/mnt/data/amos_generic_stock_page_generator_v0_1.html
+amos_generic_stock_page_generator_v0_1.json,json,Stock Pages,Historical / Superseded,P3,1172,2026-05-24T23:42:40,/mnt/data/amos_generic_stock_page_generator_v0_1.json
+amos_generic_stock_page_generator_v0_1.md,md,Stock Pages,Historical / Superseded,P3,1166,2026-05-24T23:42:39,/mnt/data/amos_generic_stock_page_generator_v0_1.md
+amos_home_command_center_v02.html,html,Core Engines / Data,Optional Reference,P2,12403,2026-05-24T23:42:43,/mnt/data/amos_home_command_center_v02.html
+amos_home_command_center_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,16585,2026-05-24T23:42:43,/mnt/data/amos_home_command_center_v0_1.html
+amos_hood_gann_engine_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7632,2026-05-24T23:42:35,/mnt/data/amos_hood_gann_engine_v0_1.html
+amos_hood_gann_engine_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,15028,2026-05-24T23:42:35,/mnt/data/amos_hood_gann_engine_v0_1.json
+amos_hood_gann_engine_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,4557,2026-05-24T23:42:35,/mnt/data/amos_hood_gann_engine_v0_1.md
+amos_how_to_export_actual_chat_history_for_engineer_v0_1.md,md,Origin / Raw Source,Historical / Superseded,P3,976,2026-05-24T23:42:31,/mnt/data/amos_how_to_export_actual_chat_history_for_engineer_v0_1.md
+amos_iren_gann_engine_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7500,2026-05-24T23:42:35,/mnt/data/amos_iren_gann_engine_v0_1.html
+amos_iren_gann_engine_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,14425,2026-05-24T23:42:36,/mnt/data/amos_iren_gann_engine_v0_1.json
+amos_iren_gann_engine_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,4095,2026-05-24T23:42:36,/mnt/data/amos_iren_gann_engine_v0_1.md
+amos_lite_gann_engine_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7513,2026-05-24T23:42:37,/mnt/data/amos_lite_gann_engine_v0_1.html
+amos_lite_gann_engine_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,14867,2026-05-24T23:42:37,/mnt/data/amos_lite_gann_engine_v0_1.json
+amos_lite_gann_engine_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,4429,2026-05-24T23:42:37,/mnt/data/amos_lite_gann_engine_v0_1.md
+amos_macro_event_calendar_manual_input_v0_1.html,html,Macro Event Calendar,Historical / Superseded,P3,1763,2026-05-24T23:42:33,/mnt/data/amos_macro_event_calendar_manual_input_v0_1.html
+amos_macro_event_calendar_manual_input_v0_1.json,json,Macro Event Calendar,Historical / Superseded,P3,977,2026-05-24T23:42:33,/mnt/data/amos_macro_event_calendar_manual_input_v0_1.json
+amos_macro_event_calendar_manual_input_v0_1.md,md,Macro Event Calendar,Historical / Superseded,P3,610,2026-05-24T23:42:33,/mnt/data/amos_macro_event_calendar_manual_input_v0_1.md
+amos_macro_event_calendar_manual_input_v0_1.xlsx,xlsx,Macro Event Calendar,Latest / Current,P1,31055,2026-05-24T23:42:33,/mnt/data/amos_macro_event_calendar_manual_input_v0_1.xlsx
+amos_macro_regime_liquidity_state_machine_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,5623,2026-05-24T23:42:42,/mnt/data/amos_macro_regime_liquidity_state_machine_v0_1.html
+amos_macro_regime_liquidity_state_machine_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,8930,2026-05-24T23:42:42,/mnt/data/amos_macro_regime_liquidity_state_machine_v0_1.json
+amos_macro_regime_liquidity_state_machine_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,4166,2026-05-24T23:42:42,/mnt/data/amos_macro_regime_liquidity_state_machine_v0_1.md
+amos_manual_data_input_sheet_v0_1.xlsx,xlsx,Manual Workbook,Historical / Superseded,P3,26712,2026-05-24T23:42:39,/mnt/data/amos_manual_data_input_sheet_v0_1.xlsx
+amos_manual_data_workbook_v0_2_unified.html,html,Manual Workbook,Historical / Superseded,P3,1992,2026-05-24T23:42:34,/mnt/data/amos_manual_data_workbook_v0_2_unified.html
+amos_manual_data_workbook_v0_2_unified.json,json,Manual Workbook,Historical / Superseded,P3,584,2026-05-24T23:42:34,/mnt/data/amos_manual_data_workbook_v0_2_unified.json
+amos_manual_data_workbook_v0_2_unified.md,md,Manual Workbook,Historical / Superseded,P3,660,2026-05-24T23:42:34,/mnt/data/amos_manual_data_workbook_v0_2_unified.md
+amos_manual_data_workbook_v0_2_unified.xlsx,xlsx,Manual Workbook,Latest / Current,P1,49724,2026-05-24T23:42:34,/mnt/data/amos_manual_data_workbook_v0_2_unified.xlsx
+amos_manual_data_workflow_guide_v0_1.html,html,Manual Workbook,Historical / Superseded,P3,8219,2026-05-24T23:42:37,/mnt/data/amos_manual_data_workflow_guide_v0_1.html
+amos_manual_data_workflow_guide_v0_1.json,json,Manual Workbook,Historical / Superseded,P3,6235,2026-05-24T23:42:38,/mnt/data/amos_manual_data_workflow_guide_v0_1.json
+amos_manual_data_workflow_guide_v0_1.md,md,Manual Workbook,Historical / Superseded,P3,3999,2026-05-24T23:42:37,/mnt/data/amos_manual_data_workflow_guide_v0_1.md
+amos_multistock_dashboard_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,16068,2026-05-24T23:42:41,/mnt/data/amos_multistock_dashboard_v0_1.html
+amos_multistock_dashboard_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,539,2026-05-24T23:42:41,/mnt/data/amos_multistock_dashboard_v0_1.json
+amos_multistock_dashboard_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,831,2026-05-24T23:42:41,/mnt/data/amos_multistock_dashboard_v0_1.md
+amos_narrative_lifecycle_capital_rotation_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,6686,2026-05-24T23:42:43,/mnt/data/amos_narrative_lifecycle_capital_rotation_v0_1.html
+amos_narrative_lifecycle_capital_rotation_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,8436,2026-05-24T23:42:42,/mnt/data/amos_narrative_lifecycle_capital_rotation_v0_1.json
+amos_narrative_lifecycle_capital_rotation_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3817,2026-05-24T23:42:42,/mnt/data/amos_narrative_lifecycle_capital_rotation_v0_1.md
+amos_no_omission_master_checklist_v0_1.md,md,Canonical Spec / Checklist,Engineer Must Read,P0,7298,2026-05-24T23:42:33,/mnt/data/amos_no_omission_master_checklist_v0_1.md
+amos_nvda_gann_engine_v0_1.html,html,Gann / Anchor Governance,Historical / Superseded,P3,7312,2026-05-24T23:42:37,/mnt/data/amos_nvda_gann_engine_v0_1.html
+amos_nvda_gann_engine_v0_1.json,json,Gann / Anchor Governance,Historical / Superseded,P3,12719,2026-05-24T23:42:37,/mnt/data/amos_nvda_gann_engine_v0_1.json
+amos_nvda_gann_engine_v0_1.md,md,Gann / Anchor Governance,Historical / Superseded,P3,2861,2026-05-24T23:42:37,/mnt/data/amos_nvda_gann_engine_v0_1.md
+amos_origin_process_and_design_manual_v0_1.html,html,Origin / Raw Source,Latest / Current,P1,10702,2026-05-24T23:42:31,/mnt/data/amos_origin_process_and_design_manual_v0_1.html
+amos_origin_process_and_design_manual_v0_1.json,json,Origin / Raw Source,Latest / Current,P1,8792,2026-05-24T23:42:32,/mnt/data/amos_origin_process_and_design_manual_v0_1.json
+amos_origin_process_and_design_manual_v0_1.md,md,Origin / Raw Source,Engineer Must Read,P0,8738,2026-05-24T23:42:32,/mnt/data/amos_origin_process_and_design_manual_v0_1.md
+amos_origin_process_manual_pack_v0_1.zip,zip,Origin / Raw Source,Latest / Current,P1,45716,2026-05-24T23:42:32,/mnt/data/amos_origin_process_manual_pack_v0_1.zip
+amos_original_requirement_quotes_and_source_notes_v0_1.md,md,Origin / Raw Source,Historical / Superseded,P3,1483,2026-05-24T23:42:31,/mnt/data/amos_original_requirement_quotes_and_source_notes_v0_1.md
+amos_portfolio_battle_map_migration_engine_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,6719,2026-05-24T23:42:42,/mnt/data/amos_portfolio_battle_map_migration_engine_v0_1.html
+amos_portfolio_battle_map_migration_engine_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,8386,2026-05-24T23:42:42,/mnt/data/amos_portfolio_battle_map_migration_engine_v0_1.json
+amos_portfolio_battle_map_migration_engine_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3940,2026-05-24T23:42:42,/mnt/data/amos_portfolio_battle_map_migration_engine_v0_1.md
+amos_price_technical_import_template_v0_1.csv,csv,CSV Import,Historical / Superseded,P3,620,2026-05-24T23:42:34,/mnt/data/amos_price_technical_import_template_v0_1.csv
+amos_priority_ticker_checklist_v0_1.html,html,Other / Archive,Historical / Superseded,P3,2788,2026-05-24T23:42:38,/mnt/data/amos_priority_ticker_checklist_v0_1.html
+amos_priority_ticker_checklist_v0_1.json,json,Other / Archive,Historical / Superseded,P3,623,2026-05-24T23:42:39,/mnt/data/amos_priority_ticker_checklist_v0_1.json
+amos_priority_ticker_checklist_v0_1.md,md,Other / Archive,Historical / Superseded,P3,871,2026-05-24T23:42:38,/mnt/data/amos_priority_ticker_checklist_v0_1.md
+amos_priority_ticker_checklist_v0_1.xlsx,xlsx,Other / Archive,Historical / Superseded,P3,43739,2026-05-24T23:42:38,/mnt/data/amos_priority_ticker_checklist_v0_1.xlsx
+amos_raw_conversation_source_dossier_v0_1.html,html,Origin / Raw Source,Latest / Current,P1,9692,2026-05-24T23:42:31,/mnt/data/amos_raw_conversation_source_dossier_v0_1.html
+amos_raw_conversation_source_dossier_v0_1.json,json,Origin / Raw Source,Latest / Current,P1,7688,2026-05-24T23:42:31,/mnt/data/amos_raw_conversation_source_dossier_v0_1.json
+amos_raw_conversation_source_dossier_v0_1.md,md,Origin / Raw Source,Engineer Must Read,P0,7196,2026-05-24T23:42:31,/mnt/data/amos_raw_conversation_source_dossier_v0_1.md
+amos_raw_conversation_source_pack_v0_1.zip,zip,Origin / Raw Source,Latest / Current,P1,39110,2026-05-24T23:42:31,/mnt/data/amos_raw_conversation_source_pack_v0_1.zip
+amos_real_data_adapter_schema_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,8102,2026-05-24T23:42:40,/mnt/data/amos_real_data_adapter_schema_v0_1.html
+amos_real_data_adapter_schema_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,9710,2026-05-24T23:42:40,/mnt/data/amos_real_data_adapter_schema_v0_1.json
+amos_real_data_adapter_schema_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3646,2026-05-24T23:42:41,/mnt/data/amos_real_data_adapter_schema_v0_1.md
+amos_real_evidence_packet_template_v0_1.html,html,Other / Archive,Historical / Superseded,P3,3090,2026-05-24T23:42:38,/mnt/data/amos_real_evidence_packet_template_v0_1.html
+amos_real_evidence_packet_template_v0_1.json,json,Other / Archive,Historical / Superseded,P3,560,2026-05-24T23:42:38,/mnt/data/amos_real_evidence_packet_template_v0_1.json
+amos_real_evidence_packet_template_v0_1.md,md,Other / Archive,Historical / Superseded,P3,1318,2026-05-24T23:42:38,/mnt/data/amos_real_evidence_packet_template_v0_1.md
+amos_real_evidence_packet_template_v0_1.xlsx,xlsx,Other / Archive,Historical / Superseded,P3,62722,2026-05-24T23:42:38,/mnt/data/amos_real_evidence_packet_template_v0_1.xlsx
+amos_real_market_data_source_map_v0_1.html,html,Data Sources,Historical / Superseded,P3,1765,2026-05-24T23:42:33,/mnt/data/amos_real_market_data_source_map_v0_1.html
+amos_real_market_data_source_map_v0_1.json,json,Data Sources,Historical / Superseded,P3,1206,2026-05-24T23:42:33,/mnt/data/amos_real_market_data_source_map_v0_1.json
+amos_real_market_data_source_map_v0_1.md,md,Data Sources,Historical / Superseded,P3,692,2026-05-24T23:42:33,/mnt/data/amos_real_market_data_source_map_v0_1.md
+amos_real_market_data_source_map_v0_1.xlsx,xlsx,Data Sources,Latest / Current,P1,27641,2026-05-24T23:42:33,/mnt/data/amos_real_market_data_source_map_v0_1.xlsx
+amos_repo_structure_v0_1.md,md,Engineering / Codex,Engineer Must Read,P0,2501,2026-05-24T23:42:32,/mnt/data/amos_repo_structure_v0_1.md
+amos_research_source_evidence_quality_engine_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,5154,2026-05-24T23:42:42,/mnt/data/amos_research_source_evidence_quality_engine_v0_1.html
+amos_research_source_evidence_quality_engine_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,7986,2026-05-24T23:42:42,/mnt/data/amos_research_source_evidence_quality_engine_v0_1.json
+amos_research_source_evidence_quality_engine_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3550,2026-05-24T23:42:42,/mnt/data/amos_research_source_evidence_quality_engine_v0_1.md
+amos_risk_protection_behavior_guardrail_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,5592,2026-05-24T23:42:42,/mnt/data/amos_risk_protection_behavior_guardrail_v0_1.html
+amos_risk_protection_behavior_guardrail_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,7585,2026-05-24T23:42:42,/mnt/data/amos_risk_protection_behavior_guardrail_v0_1.json
+amos_risk_protection_behavior_guardrail_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3048,2026-05-24T23:42:42,/mnt/data/amos_risk_protection_behavior_guardrail_v0_1.md
+amos_sample_data_fixture_v0_1.html,html,Other / Archive,Historical / Superseded,P3,7856,2026-05-24T23:42:41,/mnt/data/amos_sample_data_fixture_v0_1.html
+amos_sample_data_fixture_v0_1.json,json,Other / Archive,Historical / Superseded,P3,11603,2026-05-24T23:42:41,/mnt/data/amos_sample_data_fixture_v0_1.json
+amos_sample_data_fixture_v0_1.md,md,Other / Archive,Historical / Superseded,P3,1546,2026-05-24T23:42:41,/mnt/data/amos_sample_data_fixture_v0_1.md
+amos_scoring_connected_dashboard_v0_2.html,html,Core Engines / Data,Historical / Superseded,P3,12663,2026-05-24T23:42:41,/mnt/data/amos_scoring_connected_dashboard_v0_2.html
+amos_scoring_connected_dashboard_v0_2.json,json,Core Engines / Data,Historical / Superseded,P3,1970,2026-05-24T23:42:41,/mnt/data/amos_scoring_connected_dashboard_v0_2.json
+amos_scoring_connected_dashboard_v0_2.md,md,Core Engines / Data,Historical / Superseded,P3,1017,2026-05-24T23:42:41,/mnt/data/amos_scoring_connected_dashboard_v0_2.md
+amos_scoring_logic_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,4901,2026-05-24T23:42:41,/mnt/data/amos_scoring_logic_v0_1.html
+amos_scoring_logic_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,8590,2026-05-24T23:42:41,/mnt/data/amos_scoring_logic_v0_1.json
+amos_scoring_logic_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3335,2026-05-24T23:42:41,/mnt/data/amos_scoring_logic_v0_1.md
+amos_stock_personality_radar_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,6569,2026-05-24T23:42:42,/mnt/data/amos_stock_personality_radar_v0_1.html
+amos_stock_personality_radar_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,6859,2026-05-24T23:42:42,/mnt/data/amos_stock_personality_radar_v0_1.json
+amos_stock_personality_radar_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,3503,2026-05-24T23:42:42,/mnt/data/amos_stock_personality_radar_v0_1.md
+amos_unified_app_shell_v0_1.html,html,Other / Archive,Historical / Superseded,P3,17106,2026-05-24T23:42:41,/mnt/data/amos_unified_app_shell_v0_1.html
+amos_unified_app_shell_v0_1.json,json,Other / Archive,Historical / Superseded,P3,2146,2026-05-24T23:42:42,/mnt/data/amos_unified_app_shell_v0_1.json
+amos_unified_app_shell_v0_1.md,md,Other / Archive,Historical / Superseded,P3,804,2026-05-24T23:42:41,/mnt/data/amos_unified_app_shell_v0_1.md
+amos_unified_gann_resonance_engine_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,6459,2026-05-24T23:42:40,/mnt/data/amos_unified_gann_resonance_engine_v0_4.html
+amos_unified_gann_resonance_engine_v0_4.json,json,Gann / Anchor Governance,Historical / Superseded,P3,8948,2026-05-24T23:42:40,/mnt/data/amos_unified_gann_resonance_engine_v0_4.json
+amos_unified_gann_resonance_engine_v0_4.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1626,2026-05-24T23:42:40,/mnt/data/amos_unified_gann_resonance_engine_v0_4.md
+amos_valuation_battle_map_v0_1.html,html,Core Engines / Data,Historical / Superseded,P3,5822,2026-05-24T23:42:43,/mnt/data/amos_valuation_battle_map_v0_1.html
+amos_valuation_battle_map_v0_1.json,json,Core Engines / Data,Historical / Superseded,P3,10248,2026-05-24T23:42:43,/mnt/data/amos_valuation_battle_map_v0_1.json
+amos_valuation_battle_map_v0_1.md,md,Core Engines / Data,Historical / Superseded,P3,2875,2026-05-24T23:42:43,/mnt/data/amos_valuation_battle_map_v0_1.md
+crdo_data_driven_stock_page_v0_2.html,html,Stock Pages,Historical / Superseded,P3,12941,2026-05-24T23:42:41,/mnt/data/crdo_data_driven_stock_page_v0_2.html
+crdo_data_driven_stock_page_v0_2.json,json,Stock Pages,Historical / Superseded,P3,564,2026-05-24T23:42:41,/mnt/data/crdo_data_driven_stock_page_v0_2.json
+crdo_data_driven_stock_page_v0_2.md,md,Stock Pages,Historical / Superseded,P3,1043,2026-05-24T23:42:41,/mnt/data/crdo_data_driven_stock_page_v0_2.md
+crdo_full_page_peer_map_link_v0_5.html,html,Peer Map,Historical / Superseded,P3,14493,2026-05-24T23:42:37,/mnt/data/crdo_full_page_peer_map_link_v0_5.html
+crdo_full_page_peer_map_link_v0_5.json,json,Peer Map,Historical / Superseded,P3,679,2026-05-24T23:42:37,/mnt/data/crdo_full_page_peer_map_link_v0_5.json
+crdo_full_page_peer_map_link_v0_5.md,md,Peer Map,Historical / Superseded,P3,1172,2026-05-24T23:42:37,/mnt/data/crdo_full_page_peer_map_link_v0_5.md
+crdo_full_stock_intelligence_page_v0_4.html,html,Other / Archive,Historical / Superseded,P3,12887,2026-05-24T23:42:40,/mnt/data/crdo_full_stock_intelligence_page_v0_4.html
+crdo_full_stock_intelligence_page_v0_4.json,json,Other / Archive,Historical / Superseded,P3,523,2026-05-24T23:42:40,/mnt/data/crdo_full_stock_intelligence_page_v0_4.json
+crdo_full_stock_intelligence_page_v0_4.md,md,Other / Archive,Historical / Superseded,P3,1217,2026-05-24T23:42:40,/mnt/data/crdo_full_stock_intelligence_page_v0_4.md
+crdo_gann_research_zone_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,21294,2026-05-24T23:42:40,/mnt/data/crdo_gann_research_zone_v0_4.html
+crdo_gann_research_zone_v0_4.json,json,Gann / Anchor Governance,Historical / Superseded,P3,792,2026-05-24T23:42:40,/mnt/data/crdo_gann_research_zone_v0_4.json
+crdo_gann_research_zone_v0_4.md,md,Gann / Anchor Governance,Historical / Superseded,P3,1195,2026-05-24T23:42:40,/mnt/data/crdo_gann_research_zone_v0_4.md
+crdo_generic_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,10410,2026-05-24T23:42:39,/mnt/data/crdo_generic_stock_intelligence_page_v0_1.html
+crdo_scoring_connected_stock_page_v0_3.html,html,Stock Pages,Historical / Superseded,P3,10623,2026-05-24T23:42:41,/mnt/data/crdo_scoring_connected_stock_page_v0_3.html
+crdo_scoring_connected_stock_page_v0_3.json,json,Stock Pages,Historical / Superseded,P3,836,2026-05-24T23:42:41,/mnt/data/crdo_scoring_connected_stock_page_v0_3.json
+crdo_scoring_connected_stock_page_v0_3.md,md,Stock Pages,Historical / Superseded,P3,1471,2026-05-24T23:42:41,/mnt/data/crdo_scoring_connected_stock_page_v0_3.md
+crdo_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,20479,2026-05-24T23:42:43,/mnt/data/crdo_stock_intelligence_page_v0_1.html
+crdo_stock_page_gann_auto_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11069,2026-05-24T23:42:38,/mnt/data/crdo_stock_page_gann_auto_v0_2.html
+crdo_stock_page_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11147,2026-05-24T23:42:37,/mnt/data/crdo_stock_page_gann_registry_v0_3.html
+crdo_stock_page_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11173,2026-05-24T23:42:36,/mnt/data/crdo_stock_page_gann_registry_v0_4.html
+crdo_stock_page_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11178,2026-05-24T23:42:35,/mnt/data/crdo_stock_page_gann_registry_v0_5.html
+crdo_stock_page_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,11348,2026-05-24T23:42:35,/mnt/data/crdo_stock_page_gann_registry_v0_6.html
+hood_generic_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,9749,2026-05-24T23:42:40,/mnt/data/hood_generic_stock_intelligence_page_v0_1.html
+hood_stock_page_gann_auto_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10101,2026-05-24T23:42:38,/mnt/data/hood_stock_page_gann_auto_v0_2.html
+hood_stock_page_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,9927,2026-05-24T23:42:37,/mnt/data/hood_stock_page_gann_registry_v0_3.html
+hood_stock_page_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,9946,2026-05-24T23:42:36,/mnt/data/hood_stock_page_gann_registry_v0_4.html
+hood_stock_page_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,9946,2026-05-24T23:42:35,/mnt/data/hood_stock_page_gann_registry_v0_5.html
+hood_stock_page_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,10895,2026-05-24T23:42:35,/mnt/data/hood_stock_page_gann_registry_v0_6.html
+iren_generic_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,10225,2026-05-24T23:42:39,/mnt/data/iren_generic_stock_intelligence_page_v0_1.html
+iren_stock_page_gann_auto_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10577,2026-05-24T23:42:38,/mnt/data/iren_stock_page_gann_auto_v0_2.html
+iren_stock_page_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10403,2026-05-24T23:42:37,/mnt/data/iren_stock_page_gann_registry_v0_3.html
+iren_stock_page_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10422,2026-05-24T23:42:36,/mnt/data/iren_stock_page_gann_registry_v0_4.html
+iren_stock_page_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11156,2026-05-24T23:42:35,/mnt/data/iren_stock_page_gann_registry_v0_5.html
+iren_stock_page_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,11326,2026-05-24T23:42:35,/mnt/data/iren_stock_page_gann_registry_v0_6.html
+lite_generic_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,10286,2026-05-24T23:42:39,/mnt/data/lite_generic_stock_intelligence_page_v0_1.html
+lite_stock_page_gann_auto_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10638,2026-05-24T23:42:38,/mnt/data/lite_stock_page_gann_auto_v0_2.html
+lite_stock_page_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10464,2026-05-24T23:42:37,/mnt/data/lite_stock_page_gann_registry_v0_3.html
+lite_stock_page_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11162,2026-05-24T23:42:36,/mnt/data/lite_stock_page_gann_registry_v0_4.html
+lite_stock_page_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,11167,2026-05-24T23:42:35,/mnt/data/lite_stock_page_gann_registry_v0_5.html
+lite_stock_page_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,11337,2026-05-24T23:42:35,/mnt/data/lite_stock_page_gann_registry_v0_6.html
+nvda_generic_stock_intelligence_page_v0_1.html,html,Other / Archive,Historical / Superseded,P3,9610,2026-05-24T23:42:39,/mnt/data/nvda_generic_stock_intelligence_page_v0_1.html
+nvda_stock_page_gann_auto_v0_2.html,html,Gann / Anchor Governance,Historical / Superseded,P3,9962,2026-05-24T23:42:38,/mnt/data/nvda_stock_page_gann_auto_v0_2.html
+nvda_stock_page_gann_registry_v0_3.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10458,2026-05-24T23:42:37,/mnt/data/nvda_stock_page_gann_registry_v0_3.html
+nvda_stock_page_gann_registry_v0_4.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10484,2026-05-24T23:42:36,/mnt/data/nvda_stock_page_gann_registry_v0_4.html
+nvda_stock_page_gann_registry_v0_5.html,html,Gann / Anchor Governance,Historical / Superseded,P3,10489,2026-05-24T23:42:35,/mnt/data/nvda_stock_page_gann_registry_v0_5.html
+nvda_stock_page_gann_registry_v0_6.html,html,Gann / Anchor Governance,Latest / Current,P1,10659,2026-05-24T23:42:35,/mnt/data/nvda_stock_page_gann_registry_v0_6.html

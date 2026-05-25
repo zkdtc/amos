@@ -1,0 +1,33 @@
+{
+  "version": "AMOS Gann Anchor Verification Checklist v0.2",
+  "created": "2026-05-24",
+  "source_engines": [
+    "amos_unified_gann_resonance_engine_v0_4.json",
+    "amos_nvda_gann_engine_v0_1.json",
+    "amos_lite_gann_engine_v0_1.json",
+    "amos_iren_gann_engine_v0_1.json",
+    "amos_hood_gann_engine_v0_1.json"
+  ],
+  "anchor_count": 12,
+  "tickers": [
+    "HOOD",
+    "IREN",
+    "LITE",
+    "NVDA"
+  ],
+  "output_workbook": "amos_gann_anchor_verification_checklist_v0_2.xlsx",
+  "delta_from_v0_1": [
+    "Added IREN anchors",
+    "Added HOOD anchors",
+    "Added ticker-specific rules",
+    "Added ticker-specific context checked field"
+  ],
+  "core_rule": "Sample anchors cannot be used for real trading until verified from actual chart data and confirmed by technical/context gates.",
+  "sheets": [
+    "Dashboard",
+    "Anchor Checklist",
+    "Verification Rules",
+    "Ticker-Specific Rules",
+    "Lists"
+  ]
+}

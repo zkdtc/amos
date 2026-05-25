@@ -1,0 +1,57 @@
+{
+  "version": "AMOS Tickers Sample v0.1",
+  "phase": "v0.3A Manual Data Alpha",
+  "data_quality": "sample_manual_ready_not_live",
+  "tickers": [
+    {
+      "symbol": "NVDA",
+      "companyName": "NVIDIA Corporation",
+      "role": "Core",
+      "priority": "P1",
+      "tags": ["AI Infra", "Compute", "Leader"],
+      "archetype": "AI Infra Leader",
+      "sectorBranch": "AI Infrastructure / GPU",
+      "classification": "Leader"
+    },
+    {
+      "symbol": "CRDO",
+      "companyName": "Credo Technology",
+      "role": "Swing",
+      "priority": "P1",
+      "tags": ["AI Infra", "Optical / SerDes"],
+      "archetype": "AI Connectivity Picks-and-Shovels",
+      "sectorBranch": "AI Infrastructure / Optical-SerDes",
+      "classification": "Leader-Follower"
+    },
+    {
+      "symbol": "LITE",
+      "companyName": "Lumentum Holdings",
+      "role": "Swing",
+      "priority": "P2",
+      "tags": ["Optical", "CPO", "AI Infra"],
+      "archetype": "Optical Components",
+      "sectorBranch": "AI Infrastructure / Optical-CPO",
+      "classification": "Follower"
+    },
+    {
+      "symbol": "IREN",
+      "companyName": "IREN Limited",
+      "role": "Tactical",
+      "priority": "P2",
+      "tags": ["BTC Miner", "AI Compute", "Power"],
+      "archetype": "BTC-AI Compute Hybrid",
+      "sectorBranch": "BTC Miner / AI Compute Pivot",
+      "classification": "Meme-Hybrid"
+    },
+    {
+      "symbol": "HOOD",
+      "companyName": "Robinhood Markets",
+      "role": "Research",
+      "priority": "P3",
+      "tags": ["Fintech", "BTC", "Retail"],
+      "archetype": "Retail-Crypto Fintech",
+      "sectorBranch": "Fintech / Crypto-Adjacent",
+      "classification": "Meme-Hybrid"
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "version": "AMOS Portfolio Battle Map & Migration Engine v0.1",
+  "purpose": "Manage current positions, watchlist, and battlefield migration across narratives without emotional over-rotation.",
+  "core_problem": "The user often identifies strong future themes early, but capital can get trapped in older positions or crowded trades.",
+  "core_principles": [
+    "Do not rotate because something is hot; rotate because relative evidence improves.",
+    "Core, swing, tactical, and runner positions need different rules.",
+    "A correct thesis can still have bad timing.",
+    "Migration must compare opportunity cost, not just absolute attractiveness.",
+    "Exit from old battlefield should be evidence-based, not regret-based."
+  ],
+  "position_roles": {
+    "core": {
+      "description": "High-conviction, cycle-relevant, can be held through normal volatility.",
+      "rules": [
+        "Needs business/narrative durability",
+        "Trim at euphoria",
+        "Do not panic sell normal pullbacks"
+      ]
+    },
+    "swing": {
+      "description": "Cycle trade; enter/exit around Gann/AVWAP/TCG and event windows.",
+      "rules": [
+        "Respect stop",
+        "Take profit at resistance",
+        "Do not turn failed swing into core"
+      ]
+    },
+    "tactical": {
+      "description": "Shorter event or mispricing trade.",
+      "rules": [
+        "Small size",
+        "Clear catalyst",
+        "Exit if catalyst fails"
+      ]
+    },
+    "runner": {
+      "description": "Leftover winner after trimming principal/profit.",
+      "rules": [
+        "Use trailing structure",
+        "Do not re-add emotionally",
+        "Let upside run only if structure intact"
+      ]
+    },
+    "research": {
+      "description": "Watchlist or small probe.",
+      "rules": [
+        "No full size",
+        "Needs evidence upgrade before build"
+      ]
+    }
+  },
+  "migration_decision_stack": {
+    "step_1_current_position_health": {
+      "question": "旧持仓逻辑还健康吗？",
+      "inputs": [
+        "stock_state",
+        "narrative_health",
+        "valuation_state",
+        "technical_structure",
+        "event_pressure"
+      ],
+      "outputs": [
+        "healthy",
+        "watch",
+        "degrading",
+        "broken"
+      ]
+    },
+    "step_2_new_battlefield_strength": {
+      "question": "新战线是真启动还是短炒？",
+      "inputs": [
+        "narrative_lifecycle",
+        "capital_flow",
+        "leader_strength",
+        "breadth",
+        "source_quality"
+      ],
+      "outputs": [
+        "research_only",
+        "early_signal",
+        "confirmed",
+        "crowded",
+        "tail_chase"
+      ]
+    },
+    "step_3_opportunity_cost": {
+      "question": "继续占用资金是否错失更强机会？",
+      "inputs": [
+        "relative_strength",
+        "upcoming_events",
+        "liquidity",
+        "time_to_catalyst",
+        "risk_reward"
+      ],
+      "outputs": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "step_4_execution_window": {
+      "question": "迁移时机是否成熟？",
+      "inputs": [
+        "Gann",
+        "AVWAP",
+        "TCG",
+        "Gamma",
+        "event_pressure"
+      ],
+      "outputs": [
+        "now",
+        "wait_for_pullback",
+        "wait_for_breakout",
+        "avoid"
+      ]
+    },
+    "step_5_migration_action": {
+      "question": "具体怎么迁移？",
+      "outputs": [
+        "hold",
+        "trim_old",
+        "sell_old",
+        "probe_new",
+        "build_new",
+        "swap_partial",
+        "wait"
+      ]
+    }
+  },
+  "current_portfolio_v0": {
+    "IREN": {
+      "role_candidate": "swing / tactical / dual narrative transformer",
+      "battlefield": [
+        "BTC",
+        "AI Compute"
+      ],
+      "risk": [
+        "high_beta",
+        "liquidity_sensitive",
+        "BTC_drawdown"
+      ],
+      "migration_rule": "Keep only if BTC/AI-compute thesis remains healthy and panic maturity is confirmed; do not add early during liquidity liquidation."
+    },
+    "LITE": {
+      "role_candidate": "swing / optical recovery",
+      "battlefield": [
+        "Optical",
+        "AI Infra"
+      ],
+      "risk": [
+        "profit_protection",
+        "second_line_beta",
+        "margin/earnings risk"
+      ],
+      "migration_rule": "If Optical remains healthy but LITE lags CRDO/COHR, evaluate partial migration to stronger leader."
+    },
+    "CRDO": {
+      "role_candidate": "swing/core hybrid",
+      "battlefield": [
+        "AI Infra",
+        "Optical"
+      ],
+      "risk": [
+        "valuation",
+        "event",
+        "gamma",
+        "earnings expectation"
+      ],
+      "migration_rule": "Can remain key AI Infra exposure if relative strength and earnings evidence hold."
+    },
+    "TEM": {
+      "role_candidate": "small core / tactical",
+      "battlefield": [
+        "AI Healthcare"
+      ],
+      "risk": [
+        "long_duration",
+        "event_gap",
+        "valuation"
+      ],
+      "migration_rule": "Hold only with clear evidence; size must reflect long-duration uncertainty."
+    },
+    "IBM": {
+      "role_candidate": "stabilizer",
+      "battlefield": [
+        "low-beta AI",
+        "cash flow"
+      ],
+      "risk": [
+        "slower upside"
+      ],
+      "migration_rule": "Useful ballast; can fund high-beta if market regime strongly supports attack."
+    },
+    "FIGR": {
+      "role_candidate": "research / fintech",
+      "battlefield": [
+        "Fintech",
+        "Private Credit"
+      ],
+      "risk": [
+        "data quality",
+        "IPO/limited history"
+      ],
+      "migration_rule": "Needs evidence upgrade before full build."
+    },
+    "HOOD": {
+      "role_candidate": "liquidity casino proxy",
+      "battlefield": [
+        "BTC Finance",
+        "Retail Trading"
+      ],
+      "risk": [
+        "regulatory",
+        "BTC",
+        "risk_appetite"
+      ],
+      "migration_rule": "Wait for mature reset; avoid buying just because headline dip looks attractive."
+    },
+    "FRMI": {
+      "role_candidate": "research / unclear",
+      "battlefield": [
+        "unknown"
+      ],
+      "risk": [
+        "data quality"
+      ],
+      "migration_rule": "Clarify thesis or reduce attention weight."
+    },
+    "INFQ": {
+      "role_candidate": "research / unclear",
+      "battlefield": [
+        "unknown"
+      ],
+      "risk": [
+        "data quality"
+      ],
+      "migration_rule": "Clarify thesis or reduce attention weight."
+    }
+  },
+  "watchlist_battlefields_v0": {
+    "Big Tech Anchors": [
+      "NVDA",
+      "MSFT",
+      "GOOG",
+      "AVGO",
+      "ORCL"
+    ],
+    "AI Infra / Optical": [
+      "CRDO",
+      "LITE",
+      "COHR",
+      "ANET",
+      "AAOI"
+    ],
+    "AI Software / Agent": [
+      "APP",
+      "NET",
+      "PLTR",
+      "BSY",
+      "CDNS"
+    ],
+    "BTC Finance": [
+      "HOOD",
+      "COIN",
+      "MSTR",
+      "IREN",
+      "SOFI"
+    ],
+    "Space": [
+      "RKLB",
+      "RDW",
+      "ASTS"
+    ],
+    "Quantum": [
+      "IONQ",
+      "RGTI",
+      "QBTS"
+    ],
+    "AI Healthcare": [
+      "TEM",
+      "NVO",
+      "biotech AI basket"
+    ],
+    "Robotics / Autonomy": [
+      "TSLA",
+      "SERV"
+    ],
+    "Consumer / Education AI": [
+      "DUOL",
+      "DIS"
+    ]
+  },
+  "migration_actions": {
+    "hold_old_no_new": "Old position healthy and new theme not confirmed.",
+    "trim_old_probe_new": "Old position is crowded/late, new theme early but not confirmed.",
+    "swap_partial": "Old position weakening while new battlefield confirmed by leaders and capital flow.",
+    "sell_old_build_new": "Old thesis broken, new opportunity confirmed with favorable timing.",
+    "wait_cash": "Both old and new have poor timing or macro is hostile."
+  },
+  "risk_guards": [
+    "Do not chase a missed move out of regret, especially after missing ASTS-like move.",
+    "Do not migrate from a healthy leader to lower-quality tail just because tail is moving faster.",
+    "Do not let a failed swing become a core position.",
+    "Do not sell stabilizer assets solely to chase high beta during late-cycle FOMO.",
+    "Always compare next 2-6 week opportunity cost."
+  ],
+  "ui_components": [
+    "Current Position Grid",
+    "Battlefield Exposure Map",
+    "Migration Candidate Ranking",
+    "Old Position Health",
+    "New Battlefield Strength",
+    "Opportunity Cost Meter",
+    "Action Queue",
+    "Regret Guardrail"
+  ]
+}

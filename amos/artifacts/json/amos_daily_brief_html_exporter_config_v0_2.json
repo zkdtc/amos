@@ -1,0 +1,116 @@
+{
+  "version": "AMOS Daily Brief HTML Exporter Script v0.2",
+  "created": "2026-05-24",
+  "source_workbook": "amos_manual_data_workbook_v0_2_unified.xlsx",
+  "source_sheet": "Generated Brief",
+  "output_html": "amos_daily_brief_exported_from_unified_v0_2.html",
+  "mode": "manual_alpha",
+  "guardrails": [
+    "Do not treat sample/manual-ready Gann data as live market data.",
+    "If Data Freshness is Missing, no aggressive action.",
+    "Gann cannot trigger trade alone.",
+    "Critical events default to No Attack unless setup is confirmed and risk is accepted.",
+    "Anchor Verification v0.2 is required before formal Gann use."
+  ],
+  "expected_columns": [
+    "Ticker",
+    "Role",
+    "Action",
+    "Freshness",
+    "Gann",
+    "Invalidation",
+    "Note"
+  ],
+  "fallback_rows": [
+    [
+      "NVDA",
+      "Core",
+      "Hold",
+      "Missing",
+      "Gann Live",
+      "Fails post-event AVWAP / AI CapEx weakens / RS deteriorates",
+      "No aggressive action"
+    ],
+    [
+      "CRDO",
+      "Swing",
+      "Trim Watch",
+      "Missing",
+      "Gann Live",
+      "Breaks AVWAP / loses RS / revisions down",
+      "No aggressive action"
+    ],
+    [
+      "LITE",
+      "Swing",
+      "Hold",
+      "Missing",
+      "Gann Live",
+      "Optical strong but LITE underperforms peers / guidance weakens",
+      "No aggressive action"
+    ],
+    [
+      "IREN",
+      "Tactical",
+      "Wait",
+      "Missing",
+      "Gann Live",
+      "BTC loses structure / AI compute thesis weakens / dilution risk rises",
+      "No aggressive action"
+    ],
+    [
+      "HOOD",
+      "Research",
+      "Wait",
+      "Missing",
+      "Gann Live",
+      "Regulatory pressure expands / BTC remains liquidation regime",
+      "No aggressive action"
+    ],
+    [
+      "GOOG",
+      "Core",
+      "Hold",
+      "Missing",
+      "Gann Pending",
+      "Cloud/AI capex thesis weakens / RS deteriorates",
+      "No aggressive action"
+    ],
+    [
+      "MSFT",
+      "Core",
+      "Hold",
+      "Missing",
+      "Gann Pending",
+      "Azure/AI capex weakens / margin pressure",
+      "No aggressive action"
+    ],
+    [
+      "AVGO",
+      "Core",
+      "Hold",
+      "Missing",
+      "Gann Pending",
+      "AI ASIC demand weakens / RS deteriorates",
+      "No aggressive action"
+    ],
+    [
+      "RKLB",
+      "Tactical",
+      "Wait",
+      "Missing",
+      "Gann Pending",
+      "Space theme fades / failed breakout",
+      "No aggressive action"
+    ],
+    [
+      "IONQ",
+      "Tactical",
+      "Wait",
+      "Missing",
+      "Gann Pending",
+      "Quantum theme fades / tail-chase without leaders",
+      "No aggressive action"
+    ]
+  ]
+}

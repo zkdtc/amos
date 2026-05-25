@@ -1,0 +1,285 @@
+{
+  "version": "AMOS Real Data Adapter Schema v0.1",
+  "created": "2026-05-24",
+  "purpose": "Define real-data input interfaces for AMOS so static/sample data can be replaced by live or manually collected evidence.",
+  "principle": "Every live field must declare source, freshness, update cadence, confidence, and fallback method.",
+  "adapter_layers": {
+    "market_data_adapter": {
+      "purpose": "Price, volume, relative strength, moving averages, RSI, breadth.",
+      "priority": "highest",
+      "update_cadence": {
+        "intraday": [
+          "price",
+          "volume",
+          "VWAP",
+          "relative_strength"
+        ],
+        "daily": [
+          "EMA",
+          "SMA",
+          "RSI",
+          "ATR",
+          "52w_high_low",
+          "breadth"
+        ],
+        "weekly": [
+          "weekly_structure",
+          "stage_analysis"
+        ]
+      },
+      "fields": {
+        "ticker": "string",
+        "last_price": "number",
+        "prev_close": "number",
+        "day_change_pct": "number",
+        "volume": "number",
+        "avg_volume_20d": "number",
+        "relative_volume": "number",
+        "ema_8": "number",
+        "ema_12": "number",
+        "ema_21": "number",
+        "sma_50": "number",
+        "sma_200": "number",
+        "rsi_14d": "number",
+        "atr_14d": "number",
+        "relative_strength_vs_QQQ": "number",
+        "relative_strength_vs_peer_basket": "number",
+        "trend_structure": "HH_HL / LH_LL / range / unclear"
+      },
+      "fallback": "manual chart reading / broker export / TradingView snapshot"
+    },
+    "macro_data_adapter": {
+      "purpose": "Macro regime and liquidity state.",
+      "priority": "highest",
+      "fields": {
+        "us10y": "number",
+        "us2y": "number",
+        "yield_curve_10y2y": "number",
+        "dxy": "number",
+        "vix": "number",
+        "vvix": "number",
+        "move_index": "number",
+        "credit_spread_hy": "number",
+        "credit_spread_ig": "number",
+        "spx_above_200dma_pct": "number",
+        "nasdaq_fwd_pe": "number",
+        "spx_fwd_pe": "number",
+        "btc_price": "number",
+        "btc_trend_state": "risk_on / reset / liquidation / unclear"
+      },
+      "fallback": "FRED / TradingView / Koyfin / manually entered values"
+    },
+    "event_calendar_adapter": {
+      "purpose": "Events as pressure points, not calendar clutter.",
+      "priority": "high",
+      "fields": {
+        "event_id": "string",
+        "event_type": "earnings / macro / opex / fed / treasury / sector_conference / geopolitical / ipo / product_event",
+        "event_name": "string",
+        "date": "YYYY-MM-DD",
+        "time": "string",
+        "affected_tickers": "array",
+        "affected_narratives": "array",
+        "pressure_score": "0-100",
+        "direction_bias": "bullish / bearish / ambiguous",
+        "watch_question": "string",
+        "post_event_result": "pending / bullish_confirmed / bearish_confirmed / fade / no_reaction"
+      },
+      "fallback": "manual curated calendar; not full noisy finance calendar"
+    },
+    "earnings_fundamental_adapter": {
+      "purpose": "Company financials, guidance, revisions and quality of earnings.",
+      "priority": "high",
+      "fields": {
+        "ticker": "string",
+        "quarter": "string",
+        "revenue_actual": "number",
+        "revenue_consensus": "number",
+        "revenue_growth_yoy": "number",
+        "gross_margin": "number",
+        "operating_margin": "number",
+        "fcf": "number",
+        "fcf_margin": "number",
+        "sbc": "number",
+        "sbc_revenue_pct": "number",
+        "eps_actual": "number",
+        "eps_consensus": "number",
+        "next_q_revenue_guidance": "number",
+        "fy_revenue_guidance": "number",
+        "analyst_revision_30d": "up / down / flat / unknown",
+        "guidance_quality": "beat_raise / beat_no_raise / guide_down / unclear",
+        "earnings_call_risk_topics": "array"
+      },
+      "fallback": "company IR, 10-Q/10-K, earnings transcript, manual extraction"
+    },
+    "valuation_adapter": {
+      "purpose": "Valuation battle map inputs.",
+      "priority": "medium_high",
+      "fields": {
+        "ticker": "string",
+        "market_cap": "number",
+        "enterprise_value": "number",
+        "forward_pe": "number",
+        "ev_sales_ntm": "number",
+        "ev_gross_profit": "number",
+        "fcf_yield": "number",
+        "peg": "number",
+        "historical_percentile": "number",
+        "base_case_fair_value": "number",
+        "bear_case_fair_value": "number",
+        "bull_case_fair_value": "number",
+        "price_to_weighted_fair_value": "number"
+      },
+      "fallback": "manual model / Koyfin / TIKR / company filings"
+    },
+    "gann_adapter": {
+      "purpose": "Gann price and time windows.",
+      "priority": "high_for_user",
+      "fields": {
+        "ticker": "string",
+        "anchor_points": [
+          {
+            "anchor_type": "major_low / major_high / earnings_gap / swing_low / swing_high / ATH",
+            "date": "YYYY-MM-DD",
+            "price": "number",
+            "reason": "string"
+          }
+        ],
+        "square_of_nine_levels": "array",
+        "time_windows": "array",
+        "time_price_square_windows": "array",
+        "nearest_support": "number",
+        "nearest_resistance": "number",
+        "distance_to_support_pct": "number",
+        "distance_to_resistance_pct": "number",
+        "gann_time_score": "0-100",
+        "gann_price_score": "0-100"
+      },
+      "fallback": "manual anchor selection + calculator"
+    },
+    "avwap_technical_adapter": {
+      "purpose": "AVWAP, TCG price action, Chan structure and execution confirmation.",
+      "priority": "high",
+      "fields": {
+        "ticker": "string",
+        "avwap_anchors": [
+          {
+            "anchor_type": "earnings / ATH / swing_low / gap / YTD",
+            "date": "YYYY-MM-DD",
+            "price": "number",
+            "current_avwap": "number",
+            "price_vs_avwap_pct": "number"
+          }
+        ],
+        "tcg_structure": "HH_HL / LH_LL / equilibrium / inside_bar / unclear",
+        "ema_state": "above_8_12 / between / below_8_12",
+        "volume_confirmation": "strong / weak / exhaustion / unclear",
+        "chan_center_state": "above_center / in_center / below_center / breakout / breakdown / unknown",
+        "price_action_confirmation_score": "0-100"
+      },
+      "fallback": "manual chart annotation / TradingView"
+    },
+    "options_gamma_adapter": {
+      "purpose": "Options positioning, gamma pressure and volatility release.",
+      "priority": "medium_high",
+      "fields": {
+        "ticker": "string",
+        "expiry": "YYYY-MM-DD",
+        "call_wall": "number",
+        "put_wall": "number",
+        "max_pain": "number",
+        "iv_rank": "number",
+        "skew": "number",
+        "put_call_ratio": "number",
+        "dealer_gamma_state": "positive / negative / neutral / unknown",
+        "gamma_state": "pin / squeeze / negative_gamma / reset / neutral / unknown",
+        "volatility_release_risk": "low / medium / high / unknown",
+        "gamma_score": "0-100"
+      },
+      "fallback": "manual option chain review / Unusual Whales / SpotGamma-like data if available"
+    },
+    "source_evidence_adapter": {
+      "purpose": "Store claims from research sources and attach evidence quality.",
+      "priority": "high",
+      "fields": {
+        "source_id": "string",
+        "source_type": "official / filing / market_data / sell_side / youtube / x / book / user_observation",
+        "source_name": "string",
+        "date": "YYYY-MM-DD",
+        "claim": "string",
+        "claim_type": "fact / interpretation / forecast / framework / anecdote",
+        "linked_tickers": "array",
+        "linked_narratives": "array",
+        "evidence_quality_score": "0-100",
+        "bias_risk_score": "0-100",
+        "counter_evidence": "array",
+        "module_targets": "array",
+        "invalidation_condition": "string"
+      },
+      "fallback": "manual entry from research notes"
+    }
+  },
+  "field_quality_contract": {
+    "required_metadata_for_each_field": [
+      "source",
+      "timestamp",
+      "freshness",
+      "confidence",
+      "collection_method",
+      "fallback_used"
+    ],
+    "freshness_rules": {
+      "intraday_price": "same day required",
+      "daily_technical": "latest close required",
+      "earnings": "latest quarter",
+      "valuation": "latest price and latest estimates",
+      "macro": "latest available",
+      "book_framework": "stable unless framework reassessed"
+    }
+  },
+  "manual_first_strategy": {
+    "phase_1": "Manual curated values for priority tickers and modules.",
+    "phase_2": "Semi-automated CSV/JSON import from broker/charting tools.",
+    "phase_3": "API automation for prices, fundamentals, options and events.",
+    "phase_4": "Full evidence database and model governance."
+  },
+  "priority_tickers": [
+    "NVDA",
+    "CRDO",
+    "LITE",
+    "IREN",
+    "HOOD",
+    "GOOG",
+    "MSFT",
+    "AVGO",
+    "RKLB",
+    "IONQ"
+  ],
+  "minimum_viable_live_fields": {
+    "for_daily_brief": [
+      "market_state.us10y",
+      "market_state.dxy",
+      "market_state.vix",
+      "market_state.breadth",
+      "ticker.last_price",
+      "ticker.rsi_14d",
+      "ticker.ema_8",
+      "ticker.ema_12",
+      "ticker.relative_strength_vs_QQQ",
+      "event_calendar.this_week",
+      "portfolio.positions"
+    ],
+    "for_stock_page": [
+      "last_price",
+      "rsi_14d",
+      "ema_8",
+      "ema_12",
+      "avwap_earnings",
+      "gann_nearest_support",
+      "gann_nearest_resistance",
+      "next_event",
+      "valuation_state",
+      "latest_guidance_quality"
+    ]
+  }
+}

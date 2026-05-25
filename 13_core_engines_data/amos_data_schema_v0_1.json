@@ -1,0 +1,555 @@
+{
+  "version": "AMOS Data Schema v0.1",
+  "principle": {
+    "market_first": true,
+    "evidence_before_conclusion": true,
+    "system_before_personalization": true,
+    "anti_mirror_rule": "User views are inputs/signals, not truth. Market evidence must independently validate or reject them."
+  },
+  "entities": {
+    "market_state": {
+      "description": "Overall market regime and macro-liquidity state.",
+      "fields": {
+        "date": "YYYY-MM-DD",
+        "risk_appetite": [
+          "expanding",
+          "neutral",
+          "contracting",
+          "panic",
+          "euphoria"
+        ],
+        "liquidity_state": [
+          "supportive",
+          "neutral",
+          "tightening",
+          "stress"
+        ],
+        "rate_pressure": [
+          "falling_rates_support",
+          "neutral",
+          "rising_rates_compression"
+        ],
+        "credit_pressure": [
+          "calm",
+          "watch",
+          "stress"
+        ],
+        "volatility_state": [
+          "compressed",
+          "normal",
+          "elevated",
+          "shock"
+        ],
+        "breadth_state": [
+          "strong",
+          "narrow",
+          "weak",
+          "capitulation"
+        ],
+        "gamma_state": [
+          "positive_pin",
+          "neutral",
+          "negative_gamma",
+          "event_reset"
+        ],
+        "btc_risk_signal": [
+          "risk_on",
+          "neutral",
+          "risk_off",
+          "liquidation"
+        ],
+        "regime_label": "human-readable regime name",
+        "confidence": "0-100",
+        "evidence": [
+          "source_id or data point"
+        ],
+        "counter_evidence": [
+          "source_id or data point"
+        ],
+        "invalidation_conditions": [
+          "conditions that would change the regime"
+        ]
+      }
+    },
+    "capital_flow": {
+      "description": "Where money is moving across sectors, narratives and stocks.",
+      "fields": {
+        "date": "YYYY-MM-DD",
+        "primary_theater": "e.g. AI Infra",
+        "secondary_theaters": [
+          "Power/Cooling",
+          "Space",
+          "Quantum"
+        ],
+        "rotation_type": [
+          "expansion",
+          "rotation",
+          "defensive_shift",
+          "late_cycle_chase"
+        ],
+        "sector_flows": {
+          "AI Infra": {
+            "strength": "0-100",
+            "trend": "up/down/flat",
+            "evidence": []
+          },
+          "Optical": {
+            "strength": "0-100",
+            "trend": "up/down/flat",
+            "evidence": []
+          },
+          "Power/Cooling": {
+            "strength": "0-100",
+            "trend": "up/down/flat",
+            "evidence": []
+          },
+          "BTC Finance": {
+            "strength": "0-100",
+            "trend": "up/down/flat",
+            "evidence": []
+          }
+        },
+        "leadership_chain": [
+          "NVDA",
+          "AVGO",
+          "CRDO",
+          "LITE"
+        ],
+        "crowding_alerts": [],
+        "capital_migration_notes": []
+      }
+    },
+    "narrative": {
+      "description": "Narrative lifecycle tracking.",
+      "fields": {
+        "narrative_id": "AI_INFRA_OPTICAL",
+        "name": "AI Infra / Optical",
+        "stage": [
+          "dormant",
+          "early_signal",
+          "institutional_recognition",
+          "capital_expansion",
+          "mainstream_fomo",
+          "crowded_consensus",
+          "exhaustion",
+          "reset"
+        ],
+        "strength": "0-100",
+        "maturity": "0-100",
+        "key_claims": [],
+        "evidence": [],
+        "counter_evidence": [],
+        "related_stocks": [],
+        "trigger_events": [],
+        "failure_signals": [],
+        "next_watch_items": []
+      }
+    },
+    "stock_profile": {
+      "description": "Static and slowly changing stock identity.",
+      "fields": {
+        "ticker": "CRDO",
+        "company_name": "Credo Technology",
+        "primary_category": "AI Infra / Optical / SerDes",
+        "stock_personality_tags": [
+          "high_beta",
+          "narrative_driven",
+          "event_sensitive",
+          "gamma_amplified",
+          "capex_chain_sensitive"
+        ],
+        "core_or_swing_fit": [
+          "core_candidate",
+          "swing",
+          "tactical",
+          "runner",
+          "avoid"
+        ],
+        "main_drivers": [],
+        "main_risks": [],
+        "supply_chain_position": "",
+        "peer_group": [],
+        "data_quality": [
+          "high",
+          "medium",
+          "low"
+        ]
+      }
+    },
+    "stock_state": {
+      "description": "Dynamic daily state for a stock.",
+      "fields": {
+        "date": "YYYY-MM-DD",
+        "ticker": "CRDO",
+        "price": null,
+        "price_change_pct": null,
+        "volume_vs_avg": null,
+        "relative_strength_vs_QQQ": null,
+        "relative_strength_vs_sector": null,
+        "trend_state": [
+          "strong_uptrend",
+          "uptrend",
+          "range",
+          "breakdown",
+          "panic"
+        ],
+        "structure_state": [
+          "HH_HL",
+          "LH_LL",
+          "inside_bar",
+          "equilibrium",
+          "divergence"
+        ],
+        "rsi_daily": null,
+        "ema_8_relation": [
+          "above",
+          "near",
+          "below"
+        ],
+        "ema_12_relation": [
+          "above",
+          "near",
+          "below"
+        ],
+        "avwap_relation": {
+          "earnings_avwap": "above/below/near",
+          "ath_avwap": "above/below/near"
+        },
+        "gann_zone": "support/resistance/current/invalid",
+        "gamma_zone": "pin/squeeze/risk/reset",
+        "action_bias": [
+          "attack",
+          "build",
+          "add",
+          "hold",
+          "trim",
+          "exit",
+          "hedge",
+          "wait",
+          "research"
+        ],
+        "evidence": [],
+        "counter_evidence": [],
+        "invalidation_conditions": []
+      }
+    },
+    "valuation": {
+      "description": "Multi-layer valuation map.",
+      "fields": {
+        "ticker": "CRDO",
+        "date": "YYYY-MM-DD",
+        "intrinsic_value": {
+          "bear": null,
+          "base": null,
+          "bull": null,
+          "method": "DCF / FCF / owner earnings",
+          "assumptions": {}
+        },
+        "market_consensus_value": {
+          "analyst_target_mean": null,
+          "range_low": null,
+          "range_high": null,
+          "revision_trend": [
+            "up",
+            "flat",
+            "down"
+          ]
+        },
+        "narrative_value": {
+          "implied_future_years": null,
+          "narrative_premium": "low/medium/high/extreme",
+          "supporting_evidence": []
+        },
+        "cycle_value": {
+          "cycle_stage": "early/mid/late/reset",
+          "multiple_expansion_risk": "low/medium/high",
+          "multiple_compression_risk": "low/medium/high"
+        },
+        "personality_value": {
+          "historical_premium_range": null,
+          "stock_specific_multiple_tolerance": null
+        },
+        "extreme_risk_value": {
+          "panic_buy_zone": null,
+          "forced_selling_zone": null,
+          "bubble_zone": null
+        },
+        "valuation_state": [
+          "cheap",
+          "reasonable",
+          "demanding",
+          "overextended",
+          "bubble"
+        ],
+        "evidence": [],
+        "counter_evidence": []
+      }
+    },
+    "gann": {
+      "description": "Gann time and price structure.",
+      "fields": {
+        "ticker": "CRDO",
+        "anchors": [
+          {
+            "type": "ATH",
+            "price": null,
+            "date": null
+          },
+          {
+            "type": "major_low",
+            "price": null,
+            "date": null
+          },
+          {
+            "type": "earnings_gap",
+            "price": null,
+            "date": null
+          }
+        ],
+        "sq9_levels": [
+          {
+            "anchor": "ATH",
+            "angle": -45,
+            "price": null,
+            "zone_low": null,
+            "zone_high": null
+          },
+          {
+            "anchor": "ATH",
+            "angle": -90,
+            "price": null,
+            "zone_low": null,
+            "zone_high": null
+          }
+        ],
+        "time_windows": [
+          {
+            "anchor_date": null,
+            "days": 90,
+            "window_start": null,
+            "window_end": null,
+            "importance": "medium/high"
+          }
+        ],
+        "time_price_resonance": [
+          {
+            "price_level": null,
+            "time_window": null,
+            "score": "0-100"
+          }
+        ],
+        "invalidation_level": null
+      }
+    },
+    "options_gamma": {
+      "description": "Options and gamma positioning.",
+      "fields": {
+        "ticker": "CRDO",
+        "date": "YYYY-MM-DD",
+        "call_wall": null,
+        "put_wall": null,
+        "max_pain": null,
+        "iv_rank": null,
+        "skew": null,
+        "dealer_gamma_state": [
+          "positive",
+          "neutral",
+          "negative"
+        ],
+        "event_gamma_risk": "low/medium/high",
+        "squeeze_probability": "0-100",
+        "pin_risk": "0-100",
+        "evidence": []
+      }
+    },
+    "event_pressure": {
+      "description": "Event pressure, not calendar junk.",
+      "fields": {
+        "event_id": "NVDA_EVENT_2026_05",
+        "date": "YYYY-MM-DD",
+        "event_type": [
+          "earnings",
+          "macro",
+          "opex",
+          "fed",
+          "conference",
+          "ipo",
+          "geopolitical"
+        ],
+        "title": "",
+        "affected_narratives": [],
+        "affected_stocks": [],
+        "pressure_score": "0-100",
+        "volatility_risk": "low/medium/high",
+        "directional_bias": [
+          "bullish",
+          "bearish",
+          "ambiguous"
+        ],
+        "why_it_matters": "",
+        "what_would_confirm": [],
+        "what_would_invalidate": []
+      }
+    },
+    "portfolio": {
+      "description": "User portfolio and exposure map.",
+      "fields": {
+        "as_of_date": "YYYY-MM-DD",
+        "positions": [
+          {
+            "ticker": "IREN",
+            "role": "swing/core/tactical/runner",
+            "narrative": [
+              "BTC",
+              "AI Compute"
+            ],
+            "risk_tags": [
+              "high_beta"
+            ],
+            "position_size_pct": null
+          }
+        ],
+        "watchlist": [],
+        "exposure_by_narrative": {},
+        "exposure_by_beta": {},
+        "correlation_clusters": [],
+        "concentration_risks": [],
+        "migration_candidates": []
+      }
+    },
+    "decision": {
+      "description": "Decision output with evidence and invalidation.",
+      "fields": {
+        "ticker_or_portfolio": "CRDO",
+        "date": "YYYY-MM-DD",
+        "action": [
+          "attack",
+          "build",
+          "add",
+          "hold",
+          "trim",
+          "exit",
+          "hedge",
+          "wait",
+          "research"
+        ],
+        "position_guidance": "core/swing/tactical/runner",
+        "confidence": "0-100",
+        "timeframe": [
+          "intraday",
+          "days",
+          "weeks",
+          "months",
+          "cycle"
+        ],
+        "evidence_chain": [],
+        "counter_evidence": [],
+        "risk_alerts": [],
+        "invalidation_conditions": [],
+        "next_check_time": ""
+      }
+    },
+    "research_source": {
+      "description": "External source or framework evidence object.",
+      "fields": {
+        "source_id": "",
+        "source_type": [
+          "official_data",
+          "filing",
+          "earnings_call",
+          "analyst_note",
+          "youtube",
+          "x_post",
+          "book",
+          "research_report",
+          "market_data"
+        ],
+        "author_or_org": "",
+        "url": "",
+        "date": "",
+        "topic": "",
+        "claim": "",
+        "evidence_quality": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "bias_risk": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cycle_validity": [
+          "unknown",
+          "bull_market",
+          "bear_market",
+          "liquidity_expansion",
+          "liquidity_tightening",
+          "cross_cycle"
+        ],
+        "used_in_modules": []
+      }
+    },
+    "model_governance": {
+      "description": "How AMOS updates itself without chaotic expansion.",
+      "fields": {
+        "change_id": "",
+        "date": "",
+        "proposed_change": "",
+        "reason": "",
+        "evidence": [],
+        "affected_modules": [],
+        "risk_of_overfit": "low/medium/high",
+        "rollback_plan": "",
+        "status": [
+          "proposed",
+          "testing",
+          "accepted",
+          "rejected",
+          "rolled_back"
+        ]
+      }
+    }
+  },
+  "module_dependencies": {
+    "Home_Command_Center": [
+      "market_state",
+      "capital_flow",
+      "event_pressure",
+      "portfolio",
+      "narrative",
+      "decision"
+    ],
+    "Stock_Intelligence_Page": [
+      "stock_profile",
+      "stock_state",
+      "valuation",
+      "gann",
+      "options_gamma",
+      "event_pressure",
+      "narrative",
+      "decision",
+      "research_source"
+    ],
+    "Capital_Radar": [
+      "capital_flow",
+      "narrative",
+      "market_state",
+      "research_source"
+    ],
+    "Cognitive_Lab": [
+      "decision",
+      "portfolio",
+      "research_source",
+      "model_governance"
+    ]
+  },
+  "next_schema_tasks": [
+    "Define scoring formula for market_state.regime_label",
+    "Define narrative lifecycle scoring",
+    "Define stock personality tags and transition rules",
+    "Define Gann calculation service",
+    "Define evidence quality scoring",
+    "Define decision confidence formula"
+  ]
+}

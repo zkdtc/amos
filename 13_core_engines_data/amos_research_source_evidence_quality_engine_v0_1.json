@@ -1,0 +1,255 @@
+{
+  "version": "AMOS Research Source & Evidence Quality Engine v0.1",
+  "purpose": "Make AMOS independently seek, score, classify, and challenge evidence instead of relying on user confirmation.",
+  "core_principles": [
+    "User-provided sources are leads, not proof.",
+    "A source can be useful and still biased.",
+    "Long-term usefulness depends on cycle-validity, falsifiability, and predictive record.",
+    "Official data is not interpretation; commentary is not data.",
+    "Every thesis requires evidence, counter-evidence, uncertainty, and invalidation."
+  ],
+  "source_types": {
+    "official_data": {
+      "examples": [
+        "FRED",
+        "BLS",
+        "BEA",
+        "Treasury",
+        "Federal Reserve",
+        "SEC filings"
+      ],
+      "default_quality": "high",
+      "main_risk": "lag, revision, interpretation error",
+      "best_use": "macro facts, financial facts, policy facts"
+    },
+    "company_primary": {
+      "examples": [
+        "10-K",
+        "10-Q",
+        "earnings call transcript",
+        "investor presentation"
+      ],
+      "default_quality": "high",
+      "main_risk": "management framing, adjusted metrics, selective emphasis",
+      "best_use": "business model, guidance, financials, customer risk"
+    },
+    "market_data": {
+      "examples": [
+        "price",
+        "volume",
+        "options chain",
+        "ETF flow",
+        "breadth",
+        "relative strength"
+      ],
+      "default_quality": "high",
+      "main_risk": "noise, survivorship bias, false signal",
+      "best_use": "market pricing, capital flow, technical confirmation"
+    },
+    "sell_side_research": {
+      "examples": [
+        "Morgan Stanley",
+        "Goldman",
+        "JPM",
+        "Bank of America",
+        "Mizuho",
+        "Needham"
+      ],
+      "default_quality": "medium_high",
+      "main_risk": "consensus bias, investment banking conflict, delayed reaction",
+      "best_use": "consensus revision, industry framing, valuation ranges"
+    },
+    "independent_research": {
+      "examples": [
+        "specialist newsletters",
+        "Substack",
+        "industry experts"
+      ],
+      "default_quality": "medium",
+      "main_risk": "overconfidence, narrow lens, hidden incentives",
+      "best_use": "deep domain insight, early narrative detection"
+    },
+    "youtube_creator": {
+      "examples": [
+        "macro commentators",
+        "technical traders",
+        "sector specialists"
+      ],
+      "default_quality": "variable",
+      "main_risk": "performance theater, hindsight bias, monetized conviction, bull-market survivorship",
+      "best_use": "framework extraction, market psychology, real-time narrative tracking"
+    },
+    "x_twitter": {
+      "examples": [
+        "macro accounts",
+        "traders",
+        "analysts",
+        "industry insiders"
+      ],
+      "default_quality": "variable",
+      "main_risk": "viral incentives, missing context, selective screenshots",
+      "best_use": "early signal, sentiment, source discovery"
+    },
+    "book_framework": {
+      "examples": [
+        "Dalio",
+        "Soros",
+        "Bernanke",
+        "Howard Marks",
+        "Keynes",
+        "Hayek",
+        "Chan theory"
+      ],
+      "default_quality": "medium_high",
+      "main_risk": "overgeneralization, regime mismatch",
+      "best_use": "mental model, structural framework"
+    },
+    "user_observation": {
+      "examples": [
+        "user notices Space and Quantum rising with AI Infra",
+        "user tracks favorite creators"
+      ],
+      "default_quality": "lead",
+      "main_risk": "confirmation bias, recency bias, emotional salience",
+      "best_use": "research trigger, attention routing, user-specific context"
+    }
+  },
+  "source_scoring": {
+    "evidence_quality_score": {
+      "scale": "0-100",
+      "components": {
+        "primary_or_derived": 0.2,
+        "data_specificity": 0.2,
+        "historical_track_record": 0.15,
+        "falsifiability": 0.15,
+        "cross_source_confirmation": 0.15,
+        "timeliness": 0.1,
+        "incentive_alignment": 0.05
+      }
+    },
+    "bias_risk_score": {
+      "scale": "0-100",
+      "components": {
+        "financial_incentive": 0.2,
+        "audience_capture": 0.2,
+        "ideological_commitment": 0.15,
+        "single_asset_bullishness": 0.15,
+        "lack_of_counterarguments": 0.15,
+        "recency_or_viral_pressure": 0.15
+      }
+    },
+    "cycle_validity_score": {
+      "scale": "0-100",
+      "components": {
+        "bull_market_performance": 0.2,
+        "bear_market_performance": 0.2,
+        "turning_point_record": 0.25,
+        "liquidity_tightening_performance": 0.2,
+        "self_correction_record": 0.15
+      }
+    },
+    "framework_value_score": {
+      "scale": "0-100",
+      "components": {
+        "structural_clarity": 0.25,
+        "transferability": 0.2,
+        "actionability": 0.2,
+        "evidence_basis": 0.2,
+        "failure_condition_defined": 0.15
+      }
+    }
+  },
+  "creator_evaluation_framework": {
+    "dimensions": [
+      "framework clarity",
+      "evidence discipline",
+      "turning point recognition",
+      "risk management",
+      "counterargument handling",
+      "cross-cycle validity",
+      "transparency about mistakes",
+      "actionability",
+      "non-hype behavior",
+      "fit with AMOS modules"
+    ],
+    "creator_classes": {
+      "structural_macro": {
+        "value": "high",
+        "use": "Macro AI / Regime Engine",
+        "risk": "can be too bearish or too abstract"
+      },
+      "market_state_trader": {
+        "value": "high",
+        "use": "Capital Flow AI / Risk AI",
+        "risk": "may overfit recent price action"
+      },
+      "price_action_execution": {
+        "value": "high",
+        "use": "Technical AI",
+        "risk": "can ignore valuation and macro"
+      },
+      "narrative_sector_specialist": {
+        "value": "medium_high",
+        "use": "Narrative AI / Stock Personality AI",
+        "risk": "can become theme promoter"
+      },
+      "perma_bull_or_perma_bear": {
+        "value": "low_to_conditional",
+        "use": "sentiment / counter-case only",
+        "risk": "ideological overfit"
+      },
+      "viral_hot_take": {
+        "value": "low",
+        "use": "attention signal only",
+        "risk": "noise"
+      }
+    }
+  },
+  "evidence_pipeline": [
+    "Collect lead or question",
+    "Identify source type",
+    "Separate fact, interpretation, forecast, and opinion",
+    "Score evidence quality",
+    "Score bias risk",
+    "Search for independent confirmation",
+    "Search for counter-evidence",
+    "Map source to AMOS module",
+    "Define applicable regime and failure conditions",
+    "Store in research_source",
+    "Update model only through governance"
+  ],
+  "claim_template": {
+    "claim": "",
+    "source_ids": [],
+    "claim_type": [
+      "fact",
+      "interpretation",
+      "forecast",
+      "framework",
+      "anecdote"
+    ],
+    "evidence_quality": "0-100",
+    "bias_risk": "0-100",
+    "cycle_validity": "0-100",
+    "supporting_evidence": [],
+    "counter_evidence": [],
+    "uncertainty": "",
+    "invalidation_condition": "",
+    "module_impacted": []
+  },
+  "application_to_amos": {
+    "macro_booklist": "Books become framework sources, not direct trading signals.",
+    "youtube_creators": "Creators become framework candidates and real-time narrative/market-state sensors.",
+    "x_posts": "X posts are early signals and source discovery, not proof.",
+    "earnings_calls": "Primary evidence for business and narrative validation.",
+    "market_data": "Final judge for whether narrative is being priced."
+  },
+  "non_negotiable_rules": [
+    "No creator is permanently trusted.",
+    "No framework is universally valid.",
+    "Every source must have a failure mode.",
+    "A source can be useful for one module and useless for another.",
+    "User trust in a creator is a lead, not final evidence.",
+    "AMOS must be able to disagree with user-favored sources."
+  ]
+}

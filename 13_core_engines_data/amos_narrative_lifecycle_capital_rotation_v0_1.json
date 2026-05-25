@@ -1,0 +1,279 @@
+{
+  "version": "AMOS Narrative Lifecycle & Capital Rotation Engine v0.1",
+  "purpose": "Model how narratives are born, validated, funded, crowded, exhausted, and reset; distinguish expansion from rotation.",
+  "core_principles": [
+    "Narrative is not truth; it is what the market is willing to price.",
+    "Capital flow validates narrative strength more than social media heat.",
+    "New theme strength does not automatically mean old theme death.",
+    "The key distinction is expansion vs rotation vs late-cycle chase.",
+    "State-level strategic narratives usually have longer duration than meme narratives."
+  ],
+  "narrative_lifecycle": {
+    "stage_0_dormant": {
+      "description": "Theme exists but market does not care yet.",
+      "signals": [
+        "low volume",
+        "few institutional mentions",
+        "no relative strength",
+        "companies not reacting to related news"
+      ],
+      "action": "research only"
+    },
+    "stage_1_early_signal": {
+      "description": "First signs of market attention.",
+      "signals": [
+        "isolated stock strength",
+        "policy/news catalyst",
+        "insider/analyst language changes",
+        "relative strength vs market begins"
+      ],
+      "action": "watchlist / small research position"
+    },
+    "stage_2_institutional_recognition": {
+      "description": "Serious capital begins to recognize the theme.",
+      "signals": [
+        "large-cap leaders move",
+        "analyst upgrades",
+        "earnings call language confirms",
+        "ETF/sector strength",
+        "volume expansion"
+      ],
+      "action": "build core candidates"
+    },
+    "stage_3_capital_expansion": {
+      "description": "Capital spreads from leaders into second-line names.",
+      "signals": [
+        "leadership chain forms",
+        "second-line stocks outperform",
+        "sector breadth improves",
+        "options activity increases"
+      ],
+      "action": "attack leaders / build high-quality beta"
+    },
+    "stage_4_mainstream_fomo": {
+      "description": "Theme becomes obvious and broadly discussed.",
+      "signals": [
+        "retail attention rises",
+        "YouTube/X/social heat",
+        "tail names begin moving",
+        "valuation stretch grows"
+      ],
+      "action": "hold winners, avoid late chase"
+    },
+    "stage_5_crowded_consensus": {
+      "description": "Everyone agrees; risk-reward deteriorates.",
+      "signals": [
+        "extreme call activity",
+        "valuation no longer matters",
+        "weak stocks fly",
+        "good news stops working",
+        "RSI/Gann resistance"
+      ],
+      "action": "trim / sell calls / protect profit"
+    },
+    "stage_6_exhaustion": {
+      "description": "Narrative still sounds strong but price behavior weakens.",
+      "signals": [
+        "leaders fail to make highs",
+        "second-line breaks first",
+        "volume divergence",
+        "AVWAP breaks",
+        "failed breakouts"
+      ],
+      "action": "de-risk / exit weak names"
+    },
+    "stage_7_reset": {
+      "description": "Theme survives but valuation and holders reset.",
+      "signals": [
+        "forced selling",
+        "media turns negative",
+        "RSI oversold",
+        "panic maturity begins",
+        "fundamentals remain intact"
+      ],
+      "action": "prepare panic-buy candidates"
+    }
+  },
+  "capital_rotation_types": {
+    "expansion": {
+      "definition": "New themes rise while old core leadership remains healthy.",
+      "example": "AI Infra remains strong while Space/Quantum/Power begin rising.",
+      "portfolio_implication": "Do not sell core leaders blindly; add carefully to new verified branches."
+    },
+    "rotation": {
+      "definition": "Capital leaves old leadership and enters new leadership.",
+      "signals": [
+        "old leaders underperform",
+        "new leaders outperform",
+        "relative strength flips",
+        "volume migrates"
+      ],
+      "portfolio_implication": "Trim weakening old branch and migrate to new confirmed leaders."
+    },
+    "defensive_shift": {
+      "definition": "Capital leaves high beta and moves to defensives/cash/bonds/gold.",
+      "signals": [
+        "breadth weakens",
+        "VIX rises",
+        "credit stress",
+        "utilities/healthcare outperform"
+      ],
+      "portfolio_implication": "Reduce beta, protect gains."
+    },
+    "late_cycle_chase": {
+      "definition": "Money chases low-quality tail names after leaders already ran.",
+      "signals": [
+        "junk stocks move",
+        "social FOMO",
+        "options mania",
+        "leaders flatten"
+      ],
+      "portfolio_implication": "Avoid chase; prepare trim."
+    }
+  },
+  "narrative_map_v0": {
+    "AI Infra": {
+      "current_model_stage": "capital_expansion",
+      "leaders": [
+        "NVDA",
+        "AVGO",
+        "ANET",
+        "MSFT",
+        "GOOG"
+      ],
+      "second_line": [
+        "CRDO",
+        "LITE",
+        "COHR",
+        "AAOI"
+      ],
+      "branches": [
+        "Optical",
+        "Power/Cooling",
+        "Networking",
+        "AI Data Centers"
+      ],
+      "failure_signals": [
+        "NVDA underperforms QQQ",
+        "CapEx guidance cuts",
+        "second-line breaks before leaders",
+        "AI ROI backlash"
+      ]
+    },
+    "Optical / CPO": {
+      "current_model_stage": "capital_expansion_to_mainstream_fomo",
+      "leaders": [
+        "CRDO",
+        "LITE",
+        "COHR"
+      ],
+      "tail_risk": [
+        "small optical names with weak fundamentals"
+      ],
+      "failure_signals": [
+        "earnings guide weak",
+        "gross margin pressure",
+        "customer concentration risk",
+        "AVWAP breaks"
+      ]
+    },
+    "Power / Cooling": {
+      "current_model_stage": "early_signal_to_institutional_recognition",
+      "leaders": [
+        "ETN",
+        "VRT",
+        "CEG"
+      ],
+      "branches": [
+        "nuclear",
+        "grid",
+        "data center power",
+        "cooling"
+      ],
+      "failure_signals": [
+        "policy delay",
+        "capex cuts",
+        "valuation catches up too fast"
+      ]
+    },
+    "Space": {
+      "current_model_stage": "early_signal_to_capital_expansion",
+      "leaders": [
+        "RKLB",
+        "ASTS",
+        "RDW"
+      ],
+      "character": "high volatility / event driven / strategic narrative",
+      "failure_signals": [
+        "launch failure",
+        "funding dilution",
+        "theme overheats before revenue visibility"
+      ]
+    },
+    "Quantum": {
+      "current_model_stage": "early_signal",
+      "leaders": [
+        "IONQ",
+        "RGTI",
+        "QBTS"
+      ],
+      "character": "policy narrative / long R&D / high speculation",
+      "failure_signals": [
+        "policy headline fades",
+        "no commercial proof",
+        "tail-name mania"
+      ]
+    },
+    "BTC Finance": {
+      "current_model_stage": "reset_watch",
+      "leaders": [
+        "BTC",
+        "COIN",
+        "HOOD",
+        "MSTR",
+        "IREN"
+      ],
+      "character": "liquidity / regulation / risk appetite / ETF flow",
+      "failure_signals": [
+        "BTC loses key liquidity levels",
+        "regulatory pressure broadens",
+        "risk-off regime"
+      ]
+    }
+  },
+  "scoring_model_v0": {
+    "narrative_strength_score": {
+      "components": {
+        "leader_relative_strength": 0.25,
+        "capital_flow_confirmation": 0.25,
+        "earnings_or_policy_validation": 0.2,
+        "breadth_within_theme": 0.15,
+        "quality_of_attention": 0.15
+      }
+    },
+    "maturity_score": {
+      "components": {
+        "valuation_stretch": 0.2,
+        "retail_attention": 0.2,
+        "tail_name_participation": 0.2,
+        "options_mania": 0.2,
+        "price_response_to_good_news_fading": 0.2
+      }
+    },
+    "failure_risk_score": {
+      "components": {
+        "leader_breakdown": 0.25,
+        "capex_or_fundamental_disconfirmation": 0.25,
+        "macro_regime_shift": 0.2,
+        "gamma_negative_shift": 0.15,
+        "crowding_extreme": 0.15
+      }
+    }
+  },
+  "agent_rules": [
+    "Narrative AI must not create new modules for every new theme. It must map new themes into lifecycle stages.",
+    "Capital Flow AI must classify new strength as expansion, rotation, defensive shift, or late-cycle chase.",
+    "Risk AI must flag late-cycle chase when weak tail names outperform leaders.",
+    "Decision AI must distinguish 'right narrative, wrong timing' from 'dead narrative'."
+  ]
+}

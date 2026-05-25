@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Alpha Master Index v0.6</title><style>
+:root{--bg:#05070c;--side:#070b15;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.shell{display:grid;grid-template-columns:318px 1fr;min-height:100vh}.sidebar{background:rgba(7,11,21,.95);border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{padding:8px 10px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+.brand h1{font-size:24px;margin:6px 0 4px}.brand p{color:var(--muted);margin:0}.nav{display:grid;gap:6px}.nav a{text-decoration:none;color:var(--soft);border:1px solid transparent;border-radius:9px;padding:10px}.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.main{padding:20px;max-width:1780px;width:100%;margin:0 auto}.card,.section,.artifact{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}h1{font-size:42px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat b{display:block;font-size:25px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.warning{padding:18px;margin-bottom:14px;border-color:rgba(255,77,109,.55)}.warning h2{margin:0 0 10px;color:var(--red)}.warning p{color:var(--soft);margin:0}
+.workflow,.next{padding:18px;margin-bottom:14px}.workflow{border-color:rgba(255,209,102,.45)}.workflow h2,.next h2{margin:0 0 10px;color:var(--gold)}li{color:var(--soft);margin:7px 0}
+.section{padding:18px;margin-bottom:14px;scroll-margin-top:20px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.section h2{font-size:24px;margin:4px 0}.section p{color:var(--soft);margin:0}.count{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);border:1px solid rgba(255,209,102,.4);border-radius:999px;padding:5px 9px;white-space:nowrap}
+.artifact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.artifact{display:block;text-decoration:none;color:var(--text);padding:14px;min-height:148px;transition:.15s}.artifact:hover{transform:translateY(-2px);border-color:rgba(35,217,255,.5)}
+.artifact-top{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.artifact-top b{font-size:14px}.artifact-top span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green);font-size:10px}.artifact p{color:var(--soft);margin:0 0 10px}.artifact small{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}.missing{opacity:.45}.missing .artifact-top span{color:var(--red)}
+@media(max-width:1250px){.shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.artifact-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}@media(max-width:700px){.artifact-grid,.stats{grid-template-columns:1fr}}
+</style></head><body><div class="shell"><aside class="sidebar"><div class="brand"><div class="eyebrow">AMOS Alpha</div><h1>Master Index</h1><p>v0.6 · Engineering Handoff Ready</p></div><nav class="nav"><a href="#handoff">Engineering Handoff</a><a href="#manual-alpha">Manual Alpha Workflow</a><a href="#data-events">Data Sources &amp; Events</a><a href="#gann">Gann Registry &amp; Anchor Governance</a><a href="#stock-pages">Stock Pages</a><a href="#core">Core Engines</a><a href="#previous">Previous Master Indexes</a></nav></aside>
+<main class="main"><div class="card hero"><div class="eyebrow">AI Market Operating System · Master Entry</div><h1>AMOS Alpha Master Index v0.6</h1><div class="motto">v0.3A Manual Data Alpha 已收束到工程交接状态：正本规格、统一工作簿、CSV导入、宏观日历、日报导出、Codex任务包全部接回总入口。</div></div>
+<div class="stats"><div class="card stat"><span>Deliveries</span><b>65</b></div><div class="card stat"><span>Phase</span><b>v0.3A</b></div><div class="card stat"><span>Gann Live</span><b>5</b></div><div class="card stat"><span>Anchor</span><b>v0.2</b></div><div class="card stat"><span>Codex Pack</span><b>v0.1</b></div><div class="card stat"><span>Status</span><b>Ready</b></div></div>
+<div class="card warning"><h2>重要护栏</h2><p>AMOS 当前仍是 Manual Alpha，不是实时交易系统。所有 Gann Engines 仍是 sample/manual-ready；任何江恩点位和时间窗都必须先通过 Anchor Verification v0.2，并叠加 live price、AVWAP、RSI、TCG、期权/Gamma、事件确认后，才能进入正式交易判断。</p></div>
+<div class="card workflow"><div class="eyebrow">Current Workflow</div><h2>现在怎么用</h2><ol><li>Use Master Index v0.6 as entry point.</li><li>Use Manual Data Workbook v0.2 for daily manual updates.</li><li>Use CSV Import Schema v0.1 when replacing hand entry with pasted/imported data.</li><li>Use Macro Event Calendar before deciding daily aggressiveness.</li><li>Use Daily Brief Exporter v0.2 to generate independent HTML brief.</li><li>Use Gann Registry v0.4 and Anchor Verification v0.2 before using any Gann level.</li><li>Use Engineering Handoff v0.1 and Codex Task Pack v0.1 when moving to Codex.</li></ol></div>
+<section id="handoff" class="section">
+    <div class="section-head"><div><div class="eyebrow">handoff</div><h2>Engineering Handoff / 工程交接</h2><p>正本规格、工程交接包、Codex 任务包。</p></div>
+    <span class="count">9/9</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_canonical_system_integration_spec_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Canonical System Integration Spec v0.1</b><span>OPEN</span></div>
+        <p>AMOS 正本规格</p><small>HTML · amos_canonical_system_integration_spec_v0_1.html</small></a><a class="artifact " href="amos_canonical_system_integration_spec_v0_1.md" target="_blank">
+        <div class="artifact-top"><b>Canonical Spec Markdown</b><span>OPEN</span></div>
+        <p>正本规格 Markdown</p><small>MD · amos_canonical_system_integration_spec_v0_1.md</small></a><a class="artifact " href="amos_no_omission_master_checklist_v0_1.md" target="_blank">
+        <div class="artifact-top"><b>No-Omission Checklist v0.1</b><span>OPEN</span></div>
+        <p>防遗漏清单</p><small>MD · amos_no_omission_master_checklist_v0_1.md</small></a><a class="artifact " href="amos_engineering_handoff_spec_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Engineering Handoff Spec v0.1</b><span>OPEN</span></div>
+        <p>工程交接说明</p><small>HTML · amos_engineering_handoff_spec_v0_1.html</small></a><a class="artifact " href="amos_engineering_handoff_pack_v0_1.zip" target="_blank">
+        <div class="artifact-top"><b>Engineering Handoff Pack v0.1</b><span>OPEN</span></div>
+        <p>工程交接 ZIP</p><small>ZIP · amos_engineering_handoff_pack_v0_1.zip</small></a><a class="artifact " href="amos_codex_initial_task_prompt_v0_1.md" target="_blank">
+        <div class="artifact-top"><b>Codex Initial Task Prompt v0.1</b><span>OPEN</span></div>
+        <p>Codex 初始提示</p><small>MD · amos_codex_initial_task_prompt_v0_1.md</small></a><a class="artifact " href="amos_repo_structure_v0_1.md" target="_blank">
+        <div class="artifact-top"><b>Repo Folder Structure v0.1</b><span>OPEN</span></div>
+        <p>推荐仓库结构</p><small>MD · amos_repo_structure_v0_1.md</small></a><a class="artifact " href="amos_codex_task_pack_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Codex Task Pack v0.1</b><span>OPEN</span></div>
+        <p>12 张 Codex 任务卡</p><small>HTML · amos_codex_task_pack_v0_1.html</small></a><a class="artifact " href="amos_codex_task_pack_v0_1.zip" target="_blank">
+        <div class="artifact-top"><b>Codex Task Pack ZIP v0.1</b><span>OPEN</span></div>
+        <p>Codex 任务包 ZIP</p><small>ZIP · amos_codex_task_pack_v0_1.zip</small></a></div></section><section id="manual-alpha" class="section">
+    <div class="section-head"><div><div class="eyebrow">manual-alpha</div><h2>Manual Alpha Workflow / 手动 Alpha 工作流</h2><p>手动输入、CSV导入、日报、证据包、Gann、锚点验证、事件。</p></div>
+    <span class="count">9/9</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_manual_data_workbook_v0_2_unified.xlsx" target="_blank">
+        <div class="artifact-top"><b>Manual Data Workbook v0.2 Unified</b><span>OPEN</span></div>
+        <p>统一手动数据工作簿</p><small>XLSX · amos_manual_data_workbook_v0_2_unified.xlsx</small></a><a class="artifact " href="amos_manual_data_workbook_v0_2_unified.html" target="_blank">
+        <div class="artifact-top"><b>Manual Data Workbook v0.2 HTML</b><span>OPEN</span></div>
+        <p>统一工作簿说明</p><small>HTML · amos_manual_data_workbook_v0_2_unified.html</small></a><a class="artifact " href="amos_csv_import_schema_v0_1.xlsx" target="_blank">
+        <div class="artifact-top"><b>CSV Import Schema v0.1</b><span>OPEN</span></div>
+        <p>CSV 导入标准</p><small>XLSX · amos_csv_import_schema_v0_1.xlsx</small></a><a class="artifact " href="amos_price_technical_import_template_v0_1.csv" target="_blank">
+        <div class="artifact-top"><b>Price Technical Import CSV</b><span>OPEN</span></div>
+        <p>价格/技术导入模板</p><small>CSV · amos_price_technical_import_template_v0_1.csv</small></a><a class="artifact " href="amos_gann_import_template_v0_1.csv" target="_blank">
+        <div class="artifact-top"><b>Gann Import CSV</b><span>OPEN</span></div>
+        <p>Gann 导入模板</p><small>CSV · amos_gann_import_template_v0_1.csv</small></a><a class="artifact " href="amos_event_import_template_v0_1.csv" target="_blank">
+        <div class="artifact-top"><b>Event Import CSV</b><span>OPEN</span></div>
+        <p>事件导入模板</p><small>CSV · amos_event_import_template_v0_1.csv</small></a><a class="artifact " href="amos_evidence_import_template_v0_1.csv" target="_blank">
+        <div class="artifact-top"><b>Evidence Import CSV</b><span>OPEN</span></div>
+        <p>证据导入模板</p><small>CSV · amos_evidence_import_template_v0_1.csv</small></a><a class="artifact " href="amos_daily_brief_html_exporter_v0_2.py" target="_blank">
+        <div class="artifact-top"><b>Daily Brief Exporter Script v0.2</b><span>OPEN</span></div>
+        <p>日报导出脚本</p><small>PY · amos_daily_brief_html_exporter_v0_2.py</small></a><a class="artifact " href="amos_daily_brief_exported_from_unified_v0_2.html" target="_blank">
+        <div class="artifact-top"><b>Daily Brief Exported HTML v0.2</b><span>OPEN</span></div>
+        <p>HTML 日报示例</p><small>HTML · amos_daily_brief_exported_from_unified_v0_2.html</small></a></div></section><section id="data-events" class="section">
+    <div class="section-head"><div><div class="eyebrow">data-events</div><h2>Data Sources &amp; Events / 数据源与事件</h2><p>真实数据源地图与宏观/机械/财报/BTC事件日历。</p></div>
+    <span class="count">4/4</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_real_market_data_source_map_v0_1.xlsx" target="_blank">
+        <div class="artifact-top"><b>Real Market Data Source Map v0.1</b><span>OPEN</span></div>
+        <p>真实数据源地图</p><small>XLSX · amos_real_market_data_source_map_v0_1.xlsx</small></a><a class="artifact " href="amos_real_market_data_source_map_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Real Market Data Source Map HTML</b><span>OPEN</span></div>
+        <p>数据源地图说明</p><small>HTML · amos_real_market_data_source_map_v0_1.html</small></a><a class="artifact " href="amos_macro_event_calendar_manual_input_v0_1.xlsx" target="_blank">
+        <div class="artifact-top"><b>Macro Event Calendar v0.1</b><span>OPEN</span></div>
+        <p>宏观事件日历</p><small>XLSX · amos_macro_event_calendar_manual_input_v0_1.xlsx</small></a><a class="artifact " href="amos_macro_event_calendar_manual_input_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Macro Event Calendar HTML</b><span>OPEN</span></div>
+        <p>事件日历说明</p><small>HTML · amos_macro_event_calendar_manual_input_v0_1.html</small></a></div></section><section id="gann" class="section">
+    <div class="section-head"><div><div class="eyebrow">gann</div><h2>Gann Registry &amp; Anchor Governance / 江恩与锚点治理</h2><p>五个样板标的全部 Gann Live，但必须通过 Anchor Verification。</p></div>
+    <span class="count">8/8</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_gann_live_ticker_registry_v0_4.html" target="_blank">
+        <div class="artifact-top"><b>Gann Live Ticker Registry v0.4</b><span>OPEN</span></div>
+        <p>五个样板标的全部 Gann Live</p><small>HTML · amos_gann_live_ticker_registry_v0_4.html</small></a><a class="artifact " href="amos_gann_anchor_verification_checklist_v0_2.xlsx" target="_blank">
+        <div class="artifact-top"><b>Gann Anchor Verification v0.2</b><span>OPEN</span></div>
+        <p>锚点验证工作簿</p><small>XLSX · amos_gann_anchor_verification_checklist_v0_2.xlsx</small></a><a class="artifact " href="amos_gann_anchor_verification_checklist_v0_2.html" target="_blank">
+        <div class="artifact-top"><b>Gann Anchor Verification HTML v0.2</b><span>OPEN</span></div>
+        <p>锚点验证说明</p><small>HTML · amos_gann_anchor_verification_checklist_v0_2.html</small></a><a class="artifact " href="amos_nvda_gann_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>NVDA Gann Engine v0.1</b><span>OPEN</span></div>
+        <p>NVDA Gann Engine</p><small>HTML · amos_nvda_gann_engine_v0_1.html</small></a><a class="artifact " href="amos_unified_gann_resonance_engine_v0_4.html" target="_blank">
+        <div class="artifact-top"><b>CRDO Unified Gann Engine v0.4</b><span>OPEN</span></div>
+        <p>CRDO Gann Engine</p><small>HTML · amos_unified_gann_resonance_engine_v0_4.html</small></a><a class="artifact " href="amos_lite_gann_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>LITE Gann Engine v0.1</b><span>OPEN</span></div>
+        <p>LITE Gann Engine</p><small>HTML · amos_lite_gann_engine_v0_1.html</small></a><a class="artifact " href="amos_iren_gann_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>IREN Gann Engine v0.1</b><span>OPEN</span></div>
+        <p>IREN Gann Engine</p><small>HTML · amos_iren_gann_engine_v0_1.html</small></a><a class="artifact " href="amos_hood_gann_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>HOOD Gann Engine v0.1</b><span>OPEN</span></div>
+        <p>HOOD Gann Engine</p><small>HTML · amos_hood_gann_engine_v0_1.html</small></a></div></section><section id="stock-pages" class="section">
+    <div class="section-head"><div><div class="eyebrow">stock-pages</div><h2>Stock Pages / 个股页</h2><p>五个样板个股页，保留 Gann Zone 和 Anchor Verification 链接。</p></div>
+    <span class="count">6/6</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_generic_page_generator_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>Generic Page Generator v0.6</b><span>OPEN</span></div>
+        <p>个股页生成器</p><small>HTML · amos_generic_page_generator_gann_registry_v0_6.html</small></a><a class="artifact " href="nvda_stock_page_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>NVDA Stock Page v0.6</b><span>OPEN</span></div>
+        <p>NVDA 个股页</p><small>HTML · nvda_stock_page_gann_registry_v0_6.html</small></a><a class="artifact " href="crdo_stock_page_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>CRDO Stock Page v0.6</b><span>OPEN</span></div>
+        <p>CRDO 个股页</p><small>HTML · crdo_stock_page_gann_registry_v0_6.html</small></a><a class="artifact " href="lite_stock_page_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>LITE Stock Page v0.6</b><span>OPEN</span></div>
+        <p>LITE 个股页</p><small>HTML · lite_stock_page_gann_registry_v0_6.html</small></a><a class="artifact " href="iren_stock_page_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>IREN Stock Page v0.6</b><span>OPEN</span></div>
+        <p>IREN 个股页</p><small>HTML · iren_stock_page_gann_registry_v0_6.html</small></a><a class="artifact " href="hood_stock_page_gann_registry_v0_6.html" target="_blank">
+        <div class="artifact-top"><b>HOOD Stock Page v0.6</b><span>OPEN</span></div>
+        <p>HOOD 个股页</p><small>HTML · hood_stock_page_gann_registry_v0_6.html</small></a></div></section><section id="core" class="section">
+    <div class="section-head"><div><div class="eyebrow">core</div><h2>Core Engines / 核心系统</h2><p>宏观、叙事、估值、风险、组合迁移、证据质量、股性雷达。</p></div>
+    <span class="count">7/7</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_macro_regime_liquidity_state_machine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Macro Regime &amp; Liquidity</b><span>OPEN</span></div>
+        <p>宏观状态机</p><small>HTML · amos_macro_regime_liquidity_state_machine_v0_1.html</small></a><a class="artifact " href="amos_narrative_lifecycle_capital_rotation_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Narrative Lifecycle</b><span>OPEN</span></div>
+        <p>叙事生命周期</p><small>HTML · amos_narrative_lifecycle_capital_rotation_v0_1.html</small></a><a class="artifact " href="amos_valuation_battle_map_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Valuation Battle Map</b><span>OPEN</span></div>
+        <p>估值战场</p><small>HTML · amos_valuation_battle_map_v0_1.html</small></a><a class="artifact " href="amos_portfolio_battle_map_migration_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Portfolio Battle Map</b><span>OPEN</span></div>
+        <p>组合迁移</p><small>HTML · amos_portfolio_battle_map_migration_engine_v0_1.html</small></a><a class="artifact " href="amos_risk_protection_behavior_guardrail_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Risk Protection Guardrail</b><span>OPEN</span></div>
+        <p>风险保护</p><small>HTML · amos_risk_protection_behavior_guardrail_v0_1.html</small></a><a class="artifact " href="amos_research_source_evidence_quality_engine_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Evidence Quality Engine</b><span>OPEN</span></div>
+        <p>证据质量</p><small>HTML · amos_research_source_evidence_quality_engine_v0_1.html</small></a><a class="artifact " href="amos_stock_personality_radar_v0_1.html" target="_blank">
+        <div class="artifact-top"><b>Stock Personality Radar</b><span>OPEN</span></div>
+        <p>股性雷达</p><small>HTML · amos_stock_personality_radar_v0_1.html</small></a></div></section><section id="previous" class="section">
+    <div class="section-head"><div><div class="eyebrow">previous</div><h2>Previous Master Indexes / 历史总入口</h2><p>历史版本保留。</p></div>
+    <span class="count">2/3</span></div>
+    <div class="artifact-grid"><a class="artifact " href="amos_alpha_master_index_v0_4.html" target="_blank">
+        <div class="artifact-top"><b>Alpha Master Index v0.4</b><span>OPEN</span></div>
+        <p>历史总入口</p><small>HTML · amos_alpha_master_index_v0_4.html</small></a><a class="artifact " href="amos_alpha_master_index_v0_5.html" target="_blank">
+        <div class="artifact-top"><b>Alpha Master Index v0.5</b><span>OPEN</span></div>
+        <p>上一版总入口</p><small>HTML · amos_alpha_master_index_v0_5.html</small></a><a class="artifact missing" href="#" target="_blank">
+        <div class="artifact-top"><b>Alpha Master Index v0.6</b><span>MISSING</span></div>
+        <p>当前总入口</p><small>HTML · amos_alpha_master_index_v0_6.html</small></a></div></section><div class="card next"><div class="eyebrow">Next Build Sequence</div><h2>下一步工程路线</h2><ol><li>Codex Task Pack execution or Repo Bootstrap Pack v0.1</li><li>Build local React/Vite/Next prototype</li><li>Convert Gann Registry and stock pages into reusable components</li><li>Implement guardrail tests</li><li>Only after local JSON/CSV app is stable, consider semi-auto imports</li></ol></div></main></div></body></html>

@@ -1,0 +1,25 @@
+{
+  "version": "CRDO Gann Research Zone v0.4",
+  "html": "crdo_gann_research_zone_v0_4.html",
+  "source_gann": "amos_unified_gann_resonance_engine_v0_4.json",
+  "source_fixture": "amos_sample_data_fixture_v0_1.json",
+  "ticker": "CRDO",
+  "gann_scores": {
+    "gann_price_score": 62,
+    "gann_time_score": -7,
+    "avwap_confirmation_score": 35,
+    "rsi_momentum_score": 40,
+    "tcg_price_action_score": 35,
+    "gamma_event_score": 45,
+    "volume_confirmation_score": 35,
+    "unified_gann_resonance_score": 32,
+    "resonance_state": "no_actionable_resonance",
+    "action_interpretation": "No Gann edge."
+  },
+  "action_gate": "WATCH",
+  "next": [
+    "connect to full CRDO stock page",
+    "replace placeholder confirmation gates",
+    "add live AVWAP/RSI/TCG/Gamma/Volume data"
+  ]
+}

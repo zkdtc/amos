@@ -1,0 +1,6 @@
+as_of_date,ticker,gann_registry_status,nearest_gann_support,nearest_gann_resistance,price_cluster_center,time_cluster_date,gann_price_score,gann_time_score,unified_gann_resonance_score,resonance_state,anchor_verification_status,hard_missing_data,source_engine_file,notes
+2026-05-24,NVDA,Gann Live,,,,,,,,incomplete_resonance,Unverified,Live price; AVWAP; RSI; Gamma missing,amos_nvda_gann_engine_v0_1.json,sample/manual-ready
+2026-05-24,CRDO,Gann Live,,,,,,,,incomplete_resonance,Unverified,Live price; AVWAP; RSI; Gamma missing,amos_unified_gann_resonance_engine_v0_4.json,sample/manual-ready
+2026-05-24,LITE,Gann Live,,,,,,,,incomplete_resonance,Unverified,Live price; AVWAP; RSI; Gamma missing,amos_lite_gann_engine_v0_1.json,sample/manual-ready
+2026-05-24,IREN,Gann Live,,,,,,,,incomplete_resonance,Unverified,BTC/miner correlation missing,amos_iren_gann_engine_v0_1.json,sample/manual-ready
+2026-05-24,HOOD,Gann Live,,,,,,,,incomplete_resonance,Unverified,BTC/fintech activity missing,amos_hood_gann_engine_v0_1.json,sample/manual-ready

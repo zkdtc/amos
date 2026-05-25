@@ -1,0 +1,329 @@
+{
+  "version": "AMOS Valuation Battle Map v0.1",
+  "purpose": "Convert valuation from a single target price into a multi-layer decision battlefield.",
+  "core_motto": "宏观定仓位 · 估值定胜率 · 财报定去留 · 周期定时机 · 期权定下限",
+  "valuation_layers": {
+    "S1_macro_constraint": {
+      "question": "当前宏观环境允许多大Beta和仓位？",
+      "decision_role": "Sets position ceiling, not target price.",
+      "inputs": [
+        "10Y yield",
+        "2Y yield",
+        "DXY",
+        "VIX/VVIX/MOVE",
+        "credit spreads",
+        "Nasdaq forward P/E",
+        "SPX forward P/E",
+        "market breadth",
+        "Fed/Treasury liquidity",
+        "Gamma/OPEX environment"
+      ],
+      "outputs": {
+        "macro_rating": [
+          "attack",
+          "balanced",
+          "de-risk",
+          "defensive",
+          "crisis"
+        ],
+        "max_beta": "portfolio beta ceiling",
+        "max_position_size": "max allowed stock position size",
+        "risk_ceiling_note": "why macro allows or restricts aggression"
+      },
+      "hard_rules": [
+        "If macro crisis mode, no single stock can justify full aggression.",
+        "If rates rise because growth is strong, impact differs from rates rising because fiscal stress is worsening.",
+        "Macro is a constraint layer, not a stock thesis."
+      ]
+    },
+    "S2_intrinsic_value": {
+      "question": "这家公司在保守/中性/乐观现金流下值多少钱？",
+      "decision_role": "Defines safety margin and core-position legitimacy.",
+      "inputs": [
+        "Revenue growth",
+        "Gross margin",
+        "Operating margin",
+        "FCF margin",
+        "SBC / Revenue",
+        "Owner earnings",
+        "Customer concentration",
+        "Moat",
+        "Management quality",
+        "Discount rate",
+        "Terminal growth"
+      ],
+      "outputs": {
+        "bear_case_value": null,
+        "base_case_value": null,
+        "bull_case_value": null,
+        "weighted_intrinsic_value": null,
+        "margin_of_safety": null,
+        "valuation_state": [
+          "cheap",
+          "reasonable",
+          "fair",
+          "demanding",
+          "overvalued"
+        ]
+      },
+      "hard_rules": [
+        "SBC must be treated as real cost.",
+        "FCF quality matters more than non-GAAP optics.",
+        "If business quality breaks, valuation cheapness is not enough."
+      ]
+    },
+    "S3_market_consensus": {
+      "question": "华尔街共识正在上修还是下修？",
+      "decision_role": "Determines whether the market is moving toward or away from the thesis.",
+      "inputs": [
+        "Analyst EPS revisions",
+        "Revenue revisions",
+        "Price target revisions",
+        "Consensus growth assumptions",
+        "Beat/raise quality",
+        "Guidance vs consensus"
+      ],
+      "outputs": {
+        "revision_trend": [
+          "up",
+          "flat",
+          "down"
+        ],
+        "consensus_surprise_direction": [
+          "positive",
+          "neutral",
+          "negative"
+        ],
+        "market_recognition_score": "0-100"
+      },
+      "hard_rules": [
+        "EPS revision trend matters more than headline P/E.",
+        "A stock can get cheaper for the wrong reason.",
+        "Guidance quality is more important than last quarter beat."
+      ]
+    },
+    "S4_narrative_value": {
+      "question": "市场正在给它多少未来？这个未来是否仍被相信？",
+      "decision_role": "Explains why market price can exceed intrinsic value during powerful cycles.",
+      "inputs": [
+        "Narrative lifecycle stage",
+        "AI/sector relevance",
+        "TAM story",
+        "Customer validation",
+        "CapEx chain",
+        "Conference language",
+        "Institutional adoption",
+        "Media/social attention quality"
+      ],
+      "outputs": {
+        "narrative_strength": "0-100",
+        "narrative_maturity": "0-100",
+        "implied_future_years": null,
+        "narrative_premium_level": [
+          "none",
+          "low",
+          "medium",
+          "high",
+          "extreme"
+        ],
+        "failure_signals": []
+      },
+      "hard_rules": [
+        "Narrative is not truth; it is what the market is willing to discount.",
+        "State-level strategic narratives have longer duration than social-media hype.",
+        "If price stops responding to good narrative news, narrative may be saturated."
+      ]
+    },
+    "S5_cycle_value": {
+      "question": "这只股票处在产业/资金/价格周期的哪一段？",
+      "decision_role": "Determines whether valuation should be expanded, tolerated, compressed, or reset.",
+      "inputs": [
+        "Sector lifecycle",
+        "Capital flow strength",
+        "Leadership chain",
+        "Crowding",
+        "Relative strength",
+        "Earnings cycle",
+        "OPEX/Gamma cycle",
+        "Gann time windows"
+      ],
+      "outputs": {
+        "cycle_stage": [
+          "early",
+          "mid",
+          "late",
+          "euphoria",
+          "reset",
+          "panic_maturity"
+        ],
+        "multiple_tolerance": [
+          "low",
+          "normal",
+          "elevated",
+          "extreme"
+        ],
+        "cycle_risk": [
+          "low",
+          "medium",
+          "high"
+        ]
+      },
+      "hard_rules": [
+        "Cheap in late-cycle can still fall.",
+        "Expensive in early-cycle can keep expanding.",
+        "Timing determines whether correct thesis makes money."
+      ]
+    },
+    "S6_personality_value": {
+      "question": "这只股票的股性允许多高溢价？它通常如何修正？",
+      "decision_role": "Adjusts valuation tolerance by stock behavior DNA.",
+      "inputs": [
+        "Historical multiple range",
+        "Volatility profile",
+        "Event behavior",
+        "Retail participation",
+        "Institutional sponsorship",
+        "Gamma sensitivity",
+        "Narrative sensitivity",
+        "Liquidity sensitivity"
+      ],
+      "outputs": {
+        "personality_premium": [
+          "discounted",
+          "normal",
+          "premium",
+          "cult_premium",
+          "mania_premium"
+        ],
+        "drawdown_tolerance": null,
+        "expected_reaction_pattern": ""
+      },
+      "hard_rules": [
+        "NVDA/TSLA/PLTR/CRDO-style names can trade above classical valuation longer than expected.",
+        "But personality premium must be monitored for exhaustion.",
+        "Do not use one stock's personality premium on another stock."
+      ]
+    },
+    "S7_extreme_risk_value": {
+      "question": "极端上行/下行时，哪里是泡沫区、恐慌成熟区和强制出清区？",
+      "decision_role": "Defines trim zones, panic buy zones, and invalidation zones.",
+      "inputs": [
+        "Gann support/resistance",
+        "AVWAP levels",
+        "RSI extremes",
+        "Volume exhaustion",
+        "Options walls",
+        "Forced selling signals",
+        "Panic maturity",
+        "Euphoria exhaustion"
+      ],
+      "outputs": {
+        "bubble_zone": null,
+        "trim_zone": null,
+        "panic_buy_zone": null,
+        "forced_selling_zone": null,
+        "invalidation_zone": null
+      },
+      "hard_rules": [
+        "Falling price alone is not panic maturity.",
+        "Rising price alone is not bubble.",
+        "Extreme zones need multi-factor resonance."
+      ]
+    }
+  },
+  "decision_matrix": {
+    "attack": {
+      "conditions": [
+        "macro allows high beta",
+        "intrinsic value has margin of safety OR narrative/cycle is early with strong confirmation",
+        "capital flow is entering",
+        "technical trigger confirms",
+        "risk stack not extreme"
+      ]
+    },
+    "build": {
+      "conditions": [
+        "thesis validated",
+        "valuation not cheap but acceptable",
+        "narrative strong",
+        "entry window not euphoric",
+        "position size still below plan"
+      ]
+    },
+    "hold": {
+      "conditions": [
+        "trend intact",
+        "thesis intact",
+        "valuation demanding but not exhausted",
+        "no clear better migration target"
+      ]
+    },
+    "trim": {
+      "conditions": [
+        "Gann time/resistance window",
+        "RSI/volume exhaustion",
+        "crowding rising",
+        "valuation premium extreme",
+        "event risk high"
+      ]
+    },
+    "exit": {
+      "conditions": [
+        "business thesis breaks",
+        "EPS/revenue revisions down materially",
+        "key customer/technology thesis weakens",
+        "price structure confirms LH/LL",
+        "AVWAP breaks with failed reclaim"
+      ]
+    },
+    "hedge": {
+      "conditions": [
+        "core position still valid",
+        "macro/event risk elevated",
+        "valuation extended",
+        "technical structure weakening",
+        "prefer trim/sell-call first depending on user style"
+      ]
+    },
+    "wait": {
+      "conditions": [
+        "right thesis, wrong timing",
+        "panic not mature",
+        "event risk not resolved",
+        "price between support and resistance",
+        "uncertainty high"
+      ]
+    }
+  },
+  "page_components": [
+    "Valuation Stack Summary",
+    "Scenario Table",
+    "Implied Future Years Meter",
+    "Narrative Premium Gauge",
+    "Cycle Stage Bar",
+    "Personality Premium Adjustment",
+    "Extreme Zone Map",
+    "Decision Matrix",
+    "Evidence / Counter-evidence Panel"
+  ],
+  "example_CRDO_placeholder": {
+    "ticker": "CRDO",
+    "stock_identity": "AI Infra / Optical / SerDes high-beta expansion stock",
+    "likely_key_questions": [
+      "Is revenue growth accelerating enough to justify premium valuation?",
+      "Is AI CapEx chain still expanding?",
+      "Is CRDO becoming a durable leader or second-line beta?",
+      "Is current price driven by fundamentals, narrative, or gamma?",
+      "Where is the first real panic-buy zone if AI Infra corrects?"
+    ],
+    "initial_action_bias_without_live_data": "research / hold existing / no chase",
+    "required_live_evidence": [
+      "Latest financials",
+      "Consensus revisions",
+      "AI CapEx read-through",
+      "Options/gamma positioning",
+      "Gann anchors and time windows",
+      "Relative strength vs NVDA/AVGO/ANET/LITE/COHR"
+    ]
+  }
+}

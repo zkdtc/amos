@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Generic Page + Gann Auto-Insertion v0.2</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif}
+.app{max-width:1320px;margin:0 auto;padding:24px}
+.card,.artifact{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.artifact{display:block;text-decoration:none;color:var(--text);padding:18px;min-height:150px}
+.artifact b{display:block;font-size:30px;color:var(--gold);margin-bottom:8px}.artifact span{display:block;color:var(--soft)}.artifact small{display:block;color:var(--muted);margin-top:12px;word-break:break-all}
+.live{border-color:rgba(50,230,138,.55)}.pending{border-color:rgba(255,209,102,.35)}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Generator Upgrade · v0.2</div>
+    <h1>Generic Page + Gann Zone Auto-Insertion</h1>
+    <div class="motto">同一套个股页生成器：有 Gann 数据自动插入 Gann Research Zone；没有则明确显示 Pending。</div>
+  </div>
+  <div class="grid">
+    <a class="artifact pending" href="nvda_stock_page_gann_auto_v0_2.html" target="_blank">
+      <b>NVDA</b>
+      <span>Gann Pending</span>
+      <small>nvda_stock_page_gann_auto_v0_2.html</small>
+    </a>
+    
+    <a class="artifact live" href="crdo_stock_page_gann_auto_v0_2.html" target="_blank">
+      <b>CRDO</b>
+      <span>Gann Live</span>
+      <small>crdo_stock_page_gann_auto_v0_2.html</small>
+    </a>
+    
+    <a class="artifact pending" href="lite_stock_page_gann_auto_v0_2.html" target="_blank">
+      <b>LITE</b>
+      <span>Gann Pending</span>
+      <small>lite_stock_page_gann_auto_v0_2.html</small>
+    </a>
+    
+    <a class="artifact pending" href="iren_stock_page_gann_auto_v0_2.html" target="_blank">
+      <b>IREN</b>
+      <span>Gann Pending</span>
+      <small>iren_stock_page_gann_auto_v0_2.html</small>
+    </a>
+    
+    <a class="artifact pending" href="hood_stock_page_gann_auto_v0_2.html" target="_blank">
+      <b>HOOD</b>
+      <span>Gann Pending</span>
+      <small>hood_stock_page_gann_auto_v0_2.html</small>
+    </a>
+    </div>
+</div>
+</body>
+</html>

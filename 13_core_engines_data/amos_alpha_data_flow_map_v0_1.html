@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Alpha Data Flow Map v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.1),transparent 30%),radial-gradient(circle at 90% 10%,rgba(155,92,255,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1600px;margin:0 auto;padding:20px}
+.card,.step-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.step-card{padding:16px;min-height:270px;position:relative;overflow:hidden}
+.step-card:before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.step-num{font-size:34px;font-weight:900;color:var(--gold);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.step-card h2{font-size:17px;margin:5px 0 8px}
+.step-card p,.step-card li{color:var(--soft)}.step-card ul{padding-left:18px}
+.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
+.box{padding:18px}.box h2{margin:0 0 12px;font-size:14px;text-transform:uppercase;letter-spacing:.1em}
+.file{display:grid;grid-template-columns:210px 1fr;gap:10px;border-bottom:1px solid rgba(30,42,70,.65);padding:9px 0}
+.file b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);font-size:11px}.file span{color:var(--soft)}
+.box li{color:var(--soft);margin:8px 0}
+@media(max-width:1200px){.flow{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+@media(max-width:700px){.flow{grid-template-columns:1fr}.file{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Alpha Architecture · v0.1</div>
+    <h1>Data Flow Map</h1>
+    <div class="motto">Raw Input → Evidence → Schema → Scoring → Agent Debate → Decision → UI → Learning</div>
+  </div>
+
+  <div class="flow">
+    
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="eyebrow"></div>
+      <h2>Raw Inputs</h2>
+      <p>Collect raw data and research leads.</p>
+      <ul><li>raw_input_objects</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="eyebrow">Research Source & Evidence Quality Engine</div>
+      <h2>Evidence Quality Layer</h2>
+      <p>Separate facts, interpretations, forecasts and opinions; score source quality and bias.</p>
+      <ul><li>evidence_quality_score</li><li>bias_risk_score</li><li>cycle_validity_score</li><li>framework_value_score</li><li>counter_evidence_required</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="eyebrow">AMOS Data Schema</div>
+      <h2>Normalized Data Objects</h2>
+      <p>Convert evidence into AMOS schema fields.</p>
+      <ul><li>market_state</li><li>capital_flow</li><li>narrative</li><li>stock_state</li><li>valuation</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="eyebrow">AMOS Scoring Logic</div>
+      <h2>Engine Scoring</h2>
+      <p>Calculate macro, narrative, valuation, risk, panic maturity and execution scores.</p>
+      <ul><li>macro_regime_score</li><li>narrative_strength_score</li><li>narrative_maturity_score</li><li>risk_stack_score</li><li>panic_maturity_score</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="eyebrow">Agent Routing</div>
+      <h2>Agent Debate</h2>
+      <p>Specialized agents challenge and refine the scoring output.</p>
+      <ul><li>bull_case</li><li>bear_case</li><li>risk_objection</li><li>macro_objection</li><li>valuation_objection</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <div class="eyebrow">Decision AI</div>
+      <h2>Decision Contract</h2>
+      <p>Convert debated outputs into explicit actions and invalidation conditions.</p>
+      <ul><li>action</li><li>position_role</li><li>confidence</li><li>evidence_chain</li><li>counter_evidence</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">7</div>
+      <div class="eyebrow">UI Layer</div>
+      <h2>UI Rendering</h2>
+      <p>Render dashboards and stock pages from unified data objects.</p>
+      <ul><li>Unified App Shell</li><li>Multi-stock Dashboard</li><li>CRDO Stock Page</li><li>Daily Market Brief</li><li>Portfolio Migration View</li></ul>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-num">8</div>
+      <div class="eyebrow">Governance AI</div>
+      <h2>Review & Learning</h2>
+      <p>Compare predictions, actions and results; update stock personality and scoring rules.</p>
+      <ul><li>stock_personality_update</li><li>scoring_calibration</li><li>source_quality_update</li><li>behavior_guardrail_update</li></ul>
+    </div>
+    
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <div class="eyebrow">Current Alpha Flow Files</div>
+      <h2>已接入文件</h2>
+      <div class='file'><b>sample_data</b><span>amos_sample_data_fixture_v0_1.json</span></div><div class='file'><b>scoring_logic</b><span>amos_scoring_logic_v0_1.json</span></div><div class='file'><b>scoring_connected_dashboard</b><span>amos_scoring_connected_dashboard_v0_2.html</span></div><div class='file'><b>crdo_scoring_connected_page</b><span>crdo_scoring_connected_stock_page_v0_3.html</span></div><div class='file'><b>daily_brief_template</b><span>amos_daily_market_brief_template_v0_1.html</span></div><div class='file'><b>unified_shell</b><span>amos_unified_app_shell_v0_1.html</span></div>
+    </div>
+    <div class="card box">
+      <div class="eyebrow">Next Bottlenecks</div>
+      <h2>下一瓶颈</h2>
+      <ol><li>Create real-data adapter schema</li><li>Define required data vendors/APIs or manual collection sources</li><li>Implement Gann level calculator</li><li>Implement AVWAP/EMA/RSI technical adapter</li><li>Implement options/gamma adapter</li><li>Implement source/evidence database</li><li>Connect daily brief to computed score packets</li></ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>

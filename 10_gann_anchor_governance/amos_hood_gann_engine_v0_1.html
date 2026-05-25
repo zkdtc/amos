@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS HOOD Gann Engine v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--orange:#ff9f43;--violet:#9b5cff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 10%,rgba(255,209,102,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1580px;margin:0 auto;padding:20px}
+.card,.score-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{display:grid;grid-template-columns:1.3fr .8fr .8fr .8fr;gap:12px;margin-bottom:14px}
+.hero .card{padding:20px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px}h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.sub{color:var(--soft);margin:0}
+.big{font-size:34px;font-weight:900;color:var(--gold)}.score-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:14px}
+.score-card{padding:14px}.score-title{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.score-num{font-size:28px;font-weight:900;margin:8px 0}
+.bar{height:8px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}.box{padding:16px}.box li,.box p{color:var(--soft)}.box ul{margin:0;padding-left:18px}.box li{margin:7px 0}
+.level{border:1px solid var(--line);border-radius:12px;padding:13px;background:rgba(255,255,255,.02);margin-bottom:10px}.level b{display:block;font-size:30px;color:var(--cyan)}.level span{display:block;color:var(--soft)}.level small{display:block;color:var(--muted);margin-top:5px}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}.gold{border-color:rgba(255,209,102,.45)}.green{border-color:rgba(50,230,138,.35)}
+@media(max-width:1200px){.hero,.grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.score-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">AMOS · Gann Engine · v0.1</div>
+      <h1>HOOD Gann Engine</h1>
+      <p class="sub">BTC / Fintech / Trading Activity Proxy · sample/manual-ready, not live.</p>
+    </div>
+    <div class="card"><div class="eyebrow">Sample Price</div><div class="big">72.0</div><p class="sub">manual placeholder</p></div>
+    <div class="card"><div class="eyebrow">Unified Score</div><div class="big">37</div><p class="sub">no_actionable_resonance</p></div>
+    <div class="card warning"><div class="eyebrow">Action Gate</div><div class="big">WATCH</div><p class="sub">confirmation missing</p></div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-title">Unified</div>
+      <div class="score-num" style="color:var(--gold)">37</div>
+      <div class="bar"><i style="width:37%;background:var(--gold)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Price</div>
+      <div class="score-num" style="color:var(--cyan)">31</div>
+      <div class="bar"><i style="width:31%;background:var(--cyan)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Time</div>
+      <div class="score-num" style="color:var(--green)">48</div>
+      <div class="bar"><i style="width:48%;background:var(--green)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">AVWAP</div>
+      <div class="score-num" style="color:var(--muted)">32</div>
+      <div class="bar"><i style="width:32%;background:var(--muted)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">RSI</div>
+      <div class="score-num" style="color:var(--muted)">36</div>
+      <div class="bar"><i style="width:36%;background:var(--muted)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">TCG</div>
+      <div class="score-num" style="color:var(--muted)">34</div>
+      <div class="bar"><i style="width:34%;background:var(--muted)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Gamma/Event</div>
+      <div class="score-num" style="color:var(--muted)">38</div>
+      <div class="bar"><i style="width:38%;background:var(--muted)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">BTC/Fintech</div>
+      <div class="score-num" style="color:var(--muted)">34</div>
+      <div class="bar"><i style="width:34%;background:var(--muted)"></i></div>
+    </div>
+    </div>
+
+  <div class="grid">
+    <div class="card box gold">
+      <h2>Price Context</h2>
+      
+    <div class="level">
+      <b>69.12</b>
+      <span>Nearest Support · sample_swing_high · 180°</span>
+      <small>Distance -4.0% · Zone 68.78 - 69.47</small>
+    </div>
+    
+      
+    <div class="level">
+      <b>74.68</b>
+      <span>Nearest Resistance · sample_btc_fintech_reprice · 180°</span>
+      <small>Distance 3.72% · Zone 74.31 - 75.06</small>
+    </div>
+    
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Price Cluster</h2>
+      <p>Center: <b style="color:var(--gold);font-size:22px">95.78</b></p>
+      <ul><li>95.26 · sample_major_low · 720° · up</li><li>96.31 · sample_swing_high · 90° · up</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Time Cluster</h2>
+      <p>Center: <b style="color:var(--green);font-size:22px">2026-04-04</b></p>
+      <ul><li>2026-04-02 · sample_major_low · 360d · days_to -52</li><li>2026-04-04 · sample_swing_high · 45d · days_to -50</li><li>2026-04-05 · sample_btc_fintech_reprice · 144d · days_to -49</li></ul>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card box warning">
+      <h2>Missing Confirmation Gates</h2>
+      <ul><li>Live price not connected</li><li>Verified anchors not confirmed</li><li>AVWAP not connected</li><li>RSI not connected</li><li>Gamma/options not connected</li><li>BTC/crypto activity data not connected</li><li>Regulatory/news risk feed not connected</li></ul>
+    </div>
+    <div class="card box green">
+      <h2>Rules</h2>
+      <ul><li>HOOD is a BTC/fintech/trading activity proxy, not a pure software stock.</li><li>Gann cannot trigger trade alone.</li><li>Build requires Gann support/time plus BTC structure, trading activity strength, regulatory calm, AVWAP/TCG confirmation.</li><li>Trim/watch requires Gann resistance/time plus BTC weakness, regulatory pressure, trading activity slowdown or good-news fade.</li><li>Sample anchors must be replaced with verified chart anchors before use.</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Next</h2>
+      <ul>
+        <li>Verify anchors from real chart.</li>
+        <li>Register HOOD as Gann Live.</li>
+        <li>Regenerate generic pages.</li>
+        <li>Update Anchor Verification Checklist.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · Valuation Battle Map v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 10%,rgba(155,92,255,.08),transparent 26%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1500px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}
+.motto{font-size:16px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:14px}
+.layer{min-height:210px;padding:14px;border-top:4px solid var(--cyan)}
+.layer h2{font-size:14px;margin:0 0 8px}
+.layer .q{color:var(--gold);font-weight:800;margin-bottom:8px}
+.layer p{color:#a9b8d8;margin:0}
+.layer ul{padding-left:17px;color:#a9b8d8}
+.s1{border-top-color:var(--gold)}.s2{border-top-color:var(--green)}.s3{border-top-color:var(--blue)}.s4{border-top-color:var(--violet)}.s5{border-top-color:var(--cyan)}.s6{border-top-color:var(--orange)}.s7{border-top-color:var(--red)}
+.matrix{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.action{padding:14px}
+.action h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.action p{color:#a9b8d8;margin:0}
+.section-title{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.section-title h2{font-size:13px;margin:0;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:1200px){.grid,.matrix{grid-template-columns:1fr 1fr}.layer{min-height:auto}}
+@media(max-width:700px){.grid,.matrix{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Valuation Battle Map · v0.1</div>
+    <h1>估值不是目标价，而是战场</h1>
+    <div class="motto">宏观定仓位 · 估值定胜率 · 财报定去留 · 周期定时机 · 期权定下限</div>
+  </div>
+
+  <div class="grid">
+    <div class="card layer s1"><h2>S1 Macro</h2><div class="q">允许多大Beta？</div><p>宏观约束层决定仓位上限。美债、美元、信用、VIX、流动性、Gamma共同约束进攻程度。</p></div>
+    <div class="card layer s2"><h2>S2 Intrinsic</h2><div class="q">公司到底值多少？</div><p>DCF、FCF、Owner Earnings、SBC、毛利率、护城河、管理层。</p></div>
+    <div class="card layer s3"><h2>S3 Consensus</h2><div class="q">市场是否上修？</div><p>EPS/营收/目标价/Guidance修正决定市场是否靠近你的判断。</p></div>
+    <div class="card layer s4"><h2>S4 Narrative</h2><div class="q">市场给多少未来？</div><p>AI、Space、Quantum、BTC等叙事决定市场愿意折现几年未来。</p></div>
+    <div class="card layer s5"><h2>S5 Cycle</h2><div class="q">处于哪段周期？</div><p>早期、主升、拥挤、尾声、重置、恐慌成熟，决定估值容忍度。</p></div>
+    <div class="card layer s6"><h2>S6 Personality</h2><div class="q">这只股的溢价上限？</div><p>NVDA、TSLA、PLTR、CRDO、IBM不能用同一估值尺。</p></div>
+    <div class="card layer s7"><h2>S7 Extreme</h2><div class="q">哪里该买/卖？</div><p>泡沫区、止盈区、恐慌成熟区、强制出清区、失效区。</p></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="section-title"><h2>Decision Matrix</h2><span style="color:var(--muted)">行动由七层共同触发</span></div>
+    <div class="matrix" style="padding:12px">
+      <div class="card action"><h3 style="color:var(--green)">Attack</h3><p>宏观允许，资金进入，叙事早中期，技术触发，风险不极端。</p></div>
+      <div class="card action"><h3 style="color:var(--cyan)">Build</h3><p>逻辑成立，估值可接受，叙事强，入场点不过热。</p></div>
+      <div class="card action"><h3 style="color:var(--blue)">Hold</h3><p>趋势完整，逻辑没坏，估值虽高但未衰竭。</p></div>
+      <div class="card action"><h3 style="color:var(--gold)">Trim</h3><p>Gann时间/压力位，RSI超买，量价背离，拥挤升高。</p></div>
+      <div class="card action"><h3 style="color:var(--red)">Exit</h3><p>基本面破坏，EPS下修，关键客户/技术路线出问题，结构走坏。</p></div>
+      <div class="card action"><h3 style="color:var(--violet)">Hedge</h3><p>核心仓仍成立但风险升高。对用户而言优先Trim/Sell Call，再考虑Put。</p></div>
+      <div class="card action"><h3 style="color:var(--orange)">Wait</h3><p>方向可能对，但时机不成熟。尤其适用于恐慌未成熟。</p></div>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <div class="eyebrow">CRDO Placeholder</div>
+    <h1 style="font-size:22px">CRDO 样板估值问题</h1>
+    <ul>
+      <li>增长是否足以支撑高估值？</li>
+      <li>AI CapEx链是否继续扩张？</li>
+      <li>CRDO是可持续龙头，还是二线高Beta？</li>
+      <li>当前价格由基本面、Narrative还是Gamma驱动？</li>
+      <li>如果AI Infra回调，第一真实恐慌买点在哪里？</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

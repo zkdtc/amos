@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Real Market Data Source Map v0.1</title>
+<style>
+body{margin:0;background:#05070c;color:#dbe6ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif}
+.app{max-width:1150px;margin:0 auto;padding:24px}.card{background:linear-gradient(180deg,#10182d,#080c18);border:1px solid #1e2a46;border-radius:14px;padding:22px;margin-bottom:14px}
+h1{font-size:38px;margin:0 0 10px}.eyebrow{color:#23d9ff;letter-spacing:.2em;font-size:10px;text-transform:uppercase}.motto{color:#ffd166;font-weight:800}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.box{border:1px solid #1e2a46;border-radius:12px;padding:16px}.box b{color:#ffd166}li{color:#a9b8d8;margin:7px 0}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><div class="app">
+<div class="card"><div class="eyebrow">AMOS · Data Source Map · v0.1</div><h1>Real Market Data Source Map</h1><div class="motto">把 CSV 字段映射到真实可取的数据源：TradingView、Nasdaq、SEC、公司IR、期权/BTC候选源。</div></div>
+<div class="grid">
+<div class="box"><b>P0 Sources</b><ul><li>TradingView Chart Data CSV</li><li>TradingView Screener Export CSV</li><li>SEC EDGAR APIs</li><li>Company IR</li><li>Nasdaq Historical / Market Activity</li></ul></div>
+<div class="box"><b>Unsolved</b><ul><li>Options / Gamma provider</li><li>BTC / crypto data provider</li><li>Macro event calendar standard source</li></ul></div>
+</div>
+<div class="card"><b style="color:#ff4d6d">Guardrail:</b> Data Source Map 不绕过 Evidence Packet、Anchor Verification 或 Action Caps。</div>
+</div></body></html>

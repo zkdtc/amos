@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Scoring-connected Dashboard v0.2</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 10%,rgba(50,230,138,.06),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1640px;margin:0 auto;padding:20px}
+.card,.stock{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:36px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box p,.box li{color:var(--soft)}
+.bigscore{font-size:42px;color:var(--green);font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.stock{padding:15px}
+.head{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:10px}
+.head h2{margin:0;font-size:26px}.head p{margin:3px 0 0;color:var(--muted);font-size:11px}.auto{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);font-size:11px;text-align:right;max-width:110px}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}.tags span{border:1px solid var(--line);border-radius:999px;padding:3px 6px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px}
+.score-main{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:10px;background:rgba(255,255,255,.02)}.score-main b{font-size:28px;color:var(--red)}.score-main span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase}
+.bars label{display:flex;justify-content:space-between;color:var(--soft);font-size:11px;margin:7px 0 4px}.bar{height:7px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.why{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}.why b{color:var(--gold);font-size:11px}.why p{color:var(--soft);font-size:12px;margin:4px 0 8px}
+.table-card{padding:16px;margin-bottom:14px}table{width:100%;border-collapse:collapse}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65);vertical-align:top}
+.warn{border-color:rgba(255,209,102,.45)}
+@media(max-width:1400px){.grid{grid-template-columns:repeat(2,1fr)}.top{grid-template-columns:1fr}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Scoring-connected Dashboard · v0.2</div>
+    <h1>Scoring-connected Multi-stock Dashboard</h1>
+    <div class="motto">Sample Fixture + Scoring Logic 已接通：风险等级和行动建议开始由评分规则自动生成。</div>
+  </div>
+
+  <div class="top">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Macro Score</h2>
+      <div class="bigscore">65</div>
+      <p>liquidity_expansion_with_rising_crowding · beta ceiling 1.1-1.3</p>
+    </div>
+    <div class="card box warn">
+      <h2 style="color:var(--gold)">Hard Caps Applied</h2>
+      <ul>
+        <li>Decision confidence capped at 60 because data is sample-only.</li>
+        <li>Gann/Gamma/AVWAP not connected yet.</li>
+        <li>Scores are decision aids, not truth.</li>
+      </ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Connected Scores</h2>
+      <p>Macro · Narrative Strength · Narrative Maturity · Risk Stack · Panic Maturity · Valuation Battle · Decision Confidence.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    
+    <article class="stock">
+      <div class="head">
+        <div><h2>NVDA</h2><p>core_sovereign_leader</p></div>
+        <div class="auto">wait</div>
+      </div>
+      <div class="tags"><span>AI_core</span><span>institutional_core</span><span>capex_anchor</span><span>event_driver</span></div>
+      <div class="score-main">
+        <b>60</b>
+        <span>Risk Stack</span>
+      </div>
+      <div class="bars">
+        <label>Narrative<b>82</b></label>
+        <div class="bar"><i style="width:82%;background:var(--green)"></i></div>
+        
+        <label>Risk<b>60</b></label>
+        <div class="bar"><i style="width:60%;background:var(--cyan)"></i></div>
+        
+        <label>Panic<b>37</b></label>
+        <div class="bar"><i style="width:37%;background:var(--orange)"></i></div>
+        
+        <label>Valuation<b>55</b></label>
+        <div class="bar"><i style="width:55%;background:var(--gold)"></i></div>
+        
+        <label>Confidence<b>54</b></label>
+        <div class="bar"><i style="width:54%;background:var(--gold)"></i></div>
+        </div>
+      <div class="why">
+        <b>Original Bias</b>
+        <p>hold_core_trim_if_euphoria</p>
+        <b>Auto Rule</b>
+        <p>wait · confidence capped by sample-only data.</p>
+      </div>
+    </article>
+    
+    <article class="stock">
+      <div class="head">
+        <div><h2>CRDO</h2><p>second_line_high_beta</p></div>
+        <div class="auto">trim_watch</div>
+      </div>
+      <div class="tags"><span>AI_infra</span><span>optical</span><span>high_beta</span><span>earnings_sensitive</span></div>
+      <div class="score-main">
+        <b>73</b>
+        <span>Risk Stack</span>
+      </div>
+      <div class="bars">
+        <label>Narrative<b>79</b></label>
+        <div class="bar"><i style="width:79%;background:var(--green)"></i></div>
+        
+        <label>Risk<b>73</b></label>
+        <div class="bar"><i style="width:73%;background:var(--cyan)"></i></div>
+        
+        <label>Panic<b>36</b></label>
+        <div class="bar"><i style="width:36%;background:var(--orange)"></i></div>
+        
+        <label>Valuation<b>54</b></label>
+        <div class="bar"><i style="width:54%;background:var(--gold)"></i></div>
+        
+        <label>Confidence<b>54</b></label>
+        <div class="bar"><i style="width:54%;background:var(--gold)"></i></div>
+        </div>
+      <div class="why">
+        <b>Original Bias</b>
+        <p>hold_no_chase_trim_if_exhaustion</p>
+        <b>Auto Rule</b>
+        <p>trim_watch · confidence capped by sample-only data.</p>
+      </div>
+    </article>
+    
+    <article class="stock">
+      <div class="head">
+        <div><h2>LITE</h2><p>second_line_high_beta</p></div>
+        <div class="auto">wait</div>
+      </div>
+      <div class="tags"><span>optical</span><span>turnaround</span><span>AI_infra_follow</span><span>profit_protection_needed</span></div>
+      <div class="score-main">
+        <b>56</b>
+        <span>Risk Stack</span>
+      </div>
+      <div class="bars">
+        <label>Narrative<b>79</b></label>
+        <div class="bar"><i style="width:79%;background:var(--green)"></i></div>
+        
+        <label>Risk<b>56</b></label>
+        <div class="bar"><i style="width:56%;background:var(--gold)"></i></div>
+        
+        <label>Panic<b>37</b></label>
+        <div class="bar"><i style="width:37%;background:var(--orange)"></i></div>
+        
+        <label>Valuation<b>59</b></label>
+        <div class="bar"><i style="width:59%;background:var(--gold)"></i></div>
+        
+        <label>Confidence<b>54</b></label>
+        <div class="bar"><i style="width:54%;background:var(--gold)"></i></div>
+        </div>
+      <div class="why">
+        <b>Original Bias</b>
+        <p>hold_or_partial_migrate_if_lagging</p>
+        <b>Auto Rule</b>
+        <p>wait · confidence capped by sample-only data.</p>
+      </div>
+    </article>
+    
+    <article class="stock">
+      <div class="head">
+        <div><h2>IREN</h2><p>dual_narrative_transformer</p></div>
+        <div class="auto">wait</div>
+      </div>
+      <div class="tags"><span>BTC</span><span>AI_compute</span><span>high_beta</span><span>liquidity_sensitive</span></div>
+      <div class="score-main">
+        <b>42</b>
+        <span>Risk Stack</span>
+      </div>
+      <div class="bars">
+        <label>Narrative<b>65</b></label>
+        <div class="bar"><i style="width:65%;background:var(--cyan)"></i></div>
+        
+        <label>Risk<b>42</b></label>
+        <div class="bar"><i style="width:42%;background:var(--orange)"></i></div>
+        
+        <label>Panic<b>41</b></label>
+        <div class="bar"><i style="width:41%;background:var(--orange)"></i></div>
+        
+        <label>Valuation<b>50</b></label>
+        <div class="bar"><i style="width:50%;background:var(--gold)"></i></div>
+        
+        <label>Confidence<b>50</b></label>
+        <div class="bar"><i style="width:50%;background:var(--gold)"></i></div>
+        </div>
+      <div class="why">
+        <b>Original Bias</b>
+        <p>wait_for_panic_maturity_or_validation</p>
+        <b>Auto Rule</b>
+        <p>wait · confidence capped by sample-only data.</p>
+      </div>
+    </article>
+    
+    <article class="stock">
+      <div class="head">
+        <div><h2>HOOD</h2><p>liquidity_casino_proxy</p></div>
+        <div class="auto">wait</div>
+      </div>
+      <div class="tags"><span>retail_risk_appetite</span><span>BTC_finance</span><span>trading_volume</span><span>regulatory_sensitive</span></div>
+      <div class="score-main">
+        <b>44</b>
+        <span>Risk Stack</span>
+      </div>
+      <div class="bars">
+        <label>Narrative<b>48</b></label>
+        <div class="bar"><i style="width:48%;background:var(--gold)"></i></div>
+        
+        <label>Risk<b>44</b></label>
+        <div class="bar"><i style="width:44%;background:var(--orange)"></i></div>
+        
+        <label>Panic<b>39</b></label>
+        <div class="bar"><i style="width:39%;background:var(--orange)"></i></div>
+        
+        <label>Valuation<b>48</b></label>
+        <div class="bar"><i style="width:48%;background:var(--gold)"></i></div>
+        
+        <label>Confidence<b>50</b></label>
+        <div class="bar"><i style="width:50%;background:var(--gold)"></i></div>
+        </div>
+      <div class="why">
+        <b>Original Bias</b>
+        <p>wait_define_maturity_conditions</p>
+        <b>Auto Rule</b>
+        <p>wait · confidence capped by sample-only data.</p>
+      </div>
+    </article>
+    
+  </div>
+
+  <div class="card table-card">
+    <div class="eyebrow">Computed Score Table</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th><th>Macro</th><th>Narrative</th><th>Maturity</th><th>Risk</th><th>Panic</th><th>Valuation</th><th>Confidence</th><th>Auto Action</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr>
+      <td><b>NVDA</b></td>
+      <td>65</td>
+      <td>82</td>
+      <td>63</td>
+      <td>60</td>
+      <td>37</td>
+      <td>55</td>
+      <td>54</td>
+      <td style="color:var(--cyan)">wait</td>
+    </tr>
+    
+    <tr>
+      <td><b>CRDO</b></td>
+      <td>65</td>
+      <td>79</td>
+      <td>67</td>
+      <td>73</td>
+      <td>36</td>
+      <td>54</td>
+      <td>54</td>
+      <td style="color:var(--cyan)">trim_watch</td>
+    </tr>
+    
+    <tr>
+      <td><b>LITE</b></td>
+      <td>65</td>
+      <td>79</td>
+      <td>67</td>
+      <td>56</td>
+      <td>37</td>
+      <td>59</td>
+      <td>54</td>
+      <td style="color:var(--gold)">wait</td>
+    </tr>
+    
+    <tr>
+      <td><b>IREN</b></td>
+      <td>65</td>
+      <td>65</td>
+      <td>52</td>
+      <td>42</td>
+      <td>41</td>
+      <td>50</td>
+      <td>50</td>
+      <td style="color:var(--orange)">wait</td>
+    </tr>
+    
+    <tr>
+      <td><b>HOOD</b></td>
+      <td>65</td>
+      <td>48</td>
+      <td>42</td>
+      <td>44</td>
+      <td>39</td>
+      <td>48</td>
+      <td>50</td>
+      <td style="color:var(--orange)">wait</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

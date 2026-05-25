@@ -1,0 +1,253 @@
+{
+  "version": "AMOS Daily Market Brief Template v0.1",
+  "purpose": "A daily pre-market / post-market report format that turns AMOS engines into a usable decision dashboard.",
+  "report_modes": {
+    "pre_market": {
+      "purpose": "Define market regime, event pressure, watch levels, and action plan before trading.",
+      "sections": [
+        "Market Regime",
+        "Event Pressure",
+        "Capital Flow",
+        "Portfolio Risk",
+        "Watchlist Opportunities",
+        "Action Plan",
+        "Invalidation Conditions"
+      ]
+    },
+    "post_market": {
+      "purpose": "Review what changed, validate or reject thesis, update stock personality and risk state.",
+      "sections": [
+        "What Changed Today",
+        "Market Regime Update",
+        "Leadership / Rotation",
+        "Position Review",
+        "Evidence Updates",
+        "Prediction vs Result",
+        "Tomorrow Watch"
+      ]
+    },
+    "weekend_review": {
+      "purpose": "Deep review of cycle, portfolio migration, thesis health, and personal behavior.",
+      "sections": [
+        "Weekly Regime",
+        "Narrative Lifecycle",
+        "Portfolio Migration",
+        "Gann Windows Next 2 Weeks",
+        "Earnings / Macro Calendar",
+        "Behavior Review",
+        "Next Week Battle Plan"
+      ]
+    }
+  },
+  "brief_schema": {
+    "metadata": {
+      "date": "YYYY-MM-DD",
+      "mode": "pre_market/post_market/weekend_review",
+      "data_freshness": "fresh/stale/partial",
+      "confidence_cap": "0-100"
+    },
+    "market_regime": {
+      "regime_label": "",
+      "macro_regime_score": null,
+      "beta_ceiling": "",
+      "risk_bias": "",
+      "supporting_evidence": [],
+      "counter_evidence": [],
+      "what_would_change_my_mind": []
+    },
+    "event_pressure": {
+      "today": [],
+      "this_week": [],
+      "highest_pressure_event": "",
+      "affected_positions": [],
+      "required_watch": []
+    },
+    "capital_flow": {
+      "primary_theater": "",
+      "rotation_type": "",
+      "strongest_narratives": [],
+      "weakening_narratives": [],
+      "leader_chain": [],
+      "tail_chase_warning": false
+    },
+    "portfolio_dashboard": {
+      "risk_stack_summary": "",
+      "positions": [
+        {
+          "ticker": "",
+          "role": "core/swing/tactical/runner/research",
+          "state": "",
+          "action_bias": "",
+          "risk_level": "",
+          "why": "",
+          "invalidation": ""
+        }
+      ]
+    },
+    "watchlist": {
+      "build_candidates": [],
+      "panic_maturity_candidates": [],
+      "trim_candidates": [],
+      "research_only": []
+    },
+    "action_plan": {
+      "attack": [],
+      "build": [],
+      "hold": [],
+      "trim": [],
+      "exit": [],
+      "wait": [],
+      "no_trade_rules": []
+    },
+    "evidence_panel": {
+      "new_evidence": [],
+      "counter_evidence": [],
+      "sources_to_verify": [],
+      "stale_data_warnings": []
+    },
+    "behavior_guardrails": {
+      "today_main_risk": "",
+      "forbidden_actions": [],
+      "discipline_reminders": []
+    },
+    "tomorrow_or_next_session_watch": []
+  },
+  "sample_brief_using_fixture": {
+    "metadata": {
+      "date": "2026-05-24",
+      "mode": "pre_market_sample",
+      "data_freshness": "sample_only",
+      "confidence_cap": 60
+    },
+    "market_regime": {
+      "regime_label": "Liquidity expansion with rising crowding",
+      "macro_regime_score": 62,
+      "beta_ceiling": "1.1-1.3",
+      "risk_bias": "Selective risk-on, no blind high-beta chase",
+      "supporting_evidence": [
+        "AI Infra remains primary theater in current model",
+        "Space/Quantum/Power rising appears more like expansion than confirmed rotation",
+        "Risk appetite not broken in sample state"
+      ],
+      "counter_evidence": [
+        "High-beta second-line names may be increasingly crowded",
+        "Event pressure around NVDA/OPEX can produce good-news fade",
+        "Real-time 10Y/MOVE/DXY data not yet connected"
+      ],
+      "what_would_change_my_mind": [
+        "NVDA and AI leaders underperform QQQ",
+        "10Y/MOVE/DXY rise together and high-multiple growth sells off",
+        "Tail names outperform while leaders flatten"
+      ]
+    },
+    "event_pressure": {
+      "highest_pressure_event": "NVDA / AI Infra read-through + OPEX/Gamma",
+      "affected_positions": [
+        "CRDO",
+        "LITE",
+        "NVDA",
+        "IREN"
+      ],
+      "required_watch": [
+        "Does good news create continuation or fade?",
+        "Does Optical follow leaders or diverge?",
+        "Does Gamma pin or release volatility?"
+      ]
+    },
+    "capital_flow": {
+      "primary_theater": "AI Infra",
+      "rotation_type": "Expansion with crowding watch",
+      "strongest_narratives": [
+        "AI_INFRA",
+        "OPTICAL"
+      ],
+      "weakening_narratives": [],
+      "leader_chain": [
+        "NVDA",
+        "AVGO",
+        "ANET",
+        "CRDO",
+        "LITE"
+      ],
+      "tail_chase_warning": true
+    },
+    "portfolio_dashboard": {
+      "risk_stack_summary": "CRDO has highest event/crowding risk; HOOD/IREN are reset-watch not immediate full-build.",
+      "positions": [
+        {
+          "ticker": "CRDO",
+          "role": "swing/core candidate",
+          "state": "strong but event-sensitive",
+          "action_bias": "Hold / No Chase / Trim if exhaustion",
+          "risk_level": "orange watch",
+          "why": "AI Infra + Optical strong, but valuation/crowding/event pressure elevated.",
+          "invalidation": "Breaks AVWAP, loses relative strength, revisions down."
+        },
+        {
+          "ticker": "LITE",
+          "role": "swing recovery",
+          "state": "watch relative strength",
+          "action_bias": "Hold or migrate if lagging",
+          "risk_level": "yellow",
+          "why": "Optical theme supports it, but opportunity cost rises if it lags CRDO/COHR.",
+          "invalidation": "Weak guidance, margin pressure, underperformance vs peers."
+        },
+        {
+          "ticker": "IREN",
+          "role": "swing/tactical",
+          "state": "BTC/AI compute reset watch",
+          "action_bias": "Wait for maturity",
+          "risk_level": "yellow/orange",
+          "why": "Dual upside but liquidity/BTC risk not mature enough.",
+          "invalidation": "BTC loses structure or AI compute thesis weakens."
+        },
+        {
+          "ticker": "HOOD",
+          "role": "watchlist build candidate",
+          "state": "headline dip reset watch",
+          "action_bias": "Wait",
+          "risk_level": "yellow",
+          "why": "BTC finance opportunity possible, but headline dip alone is not maturity.",
+          "invalidation": "Regulatory pressure expands or BTC remains liquidation regime."
+        }
+      ]
+    },
+    "action_plan": {
+      "attack": [],
+      "build": [],
+      "hold": [
+        "NVDA",
+        "CRDO",
+        "LITE"
+      ],
+      "trim": [
+        "CRDO if Gann/RSI/event exhaustion confirms",
+        "LITE if Optical stays strong but LITE lags"
+      ],
+      "exit": [],
+      "wait": [
+        "HOOD",
+        "IREN"
+      ],
+      "no_trade_rules": [
+        "No chasing high-beta tail names after missed ASTS-like move",
+        "No leverage",
+        "No buying HOOD/IREN solely because of headline dip",
+        "No turning failed swing into core"
+      ]
+    },
+    "behavior_guardrails": {
+      "today_main_risk": "Chasing new hot themes or refusing to trim overextended winners.",
+      "forbidden_actions": [
+        "Add leverage",
+        "Full-size into headline dip",
+        "Chase tail names without leader confirmation"
+      ],
+      "discipline_reminders": [
+        "High位利润是真钱，Narrative未来不是现金。",
+        "Panic maturity requires evidence, not just red candles.",
+        "Healthy leader > low-quality tail."
+      ]
+    }
+  }
+}

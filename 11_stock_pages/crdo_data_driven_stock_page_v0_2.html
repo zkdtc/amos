@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · CRDO Data-driven Stock Page v0.2</title>
+<style>
+:root{
+  --bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;
+  --cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),
+  radial-gradient(circle at 88% 8%,rgba(255,209,102,.07),transparent 28%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5;
+}
+.app{max-width:1580px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{display:grid;grid-template-columns:1.3fr .8fr 1fr;gap:12px;margin-bottom:14px}
+.hero .card{padding:20px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:36px;margin:7px 0 8px} h2{margin:0;font-size:15px;text-transform:uppercase;letter-spacing:.1em}
+.sub{color:var(--soft);margin:0}
+.price{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:34px;color:var(--gold);font-weight:900}
+.action{font-size:26px;color:var(--cyan);font-weight:900;margin-top:8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.grid{display:grid;grid-template-columns:1.1fr 1.25fr 1.1fr;gap:12px;margin-bottom:14px}
+.section{padding:16px}
+.section-head{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.section-head span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.kv{display:grid;gap:8px}
+.krow{display:grid;grid-template-columns:140px 1fr;gap:10px;border-bottom:1px solid rgba(30,42,70,.65);padding:8px 0}
+.k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.v{color:var(--text)}
+.risk-row{margin-bottom:10px}
+.risk-row label{display:flex;justify-content:space-between;color:var(--soft);font-size:12px;margin-bottom:5px}
+.risk-row b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text)}
+.bar{height:8px;background:#111a2f;border-radius:20px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:20px}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini{border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(255,255,255,.02)}
+.mini-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase}
+.mini-v{font-size:16px;font-weight:900;color:var(--gold);margin:4px 0 8px}
+.mini small{display:block;color:var(--muted);margin-top:7px}
+.panel-list ul{margin:0;padding-left:18px} .panel-list li{color:var(--soft);margin:8px 0}
+.decision-banner{border-color:rgba(35,217,255,.45);padding:16px;margin-bottom:14px}
+.decision-banner b{color:var(--cyan);font-size:18px}
+.raw{padding:16px;margin-top:14px}
+pre{white-space:pre-wrap;background:#070b15;border:1px solid var(--line);border-radius:10px;padding:14px;max-height:420px;overflow:auto;color:#a9b8d8;font-size:11px}
+.status-pill{display:inline-block;border:1px solid rgba(255,209,102,.5);color:var(--gold);border-radius:999px;padding:4px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+@media(max-width:1180px){.hero,.grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">AMOS · Data-driven Stock Page · v0.2</div>
+      <h1>CRDO</h1>
+      <p class="sub">Credo Technology · AI Infra / Optical / SerDes</p>
+      <div class="tags"><span>AI_infra</span><span>optical</span><span>high_beta</span><span>earnings_sensitive</span><span>gamma_amplified</span></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Action Bias</div>
+      <div class="action">hold_no_chase_trim_if_exhaustion</div>
+      <p class="sub">Action: <b style="color:var(--green)">hold</b> · Confidence 61</p>
+      <p><span class="status-pill">strong_but_event_sensitive</span></p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Market Context</div>
+      <div class="price">liquidity_expansion_with_rising_crowding</div>
+      <p class="sub">Beta Ceiling: 1.1-1.3 · Confidence 62</p>
+    </div>
+  </div>
+
+  <div class="card decision-banner">
+    <b>Data-driven conclusion:</b>
+    <span> CRDO 当前样本结论是 <b>hold</b>，但不是追高买入；风险主要来自事件压力、拥挤和估值 demanding。若出现 Gann/RSI/Event 衰竭共振，进入 Trim 逻辑。</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="section-head"><h2>Profile</h2><span>from fixture.profile</span></div>
+      <div class="section kv">
+        <div class="krow"><div class="k">Archetype</div><div class="v">second_line_high_beta</div></div>
+        <div class="krow"><div class="k">Best Fit</div><div class="v">swing_cycle</div></div>
+        <div class="krow"><div class="k">Role</div><div class="v">swing_core_candidate</div></div>
+        <div class="krow"><div class="k">Relative Strength</div><div class="v">strong_second_line</div></div>
+        <div class="krow"><div class="k">Valuation</div><div class="v">demanding</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-head"><h2>Risk Stack</h2><span>from fixture.state.risk_stack</span></div>
+      <div class="section">
+        
+    <div class="risk-row">
+      <label>Euphoria<b>72</b></label>
+      <div class="bar"><i style="width:72%;background:var(--red)"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Panic Maturity<b>5</b></label>
+      <div class="bar"><i style="width:5%;background:var(--green)"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Event Pressure<b>82</b></label>
+      <div class="bar"><i style="width:82%;background:var(--red)"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Crowding<b>74</b></label>
+      <div class="bar"><i style="width:74%;background:var(--red)"></i></div>
+    </div>
+    
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-head"><h2>Narrative Exposure</h2><span>from narratives</span></div>
+      <div class="section mini-grid">
+        
+    <div class="mini">
+      <div class="mini-k">AI Infrastructure</div>
+      <div class="mini-v">capital_expansion</div>
+      <div class="bar"><i style="width:82%"></i></div>
+      <small>Strength 82 · Maturity 63 · Failure Risk 38</small>
+    </div>
+    
+    <div class="mini">
+      <div class="mini-k">Optical / CPO / Connectivity</div>
+      <div class="mini-v">capital_expansion_to_mainstream_fomo</div>
+      <div class="bar"><i style="width:76%"></i></div>
+      <small>Strength 76 · Maturity 71 · Failure Risk 47</small>
+    </div>
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card panel-list">
+      <div class="section-head"><h2>Evidence Chain</h2><span>supporting</span></div>
+      <div class="section"><ul><li>AI Infra and Optical narratives strong</li><li>Second-line high beta can benefit from capital expansion</li><li>Event pressure can create both breakout and fade risk</li></ul></div>
+    </div>
+    <div class="card panel-list">
+      <div class="section-head"><h2>Counter Evidence</h2><span>must not hide</span></div>
+      <div class="section"><ul><li>Valuation demanding</li><li>Crowding rising</li><li>A good NVDA event may already be partly priced</li></ul></div>
+    </div>
+    <div class="card panel-list">
+      <div class="section-head"><h2>Invalidation</h2><span>what breaks thesis</span></div>
+      <div class="section"><ul><li>Breaks earnings AVWAP and fails reclaim</li><li>Loses relative strength vs LITE/COHR/NVDA</li><li>EPS or revenue revisions down after earnings</li></ul></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="section-head"><h2>Gann × Event × Gamma</h2><span>placeholder scores</span></div>
+      <div class="section">
+        
+    <div class="risk-row">
+      <label>Time Score<b>Need data</b></label>
+      <div class="bar"><i style="width:5%;"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Price Score<b>Need data</b></label>
+      <div class="bar"><i style="width:5%;"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Event Score<b>82</b></label>
+      <div class="bar"><i style="width:82%;"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Gamma Score<b>Need data</b></label>
+      <div class="bar"><i style="width:5%;"></i></div>
+    </div>
+    
+    <div class="risk-row">
+      <label>Price Action Score<b>Need data</b></label>
+      <div class="bar"><i style="width:5%;"></i></div>
+    </div>
+    
+        <p class="sub">Status: needs_live_price_and_options</p>
+      </div>
+    </div>
+    <div class="card panel-list">
+      <div class="section-head"><h2>Action Rules</h2><span>generated from data</span></div>
+      <div class="section">
+        <ul>
+          <li><b>Hold:</b> thesis intact and no invalidation triggered.</li>
+          <li><b>No Chase:</b> risk stack event/crowding is elevated.</li>
+          <li><b>Trim:</b> if Gann resistance/time + RSI overbought + failed breakout confirms.</li>
+          <li><b>Exit:</b> if AVWAP fails, relative strength deteriorates, and revisions turn down.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card panel-list">
+      <div class="section-head"><h2>Next Data Needed</h2><span>to upgrade confidence</span></div>
+      <div class="section">
+        <ul>
+          <li>Live price and volume.</li>
+          <li>8/12 EMA, RSI, AVWAP anchors.</li>
+          <li>Options chain: call wall, put wall, IV, OPEX positioning.</li>
+          <li>Latest CRDO financials, guidance and analyst revisions.</li>
+          <li>Relative strength vs NVDA / AVGO / ANET / LITE / COHR.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card raw">
+    <div class="eyebrow">Raw JSON Used By This Page</div>
+    <pre>{
+  &quot;profile&quot;: {
+    &quot;company_name&quot;: &quot;Credo Technology&quot;,
+    &quot;archetype&quot;: &quot;second_line_high_beta&quot;,
+    &quot;primary_category&quot;: &quot;AI Infra / Optical / SerDes&quot;,
+    &quot;tags&quot;: [
+      &quot;AI_infra&quot;,
+      &quot;optical&quot;,
+      &quot;high_beta&quot;,
+      &quot;earnings_sensitive&quot;,
+      &quot;gamma_amplified&quot;
+    ],
+    &quot;best_strategy_fit&quot;: &quot;swing_cycle&quot;
+  },
+  &quot;state&quot;: {
+    &quot;role&quot;: &quot;swing_core_candidate&quot;,
+    &quot;trend_state&quot;: &quot;strong_but_event_sensitive&quot;,
+    &quot;relative_strength&quot;: &quot;strong_second_line&quot;,
+    &quot;narrative_exposure&quot;: [
+      &quot;AI_INFRA&quot;,
+      &quot;OPTICAL&quot;
+    ],
+    &quot;valuation_state&quot;: &quot;demanding&quot;,
+    &quot;risk_stack&quot;: {
+      &quot;euphoria&quot;: 72,
+      &quot;panic_maturity&quot;: 5,
+      &quot;event_pressure&quot;: 82,
+      &quot;crowding&quot;: 74
+    },
+    &quot;gann_resonance_placeholder&quot;: {
+      &quot;time_score&quot;: null,
+      &quot;price_score&quot;: null,
+      &quot;event_score&quot;: 82,
+      &quot;gamma_score&quot;: null,
+      &quot;price_action_score&quot;: null,
+      &quot;status&quot;: &quot;needs_live_price_and_options&quot;
+    },
+    &quot;action_bias&quot;: &quot;hold_no_chase_trim_if_exhaustion&quot;,
+    &quot;confidence&quot;: 61
+  },
+  &quot;decision&quot;: {
+    &quot;action&quot;: &quot;hold&quot;,
+    &quot;timeframe&quot;: &quot;days_to_weeks&quot;,
+    &quot;evidence_chain&quot;: [
+      &quot;AI Infra and Optical narratives strong&quot;,
+      &quot;Second-line high beta can benefit from capital expansion&quot;,
+      &quot;Event pressure can create both breakout and fade risk&quot;
+    ],
+    &quot;counter_evidence&quot;: [
+      &quot;Valuation demanding&quot;,
+      &quot;Crowding rising&quot;,
+      &quot;A good NVDA event may already be partly priced&quot;
+    ],
+    &quot;invalidation_conditions&quot;: [
+      &quot;Breaks earnings AVWAP and fails reclaim&quot;,
+      &quot;Loses relative strength vs LITE/COHR/NVDA&quot;,
+      &quot;EPS or revenue revisions down after earnings&quot;
+    ]
+  }
+}</pre>
+  </div>
+</div>
+</body>
+</html>

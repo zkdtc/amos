@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · CRDO Gann Research Zone v0.4</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(224,95,106,.12),transparent 30%),radial-gradient(circle at 88% 10%,rgba(35,217,255,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1640px;margin:0 auto;padding:20px}
+.card,.score-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.hero .card{padding:20px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--red);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px} h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}
+.sub{color:var(--soft);margin:0}
+.big{font-size:40px;font-weight:900;color:var(--gold)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.score-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:14px}
+.score-card{padding:14px}.score-title{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.score-num{font-size:30px;font-weight:900;margin:8px 0}
+.bar{height:8px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box li,.box p{color:var(--soft)}.box ul{margin:0;padding-left:18px}.box li{margin:7px 0}
+.level{border:1px solid var(--line);border-radius:12px;padding:14px;background:rgba(255,255,255,.02);margin-bottom:10px}
+.level b{display:block;font-size:34px;color:var(--cyan)}.level span{display:block;color:var(--soft)}.level small{display:block;color:var(--muted);margin-top:6px}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+.action{border-color:rgba(255,209,102,.55)}.action b{color:var(--gold)}
+.raw{padding:16px}pre{white-space:pre-wrap;background:#070b15;border:1px solid var(--line);border-radius:10px;padding:14px;max-height:360px;overflow:auto;color:#a9b8d8;font-size:11px}
+@media(max-width:1280px){.hero,.grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.score-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">AMOS · CRDO Stock Page Extension · v0.4</div>
+      <h1>CRDO Gann Research Zone</h1>
+      <p class="sub">Credo Technology · AI Infra / Optical / SerDes</p>
+      <div class="tags"><span>AI_infra</span><span>optical</span><span>high_beta</span><span>earnings_sensitive</span><span>gamma_amplified</span></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Unified Gann Resonance</div>
+      <div class="big">32</div>
+      <p class="sub">no_actionable_resonance</p>
+    </div>
+    <div class="card warning">
+      <div class="eyebrow">Action Gate</div>
+      <div class="big">WATCH</div>
+      <p class="sub">No Gann edge.</p>
+    </div>
+  </div>
+
+  <div class="score-grid">
+    
+    <div class="score-card">
+      <div class="score-title">Unified Gann</div>
+      <div class="score-num" style="color:var(--orange)">32</div>
+      <div class="bar"><i style="width:32%;background:var(--orange)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Price</div>
+      <div class="score-num" style="color:var(--cyan)">62</div>
+      <div class="bar"><i style="width:62%;background:var(--cyan)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Time</div>
+      <div class="score-num" style="color:var(--red)">-7</div>
+      <div class="bar"><i style="width:-7%;background:var(--red)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">AVWAP</div>
+      <div class="score-num" style="color:var(--orange)">35</div>
+      <div class="bar"><i style="width:35%;background:var(--orange)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">RSI</div>
+      <div class="score-num" style="color:var(--orange)">40</div>
+      <div class="bar"><i style="width:40%;background:var(--orange)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">TCG</div>
+      <div class="score-num" style="color:var(--orange)">35</div>
+      <div class="bar"><i style="width:35%;background:var(--orange)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Gamma/Event</div>
+      <div class="score-num" style="color:var(--gold)">45</div>
+      <div class="bar"><i style="width:45%;background:var(--gold)"></i></div>
+    </div>
+    
+    <div class="score-card">
+      <div class="score-title">Volume</div>
+      <div class="score-num" style="color:var(--orange)">35</div>
+      <div class="bar"><i style="width:35%;background:var(--orange)"></i></div>
+    </div>
+    
+  </div>
+
+  <div class="card box action" style="margin-bottom:14px">
+    <h2>Interpretation</h2>
+    <p>
+CRDO 的 Gann Research Zone 当前处于 <b>no_actionable_resonance</b>。这说明江恩价格/时间已经进入可观察状态，但由于 AVWAP、RSI、Gamma/options、实时价格尚未接入，系统只允许 watch，不允许自动买卖。
+</p>
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <h2 style="color:var(--green)">Nearest Support</h2>
+      
+<div class="level">
+  <b>77.64</b>
+  <span>sample_major_high · 90° · distance -0.97%</span>
+  <small>zone 77.25 - 78.03</small>
+</div>
+
+      <h2 style="color:var(--red);margin-top:14px">Nearest Resistance</h2>
+      
+<div class="level">
+  <b>81.28</b>
+  <span>sample_earnings_gap · 180° · distance 3.67%</span>
+  <small>zone 80.87 - 81.69</small>
+</div>
+
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Price Cluster</h2>
+      <p>Cluster Center: <b style="color:var(--gold);font-size:22px">90.98</b></p>
+      <ul><li>90.55 · sample_earnings_gap · 270° · up</li><li>91.42 · sample_major_high · 45° · up</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Time Cluster</h2>
+      <p>Cluster Date: <b style="color:var(--cyan);font-size:22px">2026-04-02</b></p>
+      <ul><li>2026-03-31 · sample_major_high · 45d · days_to -54</li><li>2026-04-02 · sample_major_low · 360d · days_to -52</li></ul>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card box warning">
+      <h2>Missing Confirmation Gates</h2>
+      <ul><li>AVWAP not connected</li><li>RSI not connected</li><li>Gamma/options not connected</li><li>Live price not connected</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Gann Rules</h2>
+      <ul><li>Unified Gann score cannot trigger action if confirmation gates are missing.</li><li>High Gann price + high Gann time creates watch priority, not automatic trade.</li><li>Action requires AVWAP/RSI/TCG/Gamma/Event confirmation.</li><li>For trim signals, overbought momentum and resistance/time resonance matter.</li><li>For buy signals, support/time resonance must align with panic maturity and reversal confirmation.</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">CRDO Decision Context</h2>
+      <p><b>Fixture bias:</b> hold_no_chase_trim_if_exhaustion</p>
+      <p><b>Valuation:</b> demanding</p>
+      <p><b>Trend:</b> strong_but_event_sensitive</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <h2 style="color:var(--green)">Evidence Chain</h2>
+      <ul><li>AI Infra and Optical narratives strong</li><li>Second-line high beta can benefit from capital expansion</li><li>Event pressure can create both breakout and fade risk</li></ul>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--gold)">Counter Evidence</h2>
+      <ul><li>Valuation demanding</li><li>Crowding rising</li><li>A good NVDA event may already be partly priced</li></ul>
+    </div>
+    <div class="card box warning">
+      <h2>Invalidation</h2>
+      <ul><li>Breaks earnings AVWAP and fails reclaim</li><li>Loses relative strength vs LITE/COHR/NVDA</li><li>EPS or revenue revisions down after earnings</li></ul>
+    </div>
+  </div>
+
+  <div class="card raw">
+    <div class="eyebrow">Unified Gann JSON Used</div>
+    <pre>{
+  &quot;version&quot;: &quot;AMOS Unified Gann Resonance Engine v0.4&quot;,
+  &quot;created&quot;: &quot;2026-05-24&quot;,
+  &quot;ticker&quot;: &quot;CRDO&quot;,
+  &quot;data_quality&quot;: &quot;sample_only_not_live&quot;,
+  &quot;purpose&quot;: &quot;Combine Gann price distance, Gann time distance, and confirmation gates into one resonance module.&quot;,
+  &quot;inputs&quot;: {
+    &quot;price_engine_file&quot;: &quot;amos_gann_cluster_distance_engine_v0_2.json&quot;,
+    &quot;time_engine_file&quot;: &quot;amos_gann_time_distance_engine_v0_3.json&quot;
+  },
+  &quot;scores&quot;: {
+    &quot;gann_price_score&quot;: 62,
+    &quot;gann_time_score&quot;: -7,
+    &quot;avwap_confirmation_score&quot;: 35,
+    &quot;rsi_momentum_score&quot;: 40,
+    &quot;tcg_price_action_score&quot;: 35,
+    &quot;gamma_event_score&quot;: 45,
+    &quot;volume_confirmation_score&quot;: 35,
+    &quot;unified_gann_resonance_score&quot;: 32,
+    &quot;resonance_state&quot;: &quot;no_actionable_resonance&quot;,
+    &quot;action_interpretation&quot;: &quot;No Gann edge.&quot;
+  },
+  &quot;formula&quot;: {
+    &quot;unified_gann_resonance_score&quot;: {
+      &quot;gann_price_score&quot;: 0.28,
+      &quot;gann_time_score&quot;: 0.28,
+      &quot;avwap_confirmation_score&quot;: 0.14,
+      &quot;rsi_momentum_score&quot;: 0.1,
+      &quot;tcg_price_action_score&quot;: 0.1,
+      &quot;gamma_event_score&quot;: 0.06,
+      &quot;volume_confirmation_score&quot;: 0.04
+    }
+  },
+  &quot;confirmation_gates&quot;: {
+    &quot;avwap_confirmation_score&quot;: {
+      &quot;score&quot;: 35,
+      &quot;status&quot;: &quot;placeholder_not_connected&quot;,
+      &quot;needed_data&quot;: [
+        &quot;earnings AVWAP&quot;,
+        &quot;ATH AVWAP&quot;,
+        &quot;major swing low AVWAP&quot;,
+        &quot;price_vs_avwap_pct&quot;
+      ]
+    },
+    &quot;rsi_momentum_score&quot;: {
+      &quot;score&quot;: 40,
+      &quot;status&quot;: &quot;placeholder_not_connected&quot;,
+      &quot;needed_data&quot;: [
+        &quot;daily RSI&quot;,
+        &quot;4H RSI&quot;,
+        &quot;RSI divergence&quot;
+      ]
+    },
+    &quot;tcg_price_action_score&quot;: {
+      &quot;score&quot;: 35,
+      &quot;status&quot;: &quot;placeholder_not_connected&quot;,
+      &quot;needed_data&quot;: [
+        &quot;HH/HL or LH/LL&quot;,
+        &quot;8/12 EMA state&quot;,
+        &quot;inside bar / equilibrium breakout&quot;
+      ]
+    },
+    &quot;gamma_event_score&quot;: {
+      &quot;score&quot;: 45,
+      &quot;status&quot;: &quot;placeholder_not_connected&quot;,
+      &quot;needed_data&quot;: [
+        &quot;call wall&quot;,
+        &quot;put wall&quot;,
+        &quot;dealer gamma&quot;,
+        &quot;OPEX&quot;,
+        &quot;earnings/event pressure&quot;
+      ]
+    },
+    &quot;volume_confirmation_score&quot;: {
+      &quot;score&quot;: 35,
+      &quot;status&quot;: &quot;placeholder_not_connected&quot;,
+      &quot;needed_data&quot;: [
+        &quot;relative volume&quot;,
+        &quot;volume exhaustion&quot;,
+        &quot;breakout volume&quot;
+      ]
+    }
+  },
+  &quot;nearest_price_context&quot;: {
+    &quot;nearest_support&quot;: {
+      &quot;ticker&quot;: &quot;CRDO&quot;,
+      &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+      &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+      &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+      &quot;anchor_price&quot;: 86.7,
+      &quot;anchor_quality_score&quot;: 68,
+      &quot;direction&quot;: &quot;down&quot;,
+      &quot;angle&quot;: 90,
+      &quot;level&quot;: 77.64,
+      &quot;band_low&quot;: 77.25,
+      &quot;band_high&quot;: 78.03,
+      &quot;distance_pct&quot;: -0.97,
+      &quot;abs_distance_pct&quot;: 0.97,
+      &quot;in_observation_band&quot;: false
+    },
+    &quot;nearest_resistance&quot;: {
+      &quot;ticker&quot;: &quot;CRDO&quot;,
+      &quot;anchor_id&quot;: &quot;crdo_sample_earnings_gap_2025_12_02&quot;,
+      &quot;anchor_type&quot;: &quot;sample_earnings_gap&quot;,
+      &quot;anchor_date&quot;: &quot;2025-12-02&quot;,
+      &quot;anchor_price&quot;: 64.25,
+      &quot;anchor_quality_score&quot;: 64,
+      &quot;direction&quot;: &quot;up&quot;,
+      &quot;angle&quot;: 180,
+      &quot;level&quot;: 81.28,
+      &quot;band_low&quot;: 80.87,
+      &quot;band_high&quot;: 81.69,
+      &quot;distance_pct&quot;: 3.67,
+      &quot;abs_distance_pct&quot;: 3.67,
+      &quot;in_observation_band&quot;: false
+    },
+    &quot;nearest_cluster&quot;: {
+      &quot;cluster_center&quot;: 90.98,
+      &quot;cluster_low&quot;: 90.55,
+      &quot;cluster_high&quot;: 91.42,
+      &quot;member_count&quot;: 2,
+      &quot;avg_anchor_quality&quot;: 66.0,
+      &quot;distance_pct&quot;: 16.05,
+      &quot;abs_distance_pct&quot;: 16.05,
+      &quot;members&quot;: [
+        {
+          &quot;ticker&quot;: &quot;CRDO&quot;,
+          &quot;anchor_id&quot;: &quot;crdo_sample_earnings_gap_2025_12_02&quot;,
+          &quot;anchor_type&quot;: &quot;sample_earnings_gap&quot;,
+          &quot;anchor_date&quot;: &quot;2025-12-02&quot;,
+          &quot;anchor_price&quot;: 64.25,
+          &quot;anchor_quality_score&quot;: 64,
+          &quot;direction&quot;: &quot;up&quot;,
+          &quot;angle&quot;: 270,
+          &quot;level&quot;: 90.55,
+          &quot;band_low&quot;: 90.09,
+          &quot;band_high&quot;: 91.0,
+          &quot;distance_pct&quot;: 15.5,
+          &quot;abs_distance_pct&quot;: 15.5,
+          &quot;in_observation_band&quot;: false
+        },
+        {
+          &quot;ticker&quot;: &quot;CRDO&quot;,
+          &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+          &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+          &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+          &quot;anchor_price&quot;: 86.7,
+          &quot;anchor_quality_score&quot;: 68,
+          &quot;direction&quot;: &quot;up&quot;,
+          &quot;angle&quot;: 45,
+          &quot;level&quot;: 91.42,
+          &quot;band_low&quot;: 90.96,
+          &quot;band_high&quot;: 91.88,
+          &quot;distance_pct&quot;: 16.61,
+          &quot;abs_distance_pct&quot;: 16.61,
+          &quot;in_observation_band&quot;: false
+        }
+      ]
+    }
+  },
+  &quot;nearest_time_context&quot;: {
+    &quot;active_time_windows&quot;: [],
+    &quot;nearest_absolute_windows&quot;: [
+      {
+        &quot;ticker&quot;: &quot;CRDO&quot;,
+        &quot;anchor_id&quot;: &quot;crdo_sample_earnings_gap_2025_12_02&quot;,
+        &quot;anchor_type&quot;: &quot;sample_earnings_gap&quot;,
+        &quot;anchor_date&quot;: &quot;2025-12-02&quot;,
+        &quot;anchor_quality_score&quot;: 64,
+        &quot;window_days&quot;: 180,
+        &quot;target_date&quot;: &quot;2026-05-31&quot;,
+        &quot;days_to_window&quot;: 7,
+        &quot;abs_days_to_window&quot;: 7,
+        &quot;in_time_observation_band&quot;: false,
+        &quot;window_importance&quot;: &quot;high&quot;,
+        &quot;time_window_score&quot;: 51
+      },
+      {
+        &quot;ticker&quot;: &quot;CRDO&quot;,
+        &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+        &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+        &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+        &quot;anchor_quality_score&quot;: 68,
+        &quot;window_days&quot;: 90,
+        &quot;target_date&quot;: &quot;2026-05-15&quot;,
+        &quot;days_to_window&quot;: -9,
+        &quot;abs_days_to_window&quot;: 9,
+        &quot;in_time_observation_band&quot;: false,
+        &quot;window_importance&quot;: &quot;high&quot;,
+        &quot;time_window_score&quot;: 32
+      },
+      {
+        &quot;ticker&quot;: &quot;CRDO&quot;,
+        &quot;anchor_id&quot;: &quot;crdo_sample_earnings_gap_2025_12_02&quot;,
+        &quot;anchor_type&quot;: &quot;sample_earnings_gap&quot;,
+        &quot;anchor_date&quot;: &quot;2025-12-02&quot;,
+        &quot;anchor_quality_score&quot;: 64,
+        &quot;window_days&quot;: 144,
+        &quot;target_date&quot;: &quot;2026-04-25&quot;,
+        &quot;days_to_window&quot;: -29,
+        &quot;abs_days_to_window&quot;: 29,
+        &quot;in_time_observation_band&quot;: false,
+        &quot;window_importance&quot;: &quot;high&quot;,
+        &quot;time_window_score&quot;: 0
+      },
+      {
+        &quot;ticker&quot;: &quot;CRDO&quot;,
+        &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+        &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+        &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+        &quot;anchor_quality_score&quot;: 68,
+        &quot;window_days&quot;: 60,
+        &quot;target_date&quot;: &quot;2026-04-15&quot;,
+        &quot;days_to_window&quot;: -39,
+        &quot;abs_days_to_window&quot;: 39,
+        &quot;in_time_observation_band&quot;: false,
+        &quot;window_importance&quot;: &quot;normal&quot;,
+        &quot;time_window_score&quot;: 0
+      },
+      {
+        &quot;ticker&quot;: &quot;CRDO&quot;,
+        &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+        &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+        &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+        &quot;anchor_quality_score&quot;: 68,
+        &quot;window_days&quot;: 55,
+        &quot;target_date&quot;: &quot;2026-04-10&quot;,
+        &quot;days_to_window&quot;: -44,
+        &quot;abs_days_to_window&quot;: 44,
+        &quot;in_time_observation_band&quot;: false,
+        &quot;window_importance&quot;: &quot;high&quot;,
+        &quot;time_window_score&quot;: 0
+      }
+    ],
+    &quot;nearest_time_cluster&quot;: {
+      &quot;cluster_center_date&quot;: &quot;2026-04-02&quot;,
+      &quot;member_count&quot;: 2,
+      &quot;avg_anchor_quality&quot;: 70.0,
+      &quot;nearest_abs_days&quot;: 52,
+      &quot;cluster_score&quot;: -147,
+      &quot;members&quot;: [
+        {
+          &quot;ticker&quot;: &quot;CRDO&quot;,
+          &quot;anchor_id&quot;: &quot;crdo_sample_major_high_2026_02_14&quot;,
+          &quot;anchor_type&quot;: &quot;sample_major_high&quot;,
+          &quot;anchor_date&quot;: &quot;2026-02-14&quot;,
+          &quot;anchor_quality_score&quot;: 68,
+          &quot;window_days&quot;: 45,
+          &quot;target_date&quot;: &quot;2026-03-31&quot;,
+          &quot;days_to_window&quot;: -54,
+          &quot;abs_days_to_window&quot;: 54,
+          &quot;in_time_observation_band&quot;: false,
+          &quot;window_importance&quot;: &quot;normal&quot;,
+          &quot;time_window_score&quot;: 0
+        },
+        {
+          &quot;ticker&quot;: &quot;CRDO&quot;,
+          &quot;anchor_id&quot;: &quot;crdo_sample_major_low_2025_04_07&quot;,
+          &quot;anchor_type&quot;: &quot;sample_major_low&quot;,
+          &quot;anchor_date&quot;: &quot;2025-04-07&quot;,
+          &quot;anchor_quality_score&quot;: 72,
+          &quot;window_days&quot;: 360,
+          &quot;target_date&quot;: &quot;2026-04-02&quot;,
+          &quot;days_to_window&quot;: -52,
+          &quot;abs_days_to_window&quot;: 52,
+          &quot;in_time_observation_band&quot;: false,
+          &quot;window_importance&quot;: &quot;high&quot;,
+          &quot;time_window_score&quot;: 0
+        }
+      ]
+    }
+  },
+  &quot;hard_missing_data&quot;: [
+    &quot;AVWAP not connected&quot;,
+    &quot;RSI not connected&quot;,
+    &quot;Gamma/options not connected&quot;,
+    &quot;Live price not connected&quot;
+  ],
+  &quot;rules&quot;: [
+    &quot;Unified Gann score cannot trigger action if confirmation gates are missing.&quot;,
+    &quot;High Gann price + high Gann time creates watch priority, not automatic trade.&quot;,
+    &quot;Action requires AVWAP/RSI/TCG/Gamma/Event confirmation.&quot;,
+    &quot;For trim signals, overbought momentum and resistance/time resonance matter.&quot;,
+    &quot;For buy signals, support/time resonance must align with panic maturity and reversal confirmation.&quot;
+  ],
+  &quot;next&quot;: [
+    &quot;Connect this unified engine to CRDO stock page v0.4&quot;,
+    &quot;Replace placeholder confirmations with real AVWAP/RSI/TCG/Gamma adapters&quot;,
+    &quot;Add buy/trim/exit classification based on current price location and trend&quot;
+  ]
+}</pre>
+  </div>
+</div>
+</body>
+</html>

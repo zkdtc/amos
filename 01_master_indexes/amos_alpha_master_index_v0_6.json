@@ -1,0 +1,366 @@
+{
+  "version": "AMOS Alpha Master Index v0.6",
+  "created": "2026-05-24",
+  "delivery_count": 65,
+  "phase": "v0.3A Manual Data Alpha → Engineering Handoff Ready",
+  "status": "ready_for_codex_handoff",
+  "gann_live": [
+    "CRDO",
+    "NVDA",
+    "LITE",
+    "IREN",
+    "HOOD"
+  ],
+  "gann_pending": [],
+  "anchor_verification": "v0.2",
+  "manual_workbook": "v0.2 unified",
+  "csv_import": "v0.1",
+  "macro_calendar": "v0.1",
+  "daily_brief_exporter": "v0.2",
+  "canonical_spec": "v0.1",
+  "engineering_handoff": "v0.1",
+  "codex_task_pack": "v0.1",
+  "sections": [
+    {
+      "id": "handoff",
+      "title": "Engineering Handoff / 工程交接",
+      "desc": "正本规格、工程交接包、Codex 任务包。",
+      "items": [
+        {
+          "title": "Canonical System Integration Spec v0.1",
+          "file": "amos_canonical_system_integration_spec_v0_1.html",
+          "desc": "AMOS 正本规格",
+          "exists": true
+        },
+        {
+          "title": "Canonical Spec Markdown",
+          "file": "amos_canonical_system_integration_spec_v0_1.md",
+          "desc": "正本规格 Markdown",
+          "exists": true
+        },
+        {
+          "title": "No-Omission Checklist v0.1",
+          "file": "amos_no_omission_master_checklist_v0_1.md",
+          "desc": "防遗漏清单",
+          "exists": true
+        },
+        {
+          "title": "Engineering Handoff Spec v0.1",
+          "file": "amos_engineering_handoff_spec_v0_1.html",
+          "desc": "工程交接说明",
+          "exists": true
+        },
+        {
+          "title": "Engineering Handoff Pack v0.1",
+          "file": "amos_engineering_handoff_pack_v0_1.zip",
+          "desc": "工程交接 ZIP",
+          "exists": true
+        },
+        {
+          "title": "Codex Initial Task Prompt v0.1",
+          "file": "amos_codex_initial_task_prompt_v0_1.md",
+          "desc": "Codex 初始提示",
+          "exists": true
+        },
+        {
+          "title": "Repo Folder Structure v0.1",
+          "file": "amos_repo_structure_v0_1.md",
+          "desc": "推荐仓库结构",
+          "exists": true
+        },
+        {
+          "title": "Codex Task Pack v0.1",
+          "file": "amos_codex_task_pack_v0_1.html",
+          "desc": "12 张 Codex 任务卡",
+          "exists": true
+        },
+        {
+          "title": "Codex Task Pack ZIP v0.1",
+          "file": "amos_codex_task_pack_v0_1.zip",
+          "desc": "Codex 任务包 ZIP",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "manual-alpha",
+      "title": "Manual Alpha Workflow / 手动 Alpha 工作流",
+      "desc": "手动输入、CSV导入、日报、证据包、Gann、锚点验证、事件。",
+      "items": [
+        {
+          "title": "Manual Data Workbook v0.2 Unified",
+          "file": "amos_manual_data_workbook_v0_2_unified.xlsx",
+          "desc": "统一手动数据工作簿",
+          "exists": true
+        },
+        {
+          "title": "Manual Data Workbook v0.2 HTML",
+          "file": "amos_manual_data_workbook_v0_2_unified.html",
+          "desc": "统一工作簿说明",
+          "exists": true
+        },
+        {
+          "title": "CSV Import Schema v0.1",
+          "file": "amos_csv_import_schema_v0_1.xlsx",
+          "desc": "CSV 导入标准",
+          "exists": true
+        },
+        {
+          "title": "Price Technical Import CSV",
+          "file": "amos_price_technical_import_template_v0_1.csv",
+          "desc": "价格/技术导入模板",
+          "exists": true
+        },
+        {
+          "title": "Gann Import CSV",
+          "file": "amos_gann_import_template_v0_1.csv",
+          "desc": "Gann 导入模板",
+          "exists": true
+        },
+        {
+          "title": "Event Import CSV",
+          "file": "amos_event_import_template_v0_1.csv",
+          "desc": "事件导入模板",
+          "exists": true
+        },
+        {
+          "title": "Evidence Import CSV",
+          "file": "amos_evidence_import_template_v0_1.csv",
+          "desc": "证据导入模板",
+          "exists": true
+        },
+        {
+          "title": "Daily Brief Exporter Script v0.2",
+          "file": "amos_daily_brief_html_exporter_v0_2.py",
+          "desc": "日报导出脚本",
+          "exists": true
+        },
+        {
+          "title": "Daily Brief Exported HTML v0.2",
+          "file": "amos_daily_brief_exported_from_unified_v0_2.html",
+          "desc": "HTML 日报示例",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "data-events",
+      "title": "Data Sources & Events / 数据源与事件",
+      "desc": "真实数据源地图与宏观/机械/财报/BTC事件日历。",
+      "items": [
+        {
+          "title": "Real Market Data Source Map v0.1",
+          "file": "amos_real_market_data_source_map_v0_1.xlsx",
+          "desc": "真实数据源地图",
+          "exists": true
+        },
+        {
+          "title": "Real Market Data Source Map HTML",
+          "file": "amos_real_market_data_source_map_v0_1.html",
+          "desc": "数据源地图说明",
+          "exists": true
+        },
+        {
+          "title": "Macro Event Calendar v0.1",
+          "file": "amos_macro_event_calendar_manual_input_v0_1.xlsx",
+          "desc": "宏观事件日历",
+          "exists": true
+        },
+        {
+          "title": "Macro Event Calendar HTML",
+          "file": "amos_macro_event_calendar_manual_input_v0_1.html",
+          "desc": "事件日历说明",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "gann",
+      "title": "Gann Registry & Anchor Governance / 江恩与锚点治理",
+      "desc": "五个样板标的全部 Gann Live，但必须通过 Anchor Verification。",
+      "items": [
+        {
+          "title": "Gann Live Ticker Registry v0.4",
+          "file": "amos_gann_live_ticker_registry_v0_4.html",
+          "desc": "五个样板标的全部 Gann Live",
+          "exists": true
+        },
+        {
+          "title": "Gann Anchor Verification v0.2",
+          "file": "amos_gann_anchor_verification_checklist_v0_2.xlsx",
+          "desc": "锚点验证工作簿",
+          "exists": true
+        },
+        {
+          "title": "Gann Anchor Verification HTML v0.2",
+          "file": "amos_gann_anchor_verification_checklist_v0_2.html",
+          "desc": "锚点验证说明",
+          "exists": true
+        },
+        {
+          "title": "NVDA Gann Engine v0.1",
+          "file": "amos_nvda_gann_engine_v0_1.html",
+          "desc": "NVDA Gann Engine",
+          "exists": true
+        },
+        {
+          "title": "CRDO Unified Gann Engine v0.4",
+          "file": "amos_unified_gann_resonance_engine_v0_4.html",
+          "desc": "CRDO Gann Engine",
+          "exists": true
+        },
+        {
+          "title": "LITE Gann Engine v0.1",
+          "file": "amos_lite_gann_engine_v0_1.html",
+          "desc": "LITE Gann Engine",
+          "exists": true
+        },
+        {
+          "title": "IREN Gann Engine v0.1",
+          "file": "amos_iren_gann_engine_v0_1.html",
+          "desc": "IREN Gann Engine",
+          "exists": true
+        },
+        {
+          "title": "HOOD Gann Engine v0.1",
+          "file": "amos_hood_gann_engine_v0_1.html",
+          "desc": "HOOD Gann Engine",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "stock-pages",
+      "title": "Stock Pages / 个股页",
+      "desc": "五个样板个股页，保留 Gann Zone 和 Anchor Verification 链接。",
+      "items": [
+        {
+          "title": "Generic Page Generator v0.6",
+          "file": "amos_generic_page_generator_gann_registry_v0_6.html",
+          "desc": "个股页生成器",
+          "exists": true
+        },
+        {
+          "title": "NVDA Stock Page v0.6",
+          "file": "nvda_stock_page_gann_registry_v0_6.html",
+          "desc": "NVDA 个股页",
+          "exists": true
+        },
+        {
+          "title": "CRDO Stock Page v0.6",
+          "file": "crdo_stock_page_gann_registry_v0_6.html",
+          "desc": "CRDO 个股页",
+          "exists": true
+        },
+        {
+          "title": "LITE Stock Page v0.6",
+          "file": "lite_stock_page_gann_registry_v0_6.html",
+          "desc": "LITE 个股页",
+          "exists": true
+        },
+        {
+          "title": "IREN Stock Page v0.6",
+          "file": "iren_stock_page_gann_registry_v0_6.html",
+          "desc": "IREN 个股页",
+          "exists": true
+        },
+        {
+          "title": "HOOD Stock Page v0.6",
+          "file": "hood_stock_page_gann_registry_v0_6.html",
+          "desc": "HOOD 个股页",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Core Engines / 核心系统",
+      "desc": "宏观、叙事、估值、风险、组合迁移、证据质量、股性雷达。",
+      "items": [
+        {
+          "title": "Macro Regime & Liquidity",
+          "file": "amos_macro_regime_liquidity_state_machine_v0_1.html",
+          "desc": "宏观状态机",
+          "exists": true
+        },
+        {
+          "title": "Narrative Lifecycle",
+          "file": "amos_narrative_lifecycle_capital_rotation_v0_1.html",
+          "desc": "叙事生命周期",
+          "exists": true
+        },
+        {
+          "title": "Valuation Battle Map",
+          "file": "amos_valuation_battle_map_v0_1.html",
+          "desc": "估值战场",
+          "exists": true
+        },
+        {
+          "title": "Portfolio Battle Map",
+          "file": "amos_portfolio_battle_map_migration_engine_v0_1.html",
+          "desc": "组合迁移",
+          "exists": true
+        },
+        {
+          "title": "Risk Protection Guardrail",
+          "file": "amos_risk_protection_behavior_guardrail_v0_1.html",
+          "desc": "风险保护",
+          "exists": true
+        },
+        {
+          "title": "Evidence Quality Engine",
+          "file": "amos_research_source_evidence_quality_engine_v0_1.html",
+          "desc": "证据质量",
+          "exists": true
+        },
+        {
+          "title": "Stock Personality Radar",
+          "file": "amos_stock_personality_radar_v0_1.html",
+          "desc": "股性雷达",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "previous",
+      "title": "Previous Master Indexes / 历史总入口",
+      "desc": "历史版本保留。",
+      "items": [
+        {
+          "title": "Alpha Master Index v0.4",
+          "file": "amos_alpha_master_index_v0_4.html",
+          "desc": "历史总入口",
+          "exists": true
+        },
+        {
+          "title": "Alpha Master Index v0.5",
+          "file": "amos_alpha_master_index_v0_5.html",
+          "desc": "上一版总入口",
+          "exists": true
+        },
+        {
+          "title": "Alpha Master Index v0.6",
+          "file": "amos_alpha_master_index_v0_6.html",
+          "desc": "当前总入口",
+          "exists": false
+        }
+      ]
+    }
+  ],
+  "current_workflow": [
+    "Use Master Index v0.6 as entry point.",
+    "Use Manual Data Workbook v0.2 for daily manual updates.",
+    "Use CSV Import Schema v0.1 when replacing hand entry with pasted/imported data.",
+    "Use Macro Event Calendar before deciding daily aggressiveness.",
+    "Use Daily Brief Exporter v0.2 to generate independent HTML brief.",
+    "Use Gann Registry v0.4 and Anchor Verification v0.2 before using any Gann level.",
+    "Use Engineering Handoff v0.1 and Codex Task Pack v0.1 when moving to Codex."
+  ],
+  "next_build_sequence": [
+    "Codex Task Pack execution or Repo Bootstrap Pack v0.1",
+    "Build local React/Vite/Next prototype",
+    "Convert Gann Registry and stock pages into reusable components",
+    "Implement guardrail tests",
+    "Only after local JSON/CSV app is stable, consider semi-auto imports"
+  ]
+}

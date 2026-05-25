@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Gann Calculator Module v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(224,95,106,.12),transparent 30%),radial-gradient(circle at 88% 10%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1500px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--red);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.box{padding:16px}.box b{display:block;font-size:24px;color:var(--gold)}.box span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase}
+.anchor{padding:18px;margin-bottom:14px}.anchor-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}.anchor h2{font-size:26px;margin:5px 0}.anchor p{color:var(--soft);margin:0}
+table{width:100%;border-collapse:collapse;margin-bottom:14px}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65)}
+.time-pills{display:flex;flex-wrap:wrap;gap:6px}.time-pills span{border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.rules{padding:18px;margin-bottom:14px}.rules li{color:var(--soft);margin:7px 0}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Gann Research Tool · v0.1</div>
+    <h1>Gann Calculator Module</h1>
+    <div class="motto">九方图价格位 + 时间窗口 + 多锚点共振准备。价格位是区间，不是魔法点。</div>
+  </div>
+
+  <div class="grid">
+    <div class="card box"><span>Formula</span><b>√P ± C</b></div>
+    <div class="card box"><span>Angles</span><b>45-720°</b></div>
+    <div class="card box"><span>Tolerance</span><b>±0.5%</b></div>
+    <div class="card box"><span>Time Windows</span><b>7-360d</b></div>
+    <div class="card box"><span>Status</span><b>Sample</b></div>
+  </div>
+
+  <div class="card rules">
+    <div class="eyebrow">Execution Rule</div>
+    <ul>
+      <li>Gann 只负责时间和价格研究，不单独触发交易。</li>
+      <li>必须叠加 RSI、AVWAP、TCG结构、成交量、Gamma和事件窗口。</li>
+      <li>锚点必须来自市场公认高低点、财报缺口、ATH或重要波段。</li>
+      <li>多锚点密集区优先于孤立价格位。</li>
+    </ul>
+  </div>
+
+  
+    <section class="anchor card">
+      <div class="anchor-head">
+        <div>
+          <div class="eyebrow">sample_major_low</div>
+          <h2>CRDO · 32.1</h2>
+          <p>2025-04-07 · Sample only: major swing low placeholder</p>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Angle</th><th>Down Level</th><th>Down Zone</th><th>Up Level</th><th>Up Zone</th></tr></thead>
+        <tbody>
+        <tr>
+          <td>45°</td>
+          <td>29.33</td>
+          <td>29.18 - 29.48</td>
+          <td>35.0</td>
+          <td>34.82 - 35.17</td>
+        </tr>
+        
+        <tr>
+          <td>90°</td>
+          <td>26.68</td>
+          <td>26.55 - 26.82</td>
+          <td>38.02</td>
+          <td>37.83 - 38.21</td>
+        </tr>
+        
+        <tr>
+          <td>180°</td>
+          <td>21.77</td>
+          <td>21.66 - 21.88</td>
+          <td>44.43</td>
+          <td>44.21 - 44.65</td>
+        </tr>
+        
+        <tr>
+          <td>270°</td>
+          <td>17.35</td>
+          <td>17.27 - 17.44</td>
+          <td>51.35</td>
+          <td>51.09 - 51.6</td>
+        </tr>
+        
+        <tr>
+          <td>360°</td>
+          <td>13.44</td>
+          <td>13.37 - 13.5</td>
+          <td>58.76</td>
+          <td>58.47 - 59.06</td>
+        </tr>
+        
+        <tr>
+          <td>720°</td>
+          <td>2.77</td>
+          <td>2.76 - 2.79</td>
+          <td>93.43</td>
+          <td>92.96 - 93.89</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="time-pills"><span>7d → 2025-04-14</span><span>14d → 2025-04-21</span><span>21d → 2025-04-28</span><span>34d → 2025-05-11</span><span>45d → 2025-05-22</span><span>55d → 2025-06-01</span><span>60d → 2025-06-06</span><span>90d → 2025-07-06</span><span>144d → 2025-08-29</span><span>180d → 2025-10-04</span><span>360d → 2026-04-02</span></div>
+    </section>
+    
+    <section class="anchor card">
+      <div class="anchor-head">
+        <div>
+          <div class="eyebrow">sample_major_high</div>
+          <h2>CRDO · 86.7</h2>
+          <p>2026-02-14 · Sample only: major swing high placeholder</p>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Angle</th><th>Down Level</th><th>Down Zone</th><th>Up Level</th><th>Up Zone</th></tr></thead>
+        <tbody>
+        <tr>
+          <td>45°</td>
+          <td>82.11</td>
+          <td>81.7 - 82.52</td>
+          <td>91.42</td>
+          <td>90.96 - 91.88</td>
+        </tr>
+        
+        <tr>
+          <td>90°</td>
+          <td>77.64</td>
+          <td>77.25 - 78.03</td>
+          <td>96.26</td>
+          <td>95.78 - 96.74</td>
+        </tr>
+        
+        <tr>
+          <td>180°</td>
+          <td>69.08</td>
+          <td>68.73 - 69.42</td>
+          <td>106.32</td>
+          <td>105.79 - 106.85</td>
+        </tr>
+        
+        <tr>
+          <td>270°</td>
+          <td>61.02</td>
+          <td>60.71 - 61.32</td>
+          <td>116.88</td>
+          <td>116.3 - 117.47</td>
+        </tr>
+        
+        <tr>
+          <td>360°</td>
+          <td>53.45</td>
+          <td>53.19 - 53.72</td>
+          <td>127.95</td>
+          <td>127.31 - 128.58</td>
+        </tr>
+        
+        <tr>
+          <td>720°</td>
+          <td>28.21</td>
+          <td>28.07 - 28.35</td>
+          <td>177.19</td>
+          <td>176.3 - 178.08</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="time-pills"><span>7d → 2026-02-21</span><span>14d → 2026-02-28</span><span>21d → 2026-03-07</span><span>34d → 2026-03-20</span><span>45d → 2026-03-31</span><span>55d → 2026-04-10</span><span>60d → 2026-04-15</span><span>90d → 2026-05-15</span><span>144d → 2026-07-08</span><span>180d → 2026-08-13</span><span>360d → 2027-02-09</span></div>
+    </section>
+    
+</div>
+</body>
+</html>

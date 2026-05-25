@@ -1,0 +1,22 @@
+{
+  "version": "AMOS Gann Anchor Verification Checklist v0.1",
+  "created": "2026-05-24",
+  "source_engines": [
+    "amos_unified_gann_resonance_engine_v0_4.json",
+    "amos_nvda_gann_engine_v0_1.json",
+    "amos_lite_gann_engine_v0_1.json"
+  ],
+  "anchor_count": 6,
+  "tickers": [
+    "LITE",
+    "NVDA"
+  ],
+  "output_workbook": "amos_gann_anchor_verification_checklist_v0_1.xlsx",
+  "core_rule": "Sample anchors cannot be used for real trading until verified from actual chart data.",
+  "sheets": [
+    "Dashboard",
+    "Anchor Checklist",
+    "Verification Rules",
+    "Lists"
+  ]
+}

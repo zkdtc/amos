@@ -1,0 +1,30 @@
+{
+  "version": "AMOS Daily Brief Sample v0.2",
+  "date": "2026-05-24",
+  "phase": "v0.3A Manual Data Alpha",
+  "data_quality": "sample_manual_ready_not_live",
+  "mode": "manual_alpha",
+  "guardrails": [
+    "Do not treat sample/manual-ready Gann data as live market data.",
+    "If Data Freshness is Missing, no aggressive action.",
+    "Gann cannot trigger trade alone.",
+    "Critical events default to No Attack unless setup is confirmed and risk is accepted.",
+    "Anchor Verification v0.2 is required before formal Gann use."
+  ],
+  "expected_columns": ["Ticker", "Role", "Action", "Freshness", "Gann", "Invalidation", "Note"],
+  "rows": [
+    {"ticker":"NVDA","role":"Core","action":"Hold","freshness":"Missing","gann":"Gann Live","invalidation":"Fails post-event AVWAP / AI CapEx weakens / RS deteriorates","note":"No aggressive action"},
+    {"ticker":"CRDO","role":"Swing","action":"Trim Watch","freshness":"Missing","gann":"Gann Live","invalidation":"Breaks AVWAP / loses RS / revisions down","note":"No aggressive action"},
+    {"ticker":"LITE","role":"Swing","action":"Hold","freshness":"Missing","gann":"Gann Live","invalidation":"Optical strong but LITE underperforms peers / guidance weakens","note":"No aggressive action"},
+    {"ticker":"IREN","role":"Tactical","action":"Wait","freshness":"Missing","gann":"Gann Live","invalidation":"BTC loses structure / AI compute thesis weakens / dilution risk rises","note":"No aggressive action"},
+    {"ticker":"HOOD","role":"Research","action":"Wait","freshness":"Missing","gann":"Gann Live","invalidation":"Regulatory pressure expands / BTC remains liquidation regime","note":"No aggressive action"},
+    {"ticker":"GOOG","role":"Core","action":"Hold","freshness":"Missing","gann":"Gann Pending","invalidation":"Cloud/AI capex thesis weakens / RS deteriorates","note":"No aggressive action"},
+    {"ticker":"MSFT","role":"Core","action":"Hold","freshness":"Missing","gann":"Gann Pending","invalidation":"Azure/AI capex weakens / margin pressure","note":"No aggressive action"},
+    {"ticker":"AVGO","role":"Core","action":"Hold","freshness":"Missing","gann":"Gann Pending","invalidation":"AI ASIC demand weakens / RS deteriorates","note":"No aggressive action"},
+    {"ticker":"RKLB","role":"Tactical","action":"Wait","freshness":"Missing","gann":"Gann Pending","invalidation":"Space theme fades / failed breakout","note":"No aggressive action"},
+    {"ticker":"IONQ","role":"Tactical","action":"Wait","freshness":"Missing","gann":"Gann Pending","invalidation":"Quantum theme fades / tail-chase without leaders","note":"No aggressive action"}
+  ],
+  "actionCounts": {"Hold": 5, "Trim Watch": 1, "Wait": 4},
+  "freshnessCounts": {"Missing": 10, "Fresh": 0, "Stale": 0},
+  "gannCounts": {"Gann Live": 5, "Gann Pending": 5}
+}

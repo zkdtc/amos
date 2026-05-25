@@ -1,0 +1,275 @@
+{
+  "version": "AMOS Macro Regime & Liquidity State Machine v0.1",
+  "purpose": "Turn macro from commentary into a state machine that constrains portfolio beta, timing, and narrative risk.",
+  "core_principles": [
+    "Macro is a constraint layer, not a single-stock thesis.",
+    "The same indicator can mean different things under different regimes.",
+    "Market pricing matters more than headline interpretation.",
+    "Macro should set beta ceiling, liquidity risk, and event pressure.",
+    "AMOS must distinguish growth optimism from valuation compression and fiscal stress."
+  ],
+  "state_machine": {
+    "goldilocks_expansion": {
+      "description": "Growth decent, inflation contained, rates stable or falling, liquidity supportive.",
+      "signals": [
+        "10Y stable/falling",
+        "DXY stable/falling",
+        "credit spreads calm",
+        "VIX low/normal",
+        "breadth improving",
+        "growth/AI leaders outperform"
+      ],
+      "portfolio_bias": "attack / build high-quality beta",
+      "risk": "complacency and crowded momentum"
+    },
+    "growth_reacceleration": {
+      "description": "Rates rise because growth expectations improve; cyclicals and high-quality growth may both work initially.",
+      "signals": [
+        "10Y rises gradually",
+        "credit spreads calm",
+        "earnings revisions up",
+        "breadth expands",
+        "small/mid cap participation"
+      ],
+      "portfolio_bias": "hold/build, monitor rate speed",
+      "risk": "can turn into valuation compression if rates move too fast"
+    },
+    "valuation_compression": {
+      "description": "Rates rise fast enough to pressure long-duration growth valuations.",
+      "signals": [
+        "10Y rises quickly",
+        "DXY strong",
+        "QQQ underperforms defensives",
+        "high multiple stocks sell off",
+        "VIX/MOVE rising"
+      ],
+      "portfolio_bias": "de-risk high beta, prefer core leaders/cash",
+      "risk": "second-line growth breaks before mega-cap leaders"
+    },
+    "liquidity_expansion": {
+      "description": "System liquidity improves and risk appetite broadens.",
+      "signals": [
+        "financial conditions ease",
+        "dollar weakens",
+        "credit calm",
+        "BTC strong",
+        "breadth improves",
+        "gamma supportive"
+      ],
+      "portfolio_bias": "attack leaders, build quality beta",
+      "risk": "late-cycle chase after expansion matures"
+    },
+    "liquidity_compression": {
+      "description": "Liquidity tightens; speculative assets and high beta suffer.",
+      "signals": [
+        "DXY strong",
+        "10Y/MOVE rising",
+        "credit spreads widen",
+        "BTC weak",
+        "breadth deteriorates",
+        "negative gamma"
+      ],
+      "portfolio_bias": "reduce beta, protect profits, wait for panic maturity",
+      "risk": "premature bottom fishing"
+    },
+    "risk_off_shock": {
+      "description": "Market reprices sudden risk: war, credit event, inflation shock, policy shock.",
+      "signals": [
+        "VIX spike",
+        "credit spreads widen",
+        "DXY/gold may rise",
+        "breadth collapses",
+        "correlation rises",
+        "liquidity disappears"
+      ],
+      "portfolio_bias": "defensive, no aggressive dip-buy until maturity",
+      "risk": "false first bounce"
+    },
+    "panic_maturity": {
+      "description": "Forced selling begins to exhaust while core thesis remains intact.",
+      "signals": [
+        "RSI extreme",
+        "breadth capitulation",
+        "volume exhaustion",
+        "put/call extreme",
+        "leaders stop going down on bad news",
+        "AVWAP/Gann support reclaim"
+      ],
+      "portfolio_bias": "probe high-quality candidates",
+      "risk": "mistaking early crash for mature panic"
+    },
+    "euphoria_meltup": {
+      "description": "Liquidity, narrative, gamma, and crowding create upside overshoot.",
+      "signals": [
+        "RSI overbought",
+        "call mania",
+        "tail names fly",
+        "good news extrapolated too far",
+        "valuation ignored",
+        "Gann resistance/time windows"
+      ],
+      "portfolio_bias": "hold leaders, trim extended positions, sell calls selectively",
+      "risk": "not taking profit"
+    },
+    "defensive_rotation": {
+      "description": "Capital leaves high beta and moves to cash, bonds, gold, healthcare, utilities or low beta quality.",
+      "signals": [
+        "RSP weak",
+        "defensives outperform",
+        "high beta underperforms",
+        "credit/wide volatility watch",
+        "leaders narrow"
+      ],
+      "portfolio_bias": "reduce high beta; keep only best core",
+      "risk": "holding weak second-line stocks too long"
+    }
+  },
+  "indicator_interpretation_rules": {
+    "ten_year_yield": {
+      "rising_good": "If earnings revisions improve, credit calm, breadth expanding, and growth sectors still strong.",
+      "rising_bad": "If MOVE rises, DXY strong, high-multiple stocks sell off, credit widens, breadth weakens.",
+      "falling_good": "If rates fall with inflation cooling and risk assets broaden.",
+      "falling_bad": "If rates fall because growth shock or recession fear."
+    },
+    "btc": {
+      "risk_on": "BTC rises with growth/high beta and credit calm.",
+      "liquidation_warning": "BTC falls sharply with leverage liquidation and crypto equities underperform.",
+      "divergent_signal": "BTC strong while equities weak may indicate crypto-specific flow, not broad risk-on."
+    },
+    "dxy": {
+      "risk_pressure": "DXY rising with rates and VIX can pressure global liquidity and growth stocks.",
+      "safe_haven": "DXY rising during geopolitical shock may indicate risk-off."
+    },
+    "vix_vvix_move": {
+      "equity_vol": "VIX reflects equity risk.",
+      "vol_of_vol": "VVIX warns about convexity and hedging demand.",
+      "rate_vol": "MOVE rising can pressure duration assets even if VIX calm."
+    },
+    "breadth": {
+      "healthy": "Leaders rising with breadth expansion supports sustainable rally.",
+      "narrow": "Index rising on few leaders increases fragility.",
+      "capitulation": "Extreme weak breadth may support panic maturity only if forced selling exhausts."
+    }
+  },
+  "portfolio_beta_policy": {
+    "attack_beta": {
+      "allowed_when": [
+        "goldilocks_expansion",
+        "liquidity_expansion",
+        "growth_reacceleration"
+      ],
+      "portfolio_beta_range": "1.1-1.5",
+      "notes": "Only if crowding not extreme."
+    },
+    "balanced_beta": {
+      "allowed_when": [
+        "neutral / transition"
+      ],
+      "portfolio_beta_range": "0.8-1.1",
+      "notes": "Keep core, avoid overtrading."
+    },
+    "defensive_beta": {
+      "allowed_when": [
+        "valuation_compression",
+        "liquidity_compression",
+        "defensive_rotation"
+      ],
+      "portfolio_beta_range": "0.4-0.8",
+      "notes": "Reduce second-line high beta first."
+    },
+    "crisis_beta": {
+      "allowed_when": [
+        "risk_off_shock"
+      ],
+      "portfolio_beta_range": "0.0-0.5",
+      "notes": "No aggressive dip buying until panic maturity."
+    }
+  },
+  "macro_to_stock_mapping": {
+    "high_beta_AI_second_line": {
+      "examples": [
+        "CRDO",
+        "LITE",
+        "COHR",
+        "IONQ",
+        "RKLB"
+      ],
+      "best_regimes": [
+        "liquidity_expansion",
+        "goldilocks_expansion",
+        "capital_expansion"
+      ],
+      "danger_regimes": [
+        "valuation_compression",
+        "liquidity_compression",
+        "risk_off_shock"
+      ]
+    },
+    "mega_cap_AI_anchors": {
+      "examples": [
+        "NVDA",
+        "MSFT",
+        "GOOG",
+        "AVGO"
+      ],
+      "best_regimes": [
+        "goldilocks_expansion",
+        "growth_reacceleration",
+        "liquidity_expansion"
+      ],
+      "danger_regimes": [
+        "valuation_compression",
+        "earnings_revision_down"
+      ]
+    },
+    "btc_finance": {
+      "examples": [
+        "HOOD",
+        "COIN",
+        "IREN",
+        "MSTR"
+      ],
+      "best_regimes": [
+        "liquidity_expansion",
+        "BTC risk-on"
+      ],
+      "danger_regimes": [
+        "liquidity_compression",
+        "regulatory_shock",
+        "BTC liquidation"
+      ]
+    },
+    "stabilizers": {
+      "examples": [
+        "IBM",
+        "MSFT",
+        "GOOG"
+      ],
+      "best_regimes": [
+        "balanced",
+        "defensive_rotation",
+        "mild_compression"
+      ],
+      "danger_regimes": [
+        "business_thesis_break"
+      ]
+    }
+  },
+  "decision_contract": {
+    "macro_output_must_include": [
+      "regime_label",
+      "confidence",
+      "beta_ceiling",
+      "risk_bias",
+      "supporting_evidence",
+      "counter_evidence",
+      "what_would_change_my_mind"
+    ],
+    "forbidden": [
+      "single-indicator macro conclusion",
+      "headline-only risk call",
+      "assuming 10Y up is always bad",
+      "assuming BTC down is always broad risk-off"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "version": "AMOS Macro Event Calendar Sample v0.1",
+  "data_quality": "sample_manual_ready_not_live",
+  "guardrails": [
+    "Critical events default to No Attack unless setup is confirmed and risk is accepted.",
+    "Post-event review is required for Critical events."
+  ],
+  "events": [
+    {
+      "eventId": "EVT-2026-05-28-PCE",
+      "eventDate": "2026-05-28",
+      "eventTime": "08:30 ET",
+      "category": "Macro / Data",
+      "importance": "Critical",
+      "riskMode": "Elevated",
+      "actionCap": "No Attack",
+      "postEventReviewRequired": true,
+      "title": "Core PCE Release",
+      "sourceUrl": "https://www.bea.gov/"
+    },
+    {
+      "eventId": "EVT-2026-06-12-FOMC",
+      "eventDate": "2026-06-12",
+      "eventTime": "14:00 ET",
+      "category": "Macro / Fed",
+      "importance": "Critical",
+      "riskMode": "Elevated",
+      "actionCap": "No Attack",
+      "postEventReviewRequired": true,
+      "title": "FOMC Rate Decision + SEP/Dot Plot",
+      "sourceUrl": "https://www.federalreserve.gov/"
+    },
+    {
+      "eventId": "EVT-2026-05-30-OPEX",
+      "eventDate": "2026-05-30",
+      "eventTime": "16:00 ET",
+      "category": "Mechanical / OPEX",
+      "importance": "High",
+      "riskMode": "Caution",
+      "actionCap": "Reduced Size",
+      "postEventReviewRequired": false,
+      "title": "Monthly OPEX",
+      "sourceUrl": ""
+    },
+    {
+      "eventId": "EVT-2026-06-05-NVDA-EARN",
+      "eventDate": "2026-06-05",
+      "eventTime": "AMC",
+      "category": "Earnings",
+      "importance": "Critical",
+      "riskMode": "Elevated",
+      "actionCap": "No Attack",
+      "postEventReviewRequired": true,
+      "title": "NVDA Earnings (sample)",
+      "sourceUrl": ""
+    },
+    {
+      "eventId": "EVT-2026-06-07-NFP",
+      "eventDate": "2026-06-07",
+      "eventTime": "08:30 ET",
+      "category": "Macro / Data",
+      "importance": "High",
+      "riskMode": "Caution",
+      "actionCap": "Reduced Size",
+      "postEventReviewRequired": true,
+      "title": "Non-Farm Payrolls (sample)",
+      "sourceUrl": ""
+    }
+  ]
+}

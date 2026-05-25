@@ -1,0 +1,238 @@
+{
+  "version": "AMOS Gann × Event × Gamma Resonance Map v0.1",
+  "purpose": "Unify Gann time/price windows, event pressure, options gamma, and price-action confirmation into one execution layer.",
+  "core_principle": "Gann gives time/price candidate zones; Event/Gamma explains why volatility may release there; Price Action confirms whether to act.",
+  "execution_stack": {
+    "layer_1_gann_time": {
+      "question": "是否接近重要时间窗口？",
+      "inputs": [
+        "7/14/21/34/55 day short windows",
+        "60/90/144/180/360 day major windows",
+        "earnings anniversary",
+        "swing high/low date anchors",
+        "dynamic time=price windows"
+      ],
+      "output": {
+        "time_window_score": "0-100",
+        "window_type": [
+          "minor",
+          "medium",
+          "major",
+          "cycle"
+        ],
+        "window_start": null,
+        "window_end": null
+      }
+    },
+    "layer_2_gann_price": {
+      "question": "是否接近九方图/角度线关键价位？",
+      "inputs": [
+        "Square of Nine levels",
+        "multi-anchor levels",
+        "Gann angle lines",
+        "previous swing high/low",
+        "±0.5% zone tolerance"
+      ],
+      "output": {
+        "price_zone_score": "0-100",
+        "nearest_support": null,
+        "nearest_resistance": null,
+        "zone_type": [
+          "support",
+          "resistance",
+          "breakout",
+          "invalid"
+        ]
+      }
+    },
+    "layer_3_event_pressure": {
+      "question": "附近是否有能改变市场状态的事件？",
+      "inputs": [
+        "earnings",
+        "NVDA/AI read-through events",
+        "FOMC/CPI/PCE/NFP",
+        "OPEX",
+        "Treasury auctions",
+        "sector conferences",
+        "IPO/liquidity absorption",
+        "geopolitical triggers"
+      ],
+      "output": {
+        "event_pressure_score": "0-100",
+        "event_direction_bias": [
+          "bullish",
+          "bearish",
+          "ambiguous"
+        ],
+        "affected_narratives": [],
+        "affected_positions": []
+      }
+    },
+    "layer_4_gamma_structure": {
+      "question": "期权结构是在压制、放大还是释放波动？",
+      "inputs": [
+        "call wall",
+        "put wall",
+        "max pain",
+        "dealer gamma",
+        "IV rank",
+        "skew",
+        "0DTE behavior",
+        "OPEX calendar"
+      ],
+      "output": {
+        "gamma_score": "0-100",
+        "gamma_state": [
+          "pin",
+          "squeeze",
+          "negative_gamma",
+          "reset",
+          "neutral"
+        ],
+        "volatility_release_risk": [
+          "low",
+          "medium",
+          "high"
+        ]
+      }
+    },
+    "layer_5_price_action_confirmation": {
+      "question": "价格行为是否确认这个窗口？",
+      "inputs": [
+        "TCG HH/HL or LH/LL",
+        "8EMA / 12EMA",
+        "inside bar / equilibrium",
+        "RSI divergence",
+        "volume exhaustion",
+        "AVWAP reclaim/break",
+        "Chan center breakout/breakdown"
+      ],
+      "output": {
+        "confirmation_score": "0-100",
+        "confirmation_type": [
+          "bullish_reversal",
+          "bearish_reversal",
+          "continuation",
+          "failed_breakout",
+          "no_confirmation"
+        ]
+      }
+    },
+    "layer_6_decision_trigger": {
+      "question": "是否触发行动？",
+      "outputs": {
+        "resonance_score": "0-100",
+        "setup_type": [
+          "panic_buy",
+          "breakout_add",
+          "trim_zone",
+          "hedge_zone",
+          "exit_zone",
+          "wait"
+        ],
+        "action": [
+          "attack",
+          "build",
+          "add",
+          "hold",
+          "trim",
+          "exit",
+          "hedge",
+          "wait"
+        ],
+        "confidence": "0-100",
+        "invalidation": []
+      }
+    }
+  },
+  "resonance_formula_v0": {
+    "formula": "resonance_score = 0.25*gann_time + 0.25*gann_price + 0.15*event_pressure + 0.15*gamma_structure + 0.20*price_action_confirmation",
+    "notes": [
+      "Weights are initial placeholders, not final truth.",
+      "For the user, Gann time/price receives high priority because it is a trusted execution layer.",
+      "Price Action confirmation prevents blind Gann trading.",
+      "Event/Gamma explains volatility timing but does not replace structure."
+    ]
+  },
+  "setup_templates": {
+    "panic_buy": {
+      "required": [
+        "macro not in systemic crisis",
+        "narrative health not dead",
+        "gann support zone",
+        "gann time window",
+        "RSI oversold or divergence",
+        "volume exhaustion",
+        "AVWAP reclaim or TCG reversal"
+      ],
+      "forbidden": [
+        "falling only because fundamentals broke",
+        "EPS revisions sharply down",
+        "no reversal confirmation",
+        "liquidity still in forced selling"
+      ],
+      "action": "build first probe, not full position"
+    },
+    "breakout_add": {
+      "required": [
+        "regime supports high beta",
+        "capital flow entering narrative",
+        "price breaks above Gann resistance",
+        "volume expands",
+        "8/12EMA trend intact",
+        "gamma squeeze or call wall break supportive"
+      ],
+      "action": "add only after confirmation"
+    },
+    "trim_zone": {
+      "required": [
+        "gann resistance zone",
+        "gann time window",
+        "RSI overbought",
+        "volume divergence or failed breakout",
+        "crowding rising",
+        "event risk ahead"
+      ],
+      "action": "trim / sell call / protect profit"
+    },
+    "hedge_zone": {
+      "required": [
+        "core thesis still valid",
+        "valuation extended",
+        "macro/event risk elevated",
+        "price loses 8EMA/AVWAP",
+        "gamma shifts negative"
+      ],
+      "action": "prefer trim or sell call first; use put only for extreme asymmetric risk"
+    },
+    "exit_zone": {
+      "required": [
+        "business thesis broken or EPS revisions down",
+        "LH/LL confirmed",
+        "AVWAP broken and failed reclaim",
+        "Gann support fails",
+        "narrative health deteriorates"
+      ],
+      "action": "exit; do not wait for emotional recovery"
+    }
+  },
+  "example_CRDO_placeholder": {
+    "ticker": "CRDO",
+    "current_stage": "AI Infra high-beta expansion candidate",
+    "most_important_resonance_questions": [
+      "Does CRDO reach a Gann resistance/time window near NVDA or earnings event?",
+      "Are options structures pinning or amplifying the move?",
+      "Does price action show continuation or exhaustion?",
+      "Is this a breakout add, hold, or trim zone?",
+      "If it falls, is it panic maturity or just early downside?"
+    ],
+    "first_page_modules": [
+      "Time Window Rail",
+      "Price Zone Ladder",
+      "Event Pressure Overlay",
+      "Gamma State Badge",
+      "TCG/AVWAP Confirmation Box",
+      "Final Setup Classification"
+    ]
+  }
+}

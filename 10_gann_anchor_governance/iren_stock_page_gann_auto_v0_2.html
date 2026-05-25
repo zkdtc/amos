@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · IREN Stock Intelligence Page v0.2</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 85% 5%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1720px;margin:0 auto;padding:20px}
+.card,.score,.narrative-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{display:grid;grid-template-columns:1.35fr .8fr .8fr .8fr;gap:12px;margin-bottom:14px}
+.hero .card{padding:20px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px} h2{font-size:14px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em} h3{font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+.sub{color:var(--soft);margin:0}
+.big{font-size:34px;font-weight:900;color:var(--gold)}.redbig{font-size:34px;font-weight:900;color:var(--red)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.score-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:14px}
+.score{padding:13px}.score-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.score-v{font-size:28px;font-weight:900;margin:8px 0}
+.bar{height:8px;background:#111a2f;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px}
+.layout{display:grid;grid-template-columns:1.05fr 1.15fr .95fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box li,.box p{color:var(--soft)}.box ul{margin:0;padding-left:18px}.box li{margin:7px 0}
+.narrative-card{padding:13px;margin-bottom:10px}.n-head{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.n-head span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);font-size:10px;text-align:right}.narrative-card label{display:flex;justify-content:space-between;color:var(--soft);font-size:11px;margin:7px 0 4px}
+.warning,.gann-missing{border-color:rgba(255,77,109,.55)}.warning h2,.gann-missing h2{color:var(--red)}.green{border-color:rgba(50,230,138,.35)}.gold{border-color:rgba(255,209,102,.45)}.gann-live{border-color:rgba(255,209,102,.55)}
+.kv{display:grid;gap:7px}.row{display:grid;grid-template-columns:145px 1fr;gap:8px;border-bottom:1px solid rgba(30,42,70,.65);padding:7px 0}.k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase}.v{color:var(--soft)}
+.gann-score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}.gann-score-row div{border:1px solid var(--line);border-radius:10px;padding:10px;background:rgba(255,255,255,.02)}.gann-score-row span{display:block;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}.gann-score-row b{display:block;font-size:24px;color:var(--gold);margin-top:4px}.gann-score-row .small{font-size:12px;color:var(--cyan);word-break:break-word}
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.level{border:1px solid var(--line);border-radius:10px;padding:10px}.level b{display:block;font-size:22px;color:var(--cyan)}.level span{color:var(--soft);font-size:11px}
+@media(max-width:1380px){.hero,.layout{grid-template-columns:1fr}.score-grid,.mini-grid,.gann-score-row{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.score-grid,.mini-grid,.gann-score-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">AMOS · Generic Stock Page + Gann Auto-Insertion · v0.2</div>
+      <h1>IREN</h1>
+      <p class="sub">IREN · BTC + AI Compute</p>
+      <div class="tags"><span>BTC</span><span>AI_compute</span><span>high_beta</span><span>liquidity_sensitive</span></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Auto Action</div>
+      <div class="redbig">wait</div>
+      <p class="sub">scoring logic</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Fixture Bias</div>
+      <div class="big">wait</div>
+      <p class="sub">wait_for_panic_maturity_or_validation</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Gann Status</div>
+      <div class="big">PENDING</div>
+      <p class="sub">No Gann engine yet</p>
+    </div>
+  </div>
+
+  <div class="score-grid">
+        <div class="score">
+          <div class="score-k">Macro</div>
+          <div class="score-v" style="color:var(--cyan)">65</div>
+          <div class="bar"><i style="width:65%;background:var(--cyan)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Narrative</div>
+          <div class="score-v" style="color:var(--cyan)">65</div>
+          <div class="bar"><i style="width:65%;background:var(--cyan)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Maturity</div>
+          <div class="score-v" style="color:var(--gold)">52</div>
+          <div class="bar"><i style="width:52%;background:var(--gold)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Risk Stack</div>
+          <div class="score-v" style="color:var(--green)">42</div>
+          <div class="bar"><i style="width:42%;background:var(--green)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Panic</div>
+          <div class="score-v" style="color:var(--orange)">41</div>
+          <div class="bar"><i style="width:41%;background:var(--orange)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Valuation</div>
+          <div class="score-v" style="color:var(--gold)">50</div>
+          <div class="bar"><i style="width:50%;background:var(--gold)"></i></div>
+        </div>
+        
+        <div class="score">
+          <div class="score-k">Confidence</div>
+          <div class="score-v" style="color:var(--gold)">50</div>
+          <div class="bar"><i style="width:50%;background:var(--gold)"></i></div>
+        </div>
+        </div>
+
+  <div class="card box gold" style="margin-bottom:14px">
+    <h2>Decision Summary</h2>
+    <p><b>IREN</b> 当前自动动作为 <b style="color:var(--red)">wait</b>。如果 Gann Zone 已接入，页面会自动显示江恩价格/时间共振；如果未接入，则强制显示 Pending，避免假装有数据。</p>
+  </div>
+
+  
+        <div class="card box gann-missing">
+          <h2>Gann Research Zone</h2>
+          <p><b>IREN</b> 还没有接入独立 Gann Engine。当前页面只能显示基础评分，不能输出 Gann 支撑/压力、时间窗和共振判断。</p>
+          <ul>
+            <li>需要 verified anchor points。</li>
+            <li>需要 Square of Nine levels。</li>
+            <li>需要 Gann time windows。</li>
+            <li>需要 AVWAP / RSI / TCG / Gamma confirmation gates。</li>
+          </ul>
+        </div>
+        
+
+  <div class="layout">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Profile / State</h2>
+      <div class="kv">
+        <div class="row"><div class="k">Archetype</div><div class="v">dual_narrative_transformer</div></div>
+        <div class="row"><div class="k">Best Fit</div><div class="v">panic_reversal_or_swing</div></div>
+        <div class="row"><div class="k">Role</div><div class="v">swing_tactical</div></div>
+        <div class="row"><div class="k">Trend</div><div class="v">liquidity_sensitive_reset_watch</div></div>
+        <div class="row"><div class="k">Relative Strength</div><div class="v">depends_on_BTC_and_AI_compute_validation</div></div>
+        <div class="row"><div class="k">Valuation</div><div class="v">transition_story_requires_validation</div></div>
+      </div>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Narrative Exposure</h2>
+      
+        <div class="narrative-card">
+          <div class="n-head"><b>BTC Finance</b><span>reset_watch</span></div>
+          <label>Strength <b>48</b></label><div class="bar"><i style="width:48%;background:var(--green)"></i></div>
+          <label>Maturity <b>42</b></label><div class="bar"><i style="width:42%;background:var(--gold)"></i></div>
+          <label>Failure Risk <b>55</b></label><div class="bar"><i style="width:55%;background:var(--red)"></i></div>
+        </div>
+        
+        <div class="narrative-card">
+          <div class="n-head"><b>AI Infrastructure</b><span>capital_expansion</span></div>
+          <label>Strength <b>82</b></label><div class="bar"><i style="width:82%;background:var(--green)"></i></div>
+          <label>Maturity <b>63</b></label><div class="bar"><i style="width:63%;background:var(--gold)"></i></div>
+          <label>Failure Risk <b>38</b></label><div class="bar"><i style="width:38%;background:var(--red)"></i></div>
+        </div>
+        
+    </div>
+    <div class="card box warning">
+      <h2>Data Limits</h2>
+      <ul>
+        <li>Current data is still sample-only.</li>
+        <li>Decision confidence is capped.</li>
+        <li>Real price / RSI / AVWAP / Gamma not connected.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="card box green"><h2>Evidence Chain</h2><ul><li>Dual exposure to BTC and AI compute can create upside</li><li>BTC reset may create future opportunity</li></ul></div>
+    <div class="card box gold"><h2>Counter Evidence</h2><ul><li>Liquidity liquidation can continue longer than expected</li><li>AI compute transition needs evidence</li></ul></div>
+    <div class="card box warning"><h2>Invalidation Conditions</h2><ul><li>BTC loses key liquidity structure</li><li>AI compute thesis fails to convert into revenue visibility</li><li>Financing/dilution risk rises</li></ul></div>
+  </div>
+</div>
+</body>
+</html>

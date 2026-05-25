@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS CSV Import Schema v0.1</title>
+<style>
+body{margin:0;background:#05070c;color:#dbe6ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif}
+.app{max-width:1150px;margin:0 auto;padding:24px}.card{background:linear-gradient(180deg,#10182d,#080c18);border:1px solid #1e2a46;border-radius:14px;padding:22px;margin-bottom:14px}
+h1{font-size:38px;margin:0 0 10px}.eyebrow{color:#23d9ff;letter-spacing:.2em;font-size:10px;text-transform:uppercase}.motto{color:#ffd166;font-weight:800}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.box{border:1px solid #1e2a46;border-radius:12px;padding:16px}.box b{color:#ffd166}li{color:#a9b8d8;margin:7px 0}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><div class="app">
+<div class="card"><div class="eyebrow">AMOS · CSV Import · v0.1</div><h1>CSV Import Schema</h1><div class="motto">把价格、RSI、AVWAP、相对强弱、事件、Gann 和证据包字段标准化，减少每天手填。</div></div>
+<div class="grid">
+<div class="box"><b>Templates</b><ul><li>price_technical_import</li><li>gann_import</li><li>event_import</li><li>evidence_import</li></ul></div>
+<div class="box"><b>Target</b><ul><li>Manual Inputs</li><li>Generated Brief</li><li>Evidence Packet</li><li>Gann Registry</li><li>Anchor Verification</li></ul></div>
+</div>
+<div class="card"><b style="color:#ff4d6d">Guardrail:</b> CSV import 只是减少手填，不绕过 Evidence Packet、Anchor Verification、Action Cap 或实时确认。</div>
+</div></body></html>

@@ -1,0 +1,283 @@
+{
+  "version": "AMOS Stock Personality Radar v0.1",
+  "purpose": "Model each stock as a behavior system, not just a ticker or valuation object.",
+  "core_principles": [
+    "A stock's business category is not enough. Its behavior DNA determines execution.",
+    "Same macro regime affects different stocks differently.",
+    "Personality tags must be learned from evidence over time, not assigned permanently.",
+    "The goal is to predict reaction pattern, risk zone, and execution style."
+  ],
+  "personality_dimensions": {
+    "beta_profile": [
+      "low_beta",
+      "market_beta",
+      "high_beta",
+      "extreme_beta"
+    ],
+    "narrative_sensitivity": [
+      "low",
+      "medium",
+      "high",
+      "mania_prone"
+    ],
+    "earnings_sensitivity": [
+      "low",
+      "medium",
+      "high",
+      "gap_prone"
+    ],
+    "gamma_sensitivity": [
+      "low",
+      "medium",
+      "high",
+      "squeeze_prone"
+    ],
+    "liquidity_sensitivity": [
+      "low",
+      "medium",
+      "high",
+      "liquidity_proxy"
+    ],
+    "retail_participation": [
+      "institutional",
+      "mixed",
+      "retail_heavy",
+      "cult"
+    ],
+    "institutional_sponsorship": [
+      "weak",
+      "emerging",
+      "strong",
+      "core_holding"
+    ],
+    "trend_behavior": [
+      "slow_compounder",
+      "smooth_trender",
+      "volatile_trender",
+      "mean_reverter",
+      "event_jumper"
+    ],
+    "drawdown_behavior": [
+      "shallow_pullback",
+      "standard_pullback",
+      "violent_reset",
+      "crash_then_reversal"
+    ],
+    "best_strategy_fit": [
+      "core_hold",
+      "core_plus_trim",
+      "swing_cycle",
+      "tactical_event",
+      "panic_reversal",
+      "avoid_chase"
+    ]
+  },
+  "stock_archetypes": {
+    "core_sovereign_leader": {
+      "examples": [
+        "NVDA",
+        "MSFT",
+        "GOOG"
+      ],
+      "strategy": "Core hold with trim discipline at euphoria zones."
+    },
+    "second_line_high_beta": {
+      "examples": [
+        "CRDO",
+        "LITE",
+        "COHR"
+      ],
+      "strategy": "Swing/core hybrid; use Gann/AVWAP/TCG for entries and trims."
+    },
+    "liquidity_casino_proxy": {
+      "examples": [
+        "HOOD",
+        "COIN"
+      ],
+      "strategy": "Wait for liquidity reset, then build when panic matures."
+    },
+    "dual_narrative_transformer": {
+      "examples": [
+        "IREN",
+        "IBM"
+      ],
+      "strategy": "Separate old-business risk from new-narrative upside."
+    },
+    "long_duration_future_story": {
+      "examples": [
+        "TEM",
+        "IONQ",
+        "RKLB",
+        "ASTS"
+      ],
+      "strategy": "Small-to-medium sizing, event windows, no blind averaging."
+    },
+    "slow_compounder_stabilizer": {
+      "examples": [
+        "IBM",
+        "MSFT",
+        "GOOG"
+      ],
+      "strategy": "Portfolio ballast; less suitable for aggressive swing unless catalyst exists."
+    }
+  },
+  "current_watchlist_classification_v0": {
+    "NVDA": {
+      "archetype": "core_sovereign_leader",
+      "tags": [
+        "AI_core",
+        "institutional_core",
+        "capex_anchor",
+        "event_driver"
+      ],
+      "best_strategy_fit": "core_plus_trim"
+    },
+    "CRDO": {
+      "archetype": "second_line_high_beta",
+      "tags": [
+        "AI_infra",
+        "optical",
+        "high_beta",
+        "earnings_sensitive",
+        "gamma_amplified"
+      ],
+      "best_strategy_fit": "swing_cycle"
+    },
+    "LITE": {
+      "archetype": "second_line_high_beta",
+      "tags": [
+        "optical",
+        "turnaround",
+        "AI_infra_follow",
+        "profit_protection_needed"
+      ],
+      "best_strategy_fit": "swing_cycle"
+    },
+    "IREN": {
+      "archetype": "dual_narrative_transformer",
+      "tags": [
+        "BTC",
+        "AI_compute",
+        "high_beta",
+        "liquidity_sensitive"
+      ],
+      "best_strategy_fit": "panic_reversal_or_swing"
+    },
+    "HOOD": {
+      "archetype": "liquidity_casino_proxy",
+      "tags": [
+        "retail_risk_appetite",
+        "BTC_finance",
+        "trading_volume",
+        "regulatory_sensitive"
+      ],
+      "best_strategy_fit": "wait_for_maturity_then_build"
+    },
+    "TEM": {
+      "archetype": "long_duration_future_story",
+      "tags": [
+        "AI_healthcare",
+        "long_duration",
+        "earnings_gap_prone",
+        "narrative_sensitive"
+      ],
+      "best_strategy_fit": "small_core_or_tactical"
+    },
+    "IBM": {
+      "archetype": "slow_compounder_stabilizer",
+      "tags": [
+        "low_beta_AI",
+        "cash_flow",
+        "legacy_transition",
+        "portfolio_stabilizer"
+      ],
+      "best_strategy_fit": "stabilizer_hold"
+    },
+    "RKLB": {
+      "archetype": "long_duration_future_story",
+      "tags": [
+        "space",
+        "event_sensitive",
+        "strategic_narrative",
+        "high_volatility"
+      ],
+      "best_strategy_fit": "event_cycle_swing"
+    },
+    "IONQ": {
+      "archetype": "long_duration_future_story",
+      "tags": [
+        "quantum",
+        "policy_narrative",
+        "speculative",
+        "long_R&D"
+      ],
+      "best_strategy_fit": "small_tactical_only"
+    }
+  },
+  "learning_events": {
+    "earnings_reaction": [
+      "pre_earnings_runup",
+      "implied_move",
+      "actual_move",
+      "guidance_quality",
+      "gap_hold_or_fade",
+      "AVWAP_from_earnings",
+      "revision_after_earnings"
+    ],
+    "macro_reaction": [
+      "10Y_up_reaction",
+      "10Y_down_reaction",
+      "DXY_up_reaction",
+      "VIX_spike_reaction",
+      "BTC_drop_reaction",
+      "risk_on_day_reaction"
+    ],
+    "gamma_reaction": [
+      "call_wall_behavior",
+      "put_wall_behavior",
+      "OPEX_week_behavior",
+      "squeeze_follow_through",
+      "pin_failure"
+    ],
+    "narrative_reaction": [
+      "reaction_to_sector_news",
+      "reaction_to_leader_news",
+      "reaction_to_policy_headline",
+      "reaction_to_social_attention",
+      "leader_vs_tail_behavior"
+    ],
+    "panic_euphoria_reaction": [
+      "panic_maturity_signal",
+      "first_bounce_quality",
+      "failed_reclaim",
+      "euphoria_exhaustion_signal",
+      "post_trim_outcome"
+    ]
+  },
+  "score_model_v0": {
+    "personality_confidence": {
+      "historical_events_count": 0.25,
+      "cross_regime_observations": 0.25,
+      "earnings_samples": 0.2,
+      "macro_reaction_samples": 0.15,
+      "options_gamma_samples": 0.15
+    },
+    "risk_of_misclassification": {
+      "new_company_or_IPO": 0.25,
+      "business_model_transition": 0.25,
+      "limited_history": 0.2,
+      "single_event_distortion": 0.15,
+      "narrative_shift": 0.15
+    }
+  },
+  "ui_components": [
+    "Personality Tags",
+    "Behavior Radar Chart",
+    "Regime Reaction Matrix",
+    "Earnings Reaction Memory",
+    "Gamma Sensitivity Badge",
+    "Best Strategy Fit",
+    "Current Misclassification Risk",
+    "Learned Lessons Feed"
+  ]
+}

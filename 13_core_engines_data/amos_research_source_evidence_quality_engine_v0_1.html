@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · Research Source & Evidence Quality Engine v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 10%,rgba(155,92,255,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}
+.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.box{padding:15px;min-height:190px}.box h2{font-size:13px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.1em}.box p,.box li{color:#a9b8d8}
+.pipeline{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin-bottom:14px}
+.step{padding:10px;min-height:110px}.step b{display:block;color:var(--cyan);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.step span{color:#a9b8d8;font-size:11px}
+.score{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.score .box{min-height:170px}
+.rules{padding:18px}.rules li{color:#a9b8d8;margin:7px 0}
+@media(max-width:1200px){.grid,.score{grid-template-columns:1fr 1fr}.pipeline{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:700px){.grid,.score,.pipeline{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Evidence System · v0.1</div>
+    <h1>Research Source & Evidence Quality Engine</h1>
+    <div class="motto">用户给的是线索，不是证明；AMOS 必须自己找证据、反证、适用周期与失效条件。</div>
+  </div>
+
+  <div class="grid">
+    <div class="card box"><h2 style="color:var(--green)">Official / Primary</h2><p>FRED、Fed、SEC、10-K、10-Q、财报电话会。质量高，但要防滞后和管理层话术。</p></div>
+    <div class="card box"><h2 style="color:var(--cyan)">Market Data</h2><p>价格、量、期权、breadth、relative strength。市场定价是最终裁判，但短期有噪音。</p></div>
+    <div class="card box"><h2 style="color:var(--gold)">YouTube / X</h2><p>适合框架提炼和早期信号，不是直接证据。必须评估偏见、周期有效性和反证。</p></div>
+    <div class="card box"><h2 style="color:var(--violet)">Book Frameworks</h2><p>用于建立模型：Soros、Dalio、Bernanke、Howard Marks、缠论等。不能机械套用。</p></div>
+  </div>
+
+  <div class="score">
+    <div class="card box"><h2 style="color:var(--green)">Evidence Quality</h2><p>一手性、具体性、可证伪、交叉验证、时效性、激励一致性。</p></div>
+    <div class="card box"><h2 style="color:var(--red)">Bias Risk</h2><p>财务激励、观众绑架、意识形态、单资产多头、缺少反证、病毒传播压力。</p></div>
+    <div class="card box"><h2 style="color:var(--cyan)">Cycle Validity</h2><p>牛市、熊市、转折点、流动性收紧、自我修正记录。</p></div>
+    <div class="card box"><h2 style="color:var(--gold)">Framework Value</h2><p>结构清晰、可迁移、可操作、有证据、有失效条件。</p></div>
+  </div>
+
+  <div class="pipeline">
+    <div class="card step"><b>1</b><span>Collect lead</span></div>
+    <div class="card step"><b>2</b><span>Source type</span></div>
+    <div class="card step"><b>3</b><span>Fact vs opinion</span></div>
+    <div class="card step"><b>4</b><span>Quality score</span></div>
+    <div class="card step"><b>5</b><span>Bias score</span></div>
+    <div class="card step"><b>6</b><span>Confirm</span></div>
+    <div class="card step"><b>7</b><span>Counter evidence</span></div>
+    <div class="card step"><b>8</b><span>Map module</span></div>
+    <div class="card step"><b>9</b><span>Regime fit</span></div>
+    <div class="card step"><b>10</b><span>Store source</span></div>
+    <div class="card step"><b>11</b><span>Governance update</span></div>
+  </div>
+
+  <div class="card rules">
+    <div class="eyebrow">Non-negotiable Rules</div>
+    <ul>
+      <li>没有任何博主永久可信。</li>
+      <li>没有任何框架永远有效。</li>
+      <li>每个来源都必须有失效模式。</li>
+      <li>一个来源可能只对某个模块有用。</li>
+      <li>用户信任某个博主，只是线索，不是最终证据。</li>
+      <li>AMOS 必须能够不同意用户喜欢的来源。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

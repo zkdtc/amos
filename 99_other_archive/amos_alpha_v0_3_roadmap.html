@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Alpha v0.3 Roadmap</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 85% 5%,rgba(50,230,138,.06),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1500px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat b{display:block;font-size:26px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.phase{padding:18px;margin-bottom:14px}
+.phase-head{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.phase h2{font-size:26px;margin:5px 0}.phase p,.phase span{color:var(--soft)}.phase-head span{max-width:360px;color:var(--gold);font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}h3{color:var(--cyan);font-size:13px;text-transform:uppercase;letter-spacing:.1em}li{color:var(--soft);margin:7px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{padding:18px}.box h2{font-size:18px;margin:0 0 10px}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:900px){.stats,.cols,.grid{grid-template-columns:1fr}.phase-head{display:block}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Alpha Roadmap · v0.3</div>
+    <h1>From Static Alpha to Usable Alpha</h1>
+    <div class="motto">手动数据版 → 半自动数据版 → API-ready 实时数据版 → 复盘学习版。</div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><span>Current</span><b>Static Alpha</b></div>
+    <div class="card stat"><span>Next</span><b>v0.3A</b></div>
+    <div class="card stat"><span>Fastest Use</span><b>Manual</b></div>
+    <div class="card stat"><span>Goal</span><b>Daily Brief</b></div>
+  </div>
+
+  
+    <section class="phase card">
+      <div class="phase-head">
+        <div>
+          <div class="eyebrow">v0.3A</div>
+          <h2>Manual Data Alpha</h2>
+          <p>Make AMOS usable with manually entered daily data for priority tickers.</p>
+        </div>
+        <span>Fastest path to usefulness without waiting for API automation.</span>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Deliverables</h3>
+          <ul><li>Manual data input sheet/schema</li><li>Priority ticker field checklist</li><li>Daily Brief generated from manually updated score packet</li><li>CRDO/NVDA/LITE/HOOD/IREN manually refreshed pages</li><li>Manual evidence packet template</li></ul>
+        </div>
+        <div>
+          <h3>Success Criteria</h3>
+          <ul><li>User can update 5-10 fields per ticker and get a coherent Daily Brief.</li><li>AMOS can distinguish Hold / Wait / Trim Watch / Build Watch from manual inputs.</li><li>Every action output includes evidence, counter-evidence and invalidation.</li></ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="phase card">
+      <div class="phase-head">
+        <div>
+          <div class="eyebrow">v0.3B</div>
+          <h2>Semi-automated Data Alpha</h2>
+          <p>Allow CSV/JSON imports from charting/broker/research tools.</p>
+        </div>
+        <span>Reduce manual burden while keeping control and transparency.</span>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Deliverables</h3>
+          <ul><li>CSV import schema</li><li>Broker/export parser</li><li>TradingView-style technical snapshot parser</li><li>Manual + imported data conflict checker</li><li>Data freshness warning system</li></ul>
+        </div>
+        <div>
+          <h3>Success Criteria</h3>
+          <ul><li>System flags stale data automatically.</li><li>Imported technical data updates stock pages and dashboard.</li><li>Conflicting manual vs imported values are visible, not hidden.</li></ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="phase card">
+      <div class="phase-head">
+        <div>
+          <div class="eyebrow">v0.3C</div>
+          <h2>Real-time / API-ready Alpha</h2>
+          <p>Prepare AMOS to connect to live market/fundamental/options/event APIs.</p>
+        </div>
+        <span>Daily use needs freshness, but API data must enter through controlled adapters.</span>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Deliverables</h3>
+          <ul><li>Market data adapter</li><li>Macro data adapter</li><li>Earnings/fundamental adapter</li><li>Options/gamma adapter</li><li>Event calendar adapter</li><li>Evidence/source adapter</li></ul>
+        </div>
+        <div>
+          <h3>Success Criteria</h3>
+          <ul><li>Daily Brief can regenerate from fresh data packets.</li><li>Stock pages update key scores automatically.</li><li>Decision confidence is capped when required fields are stale/missing.</li></ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="phase card">
+      <div class="phase-head">
+        <div>
+          <div class="eyebrow">v0.3D</div>
+          <h2>Review & Learning Alpha</h2>
+          <p>Build prediction-action-result review loops.</p>
+        </div>
+        <span>AMOS should improve by testing which signals worked for which stock personality.</span>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Deliverables</h3>
+          <ul><li>Prediction log</li><li>Action log</li><li>Result review</li><li>Signal effectiveness by ticker</li><li>Source quality update</li><li>Behavior guardrail update</li></ul>
+        </div>
+        <div>
+          <h3>Success Criteria</h3>
+          <ul><li>Each major decision can be reviewed later.</li><li>System learns which indicators work better for CRDO vs HOOD vs IREN etc.</li><li>User behavior risk is tracked without moralizing or generic warnings.</li></ul>
+        </div>
+      </div>
+    </section>
+    
+
+  <div class="grid">
+    <div class="card box">
+      <div class="eyebrow">Immediate Builds</div>
+      <h2>立即下一步</h2>
+      <ol><li>AMOS Manual Data Input Sheet v0.1</li><li>Daily Brief Generator from Manual Packet v0.2</li><li>Priority Ticker Checklist v0.1</li><li>Real Evidence Packet Template v0.1</li><li>CRDO Peer Map v0.1</li></ol>
+    </div>
+    <div class="card box warning">
+      <div class="eyebrow">Engineering Guardrails</div>
+      <h2>工程护栏</h2>
+      <ul><li>Do not expand new modules before v0.3A manual workflow is usable.</li><li>Do not pretend sample data is live data.</li><li>Do not output action without invalidation conditions.</li><li>Do not let Gann alone trigger buy/sell.</li><li>Do not let user observation replace market evidence.</li></ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

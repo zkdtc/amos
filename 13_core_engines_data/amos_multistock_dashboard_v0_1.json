@@ -1,0 +1,25 @@
+{
+  "version": "AMOS Data-driven Multi-stock Dashboard v0.1",
+  "html": "amos_multistock_dashboard_v0_1.html",
+  "source_fixture": "amos_sample_data_fixture_v0_1.json",
+  "tickers": [
+    "NVDA",
+    "CRDO",
+    "LITE",
+    "IREN",
+    "HOOD"
+  ],
+  "sections": [
+    "Market State",
+    "Primary Risks",
+    "Migration Candidates",
+    "Narrative Cards",
+    "Stock Cards",
+    "Comparison Table"
+  ],
+  "next": [
+    "Connect scoring logic",
+    "Generate stock page links",
+    "Replace placeholder fixture with real data adapter"
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "version": "AMOS Manual Data Workflow Guide v0.1",
+  "created": "2026-05-24",
+  "purpose": "Define the daily operating procedure for AMOS v0.3A Manual Data Alpha.",
+  "principle": "The workflow must be usable before API automation. Manual data is allowed, but missing data must cap confidence.",
+  "daily_workflow": [
+    {
+      "step": 1,
+      "name": "Open Master Index",
+      "file": "amos_alpha_master_index_v0_3.html",
+      "goal": "Use this as the control center, not scattered files.",
+      "done_when": "You know whether you are updating data, reading brief, reviewing evidence, or opening stock pages."
+    },
+    {
+      "step": 2,
+      "name": "Open Manual Data Workbook",
+      "file": "amos_real_evidence_packet_template_v0_1.xlsx",
+      "goal": "This is the latest workbook containing Manual Inputs, Generated Brief, Priority Checklist and Evidence Packet.",
+      "done_when": "Workbook is open on Manual Inputs."
+    },
+    {
+      "step": 3,
+      "name": "Update Manual Inputs",
+      "file": "Manual Inputs sheet",
+      "goal": "Update only the minimum viable fields for P0/P1 tickers.",
+      "required_fields": [
+        "Last Price",
+        "RSI 14D",
+        "8 EMA State",
+        "12 EMA State",
+        "Trend Structure",
+        "RS vs QQQ",
+        "AVWAP Status",
+        "Gann Zone",
+        "Nearest Gann Support",
+        "Nearest Gann Resistance",
+        "Next Event",
+        "Event Pressure",
+        "Action Bias",
+        "Invalidation",
+        "Data Freshness"
+      ],
+      "done_when": "Each active ticker has no missing must-have fields unless action cap is accepted."
+    },
+    {
+      "step": 4,
+      "name": "Check Priority Checklist",
+      "file": "Priority Checklist v0.1 sheet",
+      "goal": "Let missing must-have fields cap confidence and action.",
+      "action_caps": {
+        "0_missing": "No Cap",
+        "1_2_missing": "Build/Hold Only",
+        "3_4_missing": "No Attack",
+        "5_plus_missing": "Wait Only"
+      },
+      "done_when": "Every ticker has a confidence cap and action cap."
+    },
+    {
+      "step": 5,
+      "name": "Add Evidence Packet",
+      "file": "Evidence Packet v0.1 sheet",
+      "goal": "Convert observations/news/blogger views/earnings conclusions into scored evidence.",
+      "done_when": "Every actionable claim has counter-evidence and invalidation."
+    },
+    {
+      "step": 6,
+      "name": "Read Generated Brief",
+      "file": "Generated Brief sheet",
+      "goal": "Read the AMOS daily output before touching trades.",
+      "sections": [
+        "Executive Summary",
+        "Action Buckets",
+        "Risk Alerts",
+        "Ticker Brief Lines",
+        "No-Trade Rules"
+      ],
+      "done_when": "You know the daily Attack/Build/Hold/Trim Watch/Wait buckets."
+    },
+    {
+      "step": 7,
+      "name": "Use Peer Map for Migration",
+      "file": "amos_crdo_peer_map_v0_1.xlsx",
+      "goal": "For AI optical/connectivity decisions, compare CRDO/LITE/COHR/NVDA/AVGO/ANET before rotating.",
+      "done_when": "Migration has a trigger, confirmation and do-not-migrate condition."
+    },
+    {
+      "step": 8,
+      "name": "Open Stock Page / Gann Auto Page",
+      "file": "amos_generic_page_gann_auto_insertion_v0_2.html",
+      "goal": "Open ticker page only after daily brief and peer map.",
+      "done_when": "Action has evidence, counter-evidence, invalidation and position role."
+    }
+  ],
+  "action_rules": {
+    "Attack": {
+      "allowed_when": [
+        "Data Freshness is Fresh or high-quality Partial",
+        "Action cap says No Cap",
+        "Macro does not block beta",
+        "RS vs QQQ and RS vs peers are improving",
+        "Technical confirmation exists",
+        "Invalidation is clear"
+      ],
+      "forbidden_when": [
+        "Any P0 must-have data missing",
+        "No invalidation",
+        "Gann only signal",
+        "Event pressure high without confirmation",
+        "User is chasing missed move"
+      ]
+    },
+    "Build": {
+      "allowed_when": [
+        "Action cap at least Build/Hold Only",
+        "Setup has confirmation",
+        "Panic maturity or trend continuation is valid",
+        "Position size is staged"
+      ],
+      "forbidden_when": [
+        "Risk Stack high and still rising",
+        "AVWAP lost",
+        "RS deteriorating",
+        "No stop/invalidation"
+      ]
+    },
+    "Hold": {
+      "allowed_when": [
+        "Thesis intact",
+        "Structure intact",
+        "No major invalidation triggered",
+        "Risk acceptable"
+      ],
+      "forbidden_when": [
+        "Fundamental thesis broken",
+        "Structure shifts to LH/LL",
+        "AVWAP lost with failed reclaim",
+        "Evidence packet rejected"
+      ]
+    },
+    "Trim Watch": {
+      "allowed_when": [
+        "Risk Stack high",
+        "Narrative maturity high",
+        "Gann resistance/time window active",
+        "RSI overbought or volume exhaustion",
+        "Event pressure elevated"
+      ],
+      "actual_trim_requires": [
+        "AVWAP/EMA break",
+        "Failed new high / LH appears",
+        "Volume divergence",
+        "Good-news fade",
+        "Gamma/event pressure confirms"
+      ]
+    },
+    "Wait": {
+      "required_when": [
+        "Data missing",
+        "Action cap says Wait Only",
+        "No setup",
+        "Only narrative excitement exists",
+        "User observation lacks evidence packet"
+      ]
+    }
+  },
+  "no_trade_rules": [
+    "No leverage.",
+    "No action without invalidation.",
+    "No chasing after missed move.",
+    "Gann cannot act alone.",
+    "Headline dip is not panic maturity.",
+    "Do not turn failed swing into core.",
+    "Do not let one blogger/source override data.",
+    "If data freshness is Missing, no aggressive action."
+  ],
+  "weekend_workflow": [
+    "Review Prediction → Action → Result.",
+    "Update Evidence Packet status.",
+    "Re-score source quality.",
+    "Review which tickers deserve P0/P1/P2 priority.",
+    "Prepare next week's event calendar.",
+    "Clean watchlist to avoid attention dilution."
+  ],
+  "next": [
+    "Generate Daily Brief HTML from workbook snapshot",
+    "Add Peer Map link into CRDO full page",
+    "Create NVDA Gann Engine v0.1",
+    "Create LITE Gann Engine v0.1"
+  ]
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · Portfolio Battle Map & Migration Engine v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 10%,rgba(50,230,138,.06),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:22px 24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:34px;margin:6px 0 8px}
+.motto{font-size:15px;color:var(--gold);font-weight:800}
+.grid{display:grid;grid-template-columns:1.2fr 1.5fr 1.1fr;gap:12px;margin-bottom:14px}
+.box{padding:16px}.box h2{font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em}.box p,.box li{color:#a9b8d8}
+.position{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:70px 1fr 120px;gap:10px;align-items:center;border:1px solid var(--line);border-radius:9px;padding:9px;background:rgba(255,255,255,.02)}
+.ticker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900}
+.meta{color:#a9b8d8;font-size:12px}
+.tag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-align:right;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.step{padding:14px;min-height:170px;position:relative}.step:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--cyan)}
+.step h3{font-size:13px;margin:0 0 8px}.step p{color:#a9b8d8;margin:0}
+.battle{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#a9b8d8;margin:3px}
+@media(max-width:1200px){.grid,.steps,.battle{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.grid,.steps,.battle{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Portfolio System · v0.1</div>
+    <h1>Portfolio Battle Map & Migration Engine</h1>
+    <div class="motto">解决旧持仓、观察仓、新战线之间：保留、减仓、试仓、迁移、等待。</div>
+  </div>
+
+  <div class="steps">
+    <div class="card step"><h3>1. Position Health</h3><p>旧持仓逻辑是否健康？healthy / watch / degrading / broken。</p></div>
+    <div class="card step"><h3>2. Battlefield Strength</h3><p>新战线是真启动还是短炒？early / confirmed / crowded / tail chase。</p></div>
+    <div class="card step"><h3>3. Opportunity Cost</h3><p>继续占用资金是否错失更强机会？比较未来2-6周。</p></div>
+    <div class="card step"><h3>4. Execution Window</h3><p>Gann / AVWAP / TCG / Gamma 是否支持迁移？</p></div>
+    <div class="card step"><h3>5. Migration Action</h3><p>hold / trim / sell / probe / build / swap / wait。</p></div>
+  </div>
+
+  <div class="grid">
+    <div class="card box">
+      <h2 style="color:var(--cyan)">Current Positions</h2>
+      <div class="position">
+        <div class="row"><div class="ticker">IREN</div><div class="meta">BTC + AI Compute · 高Beta</div><div class="tag">Wait maturity</div></div>
+        <div class="row"><div class="ticker">LITE</div><div class="meta">Optical recovery · 利润保护</div><div class="tag">Compare CRDO</div></div>
+        <div class="row"><div class="ticker">CRDO</div><div class="meta">AI Infra / Optical · 高弹性</div><div class="tag">Core swing?</div></div>
+        <div class="row"><div class="ticker">TEM</div><div class="meta">AI Healthcare · 长久期</div><div class="tag">Size control</div></div>
+        <div class="row"><div class="ticker">IBM</div><div class="meta">低Beta AI · 稳定器</div><div class="tag">Ballast</div></div>
+        <div class="row"><div class="ticker">HOOD</div><div class="meta">BTC Finance · 散户风险偏好</div><div class="tag">Reset watch</div></div>
+      </div>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--green)">Battlefields</h2>
+      <div>
+        <span class="pill">Big Tech Anchors</span><span class="pill">AI Infra</span><span class="pill">Optical</span>
+        <span class="pill">AI Software</span><span class="pill">BTC Finance</span><span class="pill">Space</span>
+        <span class="pill">Quantum</span><span class="pill">AI Healthcare</span><span class="pill">Robotics</span>
+      </div>
+      <p style="margin-top:12px">迁移不是从“弱”换到“热”，而是从机会成本变差的仓位，迁移到证据确认、时机成熟、风险收益更好的战场。</p>
+    </div>
+    <div class="card box">
+      <h2 style="color:var(--red)">Regret Guardrail</h2>
+      <ul>
+        <li>不因为错过 ASTS 就追下一个。</li>
+        <li>不从健康龙头换到低质量尾部。</li>
+        <li>不把失败波段变成核心。</li>
+        <li>不卖稳定器去追尾部FOMO。</li>
+        <li>永远比较未来2-6周机会成本。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="battle">
+    <div class="card box"><h2 style="color:var(--green)">Keep</h2><p>旧持仓健康，新战线未确认。继续持有，不乱动。</p></div>
+    <div class="card box"><h2 style="color:var(--gold)">Trim + Probe</h2><p>旧仓拥挤或机会成本上升，新战线早期但未确认。减一部分，试一部分。</p></div>
+    <div class="card box"><h2 style="color:var(--cyan)">Partial Swap</h2><p>旧仓走弱，新战线由龙头和资金流确认。部分迁移。</p></div>
+    <div class="card box"><h2 style="color:var(--red)">Sell + Build</h2><p>旧逻辑破坏，新机会确认且时机成熟。退出旧战场。</p></div>
+    <div class="card box"><h2 style="color:var(--violet)">Wait Cash</h2><p>旧仓和新机会时机都不好，或宏观不支持。等待。</p></div>
+    <div class="card box"><h2 style="color:var(--blue)">Runner</h2><p>止盈后保留赢家尾仓，结构不坏就让利润奔跑。</p></div>
+  </div>
+</div>
+</body>
+</html>

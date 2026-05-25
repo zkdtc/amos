@@ -1,0 +1,42 @@
+{
+  "version": "AMOS Generic Stock Page Generator v0.1",
+  "created": "2026-05-24",
+  "purpose": "Generate Stock Intelligence Pages for every ticker in sample fixture using the same AMOS logic.",
+  "source_files": [
+    "amos_sample_data_fixture_v0_1.json",
+    "amos_scoring_connected_dashboard_v0_2.json"
+  ],
+  "generated_pages": [
+    "nvda_generic_stock_intelligence_page_v0_1.html",
+    "crdo_generic_stock_intelligence_page_v0_1.html",
+    "lite_generic_stock_intelligence_page_v0_1.html",
+    "iren_generic_stock_intelligence_page_v0_1.html",
+    "hood_generic_stock_intelligence_page_v0_1.html"
+  ],
+  "tickers": [
+    "NVDA",
+    "CRDO",
+    "LITE",
+    "IREN",
+    "HOOD"
+  ],
+  "template_sections": [
+    "Hero / identity",
+    "Auto action",
+    "Scoring grid",
+    "Decision summary",
+    "Profile / state",
+    "Narrative exposure",
+    "Action logic",
+    "Evidence chain",
+    "Counter evidence",
+    "Invalidation conditions",
+    "Next real data needed"
+  ],
+  "next": [
+    "Add optional Gann Research Zone when ticker has gann engine data",
+    "Add peer map",
+    "Add real data adapter import",
+    "Generate all watchlist pages automatically"
+  ]
+}

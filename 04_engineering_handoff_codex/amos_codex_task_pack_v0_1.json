@@ -1,0 +1,408 @@
+{
+  "version": "AMOS Codex Task Pack v0.1",
+  "created": "2026-05-24",
+  "purpose": "Break the engineering handoff into executable Codex task cards.",
+  "current_phase": "v0.3A Manual Data Alpha",
+  "global_constraints": [
+    "No live APIs in first pass.",
+    "No brokerage or trading execution.",
+    "No sample data presented as live.",
+    "No Gann-only trade trigger.",
+    "Preserve Anchor Verification gate.",
+    "Preserve Data Freshness action caps.",
+    "Preserve No Attack macro event gating.",
+    "Preserve user-specific risk and behavior guardrails."
+  ],
+  "tasks": [
+    {
+      "id": "AMOS-CODEX-001",
+      "title": "Create repository skeleton",
+      "priority": "P0",
+      "goal": "Create a local React/TypeScript project skeleton for AMOS without connecting live APIs.",
+      "inputs": [
+        "amos_engineering_handoff_spec_v0_1.md",
+        "amos_repo_structure_v0_1.md",
+        "amos_no_omission_master_checklist_v0_1.md"
+      ],
+      "outputs": [
+        "package.json",
+        "src/",
+        "docs/",
+        "artifacts/",
+        "README.md"
+      ],
+      "steps": [
+        "Initialize Next.js or Vite React + TypeScript.",
+        "Create docs, artifacts, public/sample-data, src/components, src/data, src/rules, src/tests.",
+        "Copy canonical/handoff/no-omission docs into docs.",
+        "Add README with current phase: v0.3A Manual Data Alpha.",
+        "Add sample-data warning to README."
+      ],
+      "acceptance": [
+        "npm install succeeds.",
+        "npm run dev starts local app.",
+        "README links to no-omission checklist.",
+        "No live APIs are configured."
+      ],
+      "forbidden": [
+        "Do not connect brokerage.",
+        "Do not add live market data API.",
+        "Do not delete source artifacts."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-002",
+      "title": "Implement design tokens and AppShell",
+      "priority": "P0",
+      "goal": "Preserve the AMOS dark terminal/research cockpit visual language in reusable layout components.",
+      "inputs": [
+        "amos_alpha_master_index_v0_5.html",
+        "amos_canonical_system_integration_spec_v0_1.html"
+      ],
+      "outputs": [
+        "src/components/shell/AppShell.tsx",
+        "src/components/shell/Sidebar.tsx",
+        "src/components/shell/StatusBar.tsx",
+        "src/styles/tokens.css"
+      ],
+      "steps": [
+        "Extract dark background, gold/cyan/green/red palette, card borders and typography rules.",
+        "Create AppShell with sidebar navigation.",
+        "Create StatusBar showing phase, mode, Gann Live count, Anchor Check version.",
+        "Ensure mobile layout works."
+      ],
+      "acceptance": [
+        "AppShell matches AMOS prototype language.",
+        "StatusBar shows v0.3A, Manual, Gann Live 5, Anchor Check v0.2.",
+        "No generic template styling replaces AMOS style."
+      ],
+      "forbidden": [
+        "Do not use a plain white dashboard style.",
+        "Do not remove guardrail visibility."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-003",
+      "title": "Load local manifests and sample data",
+      "priority": "P0",
+      "goal": "Create local data loaders and TypeScript schemas for AMOS JSON/CSV-driven prototype.",
+      "inputs": [
+        "amos_gann_live_ticker_registry_v0_4.json",
+        "amos_canonical_system_integration_spec_v0_1.json",
+        "amos_daily_brief_html_exporter_config_v0_2.json"
+      ],
+      "outputs": [
+        "public/sample-data/gann-registry.json",
+        "public/sample-data/daily-brief.json",
+        "src/data/loaders.ts",
+        "src/data/schemas.ts"
+      ],
+      "steps": [
+        "Copy source JSON files into public/sample-data.",
+        "Create TypeScript interfaces for Ticker, GannEngine, EvidencePacket, MacroEvent, DailyBrief.",
+        "Implement local fetch/load functions.",
+        "Add validation fallback for missing fields."
+      ],
+      "acceptance": [
+        "Gann registry loads locally.",
+        "Daily brief fallback rows load locally.",
+        "Types compile.",
+        "Missing optional fields do not crash app."
+      ],
+      "forbidden": [
+        "Do not fetch remote APIs.",
+        "Do not hardcode live data claims."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-004",
+      "title": "Implement Guardrail system",
+      "priority": "P0",
+      "goal": "Encode AMOS guardrails in UI and logic, not just static text.",
+      "inputs": [
+        "amos_no_omission_master_checklist_v0_1.md",
+        "amos_engineering_handoff_spec_v0_1.json"
+      ],
+      "outputs": [
+        "src/components/guardrails/GuardrailBanner.tsx",
+        "src/components/guardrails/DataFreshnessBadge.tsx",
+        "src/components/guardrails/ActionCapBadge.tsx",
+        "src/components/guardrails/AnchorVerificationGate.tsx",
+        "src/rules/actionCaps.ts",
+        "src/rules/gannGuards.ts",
+        "src/rules/eventGuards.ts",
+        "src/rules/evidenceGuards.ts"
+      ],
+      "steps": [
+        "Implement sample/manual-ready warning banner.",
+        "Implement Missing freshness → no aggressive action cap.",
+        "Implement unverified Gann anchor → research-only rendering.",
+        "Implement critical event → No Attack default.",
+        "Implement evidence without counter-evidence → cannot influence action."
+      ],
+      "acceptance": [
+        "Guardrails are visible on all relevant pages.",
+        "Rules are reusable pure functions.",
+        "Rules have tests in later task.",
+        "Gann cannot emit buy/sell alone."
+      ],
+      "forbidden": [
+        "Do not make guardrails dismissible by default.",
+        "Do not hide sample-data warning behind tooltip only."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-005",
+      "title": "Implement Master Index page",
+      "priority": "P0",
+      "goal": "Convert AMOS Alpha Master Index v0.5 into the app home page.",
+      "inputs": [
+        "amos_alpha_master_index_v0_5.html",
+        "amos_alpha_master_index_v0_5.json",
+        "amos_canonical_system_integration_spec_v0_1.json"
+      ],
+      "outputs": [
+        "src/app/page.tsx or src/pages/index.tsx",
+        "src/components/master/MasterIndex.tsx"
+      ],
+      "steps": [
+        "Show phase, deliveries, Gann Live, Pending, Anchor Check, Mode.",
+        "Render current workflow.",
+        "Render module sections and links/routes.",
+        "Include important guardrail."
+      ],
+      "acceptance": [
+        "Home page clearly says v0.3A Manual Data Alpha.",
+        "Shows Gann Live 5 / Pending 0.",
+        "Links to Gann Registry, stock pages, Daily Brief, Events, Evidence.",
+        "No source section from v0.5 is silently omitted."
+      ],
+      "forbidden": [
+        "Do not replace master index with a generic landing page."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-006",
+      "title": "Implement Gann Registry page",
+      "priority": "P0",
+      "goal": "Render Gann Live Registry v0.4 from local JSON.",
+      "inputs": [
+        "amos_gann_live_ticker_registry_v0_4.json",
+        "amos_gann_live_ticker_registry_v0_4.html"
+      ],
+      "outputs": [
+        "src/app/gann-registry/page.tsx or src/pages/gann-registry.tsx",
+        "src/components/gann/GannRegistry.tsx",
+        "src/components/gann/GannMissingGates.tsx"
+      ],
+      "steps": [
+        "Load registry JSON.",
+        "Render five Gann Live tickers.",
+        "Show engine file, data quality, price/time/unified scores, resonance state.",
+        "Show hard missing data.",
+        "Show guardrail: sample/manual-ready, not live."
+      ],
+      "acceptance": [
+        "CRDO / NVDA / LITE / IREN / HOOD all render as Gann Live.",
+        "No pending tickers in sample set.",
+        "Missing gates are visible.",
+        "Anchor Verification link is visible."
+      ],
+      "forbidden": [
+        "Do not convert Gann Live into trade signal.",
+        "Do not hide hard_missing_data."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-007",
+      "title": "Implement Stock Intelligence pages",
+      "priority": "P0",
+      "goal": "Create reusable StockIntelligencePage for five sample tickers.",
+      "inputs": [
+        "nvda_stock_page_gann_registry_v0_6.html",
+        "crdo_stock_page_gann_registry_v0_6.html",
+        "lite_stock_page_gann_registry_v0_6.html",
+        "iren_stock_page_gann_registry_v0_6.html",
+        "hood_stock_page_gann_registry_v0_6.html",
+        "amos_canonical_system_integration_spec_v0_1.json"
+      ],
+      "outputs": [
+        "src/app/stocks/[ticker]/page.tsx or src/pages/stocks/[ticker].tsx",
+        "src/components/stock/StockHeader.tsx",
+        "src/components/stock/DecisionSummary.tsx",
+        "src/components/gann/GannResearchZone.tsx",
+        "src/components/stock/EvidencePanel.tsx",
+        "src/components/stock/RiskProtectionPanel.tsx"
+      ],
+      "steps": [
+        "Implement route for ticker.",
+        "Render ticker profile, action, confidence/data cap.",
+        "Render GannResearchZone with anchor gate.",
+        "Render missing data and hard missing gates.",
+        "Stub remaining modules but keep headings: valuation, price action, AVWAP, RSI, options/gamma, narrative, evidence, risk, peer map."
+      ],
+      "acceptance": [
+        "Five sample tickers render.",
+        "Every page has Gann Zone.",
+        "Every page has sample-data warning.",
+        "No required Stock Intelligence module heading is omitted.",
+        "Missing modules are marked Pending, not silently deleted."
+      ],
+      "forbidden": [
+        "Do not simplify stock page to only price chart and summary.",
+        "Do not remove user-specific risk protection modules."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-008",
+      "title": "Implement Daily Brief page",
+      "priority": "P1",
+      "goal": "Render daily brief from local JSON/config fallback and preserve action buckets.",
+      "inputs": [
+        "amos_daily_brief_html_exporter_config_v0_2.json",
+        "amos_daily_brief_exported_from_unified_v0_2.html"
+      ],
+      "outputs": [
+        "src/app/daily-brief/page.tsx or src/pages/daily-brief.tsx",
+        "src/components/dailyBrief/DailyBrief.tsx"
+      ],
+      "steps": [
+        "Load fallback rows.",
+        "Compute action counts, freshness counts, Gann counts.",
+        "Render action buckets and ticker rows.",
+        "Render guardrails."
+      ],
+      "acceptance": [
+        "Daily brief matches exported HTML structure.",
+        "Missing Data count is visible.",
+        "Gann Live count is visible.",
+        "Trim Watch and Wait are visually distinct."
+      ],
+      "forbidden": [
+        "Do not remove guardrails from brief."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-009",
+      "title": "Implement Macro Events page",
+      "priority": "P1",
+      "goal": "Render manual macro/event calendar structure and No Attack logic.",
+      "inputs": [
+        "amos_macro_event_calendar_manual_input_v0_1.xlsx",
+        "amos_macro_event_calendar_manual_input_v0_1.json"
+      ],
+      "outputs": [
+        "src/app/events/page.tsx or src/pages/events.tsx",
+        "src/components/events/MacroEventCalendar.tsx",
+        "src/rules/eventGuards.ts"
+      ],
+      "steps": [
+        "Create local event sample JSON if needed.",
+        "Render event category, importance, risk mode, action cap.",
+        "Highlight Critical events and No Attack caps.",
+        "Show official source links as metadata."
+      ],
+      "acceptance": [
+        "Critical events default to No Attack.",
+        "OPEX/FOMC/CPI/Treasury/BTC/Earnings categories are present.",
+        "Event guardrail tests pass."
+      ],
+      "forbidden": [
+        "Do not treat event calendar as decoration; it must cap action."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-010",
+      "title": "Implement Evidence Packet page",
+      "priority": "P1",
+      "goal": "Render evidence claims with quality, bias, counter-evidence and action gate.",
+      "inputs": [
+        "amos_manual_data_workbook_v0_2_unified.xlsx",
+        "amos_csv_import_schema_v0_1.xlsx",
+        "amos_canonical_system_integration_spec_v0_1.json"
+      ],
+      "outputs": [
+        "src/app/evidence/page.tsx or src/pages/evidence.tsx",
+        "src/components/stock/EvidencePanel.tsx",
+        "src/rules/evidenceGuards.ts"
+      ],
+      "steps": [
+        "Create sample evidence JSON from existing workbook/config.",
+        "Render claim, source type, quality, bias risk, counter-evidence, what would prove it wrong.",
+        "Implement no-counter-evidence action block.",
+        "Show source quality notes."
+      ],
+      "acceptance": [
+        "Evidence without counter-evidence cannot influence action.",
+        "Source quality and bias risk are visible.",
+        "Claims are linked to ticker(s)."
+      ],
+      "forbidden": [
+        "Do not allow YouTube/X claims to bypass evidence gates."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-011",
+      "title": "Add guardrail test suite",
+      "priority": "P0",
+      "goal": "Make AMOS safety and no-omission guardrails executable tests.",
+      "inputs": [
+        "amos_engineering_handoff_spec_v0_1.json",
+        "amos_no_omission_master_checklist_v0_1.md"
+      ],
+      "outputs": [
+        "src/tests/actionCaps.test.ts",
+        "src/tests/gannGuards.test.ts",
+        "src/tests/evidenceGuards.test.ts",
+        "src/tests/eventGuards.test.ts"
+      ],
+      "steps": [
+        "Test Missing freshness blocks Attack.",
+        "Test unverified anchors force Research Only / Watch.",
+        "Test hard_missing_data caps Gann action.",
+        "Test Critical event defaults No Attack.",
+        "Test evidence without counter-evidence cannot influence action.",
+        "Test sample-data banner required on Gann/Stock pages."
+      ],
+      "acceptance": [
+        "All guardrail tests pass.",
+        "Tests fail if Gann emits buy/sell alone.",
+        "Tests fail if missing-data aggressive action is allowed."
+      ],
+      "forbidden": [
+        "Do not mark guardrail tests as optional."
+      ]
+    },
+    {
+      "id": "AMOS-CODEX-012",
+      "title": "Create engineering README and implementation report",
+      "priority": "P1",
+      "goal": "Document what Codex implemented, what remains, and where source artifacts live.",
+      "inputs": [
+        "amos_engineering_handoff_spec_v0_1.md",
+        "amos_repo_structure_v0_1.md",
+        "amos_codex_task_pack_v0_1.md"
+      ],
+      "outputs": [
+        "README.md",
+        "docs/IMPLEMENTATION_REPORT.md"
+      ],
+      "steps": [
+        "Write setup commands.",
+        "List routes and components.",
+        "List source artifacts copied.",
+        "List guardrail tests.",
+        "List known limitations and next tasks.",
+        "State no live APIs / no brokerage."
+      ],
+      "acceptance": [
+        "New engineer can run project from README.",
+        "Implementation report states exactly what is done and not done.",
+        "No-omission checklist is linked."
+      ],
+      "forbidden": [
+        "Do not claim production readiness."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Unified App Shell v0.1</title>
+<style>
+:root{
+  --bg:#05070c;--side:#070b15;--panel:#0b1020;--panel2:#10182d;--line:#1e2a46;
+  --text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;
+  --cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:radial-gradient(circle at 20% 0%,rgba(35,217,255,.08),transparent 28%),
+  radial-gradient(circle at 88% 10%,rgba(155,92,255,.08),transparent 26%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;
+  font-size:13px;line-height:1.5;
+}
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.sidebar{
+  background:rgba(7,11,21,.94);border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto;
+}
+.brand{padding:8px 10px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+.brand h1{font-size:24px;margin:6px 0 4px;letter-spacing:.06em}
+.brand p{color:var(--muted);margin:0}
+.nav{display:grid;gap:5px}
+.nav a{text-decoration:none;color:var(--soft);padding:9px 10px;border:1px solid transparent;border-radius:9px;display:grid;gap:2px}
+.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.nav span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.main{padding:20px;max-width:1440px;width:100%;margin:0 auto}
+.topbar{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-bottom:14px;
+}
+.card,.module-card{
+  background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px;
+}
+.hero{padding:22px 24px;margin-bottom:14px}
+.hero h1{font-size:36px;margin:8px 0 8px}
+.motto{color:var(--gold);font-weight:800;font-size:15px}
+.status{padding:16px}
+.status b{display:block;font-size:22px;color:var(--green)}
+.status span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.step{padding:13px;min-height:115px;position:relative;overflow:hidden}
+.step:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--cyan)}
+.step b{display:block;color:var(--cyan);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:6px}
+.step p{color:var(--soft);margin:0;font-size:12px}
+.module-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.module-card{padding:0;scroll-margin-top:18px}
+.module-head{display:flex;justify-content:space-between;gap:14px;padding:16px;border-bottom:1px solid var(--line)}
+.module-head h2{font-size:18px;margin:5px 0 6px}
+.module-head p{color:var(--soft);margin:0}
+.open-btn{align-self:flex-start;text-decoration:none;color:var(--cyan);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;border:1px solid rgba(35,217,255,.4);border-radius:999px;padding:7px 10px;background:rgba(35,217,255,.04);white-space:nowrap}
+.module-body{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.mini{border:1px solid var(--line);border-radius:9px;padding:10px;background:rgba(255,255,255,.02)}
+.mini b{display:block;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.mini span{color:var(--soft);font-size:12px}
+.roadmap{padding:18px;margin-top:14px}
+.roadmap h2{margin:0 0 12px}
+.roadmap li{color:var(--soft);margin:7px 0}
+@media(max-width:1200px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto}
+  .topbar,.module-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){.flow,.module-body{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="eyebrow">AMOS Alpha</div>
+      <h1>Unified Shell</h1>
+      <p>个人AI投研操作系统 v0.1</p>
+    </div>
+    <nav class="nav">
+      <a href="#home"><span>Command</span>Home Command Center</a>
+<a href="#stock"><span>Stock</span>CRDO Intelligence</a>
+<a href="#macro"><span>Macro</span>Macro Regime</a>
+<a href="#narrative"><span>Capital</span>Narrative & Rotation</a>
+<a href="#portfolio"><span>Portfolio</span>Portfolio Migration</a>
+<a href="#risk"><span>Risk</span>Risk Guardrail</a>
+<a href="#valuation"><span>Valuation</span>Valuation Battle</a>
+<a href="#gann"><span>Execution</span>Gann × Event × Gamma</a>
+<a href="#personality"><span>Personality</span>Stock Personality</a>
+<a href="#evidence"><span>Evidence</span>Evidence Quality</a>
+<a href="#schema"><span>Schema</span>Data Schema</a>
+<a href="#agents"><span>Agents</span>Agent Routing</a>
+
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="card hero">
+      <div class="eyebrow">AI Market Operating System · Product Shell</div>
+      <h1>AMOS Unified App Shell v0.1</h1>
+      <div class="motto">把分散模块合并成产品骨架：市场状态 → 资金迁移 → 个股作战 → 风险保护 → 证据治理 → 决策输出。</div>
+    </div>
+
+    <div class="topbar">
+      <div class="card status"><span>Build State</span><b>Static Alpha</b><p style="color:var(--soft);margin-bottom:0">当前是静态产品壳，下一步转数据驱动。</p></div>
+      <div class="card status"><span>Core Principle</span><b>Evidence First</b><p style="color:var(--soft);margin-bottom:0">用户观点是线索，不是证明。</p></div>
+      <div class="card status"><span>Next Bottleneck</span><b>Scoring</b><p style="color:var(--soft);margin-bottom:0">把状态机和评分公式接入样本数据。</p></div>
+    </div>
+
+    <div class="flow">
+      <div class="card step"><b>01 Intake</b><p>官方数据、市场数据、财报、YouTube/X、用户线索。</p></div>
+      <div class="card step"><b>02 Evidence</b><p>来源评分、偏见识别、反证搜索、适用周期。</p></div>
+      <div class="card step"><b>03 Engines</b><p>Macro、Capital、Narrative、Valuation、Risk、Technical。</p></div>
+      <div class="card step"><b>04 Debate</b><p>Bull/Bear/Risk/Macro/Valuation 互相质询。</p></div>
+      <div class="card step"><b>05 Decision</b><p>输出行动、信心、证据链、反证、失效条件。</p></div>
+    </div>
+
+    <div class="module-grid">
+      
+    <section id="home" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Command Module</div>
+          <h2>01. Home Command Center</h2>
+          <p>市场总战情室</p>
+        </div>
+        <a class="open-btn" href="amos_home_command_center_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>市场总战情室</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="stock" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Stock Module</div>
+          <h2>02. CRDO Intelligence</h2>
+          <p>个股作战室样板</p>
+        </div>
+        <a class="open-btn" href="crdo_stock_intelligence_page_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>个股作战室样板</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="macro" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Macro Module</div>
+          <h2>03. Macro Regime</h2>
+          <p>宏观状态机</p>
+        </div>
+        <a class="open-btn" href="amos_macro_regime_liquidity_state_machine_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>宏观状态机</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="narrative" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Capital Module</div>
+          <h2>04. Narrative & Rotation</h2>
+          <p>叙事生命周期与资金迁移</p>
+        </div>
+        <a class="open-btn" href="amos_narrative_lifecycle_capital_rotation_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>叙事生命周期与资金迁移</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="portfolio" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Portfolio Module</div>
+          <h2>05. Portfolio Migration</h2>
+          <p>持仓战场与迁移</p>
+        </div>
+        <a class="open-btn" href="amos_portfolio_battle_map_migration_engine_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>持仓战场与迁移</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="risk" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Risk Module</div>
+          <h2>06. Risk Guardrail</h2>
+          <p>风险保护与行为护栏</p>
+        </div>
+        <a class="open-btn" href="amos_risk_protection_behavior_guardrail_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>风险保护与行为护栏</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="valuation" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Valuation Module</div>
+          <h2>07. Valuation Battle</h2>
+          <p>七层估值战场</p>
+        </div>
+        <a class="open-btn" href="amos_valuation_battle_map_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>七层估值战场</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="gann" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Execution Module</div>
+          <h2>08. Gann × Event × Gamma</h2>
+          <p>执行共振图</p>
+        </div>
+        <a class="open-btn" href="amos_gann_event_gamma_resonance_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>执行共振图</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="personality" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Personality Module</div>
+          <h2>09. Stock Personality</h2>
+          <p>个股股性雷达</p>
+        </div>
+        <a class="open-btn" href="amos_stock_personality_radar_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>个股股性雷达</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="evidence" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Evidence Module</div>
+          <h2>10. Evidence Quality</h2>
+          <p>证据质量系统</p>
+        </div>
+        <a class="open-btn" href="amos_research_source_evidence_quality_engine_v0_1.html" target="_blank">Open HTML</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>证据质量系统</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="schema" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Schema Module</div>
+          <h2>11. Data Schema</h2>
+          <p>数据骨架</p>
+        </div>
+        <a class="open-btn" href="amos_data_schema_v0_1.md" target="_blank">Open DOC</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>数据骨架</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="agents" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Agents Module</div>
+          <h2>12. Agent Routing</h2>
+          <p>AI分工路由</p>
+        </div>
+        <a class="open-btn" href="amos_agent_routing_v0_1.md" target="_blank">Open DOC</a>
+      </div>
+      <div class="module-body">
+        <div class="mini">
+          <b>Role</b>
+          <span>AI分工路由</span>
+        </div>
+        <div class="mini">
+          <b>Output</b>
+          <span>状态 / 证据链 / 行动偏向 / 失效条件</span>
+        </div>
+        <div class="mini">
+          <b>Next</b>
+          <span>接入样本数据 → 评分公式 → 每日报告</span>
+        </div>
+      </div>
+    </section>
+    
+    </div>
+
+    <div class="card roadmap">
+      <div class="eyebrow">Next Engineering Tasks</div>
+      <h2>从静态原型到可运行 Alpha</h2>
+      <ol>
+        <li>创建统一样本数据文件：CRDO / LITE / IREN / HOOD / NVDA。</li>
+        <li>把 Macro Regime、Narrative、Risk、Gann Resonance 评分公式写成可执行 JSON 逻辑。</li>
+        <li>生成 Daily Market Brief 模板：证据链 + 反证 + 行动偏向。</li>
+        <li>把 CRDO 个股页从静态文本改成读取样本数据渲染。</li>
+        <li>开始真实证据填充：宏观状态、NVDA事件、AI Infra、CRDO财报/估值。</li>
+      </ol>
+    </div>
+  </main>
+</div>
+</body>
+</html>

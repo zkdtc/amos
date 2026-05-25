@@ -1,0 +1,66 @@
+{
+  "version": "AMOS Evidence Packet Sample v0.1",
+  "data_quality": "sample_manual_ready_not_live",
+  "guardrails": [
+    "Counter-evidence is required before any claim can influence action.",
+    "Low source quality + high bias risk forces Research-Only action gate."
+  ],
+  "packets": [
+    {
+      "packetId": "EVD-2026-05-24-001",
+      "date": "2026-05-24",
+      "tickers": ["NVDA"],
+      "sourceType": "Sell-side Research",
+      "claim": "Hyperscaler AI CapEx remains durable into 2027.",
+      "claimType": "Demand Durability",
+      "stance": "Bullish",
+      "qualityScore": 0.78,
+      "biasRisk": "Moderate",
+      "counterEvidence": "Some hyperscalers may pre-buy capacity in 2026; risk of 2027 digestion phase.",
+      "whatWouldProveItWrong": "Cloud capex guidance is cut by >10% by two of MSFT/META/GOOG/AMZN in same quarter.",
+      "actionGate": "Can Influence Action"
+    },
+    {
+      "packetId": "EVD-2026-05-24-002",
+      "date": "2026-05-24",
+      "tickers": ["CRDO"],
+      "sourceType": "Conference Soundbite",
+      "claim": "CRDO is the de-facto SerDes partner for 800G/1.6T deployments.",
+      "claimType": "Competitive Position",
+      "stance": "Bullish",
+      "qualityScore": 0.55,
+      "biasRisk": "High",
+      "counterEvidence": "",
+      "whatWouldProveItWrong": "Customer concentration concentration drops or a competitor wins a flagship hyperscaler design.",
+      "actionGate": "Research Only"
+    },
+    {
+      "packetId": "EVD-2026-05-24-003",
+      "date": "2026-05-24",
+      "tickers": ["IREN"],
+      "sourceType": "Company Release",
+      "claim": "AI Compute revenue is materially accretive in next 2 quarters.",
+      "claimType": "Revenue Mix",
+      "stance": "Bullish",
+      "qualityScore": 0.6,
+      "biasRisk": "High",
+      "counterEvidence": "Capex/dilution funding risk; BTC hash price weakens; execution unproven.",
+      "whatWouldProveItWrong": "Equity raise without matching contracted AI revenue.",
+      "actionGate": "Can Influence Action"
+    },
+    {
+      "packetId": "EVD-2026-05-24-004",
+      "date": "2026-05-24",
+      "tickers": ["HOOD"],
+      "sourceType": "Regulatory",
+      "claim": "Crypto-equity revenue remains structurally significant.",
+      "claimType": "Regulatory / Revenue",
+      "stance": "Mixed",
+      "qualityScore": 0.65,
+      "biasRisk": "Moderate",
+      "counterEvidence": "",
+      "whatWouldProveItWrong": "New SEC/CFTC action constrains crypto product revenue.",
+      "actionGate": "Research Only"
+    }
+  ]
+}

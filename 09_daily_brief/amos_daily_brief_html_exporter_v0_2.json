@@ -1,0 +1,21 @@
+{
+  "version": "AMOS Daily Brief HTML Exporter Script v0.2",
+  "created": "2026-05-24",
+  "files": {
+    "script": "amos_daily_brief_html_exporter_v0_2.py",
+    "config": "amos_daily_brief_html_exporter_config_v0_2.json",
+    "sample_output": "amos_daily_brief_exported_from_unified_v0_2.html",
+    "markdown": "amos_daily_brief_html_exporter_v0_2.md"
+  },
+  "source_workbook": "amos_manual_data_workbook_v0_2_unified.xlsx",
+  "source_sheet": "Generated Brief",
+  "output_html": "amos_daily_brief_exported_from_unified_v0_2.html",
+  "purpose": "Export the Generated Brief sheet from the unified manual workbook into a standalone HTML daily brief.",
+  "guardrails": [
+    "Do not treat sample/manual-ready Gann data as live market data.",
+    "If Data Freshness is Missing, no aggressive action.",
+    "Gann cannot trigger trade alone.",
+    "Critical events default to No Attack unless setup is confirmed and risk is accepted.",
+    "Anchor Verification v0.2 is required before formal Gann use."
+  ]
+}

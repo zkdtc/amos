@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Generated Daily Brief Snapshot v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--orange:#ff9f43;--violet:#9b5cff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 8%,rgba(255,209,102,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1580px;margin:0 auto;padding:20px}
+.card,.action-card,.risk-card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat b{display:block;font-size:24px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.box{padding:18px;margin-bottom:14px}.box h2{font-size:17px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}.box li,.box p{color:var(--soft)}
+.actions{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}.action-card{padding:14px;min-height:160px}.action-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.action-top b{font-size:16px}.action-top span{font-size:26px;color:var(--gold);font-weight:900}.tickers{color:var(--text);min-height:36px}.action-card small,.risk-card small{color:var(--muted)}
+.hold{border-color:rgba(50,230,138,.5)}.trim-watch{border-color:rgba(255,77,109,.55)}.wait{border-color:rgba(255,209,102,.45)}.build{border-color:rgba(35,217,255,.45)}
+.risks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.risk-card{padding:14px}.risk-card b{color:var(--red)}.risk-card p{color:var(--soft);min-height:42px}
+table{width:100%;border-collapse:collapse}th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;text-align:left;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px;border-bottom:1px solid rgba(30,42,70,.65);vertical-align:top;color:var(--soft)}.pill{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--gold);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:1200px){.actions{grid-template-columns:1fr 1fr 1fr}.risks,.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.actions,.risks,.stats{grid-template-columns:1fr}table{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Daily Brief Snapshot · v0.1</div>
+    <h1>Generated Daily Brief</h1>
+    <div class="motto">从 Excel Generated Brief 抽取出的独立 HTML 日报。当前仍是 v0.3A Manual Data Alpha。</div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><span>Brief Date</span><b>2026-05-24</b></div>
+    <div class="card stat"><span>Mode</span><b>Pre-market / Manual</b></div>
+    <div class="card stat"><span>Confidence Cap</span><b>60</b></div>
+    <div class="card stat"><span>Data Mode</span><b>Manual Alpha</b></div>
+  </div>
+
+  <div class="card box warning">
+    <h2>Market / Risk Header</h2>
+    <ul>
+      <li><b>Market Regime:</b> Manual input required</li>
+      <li><b>Beta Ceiling:</b> Manual input required</li>
+      <li><b>Main Risk:</b> Manual input required</li>
+    </ul>
+  </div>
+
+  <div class="card box">
+    <h2>Executive Summary</h2>
+    <ul><li><b>Action Summary:</b> Hold: 5 | Wait: 4 | Trim Watch: 1 | Build: 0</li><li><b>Data Quality:</b> Fresh: 0 | Partial: 0 | Stale: 0 | Missing: 10</li><li><b>Main Instruction:</b> Do not act on missing data. Read action buckets, risk alerts, and invalidations before trading.</li></ul>
+  </div>
+
+  <div class="actions">
+    <div class="action-card attack">
+      <div class="action-top"><b>Attack</b><span>0</span></div>
+      <p class="tickers">—</p>
+      <small>Full attack only if data is fresh, macro allows, and invalidation is defined.</small>
+    </div>
+    
+    <div class="action-card build">
+      <div class="action-top"><b>Build</b><span>0</span></div>
+      <p class="tickers">—</p>
+      <small>Build only with technical confirmation and clear stop.</small>
+    </div>
+    
+    <div class="action-card hold">
+      <div class="action-top"><b>Hold</b><span>5</span></div>
+      <p class="tickers">NVDA, LITE, GOOG, MSFT, AVGO</p>
+      <small>Hold thesis intact; monitor invalidation.</small>
+    </div>
+    
+    <div class="action-card trim-watch">
+      <div class="action-top"><b>Trim Watch</b><span>1</span></div>
+      <p class="tickers">CRDO</p>
+      <small>Protect profit; wait for exhaustion confirmation before actual trim.</small>
+    </div>
+    
+    <div class="action-card exit">
+      <div class="action-top"><b>Exit</b><span>0</span></div>
+      <p class="tickers">—</p>
+      <small>Exit if thesis or structure is broken.</small>
+    </div>
+    
+    <div class="action-card wait">
+      <div class="action-top"><b>Wait</b><span>4</span></div>
+      <p class="tickers">IREN, HOOD, RKLB, IONQ</p>
+      <small>Wait for maturity or confirmation; no FOMO.</small>
+    </div>
+    </div>
+
+  <div class="risks">
+    <div class="risk-card">
+      <b>High Event Pressure &gt;= 70</b>
+      <p>—</p>
+      <small>Event pressure can create good-news fade, gap risk, or gamma release.</small>
+    </div>
+    
+    <div class="risk-card">
+      <b>High Risk Stack &gt;= 70</b>
+      <p>—</p>
+      <small>Do not add; consider trim/watch depending on setup.</small>
+    </div>
+    
+    <div class="risk-card">
+      <b>Panic Maturity &gt;= 60</b>
+      <p>—</p>
+      <small>Potential probe candidates if thesis intact and reversal confirms.</small>
+    </div>
+    
+    <div class="risk-card">
+      <b>Missing Data</b>
+      <p>NVDA, CRDO, LITE, IREN, HOOD, GOOG, MSFT, AVGO, RKLB, IONQ</p>
+      <small>Confidence must be capped; no aggressive action.</small>
+    </div>
+    </div>
+
+  <div class="card box">
+    <h2>Ticker Brief Lines</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th><th>Role</th><th>Action</th><th>Trend</th><th>AVWAP</th><th>Gann</th><th>Narrative</th><th>Risk</th><th>Panic</th><th>Freshness</th><th>Invalidation</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr class="hold">
+      <td>NVDA</td>
+      <td>Core</td>
+      <td><span class="pill">Hold</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>AI_INFRA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Fails post-event AVWAP / AI CapEx weakens / RS deteriorates</td>
+    </tr>
+    
+    <tr class="trim-watch">
+      <td>CRDO</td>
+      <td>Swing</td>
+      <td><span class="pill">Trim Watch</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>OPTICAL</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Breaks AVWAP / loses RS / revisions down</td>
+    </tr>
+    
+    <tr class="hold">
+      <td>LITE</td>
+      <td>Swing</td>
+      <td><span class="pill">Hold</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>OPTICAL</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Optical strong but LITE underperforms peers / guidance weakens</td>
+    </tr>
+    
+    <tr class="wait">
+      <td>IREN</td>
+      <td>Tactical</td>
+      <td><span class="pill">Wait</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>BTC_FINANCE</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>BTC loses structure / AI compute thesis weakens / dilution risk rises</td>
+    </tr>
+    
+    <tr class="wait">
+      <td>HOOD</td>
+      <td>Research</td>
+      <td><span class="pill">Wait</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>BTC_FINANCE</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Regulatory pressure expands / BTC remains liquidation regime</td>
+    </tr>
+    
+    <tr class="hold">
+      <td>GOOG</td>
+      <td>Core</td>
+      <td><span class="pill">Hold</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>AI_INFRA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Cloud/AI capex thesis weakens / RS deteriorates</td>
+    </tr>
+    
+    <tr class="hold">
+      <td>MSFT</td>
+      <td>Core</td>
+      <td><span class="pill">Hold</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>AI_INFRA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Azure/AI capex weakens / margin pressure</td>
+    </tr>
+    
+    <tr class="hold">
+      <td>AVGO</td>
+      <td>Core</td>
+      <td><span class="pill">Hold</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>AI_INFRA</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>AI ASIC demand weakens / RS deteriorates</td>
+    </tr>
+    
+    <tr class="wait">
+      <td>RKLB</td>
+      <td>Tactical</td>
+      <td><span class="pill">Wait</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>SPACE</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Space theme fades / failed breakout</td>
+    </tr>
+    
+    <tr class="wait">
+      <td>IONQ</td>
+      <td>Tactical</td>
+      <td><span class="pill">Wait</span></td>
+      <td>Unclear</td>
+      <td>Unknown</td>
+      <td>Unknown</td>
+      <td>QUANTUM</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Missing</td>
+      <td>Quantum theme fades / tail-chase without leaders</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr class="0">
+      <td>0</td>
+      <td>0</td>
+      <td><span class="pill">0</span></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+  <div class="card box warning">
+    <h2>No-Trade Rules</h2>
+    <ul>
+      <li>No leverage.</li>
+      <li>No action without invalidation.</li>
+      <li>No chasing after missed move.</li>
+      <li>Gann cannot act alone.</li>
+      <li>If data freshness is Missing, no aggressive action.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

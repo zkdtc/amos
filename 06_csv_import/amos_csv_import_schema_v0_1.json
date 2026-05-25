@@ -1,0 +1,24 @@
+{
+  "version": "AMOS CSV Import Schema v0.1",
+  "created": "2026-05-24",
+  "purpose": "Define CSV templates and mapping rules for importing market, Gann, event and evidence data into AMOS Manual Data Workbook v0.2.",
+  "output_workbook": "amos_csv_import_schema_v0_1.xlsx",
+  "csv_templates": [
+    "amos_price_technical_import_template_v0_1.csv",
+    "amos_gann_import_template_v0_1.csv",
+    "amos_event_import_template_v0_1.csv",
+    "amos_evidence_import_template_v0_1.csv"
+  ],
+  "sheets": [
+    "Overview",
+    "price_technical_import",
+    "gann_import",
+    "event_import",
+    "evidence_import",
+    "Mapping to Workbook",
+    "Validation Rules",
+    "Lists"
+  ],
+  "target_workbook": "amos_manual_data_workbook_v0_2_unified.xlsx",
+  "guardrail": "CSV import reduces manual typing but does not bypass evidence, anchor verification, action caps, or live-data requirements."
+}

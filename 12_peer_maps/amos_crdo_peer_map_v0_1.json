@@ -1,0 +1,55 @@
+{
+  "version": "AMOS CRDO Peer Map v0.1",
+  "data_quality": "sample/manual-ready, not live",
+  "primary_ticker": "CRDO",
+  "peer_basket": [
+    "NVDA",
+    "AVGO",
+    "ANET",
+    "CRDO",
+    "COHR",
+    "LITE"
+  ],
+  "purpose": "Compare AI optical/connectivity/networking peer leadership, lagging behavior, risk and migration rules.",
+  "score_formula": {
+    "composite_leader_score": "25% leadership + 18% RS vs QQQ + 18% RS vs peers + 17% revenue visibility + 12% margin quality + 10% valuation comfort",
+    "risk_adjusted_score": "composite - 12% event pressure - 12% crowding risk - 12% execution risk"
+  },
+  "migration_rules": [
+    {
+      "from": "LITE",
+      "to": "CRDO",
+      "trigger": "CRDO keeps RS while LITE lags.",
+      "confirmation": "CRDO above AVWAP + revisions/guide stable.",
+      "action": "Partial migration / no chase."
+    },
+    {
+      "from": "CRDO",
+      "to": "LITE",
+      "trigger": "LITE catches up with improving RS and lower risk.",
+      "confirmation": "LITE reclaims AVWAP + peer basket improves.",
+      "action": "Rotate swing exposure."
+    },
+    {
+      "from": "CRDO/LITE",
+      "to": "ANET/AVGO",
+      "trigger": "Need lower beta AI infra exposure.",
+      "confirmation": "ANET/AVGO strong RS and macro beta ceiling lower.",
+      "action": "Defensive migration."
+    },
+    {
+      "from": "Any peer",
+      "to": "NVDA",
+      "trigger": "AI chain uncertainty rises.",
+      "confirmation": "NVDA holds leadership and post-event structure.",
+      "action": "Anchor exposure."
+    },
+    {
+      "from": "CRDO",
+      "to": "Cash",
+      "trigger": "Risk stack high + structure breaks.",
+      "confirmation": "AVWAP lost + LH/LL + event fade.",
+      "action": "Trim or exit swing."
+    }
+  ]
+}

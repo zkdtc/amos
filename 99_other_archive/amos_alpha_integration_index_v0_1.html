@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Alpha Integration Index v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.09),transparent 30%),radial-gradient(circle at 88% 8%,rgba(155,92,255,.08),transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1580px;margin:0 auto;padding:22px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:26px 28px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:38px;margin:6px 0 8px}
+.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.stat{padding:18px}.stat b{display:block;font-size:28px;color:var(--green)}.stat span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.module{padding:16px;min-height:220px;position:relative;overflow:hidden}
+.module:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--cyan)}
+.module h2{font-size:15px;margin:14px 0 8px}
+.module p{color:#a9b8d8;min-height:70px}
+.status{position:absolute;top:10px;right:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:3px 7px}
+.links a{display:inline-block;margin:3px 6px 0 0;text-decoration:none;color:var(--cyan);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;border:1px solid rgba(35,217,255,.35);border-radius:999px;padding:4px 8px;background:rgba(35,217,255,.04)}
+.roadmap{padding:20px;margin-bottom:14px}.roadmap li{color:#a9b8d8;margin:8px 0}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.principles .card{padding:16px}.principles h3{margin:0 0 8px;font-size:13px;color:var(--gold)}.principles p{color:#a9b8d8;margin:0}
+@media(max-width:1200px){.grid{grid-template-columns:1fr 1fr}.stats,.principles{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.grid,.stats,.principles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Alpha Integration Index · v0.1</div>
+    <h1>AMOS Alpha 工程总入口</h1>
+    <div class="motto">从聊天转向工程：主干、页面、数据、AI分工、证据治理、风险保护已经进入 Alpha 骨架。</div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><b>12</b><span>Modules Delivered</span></div>
+    <div class="card stat"><b>2</b><span>Page Prototypes</span></div>
+    <div class="card stat"><b>10</b><span>Engine Modules</span></div>
+    <div class="card stat"><b>1</b><span>Next: Data Driven</span></div>
+  </div>
+
+  <div class="grid">
+    
+    <div class="card module">
+      <div class="status">Prototype</div>
+      <h2>Home Command Center</h2>
+      <p>AMOS首页战情室：市场状态、时间轴、资金迁移、事件压力、持仓战场。</p>
+      <div class="links"><a href="amos_home_command_center_v0_1.html" target="_blank">HTML</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Prototype</div>
+      <h2>CRDO Stock Intelligence Page</h2>
+      <p>个股作战室样板：个股身份、估值战场、Gann、事件、AI Debate、证据链。</p>
+      <div class="links"><a href="crdo_stock_intelligence_page_v0_1.html" target="_blank">HTML</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Foundation</div>
+      <h2>Data Schema</h2>
+      <p>AMOS数据骨架：market_state、capital_flow、narrative、valuation、gann、decision等。</p>
+      <div class="links"><a href="amos_data_schema_v0_1.md" target="_blank">MD</a> <a href="amos_data_schema_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Foundation</div>
+      <h2>Agent Routing</h2>
+      <p>多AI分工：Research、Macro、Capital Flow、Narrative、Risk、Debate、Decision等。</p>
+      <div class="links"><a href="amos_agent_routing_v0_1.md" target="_blank">MD</a> <a href="amos_agent_routing_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Valuation Battle Map</h2>
+      <p>七层估值：宏观约束、内在价值、市场共识、Narrative、周期、股性、极端风险。</p>
+      <div class="links"><a href="amos_valuation_battle_map_v0_1.html" target="_blank">HTML</a> <a href="amos_valuation_battle_map_v0_1.md" target="_blank">MD</a> <a href="amos_valuation_battle_map_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Gann × Event × Gamma Resonance</h2>
+      <p>执行层：Gann时间、Gann价格、事件压力、Gamma、Price Action确认。</p>
+      <div class="links"><a href="amos_gann_event_gamma_resonance_v0_1.html" target="_blank">HTML</a> <a href="amos_gann_event_gamma_resonance_v0_1.md" target="_blank">MD</a> <a href="amos_gann_event_gamma_resonance_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Narrative Lifecycle & Capital Rotation</h2>
+      <p>叙事生命周期与资金迁移：Expansion、Rotation、Defensive Shift、Late-cycle Chase。</p>
+      <div class="links"><a href="amos_narrative_lifecycle_capital_rotation_v0_1.html" target="_blank">HTML</a> <a href="amos_narrative_lifecycle_capital_rotation_v0_1.md" target="_blank">MD</a> <a href="amos_narrative_lifecycle_capital_rotation_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Stock Personality Radar</h2>
+      <p>个股股性雷达：核心龙头、二线高Beta、流动性赌场代理、长久期未来故事等。</p>
+      <div class="links"><a href="amos_stock_personality_radar_v0_1.html" target="_blank">HTML</a> <a href="amos_stock_personality_radar_v0_1.md" target="_blank">MD</a> <a href="amos_stock_personality_radar_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Portfolio Battle Map & Migration</h2>
+      <p>持仓迁移系统：旧仓健康、新战线强度、机会成本、执行窗口、迁移动作。</p>
+      <div class="links"><a href="amos_portfolio_battle_map_migration_engine_v0_1.html" target="_blank">HTML</a> <a href="amos_portfolio_battle_map_migration_engine_v0_1.md" target="_blank">MD</a> <a href="amos_portfolio_battle_map_migration_engine_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Risk Protection & Behavior Guardrail</h2>
+      <p>风险保护：高位止盈、恐慌成熟、禁止杠杆、Core/Swing分离、机会成本。</p>
+      <div class="links"><a href="amos_risk_protection_behavior_guardrail_v0_1.html" target="_blank">HTML</a> <a href="amos_risk_protection_behavior_guardrail_v0_1.md" target="_blank">MD</a> <a href="amos_risk_protection_behavior_guardrail_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Governance</div>
+      <h2>Research Source & Evidence Quality</h2>
+      <p>证据系统：YouTube/X/财报/官方数据/研报/书籍的质量评分、偏见识别、周期有效性。</p>
+      <div class="links"><a href="amos_research_source_evidence_quality_engine_v0_1.html" target="_blank">HTML</a> <a href="amos_research_source_evidence_quality_engine_v0_1.md" target="_blank">MD</a> <a href="amos_research_source_evidence_quality_engine_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+    <div class="card module">
+      <div class="status">Core</div>
+      <h2>Macro Regime & Liquidity State Machine</h2>
+      <p>宏观状态机：Goldilocks、流动性扩张/收缩、估值压缩、Risk-off、恐慌成熟等。</p>
+      <div class="links"><a href="amos_macro_regime_liquidity_state_machine_v0_1.html" target="_blank">HTML</a> <a href="amos_macro_regime_liquidity_state_machine_v0_1.md" target="_blank">MD</a> <a href="amos_macro_regime_liquidity_state_machine_v0_1.json" target="_blank">JSON</a></div>
+    </div>
+    
+  </div>
+
+  <div class="card roadmap">
+    <div class="eyebrow">Next Engineering Sequence</div>
+    <ol>
+      <li>把所有可视模块统一进一个单页应用壳。</li>
+      <li>创建可复用组件：card、score、ladder、timeline、evidence panel、decision panel。</li>
+      <li>为 CRDO / LITE / IREN / HOOD / NVDA 创建样本数据。</li>
+      <li>实现评分公式：macro regime、narrative lifecycle、risk stack、valuation battle、Gann resonance。</li>
+      <li>创建每日 AI 报告模板。</li>
+      <li>开始真实证据填充：宏观状态 + CRDO 样板页。</li>
+    </ol>
+  </div>
+
+  <div class="principles">
+    <div class="card"><h3>Market First</h3><p>市场先于用户认知；用户观点是线索，不是证明。</p></div>
+    <div class="card"><h3>Evidence First</h3><p>每个判断必须有证据、反证、不确定性和失效条件。</p></div>
+    <div class="card"><h3>System First</h3><p>新资料必须整合进主干，而不是制造新模块堆砌。</p></div>
+  </div>
+</div>
+</body>
+</html>

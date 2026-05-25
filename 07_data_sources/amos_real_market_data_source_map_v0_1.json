@@ -1,0 +1,35 @@
+{
+  "version": "AMOS Real Market Data Source Map v0.1",
+  "created": "2026-05-24",
+  "output_workbook": "amos_real_market_data_source_map_v0_1.xlsx",
+  "sheets": [
+    "Overview",
+    "Source Map",
+    "Field to Source",
+    "Import Plan",
+    "Source Quality",
+    "Lists"
+  ],
+  "p0_sources": [
+    "TradingView Chart Data CSV",
+    "TradingView Screener Export CSV",
+    "SEC EDGAR APIs",
+    "Company IR",
+    "Nasdaq Historical/Market Activity"
+  ],
+  "unsolved_sources": [
+    "Options/Gamma provider",
+    "BTC/crypto data provider",
+    "Macro calendar source standardization"
+  ],
+  "guardrail": "Data source map does not bypass Evidence Packet, Anchor Verification or Action Caps.",
+  "web_sources_used": [
+    "https://www.tradingview.com/support/solutions/43000537255-how-to-export-chart-data/",
+    "https://www.tradingview.com/support/solutions/43000474432-how-to-export-screener-data/",
+    "https://www.nasdaq.com/market-activity/quotes/historical",
+    "https://www.nasdaq.com/market-activity",
+    "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "https://finance.yahoo.com/quote/%5EIXIC/history/",
+    "https://www.nyse.com/market-data/historical"
+  ]
+}

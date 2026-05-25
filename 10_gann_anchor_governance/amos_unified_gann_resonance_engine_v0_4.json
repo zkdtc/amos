@@ -1,0 +1,291 @@
+{
+  "version": "AMOS Unified Gann Resonance Engine v0.4",
+  "created": "2026-05-24",
+  "ticker": "CRDO",
+  "data_quality": "sample_only_not_live",
+  "purpose": "Combine Gann price distance, Gann time distance, and confirmation gates into one resonance module.",
+  "inputs": {
+    "price_engine_file": "amos_gann_cluster_distance_engine_v0_2.json",
+    "time_engine_file": "amos_gann_time_distance_engine_v0_3.json"
+  },
+  "scores": {
+    "gann_price_score": 62,
+    "gann_time_score": -7,
+    "avwap_confirmation_score": 35,
+    "rsi_momentum_score": 40,
+    "tcg_price_action_score": 35,
+    "gamma_event_score": 45,
+    "volume_confirmation_score": 35,
+    "unified_gann_resonance_score": 32,
+    "resonance_state": "no_actionable_resonance",
+    "action_interpretation": "No Gann edge."
+  },
+  "formula": {
+    "unified_gann_resonance_score": {
+      "gann_price_score": 0.28,
+      "gann_time_score": 0.28,
+      "avwap_confirmation_score": 0.14,
+      "rsi_momentum_score": 0.1,
+      "tcg_price_action_score": 0.1,
+      "gamma_event_score": 0.06,
+      "volume_confirmation_score": 0.04
+    }
+  },
+  "confirmation_gates": {
+    "avwap_confirmation_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "earnings AVWAP",
+        "ATH AVWAP",
+        "major swing low AVWAP",
+        "price_vs_avwap_pct"
+      ]
+    },
+    "rsi_momentum_score": {
+      "score": 40,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "daily RSI",
+        "4H RSI",
+        "RSI divergence"
+      ]
+    },
+    "tcg_price_action_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "HH/HL or LH/LL",
+        "8/12 EMA state",
+        "inside bar / equilibrium breakout"
+      ]
+    },
+    "gamma_event_score": {
+      "score": 45,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "call wall",
+        "put wall",
+        "dealer gamma",
+        "OPEX",
+        "earnings/event pressure"
+      ]
+    },
+    "volume_confirmation_score": {
+      "score": 35,
+      "status": "placeholder_not_connected",
+      "needed_data": [
+        "relative volume",
+        "volume exhaustion",
+        "breakout volume"
+      ]
+    }
+  },
+  "nearest_price_context": {
+    "nearest_support": {
+      "ticker": "CRDO",
+      "anchor_id": "crdo_sample_major_high_2026_02_14",
+      "anchor_type": "sample_major_high",
+      "anchor_date": "2026-02-14",
+      "anchor_price": 86.7,
+      "anchor_quality_score": 68,
+      "direction": "down",
+      "angle": 90,
+      "level": 77.64,
+      "band_low": 77.25,
+      "band_high": 78.03,
+      "distance_pct": -0.97,
+      "abs_distance_pct": 0.97,
+      "in_observation_band": false
+    },
+    "nearest_resistance": {
+      "ticker": "CRDO",
+      "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+      "anchor_type": "sample_earnings_gap",
+      "anchor_date": "2025-12-02",
+      "anchor_price": 64.25,
+      "anchor_quality_score": 64,
+      "direction": "up",
+      "angle": 180,
+      "level": 81.28,
+      "band_low": 80.87,
+      "band_high": 81.69,
+      "distance_pct": 3.67,
+      "abs_distance_pct": 3.67,
+      "in_observation_band": false
+    },
+    "nearest_cluster": {
+      "cluster_center": 90.98,
+      "cluster_low": 90.55,
+      "cluster_high": 91.42,
+      "member_count": 2,
+      "avg_anchor_quality": 66.0,
+      "distance_pct": 16.05,
+      "abs_distance_pct": 16.05,
+      "members": [
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+          "anchor_type": "sample_earnings_gap",
+          "anchor_date": "2025-12-02",
+          "anchor_price": 64.25,
+          "anchor_quality_score": 64,
+          "direction": "up",
+          "angle": 270,
+          "level": 90.55,
+          "band_low": 90.09,
+          "band_high": 91.0,
+          "distance_pct": 15.5,
+          "abs_distance_pct": 15.5,
+          "in_observation_band": false
+        },
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_major_high_2026_02_14",
+          "anchor_type": "sample_major_high",
+          "anchor_date": "2026-02-14",
+          "anchor_price": 86.7,
+          "anchor_quality_score": 68,
+          "direction": "up",
+          "angle": 45,
+          "level": 91.42,
+          "band_low": 90.96,
+          "band_high": 91.88,
+          "distance_pct": 16.61,
+          "abs_distance_pct": 16.61,
+          "in_observation_band": false
+        }
+      ]
+    }
+  },
+  "nearest_time_context": {
+    "active_time_windows": [],
+    "nearest_absolute_windows": [
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+        "anchor_type": "sample_earnings_gap",
+        "anchor_date": "2025-12-02",
+        "anchor_quality_score": 64,
+        "window_days": 180,
+        "target_date": "2026-05-31",
+        "days_to_window": 7,
+        "abs_days_to_window": 7,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 51
+      },
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_major_high_2026_02_14",
+        "anchor_type": "sample_major_high",
+        "anchor_date": "2026-02-14",
+        "anchor_quality_score": 68,
+        "window_days": 90,
+        "target_date": "2026-05-15",
+        "days_to_window": -9,
+        "abs_days_to_window": 9,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 32
+      },
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_earnings_gap_2025_12_02",
+        "anchor_type": "sample_earnings_gap",
+        "anchor_date": "2025-12-02",
+        "anchor_quality_score": 64,
+        "window_days": 144,
+        "target_date": "2026-04-25",
+        "days_to_window": -29,
+        "abs_days_to_window": 29,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 0
+      },
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_major_high_2026_02_14",
+        "anchor_type": "sample_major_high",
+        "anchor_date": "2026-02-14",
+        "anchor_quality_score": 68,
+        "window_days": 60,
+        "target_date": "2026-04-15",
+        "days_to_window": -39,
+        "abs_days_to_window": 39,
+        "in_time_observation_band": false,
+        "window_importance": "normal",
+        "time_window_score": 0
+      },
+      {
+        "ticker": "CRDO",
+        "anchor_id": "crdo_sample_major_high_2026_02_14",
+        "anchor_type": "sample_major_high",
+        "anchor_date": "2026-02-14",
+        "anchor_quality_score": 68,
+        "window_days": 55,
+        "target_date": "2026-04-10",
+        "days_to_window": -44,
+        "abs_days_to_window": 44,
+        "in_time_observation_band": false,
+        "window_importance": "high",
+        "time_window_score": 0
+      }
+    ],
+    "nearest_time_cluster": {
+      "cluster_center_date": "2026-04-02",
+      "member_count": 2,
+      "avg_anchor_quality": 70.0,
+      "nearest_abs_days": 52,
+      "cluster_score": -147,
+      "members": [
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_major_high_2026_02_14",
+          "anchor_type": "sample_major_high",
+          "anchor_date": "2026-02-14",
+          "anchor_quality_score": 68,
+          "window_days": 45,
+          "target_date": "2026-03-31",
+          "days_to_window": -54,
+          "abs_days_to_window": 54,
+          "in_time_observation_band": false,
+          "window_importance": "normal",
+          "time_window_score": 0
+        },
+        {
+          "ticker": "CRDO",
+          "anchor_id": "crdo_sample_major_low_2025_04_07",
+          "anchor_type": "sample_major_low",
+          "anchor_date": "2025-04-07",
+          "anchor_quality_score": 72,
+          "window_days": 360,
+          "target_date": "2026-04-02",
+          "days_to_window": -52,
+          "abs_days_to_window": 52,
+          "in_time_observation_band": false,
+          "window_importance": "high",
+          "time_window_score": 0
+        }
+      ]
+    }
+  },
+  "hard_missing_data": [
+    "AVWAP not connected",
+    "RSI not connected",
+    "Gamma/options not connected",
+    "Live price not connected"
+  ],
+  "rules": [
+    "Unified Gann score cannot trigger action if confirmation gates are missing.",
+    "High Gann price + high Gann time creates watch priority, not automatic trade.",
+    "Action requires AVWAP/RSI/TCG/Gamma/Event confirmation.",
+    "For trim signals, overbought momentum and resistance/time resonance matter.",
+    "For buy signals, support/time resonance must align with panic maturity and reversal confirmation."
+  ],
+  "next": [
+    "Connect this unified engine to CRDO stock page v0.4",
+    "Replace placeholder confirmations with real AVWAP/RSI/TCG/Gamma adapters",
+    "Add buy/trim/exit classification based on current price location and trend"
+  ]
+}

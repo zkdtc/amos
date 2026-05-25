@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Manual Data Workflow Guide v0.1</title>
+<style>
+:root{--bg:#05070c;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--orange:#ff9f43;--violet:#9b5cff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 90% 8%,rgba(255,209,102,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1520px;margin:0 auto;padding:20px}
+.card{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:40px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.step{padding:16px;min-height:230px}.num{font-size:34px;font-weight:900;color:var(--gold)}.step h2{font-size:16px;margin:6px 0}.step p{color:var(--soft)}.step small{color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}
+.rule{padding:18px}.rule h2{font-size:24px;color:var(--gold);margin:0 0 10px}.rule h3{font-size:12px;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin:14px 0 6px}li{color:var(--soft);margin:6px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{padding:18px}.box h2{font-size:18px;margin:0 0 10px}.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:1100px){.flow{grid-template-columns:1fr 1fr}.rules,.grid{grid-template-columns:1fr}}
+@media(max-width:650px){.flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · v0.3A Manual Data Alpha · Workflow</div>
+    <h1>Manual Data Workflow Guide</h1>
+    <div class="motto">每天照这个流程走：填数据 → 查缺失 → 写证据 → 读日报 → 做迁移/个股判断。</div>
+  </div>
+
+  <div class="flow">
+    <div class="step card">
+      <div class="num">1</div>
+      <div class="eyebrow">amos_alpha_master_index_v0_3.html</div>
+      <h2>Open Master Index</h2>
+      <p>Use this as the control center, not scattered files.</p>
+      <small>You know whether you are updating data, reading brief, reviewing evidence, or opening stock pages.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">2</div>
+      <div class="eyebrow">amos_real_evidence_packet_template_v0_1.xlsx</div>
+      <h2>Open Manual Data Workbook</h2>
+      <p>This is the latest workbook containing Manual Inputs, Generated Brief, Priority Checklist and Evidence Packet.</p>
+      <small>Workbook is open on Manual Inputs.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">3</div>
+      <div class="eyebrow">Manual Inputs sheet</div>
+      <h2>Update Manual Inputs</h2>
+      <p>Update only the minimum viable fields for P0/P1 tickers.</p>
+      <small>Each active ticker has no missing must-have fields unless action cap is accepted.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">4</div>
+      <div class="eyebrow">Priority Checklist v0.1 sheet</div>
+      <h2>Check Priority Checklist</h2>
+      <p>Let missing must-have fields cap confidence and action.</p>
+      <small>Every ticker has a confidence cap and action cap.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">5</div>
+      <div class="eyebrow">Evidence Packet v0.1 sheet</div>
+      <h2>Add Evidence Packet</h2>
+      <p>Convert observations/news/blogger views/earnings conclusions into scored evidence.</p>
+      <small>Every actionable claim has counter-evidence and invalidation.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">6</div>
+      <div class="eyebrow">Generated Brief sheet</div>
+      <h2>Read Generated Brief</h2>
+      <p>Read the AMOS daily output before touching trades.</p>
+      <small>You know the daily Attack/Build/Hold/Trim Watch/Wait buckets.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">7</div>
+      <div class="eyebrow">amos_crdo_peer_map_v0_1.xlsx</div>
+      <h2>Use Peer Map for Migration</h2>
+      <p>For AI optical/connectivity decisions, compare CRDO/LITE/COHR/NVDA/AVGO/ANET before rotating.</p>
+      <small>Migration has a trigger, confirmation and do-not-migrate condition.</small>
+    </div>
+    
+    <div class="step card">
+      <div class="num">8</div>
+      <div class="eyebrow">amos_generic_page_gann_auto_insertion_v0_2.html</div>
+      <h2>Open Stock Page / Gann Auto Page</h2>
+      <p>Open ticker page only after daily brief and peer map.</p>
+      <small>Action has evidence, counter-evidence, invalidation and position role.</small>
+    </div>
+    </div>
+
+  <div class="rules">
+    <section class="rule card">
+      <h2>Attack</h2>
+      <h3>allowed when</h3><ul><li>Data Freshness is Fresh or high-quality Partial</li><li>Action cap says No Cap</li><li>Macro does not block beta</li><li>RS vs QQQ and RS vs peers are improving</li><li>Technical confirmation exists</li><li>Invalidation is clear</li></ul><h3>forbidden when</h3><ul><li>Any P0 must-have data missing</li><li>No invalidation</li><li>Gann only signal</li><li>Event pressure high without confirmation</li><li>User is chasing missed move</li></ul>
+    </section>
+    
+    <section class="rule card">
+      <h2>Build</h2>
+      <h3>allowed when</h3><ul><li>Action cap at least Build/Hold Only</li><li>Setup has confirmation</li><li>Panic maturity or trend continuation is valid</li><li>Position size is staged</li></ul><h3>forbidden when</h3><ul><li>Risk Stack high and still rising</li><li>AVWAP lost</li><li>RS deteriorating</li><li>No stop/invalidation</li></ul>
+    </section>
+    
+    <section class="rule card">
+      <h2>Hold</h2>
+      <h3>allowed when</h3><ul><li>Thesis intact</li><li>Structure intact</li><li>No major invalidation triggered</li><li>Risk acceptable</li></ul><h3>forbidden when</h3><ul><li>Fundamental thesis broken</li><li>Structure shifts to LH/LL</li><li>AVWAP lost with failed reclaim</li><li>Evidence packet rejected</li></ul>
+    </section>
+    
+    <section class="rule card">
+      <h2>Trim Watch</h2>
+      <h3>allowed when</h3><ul><li>Risk Stack high</li><li>Narrative maturity high</li><li>Gann resistance/time window active</li><li>RSI overbought or volume exhaustion</li><li>Event pressure elevated</li></ul><h3>actual trim requires</h3><ul><li>AVWAP/EMA break</li><li>Failed new high / LH appears</li><li>Volume divergence</li><li>Good-news fade</li><li>Gamma/event pressure confirms</li></ul>
+    </section>
+    
+    <section class="rule card">
+      <h2>Wait</h2>
+      <h3>required when</h3><ul><li>Data missing</li><li>Action cap says Wait Only</li><li>No setup</li><li>Only narrative excitement exists</li><li>User observation lacks evidence packet</li></ul>
+    </section>
+    </div>
+
+  <div class="grid">
+    <div class="card box warning">
+      <h2>No-Trade Rules</h2>
+      <ul><li>No leverage.</li><li>No action without invalidation.</li><li>No chasing after missed move.</li><li>Gann cannot act alone.</li><li>Headline dip is not panic maturity.</li><li>Do not turn failed swing into core.</li><li>Do not let one blogger/source override data.</li><li>If data freshness is Missing, no aggressive action.</li></ul>
+    </div>
+    <div class="card box">
+      <h2>Weekend Workflow</h2>
+      <ul><li>Review Prediction → Action → Result.</li><li>Update Evidence Packet status.</li><li>Re-score source quality.</li><li>Review which tickers deserve P0/P1/P2 priority.</li><li>Prepare next week's event calendar.</li><li>Clean watchlist to avoid attention dilution.</li></ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "version": "AMOS Macro Event Calendar Manual Input v0.1",
+  "created": "2026-05-24",
+  "output_workbook": "amos_macro_event_calendar_manual_input_v0_1.xlsx",
+  "sheets": [
+    "Overview",
+    "Event Calendar",
+    "Weekly Risk View",
+    "Event Categories",
+    "Official Sources",
+    "Lists"
+  ],
+  "event_categories": [
+    "CPI",
+    "PCE",
+    "NFP",
+    "FOMC",
+    "FOMC Minutes",
+    "ISM",
+    "JOLTS",
+    "Treasury Auction",
+    "OPEX",
+    "Quarterly OPEX",
+    "Earnings",
+    "Company Conference",
+    "BTC/Crypto Event",
+    "Political/Geopolitical",
+    "AI Industry Event"
+  ],
+  "official_sources": [
+    "BLS CPI",
+    "BLS Selected Releases",
+    "Federal Reserve FOMC Calendar",
+    "TreasuryDirect Upcoming Auctions",
+    "Treasury Auction Announcements/Data/Results",
+    "SEC EDGAR APIs",
+    "Company Investor Relations"
+  ],
+  "guardrail": "Critical events default to No Attack unless setup is already confirmed and risk is explicitly accepted."
+}

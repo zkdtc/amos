@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS · CRDO Stock Intelligence Page v0.1</title>
+<style>
+:root{
+  --bg:#05070c;--panel:#0b1020;--panel2:#10182d;--panel3:#0f1528;--line:#1e2a46;
+  --text:#dbe6ff;--muted:#6f7f9f;--soft:#a9b8d8;
+  --cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:radial-gradient(circle at 18% 0%,rgba(35,217,255,.08),transparent 28%),
+  radial-gradient(circle at 80% 12%,rgba(155,92,255,.09),transparent 28%),
+  radial-gradient(circle at 50% 100%,rgba(50,230,138,.035),transparent 28%),var(--bg);
+  color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"Noto Sans SC",sans-serif;
+  font-size:13px;line-height:1.46;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 92%);
+}
+.app{max-width:1620px;margin:0 auto;padding:18px 18px 44px;position:relative}
+.card{
+  background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 0 0 1px rgba(255,255,255,.015) inset;
+}
+.header{
+  display:grid;grid-template-columns:1.4fr .9fr 1fr;gap:12px;margin-bottom:12px;
+}
+.hcell{padding:16px 18px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.22em;font-size:10px;text-transform:uppercase}
+h1{font-size:30px;margin:4px 0 4px;letter-spacing:.04em}
+.subtitle{color:var(--muted);font-size:12px}
+.price{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:34px;font-weight:900;color:var(--green);line-height:1}
+.price-note{margin-top:4px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.badge{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--soft);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;white-space:nowrap}
+.badge.green{border-color:rgba(50,230,138,.4);color:var(--green);background:rgba(50,230,138,.06)}
+.badge.gold{border-color:rgba(255,209,102,.45);color:var(--gold);background:rgba(255,209,102,.06)}
+.badge.red{border-color:rgba(255,77,109,.45);color:var(--red);background:rgba(255,77,109,.06)}
+.badge.cyan{border-color:rgba(35,217,255,.45);color:var(--cyan);background:rgba(35,217,255,.05)}
+.badge.violet{border-color:rgba(155,92,255,.45);color:var(--violet);background:rgba(155,92,255,.06)}
+.section-title{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.section-title h2{font-size:13px;margin:0;letter-spacing:.1em;text-transform:uppercase}
+.section-title span{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.content{padding:14px}
+.grid-main{display:grid;grid-template-columns:1.05fr 1.55fr 1.05fr;gap:12px;align-items:start}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.kv{display:grid;gap:8px}
+.krow{display:grid;grid-template-columns:120px 1fr;gap:10px;border-bottom:1px solid rgba(30,42,70,.65);padding:7px 0}
+.krow:last-child{border-bottom:0}
+.k{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.v{color:var(--text)}
+.green{color:var(--green)}.gold{color:var(--gold)}.red{color:var(--red)}.cyan{color:var(--cyan)}.violet{color:var(--violet)}.orange{color:var(--orange)}.blue{color:var(--blue)}
+.brief{border-left:3px solid var(--cyan);background:rgba(35,217,255,.04);padding:11px 12px;border-radius:7px;margin-bottom:9px}
+.brief.goldline{border-left-color:var(--gold);background:rgba(255,209,102,.04)}
+.brief.redline{border-left-color:var(--red);background:rgba(255,77,109,.04)}
+.brief.greenline{border-left-color:var(--green);background:rgba(50,230,138,.04)}
+.brief .label{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.brief .txt{margin-top:4px}
+.scoregrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.score{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:9px;padding:10px}
+.score .slabel{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.score .sval{margin-top:5px;font-size:18px;font-weight:900}
+.ladder{display:grid;gap:6px}
+.lrow{display:grid;grid-template-columns:84px 1fr 120px;gap:9px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:rgba(255,255,255,.02)}
+.level{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900}
+.bar{height:6px;background:#121b31;border-radius:20px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:20px}
+.tag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;text-transform:uppercase;color:var(--muted);text-align:right}
+.table{width:100%;border-collapse:collapse;font-size:12px}
+.table th{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;text-align:left;padding:8px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
+.table td{padding:8px;border-bottom:1px solid rgba(30,42,70,.65);vertical-align:top}
+.case{border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(255,255,255,.02)}
+.case h3{font-size:13px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em}
+.case ul{margin:0;padding-left:18px;color:var(--soft)}
+.case li{margin:6px 0}
+.debate{display:grid;gap:8px}
+.agent{border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:rgba(255,255,255,.02)}
+.agent-head{display:flex;justify-content:space-between;gap:8px;font-weight:900}
+.agent p{color:var(--soft);margin:6px 0 0}
+.timeline{display:grid;gap:8px}
+.event{border:1px solid var(--line);border-radius:9px;padding:10px;background:rgba(255,255,255,.02)}
+.event-head{display:flex;justify-content:space-between;font-weight:900}
+.event-desc{color:var(--muted);font-size:11px;margin-top:4px}
+.decision{font-size:15px;font-weight:900}
+.dactions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.dact{border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:900;background:rgba(255,255,255,.02)}
+.dact.primary{border-color:rgba(35,217,255,.55);color:var(--cyan);background:rgba(35,217,255,.05)}
+.dact.warn{border-color:rgba(255,209,102,.55);color:var(--gold);background:rgba(255,209,102,.05)}
+.dact.risk{border-color:rgba(255,77,109,.55);color:var(--red);background:rgba(255,77,109,.05)}
+.note{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+code{background:rgba(255,255,255,.06);padding:1px 5px;border-radius:4px;color:var(--gold)}
+@media(max-width:1180px){
+  .header,.grid-main,.grid-2,.grid-3{grid-template-columns:1fr}
+  .scoregrid{grid-template-columns:repeat(2,1fr)}
+  .dactions{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="card hcell">
+      <div class="eyebrow">AMOS · Stock Intelligence Page · Alpha Wireframe</div>
+      <h1>CRDO · Credo Technology</h1>
+      <div class="subtitle">AI Infra / Optical / SerDes / High Beta Narrative Expansion · 研究样板页 v0.1</div>
+      <div class="badges">
+        <span class="badge cyan">Evidence First</span>
+        <span class="badge green">AI Infra</span>
+        <span class="badge gold">High Beta</span>
+        <span class="badge violet">Gann Required</span>
+        <span class="badge red">Event Sensitive</span>
+      </div>
+    </div>
+    <div class="card hcell">
+      <div class="eyebrow">Price Placeholder</div>
+      <div class="price">$—</div>
+      <div class="price-note">接入实时数据后显示价格、涨跌、量能、距关键位距离</div>
+      <div class="badges">
+        <span class="badge gold">Do not trust stale data</span>
+      </div>
+    </div>
+    <div class="card hcell">
+      <div class="eyebrow">Current System View</div>
+      <div class="brief greenline" style="margin-top:8px">
+        <div class="label">Working Thesis</div>
+        <div class="txt">CRDO 是 AI Infra 扩散链中高Beta光互联代表，关键不是“便宜不便宜”，而是 AI CapEx、NVDA网络需求、光学Narrative、财报指引和高位拥挤是否同时支持。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-main">
+    <div class="card">
+      <div class="section-title"><h2>Strategic Identity</h2><span>个股身份</span></div>
+      <div class="content kv">
+        <div class="krow"><div class="k">Primary Role</div><div class="v">AI Infra 光互联 / SerDes / Optical 高弹性标的</div></div>
+        <div class="krow"><div class="k">Market Type</div><div class="v">高Beta成长 + Narrative扩散 + 财报敏感</div></div>
+        <div class="krow"><div class="k">Key Driver</div><div class="v">AI数据中心网络、AEC/SerDes、超大客户CapEx、NVDA/AVGO/ANET联动</div></div>
+        <div class="krow"><div class="k">Main Risk</div><div class="v">估值透支、客户集中、毛利率压力、财报指引不够强、Optical拥挤</div></div>
+        <div class="krow"><div class="k">Best Use</div><div class="v">适合做周期型核心/波段，不适合盲目长期死扛</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><h2>Executive Layer</h2><span>不是结论替代证据</span></div>
+      <div class="content">
+        <div class="brief">
+          <div class="label">State</div>
+          <div class="txt">当前页面设计假设：CRDO 处于“AI Infra扩散确认后、估值与事件压力开始上升”的阶段。后续接入实时数据后，由证据决定状态，而不是由主观偏好决定。</div>
+        </div>
+        <div class="scoregrid">
+          <div class="score"><div class="slabel">Narrative</div><div class="sval green">Strong</div></div>
+          <div class="score"><div class="slabel">Crowding</div><div class="sval gold">Rising</div></div>
+          <div class="score"><div class="slabel">Valuation</div><div class="sval orange">Demanding</div></div>
+          <div class="score"><div class="slabel">Action Bias</div><div class="sval cyan">Hold / Wait</div></div>
+        </div>
+      </div>
+      <div class="note">这一区未来由 Regime + Capital + Valuation + Price Structure 综合生成，不允许用户情绪直接覆盖。</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><h2>Event Pressure</h2><span>近期改变价格行为的事件</span></div>
+      <div class="content timeline">
+        <div class="event"><div class="event-head"><span>NVDA Event / AI Infra Read-through</span><span class="gold">High</span></div><div class="event-desc">验证网络、互联、数据中心资本开支强度。</div></div>
+        <div class="event"><div class="event-head"><span>CRDO Earnings / Guidance</span><span class="red">Critical</span></div><div class="event-desc">真正决定估值能否继续给未来。</div></div>
+        <div class="event"><div class="event-head"><span>OPEX / Gamma Reset</span><span class="gold">Medium+</span></div><div class="event-desc">高Beta股可能出现压制、挤压或事件后释放。</div></div>
+        <div class="event"><div class="event-head"><span>Macro Rate Shock</span><span class="gold">Watch</span></div><div class="event-desc">长端利率上行会压缩高长久期估值。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title"><h2>Valuation Battle Map</h2><span>估值不是一个数字</span></div>
+      <div class="content">
+        <table class="table">
+          <thead><tr><th>Layer</th><th>Question</th><th>Evidence Needed</th><th>State</th></tr></thead>
+          <tbody>
+            <tr><td class="cyan">Intrinsic</td><td>DCF/FCF支撑在哪里？</td><td>FCF margin、SBC、营收增长、毛利率、折现率</td><td>待接入</td></tr>
+            <tr><td class="green">Narrative</td><td>市场愿意给几年未来？</td><td>AI CapEx、NVDA网络、客户订单、产业话术</td><td>强</td></tr>
+            <tr><td class="gold">Cycle</td><td>AI Infra处于早期还是拥挤期？</td><td>龙头扩散、二线涨幅、尾部妖股、量能结构</td><td>扩张后段?</td></tr>
+            <tr><td class="violet">Personality</td><td>CRDO历史上怎么反应？</td><td>财报前后、NVDA联动、OPEX、光模块板块行为</td><td>需学习</td></tr>
+            <tr><td class="red">Extreme Risk</td><td>跌到哪里才是错杀？</td><td>估值压缩区、Gann支撑、AVWAP、RSI恐慌成熟</td><td>待计算</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">三维估值系统并入：宏观定仓位，估值定胜率，财报定去留，周期定时机，期权定下限。</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><h2>Gann Time × Price Map</h2><span>占位版 / 接入价格后计算</span></div>
+      <div class="content ladder">
+        <div class="lrow"><div class="level red">ATH / High</div><div class="bar"><i style="width:92%;background:var(--red)"></i></div><div class="tag">Major Resistance</div></div>
+        <div class="lrow"><div class="level gold">-45°</div><div class="bar"><i style="width:80%;background:var(--gold)"></i></div><div class="tag">Upper Trigger</div></div>
+        <div class="lrow"><div class="level cyan">Current</div><div class="bar"><i style="width:65%;background:var(--cyan)"></i></div><div class="tag">Live Price</div></div>
+        <div class="lrow"><div class="level green">-180°</div><div class="bar"><i style="width:46%;background:var(--green)"></i></div><div class="tag">Support Zone</div></div>
+        <div class="lrow"><div class="level orange">-270°</div><div class="bar"><i style="width:32%;background:var(--orange)"></i></div><div class="tag">Deep Support</div></div>
+        <div class="lrow"><div class="level red">Stop</div><div class="bar"><i style="width:18%;background:var(--red)"></i></div><div class="tag">Invalidation</div></div>
+      </div>
+      <div class="note">未来自动计算：多锚点九方图、±0.5%区间、90/144/180/360天、事件窗口与Gamma重合。</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="section-title"><h2>Bull Case</h2><span>看多证据</span></div>
+      <div class="content case">
+        <h3 class="green">支持继续强势的证据</h3>
+        <ul>
+          <li>AI Infra仍是主战场，网络互联需求继续受益。</li>
+          <li>NVDA/AVGO/ANET等核心锚如果继续强，CRDO具备扩散弹性。</li>
+          <li>若财报指引上修，市场可继续给予Narrative估值。</li>
+          <li>如果Amazon/大客户集中度下降，估值折价有机会消除。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title"><h2>Bear Case</h2><span>看空证据</span></div>
+      <div class="content case">
+        <h3 class="red">风险与反证</h3>
+        <ul>
+          <li>估值可能已经反映大量未来，财报只符合预期可能不够。</li>
+          <li>高Beta扩散股在OPEX或事件后容易被Gamma/获利盘放大回撤。</li>
+          <li>若AI CapEx增速边际放缓，光互联二线股会先被杀倍数。</li>
+          <li>如果股价高位放量不涨或跌破关键AVWAP，说明资金开始派发。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title"><h2>Unknown</h2><span>真正未解问题</span></div>
+      <div class="content case">
+        <h3 class="gold">需要证据解决</h3>
+        <ul>
+          <li>FY2027/2028收入路径是否足以支撑当前倍数？</li>
+          <li>ZeroFlap / AEC / SerDes的真实订单强度如何？</li>
+          <li>CRDO在AI互联链条里的份额提升是否可持续？</li>
+          <li>当前上涨是机构建仓、散户FOMO，还是板块Beta？</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title"><h2>AI Debate Engine</h2><span>多视角内部博弈</span></div>
+      <div class="content debate">
+        <div class="agent"><div class="agent-head"><span class="green">Momentum AI</span><span>Positive</span></div><p>只要保持HH/HL并站在8/12EMA上方，趋势股不应过早卖飞。</p></div>
+        <div class="agent"><div class="agent-head"><span class="red">Risk AI</span><span>Caution</span></div><p>高Beta扩散股在财报和NVDA事件附近容易出现“好消息兑现”。需要盯拥挤与量价背离。</p></div>
+        <div class="agent"><div class="agent-head"><span class="cyan">Valuation AI</span><span>Conditional</span></div><p>如果只用保守DCF，价格可能不便宜；如果用AI Infra Narrative和高增速，估值可解释但需要持续验证。</p></div>
+        <div class="agent"><div class="agent-head"><span class="gold">Macro AI</span><span>Watch Rates</span></div><p>长端利率和美元若同步走强，会压制长久期成长股，尤其二线高Beta。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><h2>Decision Layer</h2><span>行动，不替代判断</span></div>
+      <div class="content">
+        <div class="decision">当前默认动作：<span class="cyan">Hold / Wait for Evidence</span></div>
+        <p class="soft">这不是实时投资建议，而是页面逻辑样板。接入数据后，Decision Engine 必须由证据链触发。</p>
+        <div class="dactions">
+          <div class="dact primary">Hold Core</div>
+          <div class="dact warn">No Chase</div>
+          <div class="dact risk">Trim If Exhaustion</div>
+        </div>
+        <table class="table" style="margin-top:12px">
+          <thead><tr><th>Trigger</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>财报强指引 + 放量突破关键阻力</td><td class="green">Add / Build</td></tr>
+            <tr><td>高位Gann时间窗 + RSI超买 + 量价背离</td><td class="gold">Trim / Sell Call</td></tr>
+            <tr><td>跌破AVWAP + LH/LL + EPS下修</td><td class="red">Exit</td></tr>
+            <tr><td>恐慌成熟 + Gann支撑 + Narrative未死</td><td class="cyan">Panic Buy Zone</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">你的系统重点：顶部必须强提醒，底部必须等待成熟，不再靠情绪冲动操作。</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="section-title"><h2>Research Evidence Feed</h2><span>后续接入资料/数据/引用</span></div>
+    <div class="content">
+      <table class="table">
+        <thead><tr><th>Evidence Type</th><th>What to Track</th><th>Why It Matters</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Financials</td><td>Revenue, FCF, SBC, Gross Margin, Customer Concentration</td><td>决定内在价值与安全边际</td><td>待接入</td></tr>
+          <tr><td>CapEx Chain</td><td>MSFT / AMZN / GOOG / META / NVDA network demand</td><td>决定AI Infra周期是否继续</td><td>待接入</td></tr>
+          <tr><td>Options/Gamma</td><td>Call wall, Put wall, IV, dealer positioning</td><td>决定事件前后短线行为</td><td>待接入</td></tr>
+          <tr><td>Price Structure</td><td>8/12EMA, HH/HL, AVWAP, Chán center, divergence</td><td>决定执行层是否确认</td><td>待接入</td></tr>
+          <tr><td>Narrative</td><td>Analyst notes, conference, X/YouTube high-quality sources</td><td>判断市场正在给什么未来</td><td>待验证</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

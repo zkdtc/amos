@@ -1,0 +1,406 @@
+{
+  "version": "AMOS Alpha Master Index v0.4",
+  "created": "2026-05-24",
+  "delivery_count": 50,
+  "current_phase": "v0.3A Manual Data Alpha",
+  "purpose": "Updated master entry point after deliveries 40-49.",
+  "current_state": {
+    "manual_data_loop": "usable_static_manual_loop",
+    "gann_live": [
+      "CRDO",
+      "NVDA",
+      "LITE"
+    ],
+    "gann_pending": [
+      "IREN",
+      "HOOD"
+    ],
+    "daily_brief_snapshot": "available",
+    "evidence_packet": "available",
+    "anchor_verification": "available"
+  },
+  "sections": [
+    {
+      "id": "v03a",
+      "title": "v0.3A Manual Data Alpha / 手动数据可用版",
+      "desc": "当前最重要工作流：手动填数据 → 生成日报 → 检查优先标的 → 记录证据包 → 读取独立日报。",
+      "items": [
+        {
+          "title": "AMOS Alpha v0.3 Roadmap",
+          "file": "amos_alpha_v0_3_roadmap.html",
+          "desc": "从 Static Alpha 到可用 Alpha 的四阶段路线",
+          "exists": true
+        },
+        {
+          "title": "Manual Data Input Sheet v0.1",
+          "file": "amos_manual_data_input_sheet_v0_1.xlsx",
+          "desc": "手动数据入口工作簿",
+          "exists": true
+        },
+        {
+          "title": "Daily Brief Generator v0.2",
+          "file": "amos_daily_brief_generator_from_manual_packet_v0_2.xlsx",
+          "desc": "从手动数据包生成日报",
+          "exists": true
+        },
+        {
+          "title": "Priority Ticker Checklist v0.1",
+          "file": "amos_priority_ticker_checklist_v0_1.xlsx",
+          "desc": "优先标的每日检查清单",
+          "exists": true
+        },
+        {
+          "title": "Real Evidence Packet Template v0.1",
+          "file": "amos_real_evidence_packet_template_v0_1.xlsx",
+          "desc": "证据包模板",
+          "exists": true
+        },
+        {
+          "title": "Manual Data Workflow Guide v0.1",
+          "file": "amos_manual_data_workflow_guide_v0_1.html",
+          "desc": "v0.3A 每日操作手册",
+          "exists": true
+        },
+        {
+          "title": "Generated Daily Brief Snapshot v0.1",
+          "file": "amos_generated_daily_brief_snapshot_v0_1.html",
+          "desc": "从 Excel 抽出的独立 HTML 日报",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "peer",
+      "title": "Peer Maps / 迁移与同业比较",
+      "desc": "用于判断龙头、跟随、掉队、轮动迁移，不孤立看单只股票。",
+      "items": [
+        {
+          "title": "CRDO Peer Map v0.1",
+          "file": "amos_crdo_peer_map_v0_1.xlsx",
+          "desc": "CRDO/LITE/COHR/NVDA/AVGO/ANET peer map",
+          "exists": true
+        },
+        {
+          "title": "CRDO Peer Map HTML Summary",
+          "file": "amos_crdo_peer_map_v0_1.html",
+          "desc": "Peer Map HTML摘要",
+          "exists": true
+        },
+        {
+          "title": "CRDO Full Page + Peer Map Link v0.5",
+          "file": "crdo_full_page_peer_map_link_v0_5.html",
+          "desc": "CRDO完整页接入Peer Map",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "gann-live",
+      "title": "Gann Live Engines / 江恩实时登记与锚点治理",
+      "desc": "CRDO / NVDA / LITE 的独立江恩模块、Gann Live Registry 与锚点验证清单。",
+      "items": [
+        {
+          "title": "Gann Live Ticker Registry v0.1",
+          "file": "amos_gann_live_ticker_registry_v0_1.html",
+          "desc": "CRDO/NVDA Gann Live登记",
+          "exists": true
+        },
+        {
+          "title": "Gann Live Ticker Registry v0.2",
+          "file": "amos_gann_live_ticker_registry_v0_2.html",
+          "desc": "CRDO/NVDA/LITE Gann Live登记",
+          "exists": true
+        },
+        {
+          "title": "NVDA Gann Engine v0.1",
+          "file": "amos_nvda_gann_engine_v0_1.html",
+          "desc": "NVDA独立江恩模块",
+          "exists": true
+        },
+        {
+          "title": "LITE Gann Engine v0.1",
+          "file": "amos_lite_gann_engine_v0_1.html",
+          "desc": "LITE独立江恩模块",
+          "exists": true
+        },
+        {
+          "title": "Gann Anchor Verification Checklist v0.1",
+          "file": "amos_gann_anchor_verification_checklist_v0_1.xlsx",
+          "desc": "江恩锚点验证工作簿",
+          "exists": true
+        },
+        {
+          "title": "Gann Anchor Verification HTML",
+          "file": "amos_gann_anchor_verification_checklist_v0_1.html",
+          "desc": "江恩锚点验证说明",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "stock-pages",
+      "title": "Stock Pages with Gann Registry / 个股页生成器",
+      "desc": "通用个股页读取 Gann Registry，自动区分 Gann Live / Pending。",
+      "items": [
+        {
+          "title": "Generic Page + Gann Auto-Insertion v0.2",
+          "file": "amos_generic_page_gann_auto_insertion_v0_2.html",
+          "desc": "早期自动插入Gann Zone",
+          "exists": true
+        },
+        {
+          "title": "Generic Page Generator with Gann Registry v0.3",
+          "file": "amos_generic_page_generator_gann_registry_v0_3.html",
+          "desc": "读取Registry v0.1",
+          "exists": true
+        },
+        {
+          "title": "Generic Page Generator with Gann Registry v0.4",
+          "file": "amos_generic_page_generator_gann_registry_v0_4.html",
+          "desc": "读取Registry v0.2",
+          "exists": true
+        },
+        {
+          "title": "NVDA Gann Registry Page v0.4",
+          "file": "nvda_stock_page_gann_registry_v0_4.html",
+          "desc": "NVDA Gann Live个股页",
+          "exists": true
+        },
+        {
+          "title": "CRDO Gann Registry Page v0.4",
+          "file": "crdo_stock_page_gann_registry_v0_4.html",
+          "desc": "CRDO Gann Live个股页",
+          "exists": true
+        },
+        {
+          "title": "LITE Gann Registry Page v0.4",
+          "file": "lite_stock_page_gann_registry_v0_4.html",
+          "desc": "LITE Gann Live个股页",
+          "exists": true
+        },
+        {
+          "title": "IREN Gann Registry Page v0.4",
+          "file": "iren_stock_page_gann_registry_v0_4.html",
+          "desc": "IREN Gann Pending个股页",
+          "exists": true
+        },
+        {
+          "title": "HOOD Gann Registry Page v0.4",
+          "file": "hood_stock_page_gann_registry_v0_4.html",
+          "desc": "HOOD Gann Pending个股页",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "title": "Product Shell / 总入口",
+      "desc": "AMOS 的产品壳、总目录和统一入口。",
+      "items": [
+        {
+          "title": "AMOS Unified App Shell v0.1",
+          "file": "amos_unified_app_shell_v0_1.html",
+          "desc": "统一产品壳",
+          "exists": true
+        },
+        {
+          "title": "AMOS Alpha Master Index v0.2",
+          "file": "amos_alpha_master_index_v0_2.html",
+          "desc": "上一版总入口",
+          "exists": true
+        },
+        {
+          "title": "AMOS Alpha Master Index v0.3",
+          "file": "amos_alpha_master_index_v0_3.html",
+          "desc": "上一版总入口",
+          "exists": true
+        },
+        {
+          "title": "AMOS Alpha Master Index v0.4",
+          "file": "amos_alpha_master_index_v0_4.html",
+          "desc": "当前总入口",
+          "exists": false
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Core System Engines / 核心系统引擎",
+      "desc": "宏观、叙事、估值、风险、组合迁移、证据治理等 AMOS 主干。",
+      "items": [
+        {
+          "title": "Macro Regime & Liquidity State Machine",
+          "file": "amos_macro_regime_liquidity_state_machine_v0_1.html",
+          "desc": "宏观状态机",
+          "exists": true
+        },
+        {
+          "title": "Narrative Lifecycle & Capital Rotation",
+          "file": "amos_narrative_lifecycle_capital_rotation_v0_1.html",
+          "desc": "叙事生命周期与资金轮动",
+          "exists": true
+        },
+        {
+          "title": "Valuation Battle Map",
+          "file": "amos_valuation_battle_map_v0_1.html",
+          "desc": "七层估值战场",
+          "exists": true
+        },
+        {
+          "title": "Portfolio Battle Map & Migration",
+          "file": "amos_portfolio_battle_map_migration_engine_v0_1.html",
+          "desc": "持仓迁移与机会成本",
+          "exists": true
+        },
+        {
+          "title": "Risk Protection & Behavior Guardrail",
+          "file": "amos_risk_protection_behavior_guardrail_v0_1.html",
+          "desc": "风险保护与行为护栏",
+          "exists": true
+        },
+        {
+          "title": "Research Source & Evidence Quality",
+          "file": "amos_research_source_evidence_quality_engine_v0_1.html",
+          "desc": "证据质量和来源治理",
+          "exists": true
+        },
+        {
+          "title": "Stock Personality Radar",
+          "file": "amos_stock_personality_radar_v0_1.html",
+          "desc": "个股股性雷达",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data / Schema / Scoring / 数据与评分",
+      "desc": "AMOS 从静态原型转向数据驱动所需的数据结构、样本数据和评分逻辑。",
+      "items": [
+        {
+          "title": "Data Schema v0.1",
+          "file": "amos_data_schema_v0_1.md",
+          "desc": "AMOS 数据骨架",
+          "exists": true
+        },
+        {
+          "title": "Agent Routing v0.1",
+          "file": "amos_agent_routing_v0_1.md",
+          "desc": "多 AI 分工路由",
+          "exists": true
+        },
+        {
+          "title": "Sample Data Fixture v0.1",
+          "file": "amos_sample_data_fixture_v0_1.html",
+          "desc": "样本数据",
+          "exists": true
+        },
+        {
+          "title": "Scoring Logic v0.1",
+          "file": "amos_scoring_logic_v0_1.html",
+          "desc": "可计算评分规则",
+          "exists": true
+        },
+        {
+          "title": "Scoring-connected Dashboard v0.2",
+          "file": "amos_scoring_connected_dashboard_v0_2.html",
+          "desc": "评分接入后的多股票看板",
+          "exists": true
+        },
+        {
+          "title": "Alpha Data Flow Map v0.1",
+          "file": "amos_alpha_data_flow_map_v0_1.html",
+          "desc": "Raw Input 到 UI 的数据流",
+          "exists": true
+        },
+        {
+          "title": "Real Data Adapter Schema v0.1",
+          "file": "amos_real_data_adapter_schema_v0_1.html",
+          "desc": "真实数据接入接口",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "gann-old",
+      "title": "Gann Research / 江恩研究区基础模块",
+      "desc": "九方图、时间窗、价格/时间共振、CRDO Gann Research Zone。",
+      "items": [
+        {
+          "title": "Gann Calculator Module v0.1",
+          "file": "amos_gann_calculator_module_v0_1.html",
+          "desc": "九方图价格位与时间窗口",
+          "exists": true
+        },
+        {
+          "title": "Gann Cluster & Distance Engine v0.2",
+          "file": "amos_gann_cluster_distance_engine_v0_2.html",
+          "desc": "最近支撑/压力与多锚点密集区",
+          "exists": true
+        },
+        {
+          "title": "Gann Time Distance Engine v0.3",
+          "file": "amos_gann_time_distance_engine_v0_3.html",
+          "desc": "时间窗口距离与时间密集区",
+          "exists": true
+        },
+        {
+          "title": "Unified Gann Resonance Engine v0.4",
+          "file": "amos_unified_gann_resonance_engine_v0_4.html",
+          "desc": "统一江恩共振",
+          "exists": true
+        },
+        {
+          "title": "CRDO Gann Research Zone v0.4",
+          "file": "crdo_gann_research_zone_v0_4.html",
+          "desc": "CRDO 江恩研究区",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboards / Daily Brief / 看板与日报",
+      "desc": "多股票看板、日报模板和执行报告入口。",
+      "items": [
+        {
+          "title": "Multi-stock Dashboard v0.1",
+          "file": "amos_multistock_dashboard_v0_1.html",
+          "desc": "多股票战场视图",
+          "exists": true
+        },
+        {
+          "title": "Daily Market Brief Template v0.1",
+          "file": "amos_daily_market_brief_template_v0_1.html",
+          "desc": "盘前/盘后/周末报告模板",
+          "exists": true
+        },
+        {
+          "title": "Home Command Center",
+          "file": "amos_home_command_center_v0_1.html",
+          "desc": "首页战情室",
+          "exists": true
+        }
+      ]
+    }
+  ],
+  "current_workflow": [
+    "Open Master Index v0.4",
+    "Open Manual Data Workbook",
+    "Update Manual Inputs",
+    "Check Priority Checklist",
+    "Add Evidence Packet",
+    "Read Generated Daily Brief Snapshot",
+    "Use CRDO Peer Map for migration decisions",
+    "Open Gann Registry page for CRDO/NVDA/LITE",
+    "Verify Gann anchors before any real trading use"
+  ],
+  "next_build_sequence": [
+    "Build IREN Gann Engine v0.1",
+    "Build HOOD Gann Engine v0.1",
+    "Build Manual Data Workbook v0.2 unified workbook",
+    "Add Gann Anchor Verification link into every Gann Live page",
+    "Build CSV Import Schema v0.1",
+    "Build Daily Brief HTML exporter script v0.2"
+  ]
+}

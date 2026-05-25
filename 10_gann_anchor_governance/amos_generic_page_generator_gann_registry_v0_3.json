@@ -1,0 +1,21 @@
+{
+  "version": "AMOS Generic Page Generator with Gann Registry v0.3",
+  "created": "2026-05-24",
+  "source_files": [
+    "amos_sample_data_fixture_v0_1.json",
+    "amos_scoring_connected_dashboard_v0_2.json",
+    "amos_gann_live_ticker_registry_v0_1.json"
+  ],
+  "gann_live_tickers": [
+    "CRDO",
+    "NVDA"
+  ],
+  "generated_pages": [
+    "nvda_stock_page_gann_registry_v0_3.html",
+    "crdo_stock_page_gann_registry_v0_3.html",
+    "lite_stock_page_gann_registry_v0_3.html",
+    "iren_stock_page_gann_registry_v0_3.html",
+    "hood_stock_page_gann_registry_v0_3.html"
+  ],
+  "rule": "Read registry. Live tickers get Gann Research Zone. Pending tickers get Gann Pending block."
+}

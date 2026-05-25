@@ -1,0 +1,391 @@
+{
+  "version": "AMOS Sample Data Fixture v0.1",
+  "created": "2026-05-24",
+  "disclaimer": "Sample/demo data structure only. Numeric fields are placeholders until connected to real market data.",
+  "market_state": {
+    "date": "2026-05-24",
+    "regime_label": "liquidity_expansion_with_rising_crowding",
+    "risk_appetite": "expanding",
+    "liquidity_state": "supportive",
+    "rate_pressure": "neutral_watch",
+    "credit_pressure": "calm",
+    "volatility_state": "normal",
+    "breadth_state": "improving_but_leadership_concentrated",
+    "gamma_state": "event_sensitive",
+    "btc_risk_signal": "reset_watch",
+    "confidence": 62,
+    "beta_ceiling": "1.1-1.3",
+    "evidence": [
+      "AI Infra leadership remains central in model",
+      "New themes Space/Quantum/Power rising without confirmed AI Infra death",
+      "Event pressure around NVDA/OPEX requires caution"
+    ],
+    "counter_evidence": [
+      "Crowding in high-beta second-line names may be rising",
+      "Macro data and 10Y direction still need real-time verification"
+    ],
+    "invalidation_conditions": [
+      "AI Infra leaders underperform QQQ for multiple sessions",
+      "10Y/MOVE/DXY rise together and high-multiple growth sells off",
+      "Breadth deteriorates while tail names outperform leaders"
+    ]
+  },
+  "narratives": {
+    "AI_INFRA": {
+      "name": "AI Infrastructure",
+      "stage": "capital_expansion",
+      "strength": 82,
+      "maturity": 63,
+      "failure_risk": 38,
+      "leaders": [
+        "NVDA",
+        "AVGO",
+        "ANET",
+        "MSFT",
+        "GOOG"
+      ],
+      "second_line": [
+        "CRDO",
+        "LITE",
+        "COHR"
+      ],
+      "failure_signals": [
+        "NVDA weak vs QQQ",
+        "CapEx guidance cut",
+        "Second-line names break before leaders",
+        "Good AI news stops working"
+      ]
+    },
+    "OPTICAL": {
+      "name": "Optical / CPO / Connectivity",
+      "stage": "capital_expansion_to_mainstream_fomo",
+      "strength": 76,
+      "maturity": 71,
+      "failure_risk": 47,
+      "leaders": [
+        "CRDO",
+        "LITE",
+        "COHR"
+      ],
+      "failure_signals": [
+        "Earnings guide weak",
+        "Gross margin pressure",
+        "Customer concentration risk",
+        "AVWAP breakdown"
+      ]
+    },
+    "BTC_FINANCE": {
+      "name": "BTC Finance",
+      "stage": "reset_watch",
+      "strength": 48,
+      "maturity": 42,
+      "failure_risk": 55,
+      "leaders": [
+        "BTC",
+        "COIN",
+        "HOOD",
+        "MSTR",
+        "IREN"
+      ],
+      "failure_signals": [
+        "BTC loses key liquidity levels",
+        "Regulatory pressure broadens",
+        "Risk-off regime"
+      ]
+    }
+  },
+  "stocks": {
+    "NVDA": {
+      "profile": {
+        "company_name": "NVIDIA",
+        "archetype": "core_sovereign_leader",
+        "primary_category": "AI Core / Compute / Platform",
+        "tags": [
+          "AI_core",
+          "institutional_core",
+          "capex_anchor",
+          "event_driver"
+        ],
+        "best_strategy_fit": "core_plus_trim"
+      },
+      "state": {
+        "role": "core_anchor",
+        "trend_state": "uptrend_watch_event",
+        "relative_strength": "leader",
+        "narrative_exposure": [
+          "AI_INFRA"
+        ],
+        "valuation_state": "demanding_but_supported_by_growth",
+        "risk_stack": {
+          "euphoria": 58,
+          "panic_maturity": 10,
+          "event_pressure": 78,
+          "crowding": 62
+        },
+        "action_bias": "hold_core_trim_if_euphoria",
+        "confidence": 66
+      },
+      "decision": {
+        "action": "hold",
+        "timeframe": "weeks_to_cycle",
+        "evidence_chain": [
+          "AI Infra anchor",
+          "Institutional core holding",
+          "Event read-through affects whole chain"
+        ],
+        "counter_evidence": [
+          "Valuation and event pressure can cause good-news fade"
+        ],
+        "invalidation_conditions": [
+          "Fails to hold post-event AVWAP",
+          "AI CapEx language weakens",
+          "Relative strength vs QQQ deteriorates"
+        ]
+      }
+    },
+    "CRDO": {
+      "profile": {
+        "company_name": "Credo Technology",
+        "archetype": "second_line_high_beta",
+        "primary_category": "AI Infra / Optical / SerDes",
+        "tags": [
+          "AI_infra",
+          "optical",
+          "high_beta",
+          "earnings_sensitive",
+          "gamma_amplified"
+        ],
+        "best_strategy_fit": "swing_cycle"
+      },
+      "state": {
+        "role": "swing_core_candidate",
+        "trend_state": "strong_but_event_sensitive",
+        "relative_strength": "strong_second_line",
+        "narrative_exposure": [
+          "AI_INFRA",
+          "OPTICAL"
+        ],
+        "valuation_state": "demanding",
+        "risk_stack": {
+          "euphoria": 72,
+          "panic_maturity": 5,
+          "event_pressure": 82,
+          "crowding": 74
+        },
+        "gann_resonance_placeholder": {
+          "time_score": null,
+          "price_score": null,
+          "event_score": 82,
+          "gamma_score": null,
+          "price_action_score": null,
+          "status": "needs_live_price_and_options"
+        },
+        "action_bias": "hold_no_chase_trim_if_exhaustion",
+        "confidence": 61
+      },
+      "decision": {
+        "action": "hold",
+        "timeframe": "days_to_weeks",
+        "evidence_chain": [
+          "AI Infra and Optical narratives strong",
+          "Second-line high beta can benefit from capital expansion",
+          "Event pressure can create both breakout and fade risk"
+        ],
+        "counter_evidence": [
+          "Valuation demanding",
+          "Crowding rising",
+          "A good NVDA event may already be partly priced"
+        ],
+        "invalidation_conditions": [
+          "Breaks earnings AVWAP and fails reclaim",
+          "Loses relative strength vs LITE/COHR/NVDA",
+          "EPS or revenue revisions down after earnings"
+        ]
+      }
+    },
+    "LITE": {
+      "profile": {
+        "company_name": "Lumentum",
+        "archetype": "second_line_high_beta",
+        "primary_category": "Optical / AI Infra Recovery",
+        "tags": [
+          "optical",
+          "turnaround",
+          "AI_infra_follow",
+          "profit_protection_needed"
+        ],
+        "best_strategy_fit": "swing_cycle"
+      },
+      "state": {
+        "role": "swing_recovery",
+        "trend_state": "recovery_watch_relative_strength",
+        "relative_strength": "compare_vs_CRDO_COHR",
+        "narrative_exposure": [
+          "OPTICAL",
+          "AI_INFRA"
+        ],
+        "valuation_state": "recovery_discount_or_trap_requires_evidence",
+        "risk_stack": {
+          "euphoria": 58,
+          "panic_maturity": 12,
+          "event_pressure": 70,
+          "crowding": 55
+        },
+        "action_bias": "hold_or_partial_migrate_if_lagging",
+        "confidence": 55
+      },
+      "decision": {
+        "action": "hold",
+        "timeframe": "days_to_weeks",
+        "evidence_chain": [
+          "Optical narrative still relevant",
+          "Recovery and AI Infra follow-through can support upside"
+        ],
+        "counter_evidence": [
+          "If LITE lags CRDO/COHR during Optical strength, opportunity cost rises",
+          "Turnaround names need stricter evidence"
+        ],
+        "invalidation_conditions": [
+          "Optical narrative remains strong but LITE underperforms peers",
+          "Guidance or margin data weakens",
+          "Breaks key AVWAP without reclaim"
+        ]
+      }
+    },
+    "IREN": {
+      "profile": {
+        "company_name": "IREN",
+        "archetype": "dual_narrative_transformer",
+        "primary_category": "BTC + AI Compute",
+        "tags": [
+          "BTC",
+          "AI_compute",
+          "high_beta",
+          "liquidity_sensitive"
+        ],
+        "best_strategy_fit": "panic_reversal_or_swing"
+      },
+      "state": {
+        "role": "swing_tactical",
+        "trend_state": "liquidity_sensitive_reset_watch",
+        "relative_strength": "depends_on_BTC_and_AI_compute_validation",
+        "narrative_exposure": [
+          "BTC_FINANCE",
+          "AI_INFRA"
+        ],
+        "valuation_state": "transition_story_requires_validation",
+        "risk_stack": {
+          "euphoria": 35,
+          "panic_maturity": 45,
+          "event_pressure": 52,
+          "crowding": 48
+        },
+        "action_bias": "wait_for_panic_maturity_or_validation",
+        "confidence": 52
+      },
+      "decision": {
+        "action": "wait",
+        "timeframe": "days_to_weeks",
+        "evidence_chain": [
+          "Dual exposure to BTC and AI compute can create upside",
+          "BTC reset may create future opportunity"
+        ],
+        "counter_evidence": [
+          "Liquidity liquidation can continue longer than expected",
+          "AI compute transition needs evidence"
+        ],
+        "invalidation_conditions": [
+          "BTC loses key liquidity structure",
+          "AI compute thesis fails to convert into revenue visibility",
+          "Financing/dilution risk rises"
+        ]
+      }
+    },
+    "HOOD": {
+      "profile": {
+        "company_name": "Robinhood",
+        "archetype": "liquidity_casino_proxy",
+        "primary_category": "Retail Trading / BTC Finance / Fintech",
+        "tags": [
+          "retail_risk_appetite",
+          "BTC_finance",
+          "trading_volume",
+          "regulatory_sensitive"
+        ],
+        "best_strategy_fit": "wait_for_maturity_then_build"
+      },
+      "state": {
+        "role": "watchlist_build_candidate",
+        "trend_state": "headline_drop_reset_watch",
+        "relative_strength": "depends_on_BTC_and_retail_activity",
+        "narrative_exposure": [
+          "BTC_FINANCE",
+          "FINTECH"
+        ],
+        "valuation_state": "growth_fintech_requires_volume_cycle",
+        "risk_stack": {
+          "euphoria": 25,
+          "panic_maturity": 48,
+          "event_pressure": 58,
+          "crowding": 45
+        },
+        "action_bias": "wait_define_maturity_conditions",
+        "confidence": 50
+      },
+      "decision": {
+        "action": "wait",
+        "timeframe": "days_to_weeks",
+        "evidence_chain": [
+          "BTC/retail trading reset could create opportunity",
+          "HOOD benefits from risk appetite and trading volume"
+        ],
+        "counter_evidence": [
+          "Regulatory headlines can extend pressure",
+          "Buying first headline dip may be early"
+        ],
+        "invalidation_conditions": [
+          "Retail trading activity deteriorates",
+          "Regulatory risk expands materially",
+          "BTC remains in liquidation regime"
+        ]
+      }
+    }
+  },
+  "portfolio": {
+    "positions_tracked": [
+      "NVDA",
+      "CRDO",
+      "LITE",
+      "IREN",
+      "HOOD"
+    ],
+    "battlefield_exposure": {
+      "AI_INFRA": 3,
+      "OPTICAL": 2,
+      "BTC_FINANCE": 2,
+      "FINTECH": 1
+    },
+    "current_primary_risk": [
+      "AI Infra/Optical crowding",
+      "Event pressure around NVDA/OPEX",
+      "BTC Finance reset may not be mature"
+    ],
+    "migration_candidates": [
+      {
+        "from": "LITE",
+        "to": "CRDO_or_COHR",
+        "condition": "Optical remains strong but LITE lags peers"
+      },
+      {
+        "from": "IBM_or_cash",
+        "to": "Big Tech Anchors",
+        "condition": "Macro supports attack and GOOG/MSFT/NVDA evidence improves"
+      },
+      {
+        "from": "high_beta_overextended",
+        "to": "cash_or_stabilizer",
+        "condition": "Euphoria/risk stack turns red"
+      }
+    ]
+  }
+}

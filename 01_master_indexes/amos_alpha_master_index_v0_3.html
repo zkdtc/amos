@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Alpha Master Index v0.3</title>
+<style>
+:root{--bg:#05070c;--side:#070b15;--panel:#0b1020;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d;--violet:#9b5cff;--orange:#ff9f43;--blue:#4ea1ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.shell{display:grid;grid-template-columns:286px 1fr;min-height:100vh}
+.sidebar{background:rgba(7,11,21,.95);border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{padding:8px 10px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+.brand h1{font-size:24px;margin:6px 0 4px;letter-spacing:.04em}.brand p{color:var(--muted);margin:0}
+.nav{display:grid;gap:6px}.nav a{text-decoration:none;color:var(--soft);border:1px solid transparent;border-radius:9px;padding:10px}.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.main{padding:20px;max-width:1660px;width:100%;margin:0 auto}
+.card,.section,.artifact{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:24px;margin-bottom:14px}
+h1{font-size:40px;margin:6px 0 8px}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat b{display:block;font-size:28px;color:var(--green)}.stat span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.workflow{padding:18px;margin-bottom:14px;border-color:rgba(255,209,102,.45)}.workflow h2{margin:0 0 10px;color:var(--gold)}.workflow li{color:var(--soft);margin:7px 0}
+.section{padding:18px;margin-bottom:14px;scroll-margin-top:20px}
+.section-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.section h2{font-size:24px;margin:4px 0}.section p{color:var(--soft);margin:0}
+.count{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);border:1px solid rgba(255,209,102,.4);border-radius:999px;padding:5px 9px;white-space:nowrap}
+.artifact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.artifact{display:block;text-decoration:none;color:var(--text);padding:14px;min-height:148px;transition:.15s}
+.artifact:hover{transform:translateY(-2px);border-color:rgba(35,217,255,.5)}
+.artifact-top{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}
+.artifact-top b{font-size:14px}.artifact-top span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green);font-size:10px}
+.artifact p{color:var(--soft);margin:0 0 10px}.artifact small{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+.missing{opacity:.45}.missing .artifact-top span{color:var(--red)}
+.next{padding:18px;margin-bottom:14px}.next li{color:var(--soft);margin:8px 0}
+@media(max-width:1200px){.shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.artifact-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.artifact-grid,.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="eyebrow">AMOS Alpha</div>
+      <h1>Master Index</h1>
+      <p>v0.3 · 39 deliveries</p>
+    </div>
+    <nav class="nav"><a href="#v03a">v0.3A Manual Data Alpha</a><a href="#product">Product Shell</a><a href="#core">Core System Engines</a><a href="#data">Data</a><a href="#gann">Gann Research</a><a href="#stock">Stock Intelligence Pages</a><a href="#dashboard">Dashboards</a></nav>
+  </aside>
+  <main class="main">
+    <div class="card hero">
+      <div class="eyebrow">AI Market Operating System · Master Entry</div>
+      <h1>AMOS Alpha Master Index v0.3</h1>
+      <div class="motto">当前主线：v0.3A Manual Data Alpha。先让 AMOS 用手动数据跑起来，再接半自动和实时数据。</div>
+    </div>
+
+    <div class="stats">
+      <div class="card stat"><span>Deliveries</span><b>39</b></div>
+      <div class="card stat"><span>Current Phase</span><b>v0.3A</b></div>
+      <div class="card stat"><span>Mode</span><b>Manual</b></div>
+      <div class="card stat"><span>Next</span><b>Workflow</b></div>
+    </div>
+
+    <div class="card workflow">
+      <div class="eyebrow">Current Workflow</div>
+      <h2>现在每天怎么用</h2>
+      <ol><li>Open Manual Data Input Sheet</li><li>Update Manual Inputs</li><li>Check Priority Checklist</li><li>Add Evidence Packet</li><li>Read Generated Brief</li><li>Use Peer Map for migration decisions</li><li>Open stock page / Gann auto page if needed</li></ol>
+    </div>
+
+    
+    <section id="v03a" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">v03a</div>
+          <h2>v0.3A Manual Data Alpha / 手动数据可用版</h2>
+          <p>当前最重要工作流：手动填数据 → 生成日报 → 检查优先标的 → 记录证据包。</p>
+        </div>
+        <span class="count">7/7</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_alpha_v0_3_roadmap.html" target="_blank">
+          <div class="artifact-top">
+            <b>AMOS Alpha v0.3 Roadmap</b>
+            <span>OPEN</span>
+          </div>
+          <p>从 Static Alpha 到可用 Alpha 的四阶段路线</p>
+          <small>HTML · amos_alpha_v0_3_roadmap.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_manual_data_input_sheet_v0_1.xlsx" target="_blank">
+          <div class="artifact-top">
+            <b>Manual Data Input Sheet v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>手动数据入口工作簿</p>
+          <small>XLSX · amos_manual_data_input_sheet_v0_1.xlsx</small>
+        </a>
+        
+        <a class="artifact" href="amos_daily_brief_generator_from_manual_packet_v0_2.xlsx" target="_blank">
+          <div class="artifact-top">
+            <b>Daily Brief Generator v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>从手动数据包生成日报</p>
+          <small>XLSX · amos_daily_brief_generator_from_manual_packet_v0_2.xlsx</small>
+        </a>
+        
+        <a class="artifact" href="amos_priority_ticker_checklist_v0_1.xlsx" target="_blank">
+          <div class="artifact-top">
+            <b>Priority Ticker Checklist v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>优先标的每日检查清单</p>
+          <small>XLSX · amos_priority_ticker_checklist_v0_1.xlsx</small>
+        </a>
+        
+        <a class="artifact" href="amos_real_evidence_packet_template_v0_1.xlsx" target="_blank">
+          <div class="artifact-top">
+            <b>Real Evidence Packet Template v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>证据包模板</p>
+          <small>XLSX · amos_real_evidence_packet_template_v0_1.xlsx</small>
+        </a>
+        
+        <a class="artifact" href="amos_crdo_peer_map_v0_1.xlsx" target="_blank">
+          <div class="artifact-top">
+            <b>CRDO Peer Map v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>CRDO/LITE/COHR/NVDA/AVGO/ANET peer map</p>
+          <small>XLSX · amos_crdo_peer_map_v0_1.xlsx</small>
+        </a>
+        
+        <a class="artifact" href="amos_generic_page_gann_auto_insertion_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>Generic Page + Gann Auto-Insertion v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>通用个股页自动插入 Gann Zone</p>
+          <small>HTML · amos_generic_page_gann_auto_insertion_v0_2.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="product" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">product</div>
+          <h2>Product Shell / 总入口</h2>
+          <p>AMOS 的产品壳、总目录和统一入口。</p>
+        </div>
+        <span class="count">2/3</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_unified_app_shell_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>AMOS Unified App Shell v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>统一产品壳</p>
+          <small>HTML · amos_unified_app_shell_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_alpha_master_index_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>AMOS Alpha Master Index v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>上一版总入口</p>
+          <small>HTML · amos_alpha_master_index_v0_2.html</small>
+        </a>
+        
+        <a class="artifact missing" href="#" target="_blank">
+          <div class="artifact-top">
+            <b>AMOS Alpha Master Index v0.3</b>
+            <span>MISSING</span>
+          </div>
+          <p>当前总入口</p>
+          <small>HTML · amos_alpha_master_index_v0_3.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="core" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">core</div>
+          <h2>Core System Engines / 核心系统引擎</h2>
+          <p>宏观、叙事、估值、风险、组合迁移、证据治理等 AMOS 主干。</p>
+        </div>
+        <span class="count">7/7</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_macro_regime_liquidity_state_machine_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Macro Regime & Liquidity State Machine</b>
+            <span>OPEN</span>
+          </div>
+          <p>宏观状态机</p>
+          <small>HTML · amos_macro_regime_liquidity_state_machine_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_narrative_lifecycle_capital_rotation_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Narrative Lifecycle & Capital Rotation</b>
+            <span>OPEN</span>
+          </div>
+          <p>叙事生命周期与资金轮动</p>
+          <small>HTML · amos_narrative_lifecycle_capital_rotation_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_valuation_battle_map_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Valuation Battle Map</b>
+            <span>OPEN</span>
+          </div>
+          <p>七层估值战场</p>
+          <small>HTML · amos_valuation_battle_map_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_portfolio_battle_map_migration_engine_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Portfolio Battle Map & Migration</b>
+            <span>OPEN</span>
+          </div>
+          <p>持仓迁移与机会成本</p>
+          <small>HTML · amos_portfolio_battle_map_migration_engine_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_risk_protection_behavior_guardrail_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Risk Protection & Behavior Guardrail</b>
+            <span>OPEN</span>
+          </div>
+          <p>风险保护与行为护栏</p>
+          <small>HTML · amos_risk_protection_behavior_guardrail_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_research_source_evidence_quality_engine_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Research Source & Evidence Quality</b>
+            <span>OPEN</span>
+          </div>
+          <p>证据质量和来源治理</p>
+          <small>HTML · amos_research_source_evidence_quality_engine_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_stock_personality_radar_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Stock Personality Radar</b>
+            <span>OPEN</span>
+          </div>
+          <p>个股股性雷达</p>
+          <small>HTML · amos_stock_personality_radar_v0_1.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="data" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">data</div>
+          <h2>Data / Schema / Scoring / 数据与评分</h2>
+          <p>AMOS 从静态原型转向数据驱动所需的数据结构、样本数据和评分逻辑。</p>
+        </div>
+        <span class="count">7/7</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_data_schema_v0_1.md" target="_blank">
+          <div class="artifact-top">
+            <b>Data Schema v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>AMOS 数据骨架</p>
+          <small>MD · amos_data_schema_v0_1.md</small>
+        </a>
+        
+        <a class="artifact" href="amos_agent_routing_v0_1.md" target="_blank">
+          <div class="artifact-top">
+            <b>Agent Routing v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>多 AI 分工路由</p>
+          <small>MD · amos_agent_routing_v0_1.md</small>
+        </a>
+        
+        <a class="artifact" href="amos_sample_data_fixture_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Sample Data Fixture v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>样本数据</p>
+          <small>HTML · amos_sample_data_fixture_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_scoring_logic_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Scoring Logic v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>可计算评分规则</p>
+          <small>HTML · amos_scoring_logic_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_scoring_connected_dashboard_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>Scoring-connected Dashboard v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>评分接入后的多股票看板</p>
+          <small>HTML · amos_scoring_connected_dashboard_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_alpha_data_flow_map_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Alpha Data Flow Map v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>Raw Input 到 UI 的数据流</p>
+          <small>HTML · amos_alpha_data_flow_map_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_real_data_adapter_schema_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Real Data Adapter Schema v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>真实数据接入接口</p>
+          <small>HTML · amos_real_data_adapter_schema_v0_1.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="gann" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">gann</div>
+          <h2>Gann Research / 江恩研究区</h2>
+          <p>九方图、时间窗、价格/时间共振、Gann Research Zone。</p>
+        </div>
+        <span class="count">5/5</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_gann_calculator_module_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Gann Calculator Module v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>九方图价格位与时间窗口</p>
+          <small>HTML · amos_gann_calculator_module_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_gann_cluster_distance_engine_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>Gann Cluster & Distance Engine v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>最近支撑/压力与多锚点密集区</p>
+          <small>HTML · amos_gann_cluster_distance_engine_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_gann_time_distance_engine_v0_3.html" target="_blank">
+          <div class="artifact-top">
+            <b>Gann Time Distance Engine v0.3</b>
+            <span>OPEN</span>
+          </div>
+          <p>时间窗口距离与时间密集区</p>
+          <small>HTML · amos_gann_time_distance_engine_v0_3.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_unified_gann_resonance_engine_v0_4.html" target="_blank">
+          <div class="artifact-top">
+            <b>Unified Gann Resonance Engine v0.4</b>
+            <span>OPEN</span>
+          </div>
+          <p>统一江恩共振</p>
+          <small>HTML · amos_unified_gann_resonance_engine_v0_4.html</small>
+        </a>
+        
+        <a class="artifact" href="crdo_gann_research_zone_v0_4.html" target="_blank">
+          <div class="artifact-top">
+            <b>CRDO Gann Research Zone v0.4</b>
+            <span>OPEN</span>
+          </div>
+          <p>CRDO 江恩研究区</p>
+          <small>HTML · crdo_gann_research_zone_v0_4.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="stock" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">stock</div>
+          <h2>Stock Intelligence Pages / 个股作战页</h2>
+          <p>CRDO 完整页与通用个股页生成器生成的样板标的页面。</p>
+        </div>
+        <span class="count">7/7</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="crdo_full_stock_intelligence_page_v0_4.html" target="_blank">
+          <div class="artifact-top">
+            <b>CRDO Full Stock Intelligence Page v0.4</b>
+            <span>OPEN</span>
+          </div>
+          <p>CRDO 完整个股作战页</p>
+          <small>HTML · crdo_full_stock_intelligence_page_v0_4.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_generic_stock_page_generator_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Generic Stock Page Generator v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>通用个股页生成器</p>
+          <small>HTML · amos_generic_stock_page_generator_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="nvda_stock_page_gann_auto_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>NVDA Gann Auto Page v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>NVDA 自动Gann状态页</p>
+          <small>HTML · nvda_stock_page_gann_auto_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="crdo_stock_page_gann_auto_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>CRDO Gann Auto Page v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>CRDO 自动Gann状态页</p>
+          <small>HTML · crdo_stock_page_gann_auto_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="lite_stock_page_gann_auto_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>LITE Gann Auto Page v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>LITE 自动Gann状态页</p>
+          <small>HTML · lite_stock_page_gann_auto_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="iren_stock_page_gann_auto_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>IREN Gann Auto Page v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>IREN 自动Gann状态页</p>
+          <small>HTML · iren_stock_page_gann_auto_v0_2.html</small>
+        </a>
+        
+        <a class="artifact" href="hood_stock_page_gann_auto_v0_2.html" target="_blank">
+          <div class="artifact-top">
+            <b>HOOD Gann Auto Page v0.2</b>
+            <span>OPEN</span>
+          </div>
+          <p>HOOD 自动Gann状态页</p>
+          <small>HTML · hood_stock_page_gann_auto_v0_2.html</small>
+        </a>
+        </div>
+    </section>
+    
+    <section id="dashboard" class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">dashboard</div>
+          <h2>Dashboards / Daily Brief / 看板与日报</h2>
+          <p>多股票看板、日报模板和执行报告入口。</p>
+        </div>
+        <span class="count">3/3</span>
+      </div>
+      <div class="artifact-grid">
+        <a class="artifact" href="amos_multistock_dashboard_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Multi-stock Dashboard v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>多股票战场视图</p>
+          <small>HTML · amos_multistock_dashboard_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_daily_market_brief_template_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Daily Market Brief Template v0.1</b>
+            <span>OPEN</span>
+          </div>
+          <p>盘前/盘后/周末报告模板</p>
+          <small>HTML · amos_daily_market_brief_template_v0_1.html</small>
+        </a>
+        
+        <a class="artifact" href="amos_home_command_center_v0_1.html" target="_blank">
+          <div class="artifact-top">
+            <b>Home Command Center</b>
+            <span>OPEN</span>
+          </div>
+          <p>首页战情室</p>
+          <small>HTML · amos_home_command_center_v0_1.html</small>
+        </a>
+        </div>
+    </section>
+    
+
+    <div class="card next">
+      <div class="eyebrow">Next Build Sequence</div>
+      <h2>下一步工程路线</h2>
+      <ol><li>Manual Data Workflow Guide v0.1</li><li>Generate Daily Brief HTML from Excel snapshot</li><li>Add Peer Map link into CRDO full page</li><li>Create NVDA Gann Engine v0.1</li><li>Create LITE Gann Engine v0.1</li><li>Build Real Data CSV Import Schema v0.1</li></ol>
+    </div>
+  </main>
+</div>
+</body>
+</html>

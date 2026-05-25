@@ -1,0 +1,22 @@
+{
+  "version": "CRDO Data-driven Stock Page v0.2",
+  "html": "crdo_data_driven_stock_page_v0_2.html",
+  "source_fixture": "amos_sample_data_fixture_v0_1.json",
+  "ticker": "CRDO",
+  "data_fields_used": [
+    "profile",
+    "state",
+    "risk_stack",
+    "narrative_exposure",
+    "decision",
+    "evidence_chain",
+    "counter_evidence",
+    "invalidation_conditions",
+    "gann_resonance_placeholder"
+  ],
+  "next": [
+    "wire scoring logic into page",
+    "build data-driven pages for LITE/IREN/HOOD/NVDA",
+    "replace placeholders with live market data"
+  ]
+}

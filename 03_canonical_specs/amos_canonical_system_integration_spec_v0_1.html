@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMOS Canonical System Integration Spec v0.1</title>
+<style>
+:root{--bg:#05070c;--line:#1e2a46;--text:#dbe6ff;--muted:#7180a0;--soft:#a9b8d8;--cyan:#23d9ff;--green:#32e68a;--gold:#ffd166;--red:#ff4d6d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(35,217,255,.08),transparent 30%),radial-gradient(circle at 88% 8%,rgba(255,209,102,.08),transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans SC",sans-serif;font-size:13px;line-height:1.5}
+.app{max-width:1560px;margin:0 auto;padding:22px}
+.card,.section,.artifact{background:linear-gradient(180deg,rgba(16,24,45,.95),rgba(8,12,24,.95));border:1px solid var(--line);border-radius:14px}
+.hero{padding:26px;margin-bottom:14px}.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);letter-spacing:.2em;font-size:10px;text-transform:uppercase}
+h1{font-size:42px;margin:6px 0 8px}h2{font-size:24px;margin:4px 0 10px;color:var(--gold)}.motto{font-size:15px;color:var(--gold);font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}.stat{padding:16px}.stat span{display:block;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;text-transform:uppercase}.stat b{display:block;color:var(--green);font-size:28px}
+.section{padding:18px;margin-bottom:14px}.section li{color:var(--soft);margin:7px 0}.section p{color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.artifact{display:block;text-decoration:none;color:var(--text);padding:14px;min-height:118px}.artifact b{display:block;color:var(--gold);font-size:15px;margin-bottom:8px}.artifact span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green);font-size:10px}.artifact small{display:block;color:var(--muted);margin-top:10px;word-break:break-all}.missing{opacity:.45}
+.warning{border-color:rgba(255,77,109,.55)}.warning h2{color:var(--red)}
+@media(max-width:1100px){.grid,.stats{grid-template-columns:1fr 1fr}}@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card hero">
+    <div class="eyebrow">AMOS · Canonical Integration · v0.1</div>
+    <h1>Canonical System Integration Spec</h1>
+    <div class="motto">把已经稳定下来的概念、架构、护栏、文件和工程边界收敛成正本规格，避免后续 Codex / 工程迁移遗漏。</div>
+  </div>
+
+  <div class="stats">
+    <div class="card stat"><span>Phase</span><b>v0.3A</b></div>
+    <div class="card stat"><span>Gann Live</span><b>5</b></div>
+    <div class="card stat"><span>Artifacts</span><b>229</b></div>
+    <div class="card stat"><span>Anchor Check</span><b>v0.2</b></div>
+    <div class="card stat"><span>Mode</span><b>Manual</b></div>
+  </div>
+
+  <div class="grid">
+    <a class="artifact " href="amos_alpha_master_index_v0_5.html" target="_blank">
+      <b>Master Index v0.5</b>
+      <span>OPEN</span>
+      <small>amos_alpha_master_index_v0_5.html</small>
+    </a>
+    
+    <a class="artifact " href="amos_manual_data_workbook_v0_2_unified.xlsx" target="_blank">
+      <b>Manual Workbook v0.2</b>
+      <span>OPEN</span>
+      <small>amos_manual_data_workbook_v0_2_unified.xlsx</small>
+    </a>
+    
+    <a class="artifact " href="amos_gann_live_ticker_registry_v0_4.html" target="_blank">
+      <b>Gann Registry v0.4</b>
+      <span>OPEN</span>
+      <small>amos_gann_live_ticker_registry_v0_4.html</small>
+    </a>
+    
+    <a class="artifact " href="amos_gann_anchor_verification_checklist_v0_2.xlsx" target="_blank">
+      <b>Anchor Verification v0.2</b>
+      <span>OPEN</span>
+      <small>amos_gann_anchor_verification_checklist_v0_2.xlsx</small>
+    </a>
+    
+    <a class="artifact " href="amos_csv_import_schema_v0_1.xlsx" target="_blank">
+      <b>CSV Import Schema v0.1</b>
+      <span>OPEN</span>
+      <small>amos_csv_import_schema_v0_1.xlsx</small>
+    </a>
+    
+    <a class="artifact " href="amos_real_market_data_source_map_v0_1.xlsx" target="_blank">
+      <b>Data Source Map v0.1</b>
+      <span>OPEN</span>
+      <small>amos_real_market_data_source_map_v0_1.xlsx</small>
+    </a>
+    
+    <a class="artifact " href="amos_macro_event_calendar_manual_input_v0_1.xlsx" target="_blank">
+      <b>Macro Event Calendar v0.1</b>
+      <span>OPEN</span>
+      <small>amos_macro_event_calendar_manual_input_v0_1.xlsx</small>
+    </a>
+    
+    <a class="artifact " href="amos_daily_brief_html_exporter_v0_2.py" target="_blank">
+      <b>Daily Brief Exporter v0.2</b>
+      <span>OPEN</span>
+      <small>amos_daily_brief_html_exporter_v0_2.py</small>
+    </a>
+    </div>
+
+  <div class="section warning">
+    <h2>不可遗漏的总护栏</h2>
+    <p>所有 Gann Engines 仍然是 sample/manual-ready；任何江恩点位和时间窗都必须先通过 Anchor Verification v0.2，并叠加 live price、AVWAP、RSI、TCG、期权/Gamma、事件确认后，才能进入正式交易判断。Gann 永远不能单独触发买卖。</p>
+  </div>
+
+  <div class="section">
+    <h2>项目身份</h2>
+    <ul>
+      <li><b>AMOS:</b> A personal AI-driven market operating system for observing, researching and trading U.S. equities with real evidence, cycle rhythm, leadership rotation, risk protection and user-specific behavioral guardrails.</li>
+      <li><b>原则:</b> 整合，不是推翻。New material must classify, abstract, integrate and optimize the existing trunk, not restart or randomly expand modules.</li>
+      <li><b>当前模式:</b> Manual/static alpha with standardized CSV/import path; not live trading automation yet.</li>
+    </ul>
+  </div>
+
+  <div class="section"><h2>用户操作画像</h2><ul><li>User prefers high-growth U.S. equities around hard AI, AI infrastructure, compute, optical, defense, space, BTC/fintech, robotics, quantum and selected AI healthcare/biotech.</li><li>User has historically made large mistakes by adding leverage, holding winners too long, failing to take profits at tops, and capitulating after forced liquidation.</li><li>User is good at RSI oversold / key-level rebound trades and often takes 10%-20% rebound profits.</li><li>Primary improvement target: cycle rhythm — when to attack, shrink, hold only core, avoid bottom-fishing, rotate, hedge or go to cash.</li><li>System must protect the user at euphoric tops with loud, visible, decisive trim/exit/sell-call warnings.</li><li>System must distinguish Core / Swing / Tactical / Runner / Research positions and must use actual holdings and actions whenever available.</li><li>System must not become a generic dashboard; it must be personalized to user’s watchlist, mistakes, strengths, family/attention constraints and long-term compounding goal.</li></ul></div>
+  <div class="section"><h2>核心投资框架</h2><ul><li>Macro sets exposure ceiling.</li><li>Liquidity and mechanical flows shape short-term risk/reward.</li><li>Leadership and narrative lifecycle decide where capital migrates.</li><li>Valuation sets margin of safety and forward return range.</li><li>Earnings / guidance / revisions decide thesis health.</li><li>Gann time-price resonance defines research zones and timing pressure, but cannot trade alone.</li><li>TCG / price action / AVWAP / RSI / volume confirm execution.</li><li>Options / Gamma / OPEX / event pressure cap aggressiveness.</li><li>Evidence Packet and counter-evidence prevent narrative overconfidence.</li><li>Portfolio Battle Map decides migration from weak/overheated names to stronger or safer peers.</li><li>Prediction → Action → Result loop trains the system on user’s real decisions.</li></ul></div>
+  <div class="section"><h2>Home Command Center</h2><ul><li>Macro liquidity / mechanical flow layer: CTA, pension rebalance, dealer gamma, prime brokerage/HF exposure, put/call, 0DTE, VIX/VVIX/MOVE, 10Y, DXY, BTC, credit spreads, breadth, Mag7 vs equal weight.</li><li>Mechanical dates: weekly/monthly/quarterly OPEX, triple/quad witching, ETF/index rebalance, month-end/quarter-end pension flows, FOMC/CPI/PCE/NFP/ISM/JOLTS/jobless claims, Fed minutes/dot plot, Treasury auctions, TGA/debt ceiling/fiscal events.</li><li>Leadership and sector map: AI Infra, Optical/CPO, AI Software/Agent, Power/Cooling, Robotics, Space, Biotech/AI healthcare, Quantum, Fintech/BTC finance, BTC miners/compute, Gaming/education/consumer AI, Defense, AI Meme high-volatility pool.</li><li>Political/geopolitical layer: tariffs, export controls, wars/ceasefire, fiscal stimulus, regulation, president/treasury/Fed official comments/posts.</li><li>Visual layer: macro liquidity chart, mechanical date axis, SPY/QQQ/SMH Gamma Map, sector rotation heatmap, leadership graph, stock correlation network, Gann Time Wheel, Event × Cycle Resonance Chart, Portfolio Battle Map, Prediction→Action→Result chart, Personality Radar.</li><li>Portfolio layer: real holdings, watchlist, core/swing/tactical/runner structure, risk alerts, trim targets, bottom-fishing candidates, sell-call/put candidates, AI journal and governance entry.</li></ul></div>
+  <div class="section"><h2>Stock Intelligence Page</h2><ul><li>Top-level total judgment with action, confidence cap, data freshness and action cap.</li><li>Ticker profile: company, industry branch, tags, archetype, leadership/follower/laggard/meme classification.</li><li>Position structure: Core / Swing / Tactical / Runner / Research, cost/profit/risk where available.</li><li>Industry liquidity and capital migration path.</li><li>Valuation / earnings / revisions / guidance / cash flow / SBC / moat / management quality.</li><li>Gann Research Zone: Square of Nine levels, multi-anchor clusters, time windows, time-price resonance, anchor verification status.</li><li>Price action execution: TCG 8/12 EMA, HH/HL vs LH/LL, inside bar, equilibrium, 1H/4H/daily/weekly confirmation.</li><li>AVWAP zones: earnings AVWAP, major low/high AVWAP, reclaim/failure rules.</li><li>RSI / momentum: oversold, overbought, divergence and mean reversion maturity.</li><li>Options/Gamma/Event: call wall, put wall, IV, OPEX, earnings, conference, macro event pressure.</li><li>Dark pool / flow / volume confirmation when available.</li><li>Sector/liquidity/BTC/macro linkage.</li><li>Event × Cycle Resonance.</li><li>Stock Personality Radar: how this stock behaves in panic, breakout, post-earnings, peer rotation, hype phase.</li><li>Hard evidence panel → AI synthesis score → operation strategy → dynamic tracking/review.</li><li>Invalidation conditions and exact reasons to reduce, exit, wait, or build.</li></ul></div>
+  <div class="section"><h2>Gann / 江恩系统</h2><ul><li>Formula: target_price = (sqrt(base_price) ± angle/180)^2</li><li>Levels are observation zones, not exact lines; default ±0.5% band unless ticker volatility demands otherwise.</li><li>Only high-grade when Square-of-Nine 180°/360° price levels overlap 90/144/180/360 time windows and also confirm with RSI, AVWAP, volume, TCG price action, options/Gamma, event window and liquidity context.</li><li>Gann cannot trigger trades alone. Sample anchors cannot be used for formal trading until verified in Anchor Verification Checklist.</li></ul></div>
+  <div class="section"><h2>风险管理与行为保护</h2><ul><li>Risk system must protect actual holdings and actual P/L, not provide generic fear.</li><li>System must highlight high-euphoria trim/exit warnings visually and decisively.</li><li>Bottom-fishing allowed only when panic maturity is high, thesis intact, valuation compressed, Gann support/time window, RSI oversold/divergent, AVWAP/weekly 12 EMA support, volume exhaustion/reversal and sector liquidity not broken.</li><li>Put is not default hedge for core holdings; user is less familiar with puts and often prefers selling calls in slow climbs or direct selling in extreme heat.</li><li>Put candidates should be overextended/hottest/most expensive/gamma/IV/retail-extreme names, not reasonably valued core leaders unless thesis truly breaks.</li><li>Risk engines: Panic Maturity Engine, Narrative Health Engine, Exit/Hedge Engine, Risk Training/Behavior Protection.</li><li>Training must be based on user’s real positions and real reviews, not abstract horror scenarios.</li></ul></div>
+  <div class="section"><h2>Codex 工程边界</h2><ul><li>Do not connect live trading or brokerage.</li><li>Do not imply data is live when using sample/manual-ready values.</li><li>Do not allow Gann-only buy/sell triggers.</li><li>Preserve all guardrails and action caps in code, not just UI text.</li><li>Implement local JSON/CSV-driven app first.</li><li>Add tests for data freshness caps, Gann anchor verification gates, No Attack event gating and missing-data behavior.</li><li>Every generated page/component must show data freshness and sample-data warning where applicable.</li></ul></div>
+</div>
+</body>
+</html>

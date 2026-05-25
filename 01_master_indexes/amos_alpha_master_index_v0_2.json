@@ -1,0 +1,273 @@
+{
+  "version": "AMOS Alpha Master Index v0.2",
+  "created": "2026-05-24",
+  "purpose": "Master entry point for all AMOS Alpha artifacts delivered so far.",
+  "state": {
+    "delivery_count": 31,
+    "current_phase": "Static Alpha + sample-data-driven prototype",
+    "next_phase": "Real-data-ready Alpha v0.3",
+    "current_bottleneck": "Connect real data adapters and generate daily brief from score packets."
+  },
+  "sections": [
+    {
+      "id": "product",
+      "title": "Product Shell / 总入口",
+      "desc": "AMOS 的产品壳、总目录和统一入口。",
+      "items": [
+        {
+          "title": "AMOS Unified App Shell v0.1",
+          "file": "amos_unified_app_shell_v0_1.html",
+          "desc": "统一产品壳：左侧导航 + 模块工作区",
+          "exists": true
+        },
+        {
+          "title": "AMOS Alpha Integration Index v0.1",
+          "file": "amos_alpha_integration_index_v0_1.html",
+          "desc": "第一个 Alpha 工程目录",
+          "exists": true
+        },
+        {
+          "title": "AMOS Alpha Master Index v0.2",
+          "file": "amos_alpha_master_index_v0_2.html",
+          "desc": "当前总入口",
+          "exists": false
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Core System Engines / 核心系统引擎",
+      "desc": "宏观、叙事、估值、风险、组合迁移、证据治理等 AMOS 主干。",
+      "items": [
+        {
+          "title": "Macro Regime & Liquidity State Machine",
+          "file": "amos_macro_regime_liquidity_state_machine_v0_1.html",
+          "desc": "宏观状态机",
+          "exists": true
+        },
+        {
+          "title": "Narrative Lifecycle & Capital Rotation",
+          "file": "amos_narrative_lifecycle_capital_rotation_v0_1.html",
+          "desc": "叙事生命周期与资金轮动",
+          "exists": true
+        },
+        {
+          "title": "Valuation Battle Map",
+          "file": "amos_valuation_battle_map_v0_1.html",
+          "desc": "七层估值战场",
+          "exists": true
+        },
+        {
+          "title": "Portfolio Battle Map & Migration",
+          "file": "amos_portfolio_battle_map_migration_engine_v0_1.html",
+          "desc": "持仓迁移与机会成本",
+          "exists": true
+        },
+        {
+          "title": "Risk Protection & Behavior Guardrail",
+          "file": "amos_risk_protection_behavior_guardrail_v0_1.html",
+          "desc": "风险保护与行为护栏",
+          "exists": true
+        },
+        {
+          "title": "Research Source & Evidence Quality",
+          "file": "amos_research_source_evidence_quality_engine_v0_1.html",
+          "desc": "证据质量和来源治理",
+          "exists": true
+        },
+        {
+          "title": "Stock Personality Radar",
+          "file": "amos_stock_personality_radar_v0_1.html",
+          "desc": "个股股性雷达",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data / Schema / Scoring / 数据与评分",
+      "desc": "AMOS 从静态原型转向数据驱动所需的数据结构、样本数据和评分逻辑。",
+      "items": [
+        {
+          "title": "Data Schema v0.1",
+          "file": "amos_data_schema_v0_1.md",
+          "desc": "AMOS 数据骨架",
+          "exists": true
+        },
+        {
+          "title": "Agent Routing v0.1",
+          "file": "amos_agent_routing_v0_1.md",
+          "desc": "多 AI 分工路由",
+          "exists": true
+        },
+        {
+          "title": "Sample Data Fixture v0.1",
+          "file": "amos_sample_data_fixture_v0_1.html",
+          "desc": "NVDA/CRDO/LITE/IREN/HOOD 样本数据",
+          "exists": true
+        },
+        {
+          "title": "Scoring Logic v0.1",
+          "file": "amos_scoring_logic_v0_1.html",
+          "desc": "可计算评分规则",
+          "exists": true
+        },
+        {
+          "title": "Scoring-connected Dashboard v0.2",
+          "file": "amos_scoring_connected_dashboard_v0_2.html",
+          "desc": "评分接入后的多股票看板",
+          "exists": true
+        },
+        {
+          "title": "Alpha Data Flow Map v0.1",
+          "file": "amos_alpha_data_flow_map_v0_1.html",
+          "desc": "Raw Input 到 UI 的完整数据流",
+          "exists": true
+        },
+        {
+          "title": "Real Data Adapter Schema v0.1",
+          "file": "amos_real_data_adapter_schema_v0_1.html",
+          "desc": "真实数据接入字段接口",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "gann",
+      "title": "Gann Research / 江恩研究区",
+      "desc": "用户高优先级工具：九方图、时间窗、价格/时间共振、Gann Research Zone。",
+      "items": [
+        {
+          "title": "Gann Calculator Module v0.1",
+          "file": "amos_gann_calculator_module_v0_1.html",
+          "desc": "九方图价格位与时间窗口",
+          "exists": true
+        },
+        {
+          "title": "Gann Cluster & Distance Engine v0.2",
+          "file": "amos_gann_cluster_distance_engine_v0_2.html",
+          "desc": "最近支撑/压力与多锚点密集区",
+          "exists": true
+        },
+        {
+          "title": "Gann Time Distance Engine v0.3",
+          "file": "amos_gann_time_distance_engine_v0_3.html",
+          "desc": "时间窗口距离与时间密集区",
+          "exists": true
+        },
+        {
+          "title": "Unified Gann Resonance Engine v0.4",
+          "file": "amos_unified_gann_resonance_engine_v0_4.html",
+          "desc": "价格+时间+确认门统一共振",
+          "exists": true
+        },
+        {
+          "title": "CRDO Gann Research Zone v0.4",
+          "file": "crdo_gann_research_zone_v0_4.html",
+          "desc": "CRDO 独立江恩研究区",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "stock",
+      "title": "Stock Intelligence Pages / 个股作战页",
+      "desc": "CRDO 完整页与通用个股页生成器生成的五个样板标的页面。",
+      "items": [
+        {
+          "title": "CRDO Data-driven Stock Page v0.2",
+          "file": "crdo_data_driven_stock_page_v0_2.html",
+          "desc": "CRDO 数据驱动页",
+          "exists": true
+        },
+        {
+          "title": "CRDO Scoring-connected Stock Page v0.3",
+          "file": "crdo_scoring_connected_stock_page_v0_3.html",
+          "desc": "CRDO 接入评分页",
+          "exists": true
+        },
+        {
+          "title": "CRDO Full Stock Intelligence Page v0.4",
+          "file": "crdo_full_stock_intelligence_page_v0_4.html",
+          "desc": "CRDO 完整个股作战页",
+          "exists": true
+        },
+        {
+          "title": "Generic Stock Page Generator v0.1",
+          "file": "amos_generic_stock_page_generator_v0_1.html",
+          "desc": "通用个股页生成器",
+          "exists": true
+        },
+        {
+          "title": "NVDA Generic Stock Page",
+          "file": "nvda_generic_stock_intelligence_page_v0_1.html",
+          "desc": "NVDA 样板页",
+          "exists": true
+        },
+        {
+          "title": "CRDO Generic Stock Page",
+          "file": "crdo_generic_stock_intelligence_page_v0_1.html",
+          "desc": "CRDO 通用样板页",
+          "exists": true
+        },
+        {
+          "title": "LITE Generic Stock Page",
+          "file": "lite_generic_stock_intelligence_page_v0_1.html",
+          "desc": "LITE 样板页",
+          "exists": true
+        },
+        {
+          "title": "IREN Generic Stock Page",
+          "file": "iren_generic_stock_intelligence_page_v0_1.html",
+          "desc": "IREN 样板页",
+          "exists": true
+        },
+        {
+          "title": "HOOD Generic Stock Page",
+          "file": "hood_generic_stock_intelligence_page_v0_1.html",
+          "desc": "HOOD 样板页",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboards / Daily Brief / 看板与日报",
+      "desc": "多股票看板、日报模板和执行报告入口。",
+      "items": [
+        {
+          "title": "Multi-stock Dashboard v0.1",
+          "file": "amos_multistock_dashboard_v0_1.html",
+          "desc": "多股票战场视图",
+          "exists": true
+        },
+        {
+          "title": "Daily Market Brief Template v0.1",
+          "file": "amos_daily_market_brief_template_v0_1.html",
+          "desc": "盘前/盘后/周末报告模板",
+          "exists": true
+        },
+        {
+          "title": "Home Command Center",
+          "file": "amos_home_command_center_v0_1.html",
+          "desc": "首页战情室",
+          "exists": true
+        },
+        {
+          "title": "CRDO Original Stock Intelligence Page",
+          "file": "crdo_stock_intelligence_page_v0_1.html",
+          "desc": "早期 CRDO 个股页",
+          "exists": true
+        }
+      ]
+    }
+  ],
+  "next_build_sequence": [
+    "Create AMOS Alpha v0.3 Roadmap",
+    "Build real-data manual input sheet/schema",
+    "Generate daily brief from computed score packets",
+    "Create peer map for CRDO/LITE/COHR/NVDA/AVGO/ANET",
+    "Add Gann Research Zone into generic page generator",
+    "Begin real evidence packets for NVDA/CRDO/LITE/HOOD/IREN"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "version": "AMOS Alpha Integration Index v0.1",
+  "created": "2026-05-24",
+  "modules": [
+    {
+      "id": "home",
+      "title": "Home Command Center",
+      "desc": "AMOS首页战情室：市场状态、时间轴、资金迁移、事件压力、持仓战场。",
+      "html": "amos_home_command_center_v0_1.html",
+      "md": null,
+      "json": null,
+      "status": "Prototype"
+    },
+    {
+      "id": "crdo",
+      "title": "CRDO Stock Intelligence Page",
+      "desc": "个股作战室样板：个股身份、估值战场、Gann、事件、AI Debate、证据链。",
+      "html": "crdo_stock_intelligence_page_v0_1.html",
+      "md": null,
+      "json": null,
+      "status": "Prototype"
+    },
+    {
+      "id": "schema",
+      "title": "Data Schema",
+      "desc": "AMOS数据骨架：market_state、capital_flow、narrative、valuation、gann、decision等。",
+      "html": null,
+      "md": "amos_data_schema_v0_1.md",
+      "json": "amos_data_schema_v0_1.json",
+      "status": "Foundation"
+    },
+    {
+      "id": "agents",
+      "title": "Agent Routing",
+      "desc": "多AI分工：Research、Macro、Capital Flow、Narrative、Risk、Debate、Decision等。",
+      "html": null,
+      "md": "amos_agent_routing_v0_1.md",
+      "json": "amos_agent_routing_v0_1.json",
+      "status": "Foundation"
+    },
+    {
+      "id": "valuation",
+      "title": "Valuation Battle Map",
+      "desc": "七层估值：宏观约束、内在价值、市场共识、Narrative、周期、股性、极端风险。",
+      "html": "amos_valuation_battle_map_v0_1.html",
+      "md": "amos_valuation_battle_map_v0_1.md",
+      "json": "amos_valuation_battle_map_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "gann",
+      "title": "Gann × Event × Gamma Resonance",
+      "desc": "执行层：Gann时间、Gann价格、事件压力、Gamma、Price Action确认。",
+      "html": "amos_gann_event_gamma_resonance_v0_1.html",
+      "md": "amos_gann_event_gamma_resonance_v0_1.md",
+      "json": "amos_gann_event_gamma_resonance_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "narrative",
+      "title": "Narrative Lifecycle & Capital Rotation",
+      "desc": "叙事生命周期与资金迁移：Expansion、Rotation、Defensive Shift、Late-cycle Chase。",
+      "html": "amos_narrative_lifecycle_capital_rotation_v0_1.html",
+      "md": "amos_narrative_lifecycle_capital_rotation_v0_1.md",
+      "json": "amos_narrative_lifecycle_capital_rotation_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "personality",
+      "title": "Stock Personality Radar",
+      "desc": "个股股性雷达：核心龙头、二线高Beta、流动性赌场代理、长久期未来故事等。",
+      "html": "amos_stock_personality_radar_v0_1.html",
+      "md": "amos_stock_personality_radar_v0_1.md",
+      "json": "amos_stock_personality_radar_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "portfolio",
+      "title": "Portfolio Battle Map & Migration",
+      "desc": "持仓迁移系统：旧仓健康、新战线强度、机会成本、执行窗口、迁移动作。",
+      "html": "amos_portfolio_battle_map_migration_engine_v0_1.html",
+      "md": "amos_portfolio_battle_map_migration_engine_v0_1.md",
+      "json": "amos_portfolio_battle_map_migration_engine_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "risk",
+      "title": "Risk Protection & Behavior Guardrail",
+      "desc": "风险保护：高位止盈、恐慌成熟、禁止杠杆、Core/Swing分离、机会成本。",
+      "html": "amos_risk_protection_behavior_guardrail_v0_1.html",
+      "md": "amos_risk_protection_behavior_guardrail_v0_1.md",
+      "json": "amos_risk_protection_behavior_guardrail_v0_1.json",
+      "status": "Core"
+    },
+    {
+      "id": "evidence",
+      "title": "Research Source & Evidence Quality",
+      "desc": "证据系统：YouTube/X/财报/官方数据/研报/书籍的质量评分、偏见识别、周期有效性。",
+      "html": "amos_research_source_evidence_quality_engine_v0_1.html",
+      "md": "amos_research_source_evidence_quality_engine_v0_1.md",
+      "json": "amos_research_source_evidence_quality_engine_v0_1.json",
+      "status": "Governance"
+    },
+    {
+      "id": "macro",
+      "title": "Macro Regime & Liquidity State Machine",
+      "desc": "宏观状态机：Goldilocks、流动性扩张/收缩、估值压缩、Risk-off、恐慌成熟等。",
+      "html": "amos_macro_regime_liquidity_state_machine_v0_1.html",
+      "md": "amos_macro_regime_liquidity_state_machine_v0_1.md",
+      "json": "amos_macro_regime_liquidity_state_machine_v0_1.json",
+      "status": "Core"
+    }
+  ],
+  "next_build_sequence": [
+    "Unify all visual modules into one navigable single-page app shell",
+    "Create reusable component library: card, score, ladder, timeline, evidence panel, decision panel",
+    "Build sample data fixtures for CRDO/LITE/IREN/HOOD/NVDA",
+    "Implement scoring formulas for regime, narrative, risk, valuation, resonance",
+    "Create daily AI report template using the schema and agent routing",
+    "Begin real evidence collection for macro regime and CRDO sample page"
+  ],
+  "current_truth": "Conceptual architecture and static prototypes are substantially built. Next bottleneck is turning static prototypes into data-driven components and evidence-backed reports."
+}

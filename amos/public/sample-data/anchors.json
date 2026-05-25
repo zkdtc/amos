@@ -1,0 +1,65 @@
+{
+  "version": "AMOS Anchor Verification Sample v0.2",
+  "data_quality": "sample_manual_ready_not_live",
+  "guardrails": [
+    "Verified anchors must replace sample anchors before any real trading use.",
+    "If usePermission is 'Research Only' or 'Do Not Use', Gann renders research-only."
+  ],
+  "anchors": [
+    {
+      "ticker": "NVDA",
+      "anchorId": "NVDA-EARN-LOW-Q1",
+      "anchorType": "Major Earnings Low",
+      "anchorDate": "2025-08-29",
+      "anchorPrice": 100.0,
+      "verificationStatus": "Pending",
+      "verificationScore": 0.4,
+      "usePermission": "Research Only",
+      "tickerSpecificContextChecked": true
+    },
+    {
+      "ticker": "CRDO",
+      "anchorId": "CRDO-SWING-HIGH",
+      "anchorType": "Swing High",
+      "anchorDate": "2025-12-10",
+      "anchorPrice": 110.0,
+      "verificationStatus": "Pending",
+      "verificationScore": 0.45,
+      "usePermission": "Research Only",
+      "tickerSpecificContextChecked": false
+    },
+    {
+      "ticker": "LITE",
+      "anchorId": "LITE-EVENT-LOW",
+      "anchorType": "Major Event Extreme",
+      "anchorDate": "2024-08-05",
+      "anchorPrice": 28.0,
+      "verificationStatus": "Pending",
+      "verificationScore": 0.3,
+      "usePermission": "Research Only",
+      "tickerSpecificContextChecked": false
+    },
+    {
+      "ticker": "IREN",
+      "anchorId": "IREN-ABS-LOW",
+      "anchorType": "Absolute Low",
+      "anchorDate": "2022-12-30",
+      "anchorPrice": 0.96,
+      "verificationStatus": "Pending",
+      "verificationScore": 0.25,
+      "usePermission": "Do Not Use",
+      "tickerSpecificContextChecked": false
+    },
+    {
+      "ticker": "HOOD",
+      "anchorId": "HOOD-IPO-HIGH",
+      "anchorType": "Absolute High",
+      "anchorDate": "2021-08-04",
+      "anchorPrice": 85.0,
+      "verificationStatus": "Pending",
+      "verificationScore": 0.35,
+      "usePermission": "Research Only",
+      "tickerSpecificContextChecked": false
+    }
+  ]
+}

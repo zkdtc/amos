@@ -1,0 +1,84 @@
+{
+  "version": "AMOS Unified App Shell v0.1",
+  "html": "amos_unified_app_shell_v0_1.html",
+  "modules": [
+    {
+      "group": "Command",
+      "title": "Home Command Center",
+      "file": "amos_home_command_center_v0_1.html",
+      "slug": "home"
+    },
+    {
+      "group": "Stock",
+      "title": "CRDO Intelligence",
+      "file": "crdo_stock_intelligence_page_v0_1.html",
+      "slug": "stock"
+    },
+    {
+      "group": "Macro",
+      "title": "Macro Regime",
+      "file": "amos_macro_regime_liquidity_state_machine_v0_1.html",
+      "slug": "macro"
+    },
+    {
+      "group": "Capital",
+      "title": "Narrative & Rotation",
+      "file": "amos_narrative_lifecycle_capital_rotation_v0_1.html",
+      "slug": "narrative"
+    },
+    {
+      "group": "Portfolio",
+      "title": "Portfolio Migration",
+      "file": "amos_portfolio_battle_map_migration_engine_v0_1.html",
+      "slug": "portfolio"
+    },
+    {
+      "group": "Risk",
+      "title": "Risk Guardrail",
+      "file": "amos_risk_protection_behavior_guardrail_v0_1.html",
+      "slug": "risk"
+    },
+    {
+      "group": "Valuation",
+      "title": "Valuation Battle",
+      "file": "amos_valuation_battle_map_v0_1.html",
+      "slug": "valuation"
+    },
+    {
+      "group": "Execution",
+      "title": "Gann × Event × Gamma",
+      "file": "amos_gann_event_gamma_resonance_v0_1.html",
+      "slug": "gann"
+    },
+    {
+      "group": "Personality",
+      "title": "Stock Personality",
+      "file": "amos_stock_personality_radar_v0_1.html",
+      "slug": "personality"
+    },
+    {
+      "group": "Evidence",
+      "title": "Evidence Quality",
+      "file": "amos_research_source_evidence_quality_engine_v0_1.html",
+      "slug": "evidence"
+    },
+    {
+      "group": "Schema",
+      "title": "Data Schema",
+      "file": "amos_data_schema_v0_1.md",
+      "slug": "schema"
+    },
+    {
+      "group": "Agents",
+      "title": "Agent Routing",
+      "file": "amos_agent_routing_v0_1.md",
+      "slug": "agents"
+    }
+  ],
+  "next": [
+    "sample_data_fixture_v0_1",
+    "scoring_logic_v0_1",
+    "daily_market_brief_template_v0_1",
+    "data_driven_crdo_page_v0_2"
+  ]
+}
