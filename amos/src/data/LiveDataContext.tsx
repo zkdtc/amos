@@ -30,10 +30,10 @@ import { fetchAllBenchmarks, type BenchmarkSnapshot, relativeStrengthLabel } fro
 import { classifyRegime, type RegimeSnapshot } from './marketRegime';
 
 // ─── Ticker definitions (real company info) ─────────────────────────
-// These are factual, not mock. Company names, roles, archetypes are
-// AMOS-specific research classifications.
+// Default seed list — used when the user has never customised. Stored to
+// localStorage on first edit; later loads come from there.
 
-const TICKER_DEFS: Ticker[] = [
+const DEFAULT_TICKER_DEFS: Ticker[] = [
   { symbol: 'NVDA', companyName: 'NVIDIA Corporation', role: 'Core', priority: 'P1', tags: ['AI Infra', 'Compute', 'Leader'], archetype: 'AI Infra Leader', sectorBranch: 'AI Infrastructure / GPU', classification: 'Leader' },
   { symbol: 'CRDO', companyName: 'Credo Technology Group', role: 'Swing', priority: 'P1', tags: ['AI Infra', 'Optical / SerDes'], archetype: 'AI Connectivity Picks-and-Shovels', sectorBranch: 'AI Infrastructure / Optical-SerDes', classification: 'Leader-Follower' },
   { symbol: 'LITE', companyName: 'Lumentum Holdings', role: 'Swing', priority: 'P2', tags: ['Optical', 'CPO', 'AI Infra'], archetype: 'Optical Components', sectorBranch: 'AI Infrastructure / Optical-CPO', classification: 'Follower' },
@@ -41,7 +41,31 @@ const TICKER_DEFS: Ticker[] = [
   { symbol: 'HOOD', companyName: 'Robinhood Markets', role: 'Research', priority: 'P3', tags: ['Fintech', 'BTC', 'Retail'], archetype: 'Retail-Crypto Fintech', sectorBranch: 'Fintech / Crypto-Adjacent', classification: 'Meme-Hybrid' }
 ];
 
-const TRACKED_TICKERS = TICKER_DEFS.map((t) => t.symbol);
+const TICKERS_STORAGE_KEY = 'amos-tickers-v1';
+
+function loadTickerDefs(): Ticker[] {
+  if (typeof localStorage === 'undefined') return DEFAULT_TICKER_DEFS;
+  try {
+    const raw = localStorage.getItem(TICKERS_STORAGE_KEY);
+    if (!raw) return DEFAULT_TICKER_DEFS;
+    const arr = JSON.parse(raw) as Ticker[];
+    if (!Array.isArray(arr) || arr.length === 0) return DEFAULT_TICKER_DEFS;
+    return arr;
+  } catch {
+    return DEFAULT_TICKER_DEFS;
+  }
+}
+
+function saveTickerDefs(tickers: Ticker[]): void {
+  if (typeof localStorage === 'undefined') return;
+  try { localStorage.setItem(TICKERS_STORAGE_KEY, JSON.stringify(tickers)); } catch { /* ignore */ }
+}
+
+export function resetTickerDefsToDefault(): Ticker[] {
+  if (typeof localStorage !== 'undefined') localStorage.removeItem(TICKERS_STORAGE_KEY);
+  return DEFAULT_TICKER_DEFS;
+}
+
 const REFRESH_MS = 5 * 60 * 1000;
 const STAGGER_MS = 1500;
 
@@ -66,17 +90,17 @@ export interface LiveDataState {
   lastFetched: string | null;
 }
 
-function buildDefaultState(): LiveDataState {
+function buildDefaultState(tickers: Ticker[] = loadTickerDefs()): LiveDataState {
   return {
-    tickers: TICKER_DEFS,
+    tickers,
     liveMap: new Map(),
     gannEngines: [],
     gannRegistry: buildGannRegistry([], []),
-    dailyBrief: buildDailyBrief(new Map(), []),
+    dailyBrief: buildDailyBrief(tickers, new Map(), []),
     events: getAllRealEvents(),
     evidence: [],
     anchors: [],
-    masterIndex: buildMasterIndex(new Map(), [], []),
+    masterIndex: buildMasterIndex(tickers.map(t => t.symbol), new Map(), [], []),
     benchmarks: new Map(),
     regime: null,
     marketClock: getMarketClock(),
@@ -90,11 +114,12 @@ function buildDefaultState(): LiveDataState {
 // ─── Builders ───────────────────────────────────────────────────────
 
 function buildDailyBrief(
+  tickers: Ticker[],
   liveMap: Map<string, LiveTickerData>,
   gannEngines: GannEngine[]
 ): DailyBrief {
   const today = new Date().toISOString().slice(0, 10);
-  const rows: DailyBriefRow[] = TICKER_DEFS.map((t) => {
+  const rows: DailyBriefRow[] = tickers.map((t) => {
     const live = liveMap.get(t.symbol);
     const engine = gannEngines.find((g) => g.ticker === t.symbol);
     const freshness = live?.manualInput.freshness ?? 'Missing';
@@ -169,13 +194,14 @@ function buildGannRegistry(
 }
 
 function buildMasterIndex(
+  trackedSymbols: string[],
   liveMap: Map<string, LiveTickerData>,
   engines: GannEngine[],
   anchors: AnchorVerification[]
 ): MasterIndex {
   const isLive = liveMap.size > 0;
   const liveSymbols = engines.map((e) => e.ticker);
-  const pendingSymbols = TRACKED_TICKERS.filter((t) => !liveSymbols.includes(t));
+  const pendingSymbols = trackedSymbols.filter((t) => !liveSymbols.includes(t));
 
   const verifiedCount = anchors.filter((a) => a.usePermission === 'Verified').length;
   const pendingCount = anchors.filter((a) => a.usePermission !== 'Verified').length;
@@ -220,55 +246,113 @@ function buildMasterIndex(
 
 // ─── Context ────────────────────────────────────────────────────────
 
+export interface LiveDataActions {
+  addTicker: (t: Ticker) => { ok: boolean; reason?: string };
+  removeTicker: (symbol: string) => void;
+  updateTicker: (symbol: string, patch: Partial<Ticker>) => void;
+  resetTickersToDefault: () => void;
+  refreshNow: () => void;
+}
+
 const LiveDataCtx = createContext<LiveDataState>(buildDefaultState());
+const LiveDataActionsCtx = createContext<LiveDataActions>({
+  addTicker: () => ({ ok: false, reason: 'No provider' }),
+  removeTicker: () => undefined,
+  updateTicker: () => undefined,
+  resetTickersToDefault: () => undefined,
+  refreshNow: () => undefined
+});
 
 export function useLiveData() {
   return useContext(LiveDataCtx);
+}
+
+export function useLiveDataActions(): LiveDataActions {
+  return useContext(LiveDataActionsCtx);
 }
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export function LiveDataProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<LiveDataState>(buildDefaultState());
+const VALID_SYMBOL = /^[A-Z][A-Z0-9.\-]{0,9}$/;
 
+function normaliseTicker(input: Ticker): Ticker {
+  return {
+    ...input,
+    symbol: input.symbol.trim().toUpperCase(),
+    companyName: (input.companyName ?? '').trim() || input.symbol.trim().toUpperCase(),
+    tags: Array.isArray(input.tags) ? input.tags.map((s) => s.trim()).filter(Boolean) : []
+  };
+}
+
+export function LiveDataProvider({ children }: { children: React.ReactNode }) {
+  const [tickerDefs, setTickerDefs] = useState<Ticker[]>(() => loadTickerDefs());
+  const [state, setState] = useState<LiveDataState>(() => buildDefaultState(tickerDefs));
+  // Bump this counter to force the fetch effect to rerun (manual refresh).
+  const [fetchTick, setFetchTick] = useState(0);
+
+  // Persist any ticker change
+  useEffect(() => { saveTickerDefs(tickerDefs); }, [tickerDefs]);
+
+  // ── Actions ──────────────────────────────────────────────────────
+  const actions: LiveDataActions = React.useMemo(() => ({
+    addTicker: (t) => {
+      const norm = normaliseTicker(t);
+      if (!VALID_SYMBOL.test(norm.symbol)) {
+        return { ok: false, reason: `Invalid symbol "${norm.symbol}" — must be 1-10 chars, A-Z/0-9/./-` };
+      }
+      if (tickerDefs.some((x) => x.symbol === norm.symbol)) {
+        return { ok: false, reason: `${norm.symbol} is already tracked.` };
+      }
+      setTickerDefs((prev) => [...prev, norm]);
+      return { ok: true };
+    },
+    removeTicker: (symbol) => {
+      const sym = symbol.toUpperCase();
+      setTickerDefs((prev) => prev.filter((x) => x.symbol !== sym));
+    },
+    updateTicker: (symbol, patch) => {
+      const sym = symbol.toUpperCase();
+      setTickerDefs((prev) =>
+        prev.map((x) => (x.symbol === sym ? normaliseTicker({ ...x, ...patch }) : x))
+      );
+    },
+    resetTickersToDefault: () => {
+      const def = resetTickerDefsToDefault();
+      setTickerDefs(def);
+    },
+    refreshNow: () => setFetchTick((n) => n + 1)
+  }), [tickerDefs]);
+
+  // ── Live data fetch loop — reruns when ticker list or refresh tick changes
   useEffect(() => {
     let cancelled = false;
-    let timer: ReturnType<typeof setInterval>;
+    const symbols = tickerDefs.map((t) => t.symbol);
 
     async function doFetch() {
-      setState((s) => ({ ...s, loading: true }));
+      setState((s) => ({ ...s, tickers: tickerDefs, loading: true }));
 
-      // Load user-authored data (anchors + evidence) — inherently
-      // manual but NOT mock. They represent real research notes.
       const [anchors, evidence] = await Promise.all([
         loadAnchors().catch(() => [] as AnchorVerification[]),
         loadEvidence().catch(() => [] as EvidencePacket[])
       ]);
 
-      // Fetch live prices, staggered
       const liveMap = new Map<string, LiveTickerData>();
-      for (let i = 0; i < TRACKED_TICKERS.length; i++) {
+      for (let i = 0; i < symbols.length; i++) {
         if (cancelled) break;
         if (i > 0) await delay(STAGGER_MS);
         try {
-          const data = await fetchLiveTickerData(TRACKED_TICKERS[i]);
-          liveMap.set(TRACKED_TICKERS[i], data);
+          const data = await fetchLiveTickerData(symbols[i]);
+          liveMap.set(symbols[i], data);
         } catch {
-          // skip this ticker
+          // skip this ticker (may not exist on Yahoo, or rate-limited)
         }
       }
 
-      // Fetch macro benchmarks (sequential inside fetchAllBenchmarks)
       let benchmarks = new Map<string, BenchmarkSnapshot>();
-      try {
-        benchmarks = await fetchAllBenchmarks();
-      } catch {
-        // fallback to empty benchmarks
-      }
+      try { benchmarks = await fetchAllBenchmarks(); } catch { /* ignore */ }
 
-      // Compute RS vs QQQ for each live ticker
       const qqq = benchmarks.get('QQQ');
       if (qqq) {
         for (const [, live] of liveMap) {
@@ -276,45 +360,29 @@ export function LiveDataProvider({ children }: { children: React.ReactNode }) {
         }
       }
 
-      // Live earnings dates
       let liveEarnings: MacroEvent[] = [];
-      try {
-        liveEarnings = await fetchAllEarningsDates(TRACKED_TICKERS);
-      } catch {
-        // ignore
-      }
+      try { liveEarnings = await fetchAllEarningsDates(symbols); } catch { /* ignore */ }
       const allEvents = mergeEventsWithEarnings(getAllRealEvents(), liveEarnings);
 
-      // Build live Gann engines
       const gannEngines: GannEngine[] = [];
-      for (const ticker of TRACKED_TICKERS) {
+      for (const ticker of symbols) {
         const live = liveMap.get(ticker);
         if (live) {
-          const engine = buildLiveGannEngine(
-            ticker,
-            live.quote.regularMarketPrice,
-            anchors,
-            live.manualInput.trendStructure
-          );
-          gannEngines.push(engine);
+          gannEngines.push(buildLiveGannEngine(
+            ticker, live.quote.regularMarketPrice, anchors, live.manualInput.trendStructure
+          ));
         }
       }
 
-      // Compose registry + brief + master
-      const gannRegistry = buildGannRegistry(
-        gannEngines,
-        TRACKED_TICKERS.filter((t) => !liveMap.has(t))
-      );
-      const dailyBrief = buildDailyBrief(liveMap, gannEngines);
-      const masterIndex = buildMasterIndex(liveMap, gannEngines, anchors);
-
-      // Macro regime
+      const gannRegistry = buildGannRegistry(gannEngines, symbols.filter((t) => !liveMap.has(t)));
+      const dailyBrief = buildDailyBrief(tickerDefs, liveMap, gannEngines);
+      const masterIndex = buildMasterIndex(symbols, liveMap, gannEngines, anchors);
       const regime = benchmarks.size > 0 ? classifyRegime(benchmarks) : null;
 
       if (!cancelled) {
         const clock = getMarketClock();
         setState({
-          tickers: TICKER_DEFS,
+          tickers: tickerDefs,
           liveMap,
           gannEngines,
           gannRegistry,
@@ -337,13 +405,19 @@ export function LiveDataProvider({ children }: { children: React.ReactNode }) {
     }
 
     doFetch();
-    timer = setInterval(doFetch, REFRESH_MS);
+    const timer = setInterval(doFetch, REFRESH_MS);
+    return () => { cancelled = true; clearInterval(timer); };
+  // Re-run when the symbol list changes (add/remove) or manual refresh is requested.
+  // We use the JSON serialisation as a stable signal to avoid React thinking the
+  // array changed on every render.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(tickerDefs.map((t) => t.symbol)), fetchTick]);
 
-    return () => {
-      cancelled = true;
-      clearInterval(timer);
-    };
-  }, []);
-
-  return <LiveDataCtx.Provider value={state}>{children}</LiveDataCtx.Provider>;
+  return (
+    <LiveDataCtx.Provider value={state}>
+      <LiveDataActionsCtx.Provider value={actions}>
+        {children}
+      </LiveDataActionsCtx.Provider>
+    </LiveDataCtx.Provider>
+  );
 }

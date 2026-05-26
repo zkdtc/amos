@@ -2,11 +2,13 @@ import { NavLink } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import StatusBar from './StatusBar';
 import { useLang } from '../../data/LangContext';
+import { useLiveData } from '../../data/LiveDataContext';
 
-const TICKERS = ['NVDA', 'CRDO', 'LITE', 'IREN', 'HOOD'];
+// Ticker list is sourced live from LiveDataContext (user-editable).
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const { t } = useLang();
+  const { tickers } = useLiveData();
 
   const NAV = [
     { to: '/', label: t.masterIndex, end: true },
@@ -19,6 +21,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
     { to: '/evidence', label: t.evidence },
     { to: '/anchors', label: t.anchors },
     { to: '/manual-workbook', label: t.manualWorkbook },
+    { to: '/tickers', label: t.tickerManager },
+    { to: '/youtube', label: t.youtubeTranscripts },
+    { to: '/x', label: t.xPosts },
   ];
 
   return (
@@ -38,9 +43,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
           <div style={{ marginTop: 14, color: 'var(--fg-mute)', fontSize: 11, padding: '4px 10px' }}>
             {t.stocks}
           </div>
-          {TICKERS.map((t2) => (
-            <NavLink key={t2} to={`/stocks/${t2}`}>
-              {t2}
+          {tickers.map((t2) => (
+            <NavLink key={t2.symbol} to={`/stocks/${t2.symbol}`}>
+              {t2.symbol}
             </NavLink>
           ))}
         </nav>

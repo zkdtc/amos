@@ -13,6 +13,9 @@ import HomeCommandCenterPage from './pages/HomeCommandCenterPage';
 import PortfolioBattleMapPage from './pages/PortfolioBattleMapPage';
 import PeerMapPage from './pages/PeerMapPage';
 import ManualWorkbookPage from './pages/ManualWorkbookPage';
+import YouTubeTranscriptsPage from './pages/YouTubeTranscriptsPage';
+import XPostsPage from './pages/XPostsPage';
+import TickerManagerPage from './pages/TickerManagerPage';
 
 export default function App() {
   return (
@@ -31,6 +34,9 @@ export default function App() {
           <Route path="/portfolio" element={<PortfolioBattleMapPage />} />
           <Route path="/peer-map" element={<PeerMapPage />} />
           <Route path="/manual-workbook" element={<ManualWorkbookPage />} />
+          <Route path="/youtube" element={<YouTubeTranscriptsPage />} />
+          <Route path="/x" element={<XPostsPage />} />
+          <Route path="/tickers" element={<TickerManagerPage />} />
           <Route path="*" element={<MasterIndexPage />} />
         </Routes>
       </AppShell>
