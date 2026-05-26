@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 import type { LiveTickerData } from '../../data/liveAdapter';
 import { classifyNarrativePhase, type NarrativeAssessment, type NarrativePhase } from '../../data/narrativeLifecycle';
+import { useLang } from '../../data/LangContext';
 
 export default function NarrativeLifecyclePanel({ liveData }: { liveData?: LiveTickerData }) {
+  const { t } = useLang();
   const result = useMemo<NarrativeAssessment | null>(() => {
     if (!liveData?.bars?.length) return null;
     return classifyNarrativePhase({
@@ -12,43 +14,50 @@ export default function NarrativeLifecyclePanel({ liveData }: { liveData?: LiveT
     });
   }, [liveData]);
 
+  const phaseNames: NarrativePhase[] = ['Origin', 'Discovery', 'Acceleration', 'Saturation', 'Decline'];
+  const phaseLabels: Record<NarrativePhase, string> = {
+    Origin: t.phaseOrigin,
+    Discovery: t.phaseDiscovery,
+    Acceleration: t.phaseAcceleration,
+    Saturation: t.phaseSaturation,
+    Decline: t.phaseDecline,
+  };
+
   if (!result) {
     return (
       <div className="card">
-        <h3>Narrative Lifecycle</h3>
-        <div className="badge badge--mute">No live bars → phase unknown.</div>
+        <h3>{t.narrativeLifecycleTitle}</h3>
+        <div className="badge badge--mute">{t.noLiveBarsPhase}</div>
       </div>
     );
   }
 
   return (
     <div className="card">
-      <h3>Narrative Lifecycle</h3>
+      <h3>{t.narrativeLifecycleTitle}</h3>
       <div className={`badge ${phaseClass(result.phase)}`}>
-        PHASE · {result.phase} ({(result.confidence * 100).toFixed(0)}%)
+        {t.phaseLabel} {phaseLabels[result.phase]} ({(result.confidence * 100).toFixed(0)}%)
       </div>
       <div className="phase-strip">
-        {(['Origin', 'Discovery', 'Acceleration', 'Saturation', 'Decline'] as NarrativePhase[]).map((p) => (
+        {phaseNames.map((p) => (
           <span key={p} className={`phase-cell ${p === result.phase ? 'phase-cell--active' : ''}`}>
-            {p}
+            {phaseLabels[p]}
           </span>
         ))}
       </div>
       <dl className="kvs">
-        <dt>Capital Type</dt>
+        <dt>{t.capitalType}</dt>
         <dd>{result.capitalType}</dd>
-        <dt>News Sensitivity</dt>
+        <dt>{t.newsSensitivity}</dt>
         <dd>{result.newsSensitivity}</dd>
-        <dt>Expected Behavior</dt>
+        <dt>{t.expectedBehavior}</dt>
         <dd>{result.expectedBehavior}</dd>
       </dl>
-      <h4 style={{ marginTop: 10, color: 'var(--fg-mute)' }}>Rationale</h4>
+      <h4 style={{ marginTop: 10, color: 'var(--fg-mute)' }}>{t.rationale}</h4>
       <ul className="bullets">
         {result.rationale.map((r, i) => <li key={i}>{r}</li>)}
       </ul>
-      <div className="disclaimer">
-        Lifecycle is a heuristic classifier. No trade signal is emitted. Use with valuation + Gann + risk.
-      </div>
+      <div className="disclaimer">{t.narrativeDisclaimer}</div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import AppShell from './components/shell/AppShell';
 import { LiveDataProvider } from './data/LiveDataContext';
+import { LangProvider } from './data/LangContext';
 import MasterIndexPage from './pages/MasterIndexPage';
 import GannRegistryPage from './pages/GannRegistryPage';
 import StockIntelligencePage from './pages/StockIntelligencePage';
@@ -15,6 +16,7 @@ import ManualWorkbookPage from './pages/ManualWorkbookPage';
 
 export default function App() {
   return (
+    <LangProvider>
     <LiveDataProvider>
       <AppShell>
         <Routes>
@@ -33,5 +35,6 @@ export default function App() {
         </Routes>
       </AppShell>
     </LiveDataProvider>
+    </LangProvider>
   );
 }

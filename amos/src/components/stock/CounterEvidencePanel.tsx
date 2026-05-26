@@ -1,30 +1,27 @@
 import type { EvidencePacket } from '../../data/schemas';
 import { evidenceMissingCounter } from '../../rules/evidenceGuards';
+import { useLang } from '../../data/LangContext';
 
-/**
- * Counter-Evidence Panel. Single-jianwei: every claim must come paired
- * with "what would prove it wrong" + counter-evidence — otherwise the
- * thesis cannot influence action.
- */
 export default function CounterEvidencePanel({ packets }: { packets: EvidencePacket[] }) {
+  const { t } = useLang();
   if (packets.length === 0) {
     return (
       <div className="card">
-        <h3>Counter-Evidence</h3>
-        <div className="badge badge--mute">No claims yet → no counter-evidence required.</div>
+        <h3>{t.counterEvidenceTitle}</h3>
+        <div className="badge badge--mute">{t.noCounterEvidence}</div>
       </div>
     );
   }
   return (
     <div className="card">
-      <h3>Counter-Evidence Checklist</h3>
+      <h3>{t.counterEvidenceChecklist}</h3>
       <table>
         <thead>
           <tr>
-            <th>Claim</th>
-            <th>Counter-evidence</th>
-            <th>What would prove it wrong</th>
-            <th>Status</th>
+            <th>{t.colClaim}</th>
+            <th>{t.colCounterEvidence}</th>
+            <th>{t.colWhatWouldProveWrong}</th>
+            <th>{t.status}</th>
           </tr>
         </thead>
         <tbody>
@@ -34,12 +31,12 @@ export default function CounterEvidencePanel({ packets }: { packets: EvidencePac
               <tr key={p.packetId}>
                 <td>{p.claim}</td>
                 <td style={{ color: missing ? 'var(--red)' : 'var(--fg-dim)' }}>
-                  {missing ? '— MISSING —' : p.counterEvidence}
+                  {missing ? t.missingCounter : p.counterEvidence}
                 </td>
                 <td style={{ color: 'var(--fg-mute)' }}>{p.whatWouldProveItWrong}</td>
                 <td>
                   <span className={`badge ${missing ? 'badge--red' : 'badge--green'}`}>
-                    {missing ? 'Blocked' : 'Allowed'}
+                    {missing ? t.statusBlocked : t.statusAllowed}
                   </span>
                 </td>
               </tr>
@@ -47,9 +44,7 @@ export default function CounterEvidencePanel({ packets }: { packets: EvidencePac
           })}
         </tbody>
       </table>
-      <div className="disclaimer">
-        A claim without counter-evidence is unfit to influence action. This is a hard gate.
-      </div>
+      <div className="disclaimer">{t.counterEvidenceDisclaimer}</div>
     </div>
   );
 }

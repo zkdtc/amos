@@ -1,4 +1,5 @@
 import type { ActionCap } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
 const color: Record<ActionCap, string> = {
   Attack: 'badge badge--green',
@@ -10,5 +11,6 @@ const color: Record<ActionCap, string> = {
 };
 
 export default function ActionCapBadge({ cap }: { cap: ActionCap }) {
-  return <span className={color[cap]}>ACTION CAP · {cap}</span>;
+  const { t } = useLang();
+  return <span className={color[cap]}>{t.actionCap} {cap}</span>;
 }

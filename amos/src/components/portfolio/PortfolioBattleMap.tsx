@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { PositionSummary, PortfolioTotals } from '../../data/portfolio';
+import { useLang } from '../../data/LangContext';
 
 export default function PortfolioBattleMap({
   rows,
@@ -8,31 +9,32 @@ export default function PortfolioBattleMap({
   rows: PositionSummary[];
   totals: PortfolioTotals;
 }) {
+  const { t } = useLang();
   return (
     <div className="card">
-      <h3>Portfolio Battle Map</h3>
+      <h3>{t.portfolioBattleMapTitle}</h3>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 12 }}>
-        <span className="badge badge--mute">positions {totals.positions}</span>
-        <span className="badge badge--cyan">cost ${fmt(totals.costBasis)}</span>
-        <span className="badge badge--gold">MV ${fmt(totals.marketValue)}</span>
+        <span className="badge badge--mute">{t.positions} {totals.positions}</span>
+        <span className="badge badge--cyan">{t.cost} ${fmt(totals.costBasis)}</span>
+        <span className="badge badge--gold">{t.mv} ${fmt(totals.marketValue)}</span>
         <span className={`badge ${totals.pnl >= 0 ? 'badge--green' : 'badge--red'}`}>
-          P/L {totals.pnl >= 0 ? '+' : ''}${fmt(totals.pnl)} ({totals.pnlPct.toFixed(2)}%)
+          {t.pl} {totals.pnl >= 0 ? '+' : ''}${fmt(totals.pnl)} ({totals.pnlPct.toFixed(2)}%)
         </span>
       </div>
       <table>
         <thead>
           <tr>
-            <th>Sym</th>
-            <th>Role</th>
-            <th>Shares</th>
-            <th>Cost</th>
-            <th>Price</th>
-            <th>P/L %</th>
-            <th>Market Val</th>
-            <th>Freshness</th>
-            <th>Cap</th>
-            <th>Migration Suggestion</th>
-            <th>Page</th>
+            <th>{t.colSym}</th>
+            <th>{t.colRole}</th>
+            <th>{t.colShares}</th>
+            <th>{t.colCost}</th>
+            <th>{t.currentPrice}</th>
+            <th>{t.colPnlPct}</th>
+            <th>{t.colMarketVal}</th>
+            <th>{t.colFreshness}</th>
+            <th>{t.colCap}</th>
+            <th>{t.colMigrationSuggestion}</th>
+            <th>{t.colPage}</th>
           </tr>
         </thead>
         <tbody>
@@ -50,15 +52,12 @@ export default function PortfolioBattleMap({
               <td><span className={`badge ${freshClass(r.freshness)}`}>{r.freshness}</span></td>
               <td><span className="badge badge--orange">{r.effectiveCap}</span></td>
               <td style={{ color: 'var(--orange)' }}>{r.migrationSuggestion}</td>
-              <td>{r.shares > 0 ? <Link to={`/stocks/${r.symbol}`}>open →</Link> : '—'}</td>
+              <td>{r.shares > 0 ? <Link to={`/stocks/${r.symbol}`}>{t.openArrow}</Link> : '—'}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="disclaimer">
-        Positions and avgCost are user-authored research. Capital-migration suggestions are heuristic
-        — they NEVER place orders. Single-jianwei: 仓位不是身份, rotation discipline matters.
-      </div>
+      <div className="disclaimer">{t.portfolioDisclaimer}</div>
     </div>
   );
 }

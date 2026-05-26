@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { AnchorVerification } from '../../data/schemas';
 import { resolveAnchorRenderMode } from '../../rules/gannGuards';
+import { useLang } from '../../data/LangContext';
 
 export default function AnchorVerificationGate({
   anchors,
@@ -9,15 +10,14 @@ export default function AnchorVerificationGate({
   anchors: AnchorVerification[];
   ticker: string;
 }) {
+  const { t } = useLang();
   const { mode, reasons } = resolveAnchorRenderMode(anchors);
   const isResearch = mode === 'research_only';
   return (
     <div className={`banner ${isResearch ? 'banner--red' : 'banner--green'}`} data-testid="anchor-gate">
-      <strong>{isResearch ? '🔒 Anchor Verification Gate · RESEARCH ONLY' : '✅ Anchor Verification Gate · CONFIRMATION ALLOWED'}</strong>
+      <strong>{isResearch ? t.anchorGateResearchOnly : t.anchorGateAllowed}</strong>
       <div style={{ marginTop: 6 }}>
-        {isResearch
-          ? `Gann levels for ${ticker} render as research-only until anchors are verified.`
-          : `All anchors for ${ticker} are verified for formal use. Gann remains a confirmation, not a standalone trigger.`}
+        {isResearch ? t.anchorGateResearchDesc(ticker) : t.anchorGateAllowedDesc(ticker)}
       </div>
       {reasons.length > 0 && (
         <ul className="bullets" style={{ marginTop: 6 }}>
@@ -27,7 +27,7 @@ export default function AnchorVerificationGate({
         </ul>
       )}
       <div style={{ marginTop: 8 }}>
-        <Link to="/anchors">Open Anchor Verification Checklist →</Link>
+        <Link to="/anchors">{t.openAnchorChecklist}</Link>
       </div>
     </div>
   );

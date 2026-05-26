@@ -1,30 +1,33 @@
 import { NavLink } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import StatusBar from './StatusBar';
-
-const NAV = [
-  { to: '/', label: 'Master Index', end: true },
-  { to: '/command-center', label: 'Command Center' },
-  { to: '/portfolio', label: 'Portfolio Battle Map' },
-  { to: '/peer-map', label: 'Peer Map' },
-  { to: '/gann-registry', label: 'Gann Registry' },
-  { to: '/daily-brief', label: 'Daily Brief' },
-  { to: '/events', label: 'Macro Events' },
-  { to: '/evidence', label: 'Evidence Packets' },
-  { to: '/anchors', label: 'Anchor Verification' },
-  { to: '/manual-workbook', label: 'Manual Workbook' }
-];
+import { useLang } from '../../data/LangContext';
 
 const TICKERS = ['NVDA', 'CRDO', 'LITE', 'IREN', 'HOOD'];
 
 export default function AppShell({ children }: { children: ReactNode }) {
+  const { t } = useLang();
+
+  const NAV = [
+    { to: '/', label: t.masterIndex, end: true },
+    { to: '/command-center', label: t.commandCenter },
+    { to: '/portfolio', label: t.portfolio },
+    { to: '/peer-map', label: t.peerMap },
+    { to: '/gann-registry', label: t.gannRegistry },
+    { to: '/daily-brief', label: t.dailyBrief },
+    { to: '/events', label: t.macroEvents },
+    { to: '/evidence', label: t.evidence },
+    { to: '/anchors', label: t.anchors },
+    { to: '/manual-workbook', label: t.manualWorkbook },
+  ];
+
   return (
     <div className="layout">
       <aside className="sidebar">
         <div className="brand">
           AMOS
-          <small>AI Market Operating System</small>
-          <small>v0.3A Manual Data Alpha</small>
+          <small>{t.brandFull}</small>
+          <small>{t.brandVersion}</small>
         </div>
         <nav className="nav">
           {NAV.map((n) => (
@@ -33,11 +36,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
             </NavLink>
           ))}
           <div style={{ marginTop: 14, color: 'var(--fg-mute)', fontSize: 11, padding: '4px 10px' }}>
-            STOCKS
+            {t.stocks}
           </div>
-          {TICKERS.map((t) => (
-            <NavLink key={t} to={`/stocks/${t}`}>
-              {t}
+          {TICKERS.map((t2) => (
+            <NavLink key={t2} to={`/stocks/${t2}`}>
+              {t2}
             </NavLink>
           ))}
         </nav>

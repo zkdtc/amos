@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 import { PEER_MAP } from '../data/peerMaps';
 import { useLiveData } from '../data/LiveDataContext';
+import { useLang } from '../data/LangContext';
 
 export default function PeerMapPage() {
   const { liveMap } = useLiveData();
+  const { t } = useLang();
   const cohorts = Object.values(PEER_MAP);
   return (
     <>
       <div className="card">
-        <h1>Peer Maps · Capital Migration Atlas</h1>
-        <div className="badge badge--cyan">Single-jianwei: 资金从弱标的迁移到强标的</div>
+        <h1>{t.peerMapsTitle}</h1>
+        <div className="badge badge--cyan">{t.peerMapBadge}</div>
       </div>
       {cohorts.map((c) => (
         <div className="card" key={c.ticker}>
@@ -20,10 +22,10 @@ export default function PeerMapPage() {
           <table style={{ marginTop: 8 }}>
             <thead>
               <tr>
-                <th>Peer</th>
-                <th>Relation</th>
-                <th>Note</th>
-                <th>Live Px</th>
+                <th>{t.colPeer}</th>
+                <th>{t.colRelation}</th>
+                <th>{t.colNote}</th>
+                <th>{t.livePx}</th>
               </tr>
             </thead>
             <tbody>

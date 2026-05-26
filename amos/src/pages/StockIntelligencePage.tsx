@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+﻿import { useParams } from 'react-router-dom';
 import { useLiveData } from '../data/LiveDataContext';
 import StockHeader from '../components/stock/StockHeader';
 import DecisionSummary from '../components/stock/DecisionSummary';
@@ -24,26 +24,28 @@ import { freshnessCap, gannMissingDataCap, strictestCap } from '../rules/actionC
 import { aggregateEventCap } from '../rules/eventGuards';
 import type { ActionCap } from '../data/schemas';
 import { buildMultiAnchorView } from '../data/gannLive';
+import { useLang } from '../data/LangContext';
 
 export default function StockIntelligencePage() {
   const { ticker = '' } = useParams();
   const T = ticker.toUpperCase();
+  const { t } = useLang();
 
   const {
     tickers, liveMap, gannEngines, events, evidence, anchors, isLive, loading,
     benchmarks, regime, marketClock
   } = useLiveData();
 
-  if (loading) return <div className="card">Loading {T}…</div>;
+  if (loading) return <div className="card">{t.loading} {T}...</div>;
 
-  const tickerMeta = tickers.find((t) => t.symbol === T);
+  const tickerMeta = tickers.find((tk) => tk.symbol === T);
   if (!tickerMeta) {
     return (
       <div className="card">
         <h1>{T}</h1>
-        <div className="badge badge--red">Ticker not tracked</div>
+        <div className="badge badge--red">{t.tickerNotTracked}</div>
         <div className="disclaimer">
-          Currently tracking: {tickers.map((t) => t.symbol).join(', ')}.
+          {t.currentlyTracking} {tickers.map((tk) => tk.symbol).join(', ')}.
         </div>
       </div>
     );
@@ -57,7 +59,6 @@ export default function StockIntelligencePage() {
   const tickerEvidence = evidence.filter((p) => p.tickers.includes(T));
   const leader = benchmarks.get('NVDA');
 
-  // Build effective action cap from layered guardrails
   const caps: ActionCap[] = [];
   const reasons: string[] = [];
   if (input) {
@@ -105,14 +106,13 @@ export default function StockIntelligencePage() {
 
   function dataQualityLabel(q?: string) {
     switch (q) {
-      case 'live_market_data':         return 'LIVE Yahoo';
-      case 'cached_fallback_not_live': return 'CACHED fallback';
-      case 'sample_manual_ready_not_live': return 'SAMPLE';
-      default: return 'NO DATA';
+      case 'live_market_data':             return t.dataQualityLive;
+      case 'cached_fallback_not_live':     return t.dataQualityCached;
+      case 'sample_manual_ready_not_live': return t.dataQualitySample;
+      default: return t.dataQualityNoData;
     }
   }
 
-  // Multi-anchor view
   const multiAnchor = quote
     ? buildMultiAnchorView(T, quote.regularMarketPrice, anchors)
     : null;
@@ -123,48 +123,48 @@ export default function StockIntelligencePage() {
 
       <div className="card" style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
         <LiveQuoteBadge quote={quote} marketOpen={marketClock.isOpen} />
-        <span className={`badge ${liveTickerData?.dataQuality === 'live_market_data' ? 'badge--green' : liveTickerData?.dataQuality === 'cached_fallback_not_live' ? 'badge--orange' : 'badge--red'}`}
-              title={dataSource}>
+        <span
+          className={`badge ${liveTickerData?.dataQuality === 'live_market_data' ? 'badge--green' : liveTickerData?.dataQuality === 'cached_fallback_not_live' ? 'badge--orange' : 'badge--red'}`}
+          title={dataSource}
+        >
           {dataQualityLabel(liveTickerData?.dataQuality)}
         </span>
         {!marketClock.isOpen && (
           <span className="badge badge--cyan" title={`Next open: ${marketClock.nextSessionOpen.toLocaleString('en-US', { timeZone: 'America/New_York' })} ET`}>
-            Market Closed → using prev close (still Fresh until next open)
+            {t.marketClosed}
           </span>
         )}
         {liveTickerData?.dataQuality === 'cached_fallback_not_live' && (
           <span className="badge badge--orange" title="Yahoo Finance rate-limited; using bundled snapshot from /sample-data/fallback-bars.json so panels keep rendering.">
-            ⚠ Yahoo rate-limited · cached fallback active
+            {t.yahooRateLimited}
           </span>
         )}
         {quote && (
           <>
             <span className="badge badge--mute">
-              52w: ${quote.fiftyTwoWeekLow?.toFixed(2)} – ${quote.fiftyTwoWeekHigh?.toFixed(2)}
+              {t.weekRange} ${quote.fiftyTwoWeekLow?.toFixed(2)} – ${quote.fiftyTwoWeekHigh?.toFixed(2)}
             </span>
             {quote.fiftyDayAverage && (
-              <span className="badge badge--mute">50dMA: ${quote.fiftyDayAverage.toFixed(2)}</span>
+              <span className="badge badge--mute">{t.dayMa} ${quote.fiftyDayAverage.toFixed(2)}</span>
             )}
           </>
         )}
         {regime && (
-          <span className="badge badge--cyan">Regime · {regime.label}</span>
+          <span className="badge badge--cyan">{t.regimeBadge} {regime.label}</span>
         )}
         {liveTickerData?.bars && (
-          <span className="badge badge--mute">{liveTickerData.bars.length} daily bars</span>
+          <span className="badge badge--mute">{liveTickerData.bars.length} {t.dailyBars}</span>
         )}
       </div>
 
       <GuardrailBanner
-        title="Stock Intelligence Guardrails"
+        title={t.stockGuardrailsTitle}
         items={[
-          isLive && liveTickerData
-            ? 'Live price data (Yahoo Finance) is READ-ONLY. All safety guardrails remain active.'
-            : 'No live data — using available context only.',
-          'Gann cannot trigger trade alone — confirmation only.',
-          'Anchor Verification gate is required before formal Gann use.',
+          isLive && liveTickerData ? t.stockGuardrailLive : t.stockGuardrailNoLive,
+          t.stockGuardrailGann,
+          t.stockGuardrailAnchor,
           `Freshness=${input?.freshness ?? 'Missing'} — cap=${freshnessCap(input?.freshness ?? 'Missing')}.`,
-          'Counter-evidence is required before any claim can influence action.'
+          t.stockGuardrailCounter
         ]}
       />
 
@@ -202,8 +202,8 @@ export default function StockIntelligencePage() {
         </>
       ) : (
         <div className="card">
-          <h2>Gann Research Zone</h2>
-          <div className="badge badge--mute">No live price → Gann engine not computed for {T}</div>
+          <h2>{t.gannResearchZoneNoEngine}</h2>
+          <div className="badge badge--mute">{t.noEngineMsg} {T}</div>
         </div>
       )}
 

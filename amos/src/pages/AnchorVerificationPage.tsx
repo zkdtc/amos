@@ -1,45 +1,41 @@
 import GuardrailBanner from '../components/guardrails/GuardrailBanner';
 import { useLiveData } from '../data/LiveDataContext';
+import { useLang } from '../data/LangContext';
 
 export default function AnchorVerificationPage() {
   const { anchors, liveMap, loading } = useLiveData();
+  const { t } = useLang();
 
-  if (loading) return <div className="card">Loading anchors…</div>;
+  if (loading) return <div className="card">{t.loading} anchors…</div>;
 
   return (
     <>
       <div className="card">
-        <h1>Anchor Verification Checklist v0.2</h1>
-        <span className="badge badge--cyan">User-defined Gann anchors</span>
+        <h1>{t.anchorVerificationChecklist}</h1>
+        <span className="badge badge--cyan">{t.userDefinedGannAnchors}</span>
         <div className="disclaimer" style={{ marginTop: 8 }}>
-          Anchors are user-defined pivot points for Gann Square-of-Nine computation.
-          They represent real historical price levels you've identified as significant.
-          Edit <code>public/sample-data/anchors.json</code> to manage your anchors.
+          {t.anchorVerificationDisclaimer}
         </div>
       </div>
       <GuardrailBanner
-        title="Anchor Verification Guardrails"
-        items={[
-          'Verified anchors must replace pending anchors before any formal trading use.',
-          'Research Only / Do Not Use anchors force Gann to render research-only.',
-          'Ticker-specific context must be checked before approving an anchor.'
-        ]}
+        title={t.anchorGuardrailsTitle}
+        items={[...t.anchorGuardrailItems]}
       />
       <div className="card">
         <table>
           <thead>
             <tr>
-              <th>Ticker</th>
-              <th>Anchor ID</th>
-              <th>Type</th>
-              <th>Date</th>
-              <th>Anchor Price</th>
-              <th>Current Price</th>
-              <th>Distance</th>
-              <th>Status</th>
-              <th>Score</th>
-              <th>Permission</th>
-              <th>Context?</th>
+              <th>{t.ticker}</th>
+              <th>{t.anchorId}</th>
+              <th>{t.type}</th>
+              <th>{t.date}</th>
+              <th>{t.anchorPrice}</th>
+              <th>{t.currentPrice}</th>
+              <th>{t.distance}</th>
+              <th>{t.status}</th>
+              <th>{t.score}</th>
+              <th>{t.permission}</th>
+              <th>{t.contextChecked}</th>
             </tr>
           </thead>
           <tbody>

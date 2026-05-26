@@ -3,16 +3,11 @@ import type { ManualInput } from '../data/schemas';
 import { loadManualInputs } from '../data/loaders';
 import { useLiveData } from '../data/LiveDataContext';
 import GuardrailBanner from '../components/guardrails/GuardrailBanner';
+import { useLang } from '../data/LangContext';
 
-/**
- * Manual Workbook Viewer — read-only rendering of:
- *   - The original manual-inputs.json (user-authored research starting points)
- *   - The live-derived ManualInput per ticker (Yahoo-computed RSI/EMA/Trend)
- *
- * Per the engineering handoff §5: ManualWorkbookViewer is required.
- */
 export default function ManualWorkbookPage() {
   const { liveMap, loading } = useLiveData();
+  const { t } = useLang();
   const [base, setBase] = useState<ManualInput[]>([]);
   useEffect(() => {
     loadManualInputs().then(setBase).catch(() => setBase([]));
@@ -21,47 +16,43 @@ export default function ManualWorkbookPage() {
   return (
     <>
       <div className="card">
-        <h1>Manual Workbook (v0.2 unified)</h1>
-        <div className="badge badge--gold">Manual Inputs · Live-Derived Inputs · Side-by-side</div>
+        <h1>{t.manualWorkbookTitle}</h1>
+        <div className="badge badge--gold">{t.manualInputsBadge}</div>
       </div>
       <GuardrailBanner
-        title="Manual Workbook Guardrails"
-        items={[
-          'Manual inputs are user research seeds, NOT live data.',
-          'Live-derived inputs are computed from Yahoo Finance bars in real time.',
-          'When values disagree, prefer the live-derived view for execution.'
-        ]}
+        title={t.manualWorkbookGuardrailsTitle}
+        items={[...t.manualWorkbookGuardrailItems]}
       />
-      {loading && <div className="card">Loading live inputs…</div>}
+      {loading && <div className="card">{t.loadingLiveInputs}</div>}
       <div className="card">
-        <h2>Manual Seed Inputs (from <code>manual-inputs.json</code>)</h2>
-        <ManualInputTable inputs={base} />
+        <h2>{t.manualSeedInputs}</h2>
+        <ManualInputTable inputs={base} t={t} />
       </div>
       <div className="card">
-        <h2>Live-Derived Inputs (current Yahoo data)</h2>
-        <ManualInputTable inputs={Array.from(liveMap.values()).map((l) => l.manualInput)} />
+        <h2>{t.liveDerivedInputs}</h2>
+        <ManualInputTable inputs={Array.from(liveMap.values()).map((l) => l.manualInput)} t={t} />
       </div>
     </>
   );
 }
 
-function ManualInputTable({ inputs }: { inputs: ManualInput[] }) {
-  if (inputs.length === 0) return <div className="badge badge--mute">No inputs.</div>;
+function ManualInputTable({ inputs, t }: { inputs: ManualInput[]; t: ReturnType<typeof useLang>['t'] }) {
+  if (inputs.length === 0) return <div className="badge badge--mute">{t.noInputs}</div>;
   return (
     <table>
       <thead>
         <tr>
-          <th>Tkr</th>
-          <th>Last</th>
-          <th>RSI14</th>
-          <th>EMA8</th>
-          <th>EMA12</th>
-          <th>Trend</th>
-          <th>RS·QQQ</th>
-          <th>AVWAP</th>
-          <th>Risk Stack</th>
-          <th>Bias</th>
-          <th>Freshness</th>
+          <th>{t.tkr}</th>
+          <th>{t.lastPrice}</th>
+          <th>{t.rsi14}</th>
+          <th>{t.ema8}</th>
+          <th>{t.ema12}</th>
+          <th>{t.trend}</th>
+          <th>{t.rsQqq}</th>
+          <th>{t.avwap}</th>
+          <th>{t.riskStack}</th>
+          <th>{t.bias}</th>
+          <th>{t.freshness}</th>
         </tr>
       </thead>
       <tbody>

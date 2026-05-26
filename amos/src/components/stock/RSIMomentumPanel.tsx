@@ -1,33 +1,31 @@
 import type { ManualInput } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
-/**
- * RSI / Momentum panel. Single-jianwei: oversold/overbought + divergence +
- * mean-reversion maturity, all per his "RSI as panic-rebound seeker" framing.
- */
 export default function RSIMomentumPanel({ input }: { input?: ManualInput }) {
+  const { t } = useLang();
   const rsi = input?.rsi14d ?? null;
   let regime: { label: string; color: string; note: string };
   if (rsi == null) {
-    regime = { label: 'No RSI', color: 'badge--mute', note: 'No live price → no RSI computed.' };
+    regime = { label: t.rsiNoData, color: 'badge--mute', note: t.rsiNoDataNote };
   } else if (rsi <= 25) {
-    regime = { label: `Extreme Oversold (${rsi})`, color: 'badge--green', note: 'Panic-rebound watch: only act if thesis intact AND Gann support + AVWAP align.' };
+    regime = { label: `Extreme Oversold (${rsi})`, color: 'badge--green', note: t.rsiExtremOversoldNote };
   } else if (rsi <= 35) {
-    regime = { label: `Oversold (${rsi})`, color: 'badge--cyan', note: 'Mean-reversion candidate. Confirm with weekly structure.' };
+    regime = { label: `Oversold (${rsi})`, color: 'badge--cyan', note: t.rsiOversoldNote };
   } else if (rsi < 65) {
-    regime = { label: `Neutral (${rsi})`, color: 'badge--mute', note: 'Mid-range — no edge from momentum alone.' };
+    regime = { label: `Neutral (${rsi})`, color: 'badge--mute', note: t.rsiNeutralNote };
   } else if (rsi < 75) {
-    regime = { label: `Overbought (${rsi})`, color: 'badge--orange', note: 'Late-trend warning. Avoid chasing; trim discipline.' };
+    regime = { label: `Overbought (${rsi})`, color: 'badge--orange', note: t.rsiOverboughtNote };
   } else {
-    regime = { label: `Extreme Overbought (${rsi})`, color: 'badge--red', note: 'Euphoria zone. Single-jianwei: trim, sell calls, no adds.' };
+    regime = { label: `Extreme Overbought (${rsi})`, color: 'badge--red', note: t.rsiExtremeOverboughtNote };
   }
   return (
     <div className="card">
-      <h3>RSI / Momentum</h3>
+      <h3>{t.rsiMomentumTitle}</h3>
       <div className={`badge ${regime.color}`}>{regime.label}</div>
       <ul className="bullets" style={{ marginTop: 10 }}>
         <li>{regime.note}</li>
-        <li>Divergence (price HH vs RSI LH) is the highest-quality reversal tell.</li>
-        <li>RSI alone never triggers action — requires trend, AVWAP, volume confirmation.</li>
+        <li>{t.rsiBullet2}</li>
+        <li>{t.rsiBullet3}</li>
       </ul>
     </div>
   );

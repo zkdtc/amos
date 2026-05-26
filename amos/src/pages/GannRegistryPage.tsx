@@ -2,41 +2,43 @@ import { Link } from 'react-router-dom';
 import { useLiveData } from '../data/LiveDataContext';
 import GuardrailBanner from '../components/guardrails/GuardrailBanner';
 import LiveQuoteBadge from '../components/shell/LiveQuoteBadge';
+import { useLang } from '../data/LangContext';
 
 export default function GannRegistryPage() {
   const { gannRegistry, liveMap, isLive, loading } = useLiveData();
+  const { t } = useLang();
 
-  if (loading) return <div className="card">Loading Gann registry…</div>;
+  if (loading) return <div className="card">{t.loading} Gann registry…</div>;
 
   const data = gannRegistry;
 
   return (
     <>
       <div className="card">
-        <h1>Gann Live Ticker Registry</h1>
+        <h1>{t.gannLiveTickerRegistry}</h1>
         <div className="badge badge--gold">{data.version}</div>{' '}
-        <div className="badge badge--mute">computed {data.created}</div>{' '}
-        {isLive && <div className="badge badge--green">Prices + Gann: LIVE (Yahoo Finance)</div>}
+        <div className="badge badge--mute">{t.computed} {data.created}</div>{' '}
+        {isLive && <div className="badge badge--green">{t.liveGannPrices}</div>}
         <div className="disclaimer">{data.purpose}</div>
       </div>
 
-      <GuardrailBanner title="Registry Guardrails" items={data.guardrails} />
+      <GuardrailBanner title={t.registryGuardrails} items={data.guardrails} />
 
       <div className="card">
-        <h2>Gann Live Engines ({data.live_tickers.length})</h2>
+        <h2>{t.gannLiveEngines} ({data.live_tickers.length})</h2>
         <table>
           <thead>
             <tr>
-              <th>Ticker</th>
-              <th>Live Quote</th>
-              <th>Engine</th>
-              <th>Data Quality</th>
-              <th>Price Score</th>
-              <th>Time Score</th>
-              <th>Resonance</th>
-              <th>State</th>
-              <th>Missing Gates</th>
-              <th>Page</th>
+              <th>{t.ticker}</th>
+              <th>{t.liveQuote}</th>
+              <th>{t.engine}</th>
+              <th>{t.dataQuality}</th>
+              <th>{t.priceScore}</th>
+              <th>{t.timeScore}</th>
+              <th>{t.resonance}</th>
+              <th>{t.state}</th>
+              <th>{t.missingGates}</th>
+              <th>{t.page}</th>
             </tr>
           </thead>
           <tbody>
@@ -64,10 +66,10 @@ export default function GannRegistryPage() {
                   <td>{e.resonance_state}</td>
                   <td>
                     <span className={`badge ${e.hard_missing_data.length ? 'badge--red' : 'badge--green'}`}>
-                      {e.hard_missing_data.length} missing
+                      {e.hard_missing_data.length} {t.missing}
                     </span>
                   </td>
-                  <td><Link to={`/stocks/${e.ticker}`}>open →</Link></td>
+                  <td><Link to={`/stocks/${e.ticker}`}>{t.openArrow}</Link></td>
                 </tr>
               );
             })}
@@ -77,14 +79,11 @@ export default function GannRegistryPage() {
 
       {data.pending_tickers.length > 0 && (
         <div className="card">
-          <h2>Gann Pending ({data.pending_tickers.length})</h2>
+          <h2>{t.gannPendingSection} ({data.pending_tickers.length})</h2>
           <div className="tag-list">
-            {data.pending_tickers.map((t) => <span key={t} className="tag">{t}</span>)}
+            {data.pending_tickers.map((sym) => <span key={sym} className="tag">{sym}</span>)}
           </div>
-          <div className="disclaimer">
-            These tickers have no live price data yet. They will become Gann Live
-            when Yahoo Finance data is available.
-          </div>
+          <div className="disclaimer">{t.gannPendingDisclaimer}</div>
         </div>
       )}
     </>

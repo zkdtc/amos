@@ -1,3 +1,5 @@
+import { useLang } from '../../data/LangContext';
+
 interface Props {
   variant?: 'gold' | 'red' | 'cyan' | 'green';
   title?: string;
@@ -14,17 +16,19 @@ const variantClass: Record<NonNullable<Props['variant']>, string> = {
 
 export default function GuardrailBanner({
   variant = 'gold',
-  title = 'Guardrails',
+  title,
   items,
   children
 }: Props) {
+  const { t } = useLang();
+  const displayTitle = title ?? t.guardrailsDefault;
   return (
     <div className={variantClass[variant]} data-testid="guardrail-banner">
-      <strong>⚠ {title}</strong>
+      <strong>⚠ {displayTitle}</strong>
       {items && (
         <ul className="bullets" style={{ marginTop: 6 }}>
-          {items.map((t, i) => (
-            <li key={i}>{t}</li>
+          {items.map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
       )}

@@ -1,4 +1,5 @@
 import type { ActionCap, ManualInput } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
 export default function DecisionSummary({
   input,
@@ -9,20 +10,21 @@ export default function DecisionSummary({
   cap: ActionCap;
   reasons: string[];
 }) {
+  const { t } = useLang();
   return (
     <div className="card">
-      <h2>Decision Summary</h2>
+      <h2>{t.decisionSummaryTitle}</h2>
       <dl className="kvs">
-        <dt>Action Bias (manual)</dt>
+        <dt>{t.actionBiasManual}</dt>
         <dd>{input?.actionBias ?? '—'}</dd>
-        <dt>Effective Action Cap</dt>
+        <dt>{t.effectiveActionCap}</dt>
         <dd><b>{cap}</b></dd>
-        <dt>Confidence Cap</dt>
-        <dd>Sample/manual-ready only — Confidence cannot exceed Research-grade.</dd>
-        <dt>Invalidation</dt>
+        <dt>{t.confidenceCap}</dt>
+        <dd>{t.confidenceCapNote}</dd>
+        <dt>{t.invalidation}</dt>
         <dd>{input?.invalidation ?? '—'}</dd>
       </dl>
-      <h3 style={{ marginTop: 12 }}>Why this cap</h3>
+      <h3 style={{ marginTop: 12 }}>{t.whyThisCap}</h3>
       <ul className="bullets">
         {reasons.map((r, i) => <li key={i}>{r}</li>)}
       </ul>

@@ -1,30 +1,26 @@
 import EvidencePanel from '../components/stock/EvidencePanel';
 import GuardrailBanner from '../components/guardrails/GuardrailBanner';
 import { useLiveData } from '../data/LiveDataContext';
+import { useLang } from '../data/LangContext';
 
 export default function EvidencePacketPage() {
   const { evidence, loading } = useLiveData();
+  const { t } = useLang();
 
-  if (loading) return <div className="card">Loading evidence…</div>;
+  if (loading) return <div className="card">{t.loading} evidence…</div>;
 
   return (
     <>
       <div className="card">
-        <h1>Evidence Packets</h1>
-        <span className="badge badge--cyan">User-authored research notes</span>
+        <h1>{t.evidencePackets}</h1>
+        <span className="badge badge--cyan">{t.userAuthoredResearch}</span>
         <div className="disclaimer" style={{ marginTop: 8 }}>
-          Evidence packets are inherently user-authored research — they represent
-          real analysis, not mock data. Edit <code>public/sample-data/evidence.json</code> to
-          add your own research notes.
+          {t.evidencePacketsDisclaimer}
         </div>
       </div>
       <GuardrailBanner
-        title="Evidence Guardrails"
-        items={[
-          'A claim cannot influence action without counter-evidence.',
-          'Low source quality (<0.40) or High bias forces Research-Only gate.',
-          '"What would prove it wrong" must be defined per packet.'
-        ]}
+        title={t.evidenceGuardrailsTitle}
+        items={[...t.evidenceGuardrailItems]}
       />
       <EvidencePanel packets={evidence} />
     </>

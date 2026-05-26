@@ -3,11 +3,8 @@ import type { LiveTickerData } from '../../data/liveAdapter';
 import type { BenchmarkSnapshot } from '../../data/liveBenchmarks';
 import { relativeStrengthLabel } from '../../data/liveBenchmarks';
 import type { Ticker } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
-/**
- * Leadership Board — per single-jianwei doctrine:
- *   "龙头是流动性聚焦点". Sort tickers by relative-strength vs QQQ.
- */
 export default function LeadershipBoard({
   tickers,
   liveMap,
@@ -17,33 +14,35 @@ export default function LeadershipBoard({
   liveMap: Map<string, LiveTickerData>;
   qqq?: BenchmarkSnapshot;
 }) {
+  const { t } = useLang();
+
   const rows = tickers
-    .map((t) => {
-      const live = liveMap.get(t.symbol);
-      const rs = live && qqq ? relativeStrengthLabel(live.bars, qqq.bars, 20) : 'No Data';
-      return { t, live, rs, rank: rankRS(rs) };
+    .map((tkr) => {
+      const live = liveMap.get(tkr.symbol);
+      const rs = live && qqq ? relativeStrengthLabel(live.bars, qqq.bars, 20) : t.noData;
+      return { tkr, live, rs, rank: rankRS(rs) };
     })
     .sort((a, b) => b.rank - a.rank);
 
   return (
     <div className="card">
-      <h3>Leadership Board (RS vs QQQ · 20d)</h3>
+      <h3>{t.leadershipBoardTitle}</h3>
       <table>
         <thead>
           <tr>
-            <th>Symbol</th>
-            <th>Archetype</th>
-            <th>Price</th>
-            <th>1d</th>
-            <th>RS Label</th>
-            <th>Open</th>
+            <th>{t.colSymbol}</th>
+            <th>{t.colArchetype}</th>
+            <th>{t.currentPrice}</th>
+            <th>{t.col1d}</th>
+            <th>{t.colRsLabel}</th>
+            <th>{t.colOpen}</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map(({ t, live, rs }) => (
-            <tr key={t.symbol}>
-              <td><b>{t.symbol}</b></td>
-              <td style={{ color: 'var(--fg-mute)', fontSize: 12 }}>{t.archetype}</td>
+          {rows.map(({ tkr, live, rs }) => (
+            <tr key={tkr.symbol}>
+              <td><b>{tkr.symbol}</b></td>
+              <td style={{ color: 'var(--fg-mute)', fontSize: 12 }}>{tkr.archetype}</td>
               <td>{live ? `$${live.quote.regularMarketPrice.toFixed(2)}` : '—'}</td>
               <td style={{ color: (live?.quote.regularMarketChangePercent ?? 0) >= 0 ? 'var(--green)' : 'var(--red)' }}>
                 {live ? `${live.quote.regularMarketChangePercent >= 0 ? '+' : ''}${live.quote.regularMarketChangePercent.toFixed(2)}%` : '—'}
@@ -51,7 +50,7 @@ export default function LeadershipBoard({
               <td>
                 <span className={`badge ${rsClass(rs)}`}>{rs}</span>
               </td>
-              <td><Link to={`/stocks/${t.symbol}`}>open →</Link></td>
+              <td><Link to={`/stocks/${tkr.symbol}`}>{t.openArrow}</Link></td>
             </tr>
           ))}
         </tbody>

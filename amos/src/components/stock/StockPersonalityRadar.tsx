@@ -3,11 +3,8 @@ import type { LiveTickerData } from '../../data/liveAdapter';
 import type { BenchmarkSnapshot } from '../../data/liveBenchmarks';
 import { buildPersonalityRadar, type PersonalityAxis } from '../../data/stockPersonality';
 import { valuationFor } from '../../data/valuationStack';
+import { useLang } from '../../data/LangContext';
 
-/**
- * Stock Personality Radar.
- * Renders as a CSS-only hex radar diagram (no charting library).
- */
 export default function StockPersonalityRadar({
   symbol,
   liveData,
@@ -17,6 +14,7 @@ export default function StockPersonalityRadar({
   liveData?: LiveTickerData;
   leader?: BenchmarkSnapshot;
 }) {
+  const { t } = useLang();
   const radar = useMemo(() => {
     if (!liveData?.bars?.length) return null;
     const zones = valuationFor(symbol, liveData.quote.regularMarketPrice);
@@ -27,15 +25,15 @@ export default function StockPersonalityRadar({
   if (!radar) {
     return (
       <div className="card">
-        <h3>Stock Personality Radar</h3>
-        <div className="badge badge--mute">No live bars → personality not computed.</div>
+        <h3>{t.stockPersonalityTitle}</h3>
+        <div className="badge badge--mute">{t.noBarsPersonality}</div>
       </div>
     );
   }
 
   return (
     <div className="card">
-      <h3>Stock Personality Radar · {symbol}</h3>
+      <h3>{t.stockPersonalityTitle} · {symbol}</h3>
       <div className="badge badge--gold">{radar.summary}</div>
       <div className="radar-svg-wrap">
         <RadarSvg axes={radar.axes} />
@@ -43,9 +41,9 @@ export default function StockPersonalityRadar({
       <table>
         <thead>
           <tr>
-            <th>Axis</th>
-            <th>Score</th>
-            <th>Detail</th>
+            <th>{t.colAxis}</th>
+            <th>{t.colScore}</th>
+            <th>{t.colDetail}</th>
           </tr>
         </thead>
         <tbody>
@@ -60,10 +58,7 @@ export default function StockPersonalityRadar({
           ))}
         </tbody>
       </table>
-      <div className="disclaimer">
-        Personality is descriptive — it does NOT recommend action. Use it to match operational style:
-        gamma-sensitive names need tighter time-stops; floor-strong names handle drawdowns better.
-      </div>
+      <div className="disclaimer">{t.personalityDisclaimer}</div>
     </div>
   );
 }
@@ -75,7 +70,6 @@ function axisColor(v: number) {
   return 'var(--green)';
 }
 
-// Pure-CSS / inline SVG hex radar.
 function RadarSvg({ axes }: { axes: PersonalityAxis[] }) {
   const n = axes.length;
   const cx = 120;

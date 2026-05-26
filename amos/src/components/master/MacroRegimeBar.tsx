@@ -1,5 +1,6 @@
 import type { RegimeSnapshot } from '../../data/marketRegime';
 import type { BenchmarkSnapshot } from '../../data/liveBenchmarks';
+import { useLang } from '../../data/LangContext';
 
 export default function MacroRegimeBar({
   regime,
@@ -8,22 +9,24 @@ export default function MacroRegimeBar({
   regime: RegimeSnapshot | null;
   benchmarks: Map<string, BenchmarkSnapshot>;
 }) {
+  const { t } = useLang();
+
   if (!regime) {
     return (
       <div className="card">
-        <h3>Macro War Map</h3>
-        <div className="badge badge--mute">Benchmarks unavailable — regime unknown.</div>
+        <h3>{t.macroWarMap}</h3>
+        <div className="badge badge--mute">{t.benchmarksUnavailable}</div>
       </div>
     );
   }
   return (
     <div className="card">
-      <h3>Macro War Map · Top Global Runtime</h3>
+      <h3>{t.macroWarMapFull}</h3>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
-        <span className={`badge ${regimeLabelClass(regime.label)}`}>REGIME · {regime.label}</span>
-        <span className={`badge ${riskClass(regime.riskAppetite)}`}>RISK · {regime.riskAppetite}</span>
-        <span className={`badge ${liqClass(regime.liquidity)}`}>LIQ · {regime.liquidity}</span>
-        <span className={`badge ${leadClass(regime.leadership)}`}>LEAD · {regime.leadership}</span>
+        <span className={`badge ${regimeLabelClass(regime.label)}`}>{t.regimeLabel} {regime.label}</span>
+        <span className={`badge ${riskClass(regime.riskAppetite)}`}>{t.riskLabel} {regime.riskAppetite}</span>
+        <span className={`badge ${liqClass(regime.liquidity)}`}>{t.liqLabel} {regime.liquidity}</span>
+        <span className={`badge ${leadClass(regime.leadership)}`}>{t.leadLabel} {regime.leadership}</span>
       </div>
       <div className="grid-3">
         {Array.from(benchmarks.values()).map((b) => (
@@ -44,9 +47,7 @@ export default function MacroRegimeBar({
       <ul className="bullets" style={{ marginTop: 10 }}>
         {regime.notes.map((n, i) => <li key={i}>{n}</li>)}
       </ul>
-      <div className="disclaimer">
-        Single-jianwei: 宏观定仓位 — macro sets the ceiling on aggression. Liquidity + leadership define the playable regime.
-      </div>
+      <div className="disclaimer">{t.macroRegimeDisclaimer}</div>
     </div>
   );
 }

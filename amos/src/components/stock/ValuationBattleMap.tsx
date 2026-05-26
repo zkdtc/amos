@@ -1,9 +1,6 @@
 import { valuationFor } from '../../data/valuationStack';
+import { useLang } from '../../data/LangContext';
 
-/**
- * Multi-layer valuation visual ("battle map" of conservative/base/bull/euphoria
- * zones). Per single-jianwei MULTI-LAYER VALUATION ENGINE doctrine.
- */
 export default function ValuationBattleMap({
   symbol,
   currentPrice
@@ -11,11 +8,13 @@ export default function ValuationBattleMap({
   symbol: string;
   currentPrice: number | null;
 }) {
+  const { t } = useLang();
+
   if (!currentPrice) {
     return (
       <div className="card">
-        <h3>Valuation Battle Map</h3>
-        <div className="badge badge--mute">No live price → valuation map skipped.</div>
+        <h3>{t.valuationTitle}</h3>
+        <div className="badge badge--mute">{t.noLivePriceValuation}</div>
       </div>
     );
   }
@@ -23,16 +22,14 @@ export default function ValuationBattleMap({
   if (!zones) {
     return (
       <div className="card">
-        <h3>Valuation Battle Map</h3>
+        <h3>{t.valuationTitle}</h3>
         <div className="badge badge--mute">
-          No valuation research configured for {symbol}. Edit{' '}
-          <code>src/data/valuationStack.ts</code>.
+          {t.noValuationConfig} {symbol}. {t.editFile}
         </div>
       </div>
     );
   }
 
-  // Build bar
   const min = Math.min(zones.conservative, zones.currentPrice) * 0.9;
   const max = Math.max(zones.euphoria, zones.currentPrice) * 1.05;
   const range = max - min;
@@ -40,8 +37,8 @@ export default function ValuationBattleMap({
 
   return (
     <div className="card">
-      <h3>Valuation Battle Map · {symbol}</h3>
-      <div className={`badge ${zoneClass(zones.zone)}`}>ZONE · {zones.zone}</div>
+      <h3>{t.valuationTitle} · {symbol}</h3>
+      <div className={`badge ${zoneClass(zones.zone)}`}>{t.zoneLabel} {zones.zone}</div>
       <div className="valuation-bar">
         <div className="valuation-bar__track" />
         <div className="valuation-bar__zone valuation-bar__zone--conservative" style={{ left: `${pct(zones.conservative)}%`, width: `${pct(zones.base) - pct(zones.conservative)}%` }} title="Conservative → Base" />
@@ -51,16 +48,16 @@ export default function ValuationBattleMap({
       </div>
 
       <div className="grid-3" style={{ marginTop: 10 }}>
-        <Zone label="💎 Conservative" price={zones.conservative} color="var(--green)" sub="Duan-Yongping floor" />
-        <Zone label="🟢 Base"         price={zones.base}         color="var(--cyan)"  sub="market consensus" />
-        <Zone label="🟠 Bull"         price={zones.bull}         color="var(--orange)" sub="narrative expansion" />
-        <Zone label="🔴 Euphoria"     price={zones.euphoria}     color="var(--red)"   sub="late-cycle overshoot" />
-        <Zone label="Current"         price={zones.currentPrice} color="var(--fg)"    sub={`Δ floor ${zones.distanceToConservativePct >= 0 ? '+' : ''}${zones.distanceToConservativePct}%`} />
-        <Zone label="Δ Base"          price={zones.distanceToBasePct} color="var(--fg-dim)" sub="% from base"  unit="%" />
+        <Zone label={t.zoneConservative} price={zones.conservative} color="var(--green)" sub={t.subConservative} />
+        <Zone label={t.zoneBase}         price={zones.base}         color="var(--cyan)"  sub={t.subBase} />
+        <Zone label={t.zoneBull}         price={zones.bull}         color="var(--orange)" sub={t.subBull} />
+        <Zone label={t.zoneEuphoria}     price={zones.euphoria}     color="var(--red)"   sub={t.subEuphoria} />
+        <Zone label={t.zoneCurrent}      price={zones.currentPrice} color="var(--fg)"    sub={`Δ floor ${zones.distanceToConservativePct >= 0 ? '+' : ''}${zones.distanceToConservativePct}%`} />
+        <Zone label={t.zoneDeltaBase}    price={zones.distanceToBasePct} color="var(--fg-dim)" sub={t.subDeltaBase} unit="%" />
       </div>
 
       <div className="disclaimer" style={{ marginTop: 12 }}>
-        <strong>Discount horizon:</strong> {zones.discountNarrative}
+        <strong>{t.discountHorizon}</strong> {zones.discountNarrative}
       </div>
       <ul className="bullets" style={{ marginTop: 6 }}>
         {zones.notes.map((n, i) => <li key={i}>{n}</li>)}

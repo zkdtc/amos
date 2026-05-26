@@ -1,4 +1,5 @@
 import type { Freshness } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
 const color: Record<Freshness, string> = {
   Fresh: 'badge badge--green',
@@ -7,5 +8,6 @@ const color: Record<Freshness, string> = {
 };
 
 export default function DataFreshnessBadge({ freshness }: { freshness: Freshness }) {
-  return <span className={color[freshness]}>FRESHNESS · {freshness}</span>;
+  const { t } = useLang();
+  return <span className={color[freshness]}>{t.freshnessLabel} {freshness}</span>;
 }

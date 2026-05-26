@@ -1,28 +1,30 @@
 import type { EvidencePacket } from '../../data/schemas';
 import { computeEvidenceActionGate, evidenceMissingCounter } from '../../rules/evidenceGuards';
+import { useLang } from '../../data/LangContext';
 
 export default function EvidencePanel({ packets }: { packets: EvidencePacket[] }) {
+  const { t } = useLang();
   if (packets.length === 0) {
     return (
       <div className="card">
-        <h3>Evidence Panel</h3>
-        <div className="badge badge--mute">No evidence packets for this ticker</div>
+        <h3>{t.evidencePanelTitle}</h3>
+        <div className="badge badge--mute">{t.noEvidencePackets}</div>
       </div>
     );
   }
   return (
     <div className="card">
-      <h3>Evidence Panel</h3>
+      <h3>{t.evidencePanelTitle}</h3>
       <table>
         <thead>
           <tr>
-            <th>Packet</th>
-            <th>Claim</th>
-            <th>Source</th>
-            <th>Quality</th>
-            <th>Bias</th>
-            <th>Counter</th>
-            <th>Gate</th>
+            <th>{t.colPacket}</th>
+            <th>{t.colClaim}</th>
+            <th>{t.colSource}</th>
+            <th>{t.colQuality}</th>
+            <th>{t.colBias}</th>
+            <th>{t.colCounter}</th>
+            <th>{t.colGate}</th>
           </tr>
         </thead>
         <tbody>
@@ -57,10 +59,7 @@ export default function EvidencePanel({ packets }: { packets: EvidencePacket[] }
           })}
         </tbody>
       </table>
-      <div className="disclaimer">
-        Rule: a claim without counter-evidence cannot influence action. Low quality (&lt;0.40) or
-        High bias forces Research-Only gate regardless.
-      </div>
+      <div className="disclaimer">{t.evidenceDisclaimer}</div>
     </div>
   );
 }

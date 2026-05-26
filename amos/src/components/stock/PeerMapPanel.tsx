@@ -1,26 +1,28 @@
 import { getPeerCohort } from '../../data/peerMaps';
+import { useLang } from '../../data/LangContext';
 
 export default function PeerMapPanel({ symbol }: { symbol: string }) {
+  const { t } = useLang();
   const cohort = getPeerCohort(symbol);
   if (!cohort) {
     return (
       <div className="card">
-        <h3>Peer Map</h3>
-        <div className="badge badge--mute">No peer cohort defined for {symbol}.</div>
+        <h3>{t.peerMapTitle}</h3>
+        <div className="badge badge--mute">{t.noPeerCohort} {symbol}.</div>
       </div>
     );
   }
   return (
     <div className="card">
-      <h3>Peer Map · {symbol}</h3>
+      <h3>{t.peerMapTitle} · {symbol}</h3>
       <div className="badge badge--cyan">{cohort.archetype}</div>{' '}
       <div className="badge badge--mute">{cohort.branch}</div>
       <table style={{ marginTop: 10 }}>
         <thead>
           <tr>
-            <th>Peer</th>
-            <th>Relation</th>
-            <th>Note</th>
+            <th>{t.colPeer}</th>
+            <th>{t.colRelation}</th>
+            <th>{t.colNote}</th>
           </tr>
         </thead>
         <tbody>
@@ -35,9 +37,7 @@ export default function PeerMapPanel({ symbol }: { symbol: string }) {
           ))}
         </tbody>
       </table>
-      <div className="disclaimer">
-        Use peer map for capital-migration decisions: rotate FROM weakening peers INTO the strongest leader inside the same branch.
-      </div>
+      <div className="disclaimer">{t.peerMapDisclaimer}</div>
     </div>
   );
 }

@@ -2,11 +2,8 @@ import { useMemo } from 'react';
 import type { LiveTickerData } from '../../data/liveAdapter';
 import type { AnchorVerification } from '../../data/schemas';
 import { buildAVWAPSeries, type AVWAPSeries } from '../../data/liveAVWAP';
+import { useLang } from '../../data/LangContext';
 
-/**
- * AVWAP Panel — anchored VWAP from each anchor's date forward.
- * Renders one row per anchor.
- */
 export default function AVWAPPanel({
   liveData,
   anchors
@@ -14,6 +11,7 @@ export default function AVWAPPanel({
   liveData?: LiveTickerData;
   anchors: AnchorVerification[];
 }) {
+  const { t } = useLang();
   const series = useMemo<AVWAPSeries[]>(() => {
     if (!liveData?.bars?.length) return [];
     return anchors.map((a) =>
@@ -23,18 +21,18 @@ export default function AVWAPPanel({
 
   return (
     <div className="card">
-      <h3>Anchored VWAP (AVWAP) Zones</h3>
+      <h3>{t.avwapTitle}</h3>
       {series.length === 0 ? (
-        <div className="badge badge--mute">No anchors or no live bars → AVWAP unavailable.</div>
+        <div className="badge badge--mute">{t.noAvwap}</div>
       ) : (
         <table>
           <thead>
             <tr>
-              <th>Anchor</th>
-              <th>Anchor Date</th>
-              <th>Current AVWAP</th>
-              <th>Status</th>
-              <th>Distance</th>
+              <th>{t.colAnchor}</th>
+              <th>{t.colAnchorDate}</th>
+              <th>{t.colCurrentAvwap}</th>
+              <th>{t.status}</th>
+              <th>{t.distance}</th>
             </tr>
           </thead>
           <tbody>
@@ -54,9 +52,7 @@ export default function AVWAPPanel({
           </tbody>
         </table>
       )}
-      <div className="disclaimer">
-        Rules: reclaim of major-event AVWAP = bullish bias; loss of earnings-low AVWAP = thesis damage. AVWAP confirms execution; it never triggers action alone.
-      </div>
+      <div className="disclaimer">{t.avwapDisclaimer}</div>
     </div>
   );
 }

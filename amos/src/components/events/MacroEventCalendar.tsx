@@ -1,20 +1,22 @@
 import type { MacroEvent } from '../../data/schemas';
 import { defaultCapForCriticalEvent } from '../../rules/eventGuards';
+import { useLang } from '../../data/LangContext';
 
 export default function MacroEventCalendar({ events }: { events: MacroEvent[] }) {
+  const { t } = useLang();
   return (
     <div className="card">
-      <h2>Macro / Mechanical Event Calendar</h2>
+      <h2>{t.macroEventCalendarComponentTitle}</h2>
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Category</th>
-            <th>Title</th>
-            <th>Importance</th>
-            <th>Action Cap (enforced)</th>
-            <th>Post-Event Review</th>
+            <th>{t.colDate}</th>
+            <th>{t.colTime}</th>
+            <th>{t.colCategory}</th>
+            <th>{t.colTitle}</th>
+            <th>{t.colImportance}</th>
+            <th>{t.colActionCap}</th>
+            <th>{t.colPostEventReview}</th>
           </tr>
         </thead>
         <tbody>
@@ -41,15 +43,13 @@ export default function MacroEventCalendar({ events }: { events: MacroEvent[] })
                     {cap}
                   </span>
                 </td>
-                <td>{e.postEventReviewRequired ? '✓ required' : '—'}</td>
+                <td>{e.postEventReviewRequired ? t.required : '—'}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div className="disclaimer">
-        Rule: Critical events default to No Attack until setup is confirmed and risk accepted.
-      </div>
+      <div className="disclaimer">{t.eventRuleDisclaimer}</div>
     </div>
   );
 }

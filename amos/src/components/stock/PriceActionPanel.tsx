@@ -1,35 +1,34 @@
 import type { ManualInput } from '../../data/schemas';
+import { useLang } from '../../data/LangContext';
 
 export default function PriceActionPanel({ input }: { input?: ManualInput }) {
+  const { t } = useLang();
   return (
     <div className="card">
-      <h3>Price Action · TCG 8/12 EMA</h3>
+      <h3>{t.priceActionTitle}</h3>
       {!input ? (
-        <div className="badge badge--mute">No manual input</div>
+        <div className="badge badge--mute">{t.noManualInput}</div>
       ) : (
         <dl className="kvs">
-          <dt>Last Price</dt>
+          <dt>{t.lastPrice}</dt>
           <dd>{input.lastPrice ?? '—'}</dd>
-          <dt>EMA 8</dt>
+          <dt>{t.ema8State}</dt>
           <dd>{input.ema8State}</dd>
-          <dt>EMA 12</dt>
+          <dt>{t.ema12State}</dt>
           <dd>{input.ema12State}</dd>
-          <dt>Trend Structure</dt>
+          <dt>{t.trendStructure}</dt>
           <dd>{input.trendStructure}</dd>
-          <dt>RS vs QQQ</dt>
+          <dt>{t.rsVsQqq}</dt>
           <dd>{input.rsVsQqq}</dd>
-          <dt>RS vs Peers</dt>
+          <dt>{t.rsVsPeers}</dt>
           <dd>{input.rsVsPeers}</dd>
-          <dt>AVWAP</dt>
+          <dt>{t.avwapStatus}</dt>
           <dd>{input.avwapStatus}</dd>
-          <dt>RSI 14D</dt>
+          <dt>{t.rsi14d}</dt>
           <dd>{input.rsi14d ?? '—'}</dd>
         </dl>
       )}
-      <div className="disclaimer">
-        Trend confirmation requires HH/HL or LH/LL. Inside-bar / equilibrium waits for volume
-        breakout. No random middle-zone action.
-      </div>
+      <div className="disclaimer">{t.priceActionDisclaimer}</div>
     </div>
   );
 }
