@@ -33,6 +33,28 @@ export interface XPost {
 }
 
 const STORAGE_KEY = 'amos-x-posts-v1';
+/* ─── Disk persistence (via /api/user-data/* vite middleware) ───────────── */
+
+async function loadFromDisk<T>(key: string): Promise<T | null> {
+  try {
+    const r = await fetch(`/api/user-data/${key}`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d as T;
+  } catch { return null; }
+}
+
+async function saveToDisk(key: string, data: unknown): Promise<void> {
+  try {
+    await fetch(`/api/user-data/${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch { /* graceful — localStorage is the fallback */ }
+}
+
+
 
 // ── ID / URL parsing ──────────────────────────────────────────────────
 
@@ -187,6 +209,16 @@ export function loadLibrary(): XPost[] {
 
 export function saveLibrary(items: XPost[]): void {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch { /* ignore */ }
+  void saveToDisk('x-posts', items);
+}
+
+/** On page mount: load from disk, merge with localStorage, save merged back. */
+export async function hydrateLibraryFromDisk(): Promise<XPost[]> {
+  const disk = await loadFromDisk<XPost[]>('x-posts');
+  if (!disk || !Array.isArray(disk) || disk.length === 0) return loadLibrary();
+  const merged = mergePosts(loadLibrary(), disk);
+  saveLibrary(merged);
+  return merged;
 }
 
 // ── Search ───────────────────────────────────────────────────────────
@@ -284,8 +316,19 @@ export function loadFollows(): XFollow[] {
   } catch { return []; }
 }
 
+export async function hydrateFollowsFromDisk(): Promise<XFollow[]> {
+  const disk = await loadFromDisk<XFollow[]>('x-follows');
+  if (!disk || !Array.isArray(disk) || disk.length === 0) return loadFollows();
+  const local = loadFollows();
+  const localMap = new Map(local.map(f => [f.handle, f]));
+  const merged = disk.map(f => ({ ...f, ...(localMap.get(f.handle) ?? {}) }));
+  saveFollows(merged);
+  return merged;
+}
+
 export function saveFollows(items: XFollow[]): void {
   try { localStorage.setItem(FOLLOW_KEY, JSON.stringify(items)); } catch { /* ignore */ }
+  void saveToDisk('x-follows', items);
 }
 
 export function isValidHandle(h: string): boolean {

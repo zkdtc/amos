@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite';
+import fs from 'fs';
+import nodePath from 'path';
 import react from '@vitejs/plugin-react';
 import { execFile } from 'child_process';
 import { readFileSync, existsSync, mkdtempSync, readdirSync, rmSync } from 'fs';
@@ -674,7 +676,63 @@ export default defineConfig({
           }
         });
       }
-    }
+    },
+    // ─── /api/user-data/* — server-side persistence ──────────────────────────
+    {
+      name: 'amos-user-data',
+      configureServer(server: any) {
+        const USER_DATA_DIR = nodePath.join(nodePath.dirname(nodePath.resolve('vite.config.ts')), 'user-data');
+        const ALLOWED_KEYS = ['x-posts', 'x-follows', 'yt-library', 'tickers'];
+        server.middlewares.use('/api/user-data', (req: any, res: any) => {
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
+          const key = (req.url || '').replace(/^\//, '').replace(/[^a-z0-9-]/g, '');
+          if (!ALLOWED_KEYS.includes(key)) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: `Unknown key: ${key}` }));
+            return;
+          }
+          const filePath = nodePath.join(USER_DATA_DIR, `${key}.json`);
+          if (req.method === 'GET') {
+            try {
+              const data = fs.existsSync(filePath)
+                ? fs.readFileSync(filePath, 'utf8')
+                : 'null';
+              res.statusCode = 200;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(data);
+            } catch {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: 'Read failed' }));
+            }
+            return;
+          }
+          if (req.method === 'POST') {
+            let body = '';
+            req.on('data', (chunk: Buffer) => { body += chunk.toString(); });
+            req.on('end', () => {
+              try {
+                JSON.parse(body); // validate
+                fs.mkdirSync(USER_DATA_DIR, { recursive: true });
+                fs.writeFileSync(filePath, body, 'utf8');
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ ok: true, key, bytes: body.length }));
+              } catch {
+                res.statusCode = 400;
+                res.end(JSON.stringify({ error: 'Invalid JSON or write failed' }));
+              }
+            });
+            return;
+          }
+          res.statusCode = 405;
+          res.end(JSON.stringify({ error: 'Method not allowed' }));
+        });
+      }
+    },
   ],
   server: {
     port: 5173,

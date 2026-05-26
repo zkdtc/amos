@@ -20,6 +20,7 @@ import {
   formatTimestamp,
   loadLibrary,
   saveLibrary,
+  hydrateYTLibraryFromDisk,
   searchTranscripts,
   youtubeWatchUrl,
   type SearchHit,
@@ -39,6 +40,14 @@ export default function YouTubeTranscriptsPage() {
 
   // Persist whenever library changes
   useEffect(() => { saveLibrary(library); }, [library]);
+
+  // On mount: hydrate from disk → merge with localStorage
+  useEffect(() => {
+    void hydrateYTLibraryFromDisk().then(merged => {
+      if (merged.length > 0) setLibrary(merged);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const hits = useMemo<SearchHit[]>(
     () => (query.trim() ? searchTranscripts(library, query) : []),

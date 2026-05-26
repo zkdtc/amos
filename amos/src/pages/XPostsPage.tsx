@@ -25,6 +25,8 @@ import {
   parsePostUrl,
   saveFollows,
   saveLibrary,
+  hydrateLibraryFromDisk,
+  hydrateFollowsFromDisk,
   scanProfile,
   searchPosts,
   filterPostsByWindow,
@@ -53,6 +55,13 @@ export default function XPostsPage() {
 
   useEffect(() => { saveLibrary(library); }, [library]);
   useEffect(() => { saveFollows(follows); }, [follows]);
+
+  // On mount: hydrate from disk → merge with localStorage
+  useEffect(() => {
+    void hydrateLibraryFromDisk().then(setLibrary);
+    void hydrateFollowsFromDisk().then(setFollows);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ── Auto-scan timer: every 15 minutes scan all enabled follows
   useEffect(() => {
