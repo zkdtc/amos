@@ -39,6 +39,26 @@ export interface VideoTranscript {
 }
 
 const STORAGE_KEY = 'amos-yt-transcripts-v1';
+/* ─── Disk persistence ──────────────────────────────────────────────────── */
+async function saveToDisk(key: string, data: unknown): Promise<void> {
+  try {
+    await fetch(`/api/user-data/${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch { /* graceful */ }
+}
+async function loadFromDisk<T>(key: string): Promise<T | null> {
+  try {
+    const r = await fetch(`/api/user-data/${key}`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d as T;
+  } catch { return null; }
+}
+
+
 
 // ── ID extraction ─────────────────────────────────────────────────────
 
@@ -357,6 +377,17 @@ export function saveLibrary(items: VideoTranscript[]): void {
   } catch {
     /* full quota → silently drop */
   }
+  void saveToDisk('yt-library', items);
+}
+
+export async function hydrateYTLibraryFromDisk(): Promise<VideoTranscript[]> {
+  const disk = await loadFromDisk<VideoTranscript[]>('yt-library');
+  const local = loadLibrary();
+  if (!disk || !Array.isArray(disk) || disk.length === 0) return local;
+  const seen = new Set(local.map((v: VideoTranscript) => v.videoId));
+  const merged = [...local, ...disk.filter((v: VideoTranscript) => !seen.has(v.videoId))];
+  saveLibrary(merged);
+  return merged;
 }
 
 // ── Search ───────────────────────────────────────────────────────────
