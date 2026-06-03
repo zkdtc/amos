@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { execFile } from 'child_process';
 import { readFileSync, existsSync, mkdtempSync, readdirSync, rmSync } from 'fs';
@@ -21,6 +21,13 @@ import { join } from 'path';
  * This is still dev-only convenience. v0.3B remains "manual_alpha" mode:
  * live data is read-only.
  */
+
+// Load .env / .env.local so VITE_* vars are available inside this config file
+const _envMode = process.env.NODE_ENV || 'development';
+const _loadedEnv = loadEnv(_envMode, process.cwd(), '');
+for (const k of Object.keys(_loadedEnv)) {
+  if (process.env[k] === undefined) process.env[k] = _loadedEnv[k];
+}
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
@@ -680,6 +687,29 @@ export default defineConfig({
     port: 5173,
     open: false,
     proxy: {
+      // ── FMP (Financial Modeling Prep) ─────────────────────────────────
+      '/api/fmp': {
+        target: 'https://financialmodelingprep.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path: string) => {
+          const apiKey = process.env.VITE_FMP_API_KEY ?? '';
+          const stripped = path.replace(/^\/api\/fmp/, '/stable');
+          const sep = stripped.includes('?') ? '&' : '?';
+          return `${stripped}${sep}apikey=${apiKey}`;
+        },
+        configure: (proxy: any) => {
+          proxy.on('proxyReq', (_req: any, req: any) => {
+            console.log(`[vite] FMP -> ${req.url}`);
+          });
+          proxy.on('proxyRes', (proxyRes: any, req: any) => {
+            if (proxyRes.statusCode !== 200) {
+              console.warn(`[vite] FMP ${proxyRes.statusCode} on ${req.url}`);
+            }
+          });
+        },
+      },
+
       '/api/yahoo/chart':        sharedProxy('query1', '/api/yahoo/chart',        '/v8/finance/chart'),
       '/api/yahoo/quote':        sharedProxy('query1', '/api/yahoo/quote',        '/v7/finance/quote'),
       '/api/yahoo/quoteSummary': sharedProxy('query2', '/api/yahoo/quoteSummary', '/v10/finance/quoteSummary'),

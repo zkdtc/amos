@@ -405,20 +405,44 @@ export async function fetchLiveTickerData(
   let bars: Bar[];
   let dataQuality: DataQuality = 'live_market_data';
 
+  // Fetch quote and bars independently so a fresh FMP price can be
+  // combined with Yahoo/cached bars when FMP historical is restricted.
+  let fmpQuote: YahooQuote | null = null;
   try {
-    const live = await fetchChartAndQuote(symbol, '6mo', '1d');
-    quote = live.quote;
-    bars = live.bars;
-    if (bars.length < 20) throw new Error('Too few bars from Yahoo');
+    const { fetchFmpQuote } = await import('./fmpAdapter');
+    fmpQuote = await fetchFmpQuote(symbol);
+  } catch {
+    /* FMP not available for this symbol */
+  }
+
+  try {
+    // Try FMP bars first (mega-caps only on free tier), then Yahoo
+    try {
+      const { fetchFmpBars } = await import('./fmpAdapter');
+      bars = await fetchFmpBars(symbol);
+      if (bars.length < 20) throw new Error('Too few bars from FMP');
+      quote = fmpQuote ?? {
+        symbol,
+        regularMarketPrice: bars[bars.length - 1].close,
+        regularMarketTime: Math.floor(Date.now() / 1000),
+        regularMarketChangePercent: 0,
+        regularMarketVolume: bars[bars.length - 1].volume,
+      };
+    } catch {
+      const live = await fetchChartAndQuote(symbol, '6mo', '1d');
+      bars = live.bars;
+      if (bars.length < 20) throw new Error('Too few bars from Yahoo');
+      // Prefer fresh FMP quote when available; Yahoo bars provide history.
+      quote = fmpQuote ?? live.quote;
+    }
   } catch (err) {
-    // Yahoo failed or rate-limited → fall back to bundled snapshot so the
-    // L2/L3 panels still render meaningful values.
     const { getFallback, quoteFromFallback } = await import('./fallbackBars');
     const fb = await getFallback(symbol);
     if (!fb) throw err;
-    quote = quoteFromFallback(fb);
     bars = fb.bars;
-    dataQuality = 'cached_fallback_not_live';
+    // FMP quote (if fresh) wins over cached fallback price
+    quote = fmpQuote ?? quoteFromFallback(fb);
+    dataQuality = fmpQuote ? 'live_market_data' : 'cached_fallback_not_live';
   }
 
   const closes = bars.map((b) => b.close);

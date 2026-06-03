@@ -45,15 +45,35 @@ export async function fetchBenchmark(
   symbol: string,
   label: string
 ): Promise<BenchmarkSnapshot | null> {
-  // Try live, fall back to bundled snapshot.
+  // Try FMP first (reliable EOD, no rate limits at free tier 250/day),
+  // then Yahoo, then bundled snapshot.
+  // FMP free tier supports: stocks, SPY, ^VIX, BTCUSD.
+  // Premium-only: QQQ, ^TNX, DX-Y.NYB, BTC-USD (dashed).
+  const FMP_FREE_SYMBOL_MAP: Record<string, string> = {
+    'BTC-USD': 'BTCUSD',
+  };
+  const FMP_UNSUPPORTED = new Set(['QQQ', '^TNX', 'DX-Y.NYB']);
   let quote: { fiftyTwoWeekHigh?: number; fiftyTwoWeekLow?: number } | null = null;
   let bars: Bar[] = [];
-  try {
-    const live = await fetchChartAndQuote(symbol, '3mo', '1d');
-    quote = live.quote;
-    bars = live.bars;
-  } catch {
-    /* fall through to fallback */
+  if (!FMP_UNSUPPORTED.has(symbol)) {
+    try {
+      const { fetchFmpChartAndQuote } = await import('./fmpAdapter');
+      const fmpSymbol = FMP_FREE_SYMBOL_MAP[symbol] ?? symbol;
+      const live = await fetchFmpChartAndQuote(fmpSymbol, 95);
+      quote = live.quote;
+      bars = live.bars;
+    } catch {
+      /* fall through to Yahoo */
+    }
+  }
+  if (bars.length === 0) {
+    try {
+      const live = await fetchChartAndQuote(symbol, '3mo', '1d');
+      quote = live.quote;
+      bars = live.bars;
+    } catch {
+      /* fall through to fallback */
+    }
   }
   if (bars.length === 0) {
     const { getFallback, quoteFromFallback } = await import('./fallbackBars');
