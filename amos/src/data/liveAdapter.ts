@@ -405,23 +405,26 @@ export async function fetchLiveTickerData(
   let bars: Bar[];
   let dataQuality: DataQuality = 'live_market_data';
 
-  // Fetch quote and bars independently so a fresh FMP price can be
-  // combined with Yahoo/cached bars when FMP historical is restricted.
-  let fmpQuote: YahooQuote | null = null;
+  // Source order: moomoo (OpenD) → FMP → Yahoo → cached fallback.
+  // A fresh quote from any earlier source is kept and combined with bars
+  // from a later source if the earlier source's bars are unavailable.
+  let primaryQuote: YahooQuote | null = null;
   try {
-    const { fetchFmpQuote } = await import('./fmpAdapter');
-    fmpQuote = await fetchFmpQuote(symbol);
+    const { fetchMoomooQuote } = await import('./moomooAdapter');
+    primaryQuote = await fetchMoomooQuote(symbol);
   } catch {
-    /* FMP not available for this symbol */
+    try {
+      const { fetchFmpQuote } = await import('./fmpAdapter');
+      primaryQuote = await fetchFmpQuote(symbol);
+    } catch { /* fall through */ }
   }
 
   try {
-    // Try FMP bars first (mega-caps only on free tier), then Yahoo
     try {
-      const { fetchFmpBars } = await import('./fmpAdapter');
-      bars = await fetchFmpBars(symbol);
-      if (bars.length < 20) throw new Error('Too few bars from FMP');
-      quote = fmpQuote ?? {
+      const { fetchMoomooBars } = await import('./moomooAdapter');
+      bars = await fetchMoomooBars(symbol);
+      if (bars.length < 20) throw new Error('Too few bars from moomoo');
+      quote = primaryQuote ?? {
         symbol,
         regularMarketPrice: bars[bars.length - 1].close,
         regularMarketTime: Math.floor(Date.now() / 1000),
@@ -429,20 +432,32 @@ export async function fetchLiveTickerData(
         regularMarketVolume: bars[bars.length - 1].volume,
       };
     } catch {
-      const live = await fetchChartAndQuote(symbol, '6mo', '1d');
-      bars = live.bars;
-      if (bars.length < 20) throw new Error('Too few bars from Yahoo');
-      // Prefer fresh FMP quote when available; Yahoo bars provide history.
-      quote = fmpQuote ?? live.quote;
+      try {
+        const { fetchFmpBars } = await import('./fmpAdapter');
+        bars = await fetchFmpBars(symbol);
+        if (bars.length < 20) throw new Error('Too few bars from FMP');
+        quote = primaryQuote ?? {
+          symbol,
+          regularMarketPrice: bars[bars.length - 1].close,
+          regularMarketTime: Math.floor(Date.now() / 1000),
+          regularMarketChangePercent: 0,
+          regularMarketVolume: bars[bars.length - 1].volume,
+        };
+      } catch {
+        const live = await fetchChartAndQuote(symbol, '6mo', '1d');
+        bars = live.bars;
+        if (bars.length < 20) throw new Error('Too few bars from Yahoo');
+        quote = primaryQuote ?? live.quote;
+      }
     }
   } catch (err) {
     const { getFallback, quoteFromFallback } = await import('./fallbackBars');
     const fb = await getFallback(symbol);
     if (!fb) throw err;
     bars = fb.bars;
-    // FMP quote (if fresh) wins over cached fallback price
-    quote = fmpQuote ?? quoteFromFallback(fb);
-    dataQuality = fmpQuote ? 'live_market_data' : 'cached_fallback_not_live';
+    // Fresh live quote (if available) wins over cached fallback price
+    quote = primaryQuote ?? quoteFromFallback(fb);
+    dataQuality = primaryQuote ? 'live_market_data' : 'cached_fallback_not_live';
   }
 
   const closes = bars.map((b) => b.close);

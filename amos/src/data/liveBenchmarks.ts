@@ -53,9 +53,21 @@ export async function fetchBenchmark(
     'BTC-USD': 'BTCUSD',
   };
   const FMP_UNSUPPORTED = new Set(['QQQ', '^TNX', 'DX-Y.NYB']);
+  // moomoo: US equities/ETFs/indices only. No crypto, no DXY, no ^TNX.
+  const MOOMOO_UNSUPPORTED = new Set(['BTC-USD', '^TNX', 'DX-Y.NYB']);
   let quote: { fiftyTwoWeekHigh?: number; fiftyTwoWeekLow?: number } | null = null;
   let bars: Bar[] = [];
-  if (!FMP_UNSUPPORTED.has(symbol)) {
+  if (!MOOMOO_UNSUPPORTED.has(symbol)) {
+    try {
+      const { fetchMoomooChartAndQuote } = await import('./moomooAdapter');
+      const live = await fetchMoomooChartAndQuote(symbol, 95);
+      quote = live.quote;
+      bars = live.bars;
+    } catch {
+      /* fall through to FMP */
+    }
+  }
+  if (bars.length === 0 && !FMP_UNSUPPORTED.has(symbol)) {
     try {
       const { fetchFmpChartAndQuote } = await import('./fmpAdapter');
       const fmpSymbol = FMP_FREE_SYMBOL_MAP[symbol] ?? symbol;

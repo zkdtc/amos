@@ -12,6 +12,7 @@
     "test:watch": "node node_modules/vitest/dist/cli.js"
   },
   "dependencies": {
+    "futu-api": "^9.2.5008",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"

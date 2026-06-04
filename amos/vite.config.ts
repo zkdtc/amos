@@ -684,6 +684,47 @@ export default defineConfig({
         });
       }
     },
+    {
+      // ─── /api/moomoo/{quote,bars}?symbol=X ─────────────────────────────
+      // Bridges the browser to a locally-running OpenD gateway via the
+      // futu-api WebSocket SDK (see server/moomooBridge.mjs and README).
+      name: 'amos-moomoo',
+      configureServer(server: any) {
+        server.middlewares.use('/api/moomoo', async (req: any, res: any) => {
+          try {
+            const u = new URL(req.url || '', 'http://localhost');
+            const action = u.pathname.replace(/^\//, '').split('/')[0];
+            const symbol = (u.searchParams.get('symbol') || '').trim();
+            if (!symbol) {
+              res.statusCode = 400;
+              res.end(JSON.stringify({ error: 'missing symbol' }));
+              return;
+            }
+            // @ts-expect-error — .mjs has no .d.ts
+            const bridge: any = await import('./server/moomooBridge.mjs');
+            let body: unknown;
+            if (action === 'quote') {
+              body = await bridge.getQuote(symbol);
+            } else if (action === 'bars') {
+              const days = parseInt(u.searchParams.get('days') || '180', 10);
+              body = await bridge.getBars(symbol, days);
+            } else {
+              res.statusCode = 404;
+              res.end(JSON.stringify({ error: `unknown action: ${action}` }));
+              return;
+            }
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(body));
+          } catch (e: any) {
+            console.error('[moomoo] error:', e);
+            res.statusCode = 502;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: String(e?.message || e), stack: String(e?.stack || '').split('\n').slice(0,5).join('\n') }));
+          }
+        });
+      }
+    },
     // ─── /api/user-data/* — server-side persistence ──────────────────────────
     {
       name: 'amos-user-data',

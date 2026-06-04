@@ -21,6 +21,29 @@ npm test         # vitest, 48 guardrail + live adapter tests
 npm run build    # type-check + production build
 ```
 
+### Moomoo OpenD setup (preferred data source)
+
+The app prefers moomoo's OpenAPI for US equity/ETF/index quotes + EOD bars
+because it's unlimited at the free tier. Moomoo uses a local gateway program
+called **OpenD** — install once, then run it whenever you want fresh data.
+
+1. Download Futu/Moomoo OpenD: https://www.futunn.com/en/download/openAPI
+   (or `https://www.moomoo.com/download/OpenAPI`)
+2. Launch OpenD and log in with your moomoo/futu account.
+3. In OpenD config (or its UI) enable the **WebSocket** port and note:
+   - host (default `127.0.0.1`)
+   - port (default `33333`)
+   - `ws_key` (leave empty if you disable encryption locally)
+4. Edit `amos/.env.local` and set the three `MOOMOO_OPEND_*` vars.
+5. Start the app: `npm run dev`.
+
+Data source order (per symbol): **moomoo → FMP → Yahoo → bundled snapshot**.
+If OpenD isn't running, calls fail silently and FMP/Yahoo take over — the
+app still works, just with the same rate-limit risks as before.
+
+Symbols NOT covered by moomoo (crypto `BTC-USD`, `^TNX`, `DX-Y.NYB`) fall
+straight through to FMP/Yahoo.
+
 ### Live Data
 
 The app uses a **Vite dev proxy** to fetch real-time prices from Yahoo Finance
