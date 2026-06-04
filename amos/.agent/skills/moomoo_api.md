@@ -79,6 +79,22 @@ valid if OpenD has WS encryption disabled.
    `loadEnv()`. Editing `MOOMOO_OPEND_PORT` / `MOOMOO_OPEND_KEY` requires
    killing Node and rerunning `npm run dev`.
 
+## User setup recipe (one-time, in OpenD GUI)
+
+What the user actually did to get this working:
+
+1. Install **OpenD** and launch its GUI (log into moomoo/futu account).
+2. Open **Advanced Settings** in the GUI.
+3. Set **WebSocket Port** = `33333` (default JS-SDK port; any free port works).
+4. Set the **WebSocket Auth Key** to a chosen string.
+5. Tell the assistant the auth key — it goes into `.env.local`
+   `MOOMOO_OPEND_KEY=<that key>`.
+6. Restart `npm run dev` so the new env is picked up.
+
+The Advanced Settings panel is where both the WS port and the auth key live —
+they are NOT in the default API panel. Without enabling WS there, OpenD only
+listens on the TCP port (11111) and the JS SDK can't connect.
+
 ## Verify checklist (in order)
 
 1. `Test-NetConnection 127.0.0.1 <port>` returns `True` — port is bound.
